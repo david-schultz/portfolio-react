@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -15,13 +17,42 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      sans: ['var(--font-graphik)'],
+    },
+    fontSize: {
+      xs: ['0.625rem', '1.5em'],
+      sm: ['0.875rem', '1.5em'],
+      md: ['1rem', '1.5em'],
+      lg: ['1.25rem', '1.25em'],
+      xl: ['1.5rem', '1.15em'],
+      '2xl': ['2rem', '1.1em'],
+      '3xl': ['2.25rem', '1.1em'],
+      '4xl': ['3rem', '1.1em'],
+      '5xl': ['4rem', '1.1em'],
+      '6xl': ['6rem', '1.1em'],
+      '9xl': ['8rem', '0.9em'],
+    },
+    fontWeight: {
+      '400': '400',
+      '500': '500',
+      '600': '600',
+    },
     extend: {
       colors: {
+        invert: "#FFFFFF",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+
+        background: {
+          DEFAULT: "hsl(var(--background))",
+          invert: "hsl(var(--background-invert))",
+        },
+        foreground: {
+          DEFAULT: "hsl(var(--foreground))",
+          invert: "hsl(var(--foreground-invert))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

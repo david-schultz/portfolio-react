@@ -4,22 +4,27 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
+    --background: 0 0% 98%;
+    --background-invert: 0 0% 15%;
+    --foreground: 0 0% 9%;
+    --foreground-invert: 0 0% 100%;
 
     --card: 0 0% 100%;
-    --card-foreground: 20 14.3% 4.1%;
+    --card-foreground: 0 0% 9%;
  
     --popover: 0 0% 100%;
-    --popover-foreground: 20 14.3% 4.1%;
+    --popover-foreground: 0 0% 9%;
  
-    --primary: 24 9.8% 10%;
-    --primary-foreground: 60 9.1% 97.8%;
+    --primary: 0 0% 15%;
+    --primary-foreground: 0 0% 100%;
  
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
+    --secondary: 0 0% 32%;
+    --secondary-foreground: 0 0% 100%;
+
+    --subtle: 0 0% 96%;
+    --subtle-foreground: 0 0% 9%;
  
-    --muted: 60 4.8% 95.9%;
+    --muted: 210 40% 96%;
     --muted-foreground: 25 5.3% 44.7%;
  
     --accent: 60 4.8% 95.9%;
@@ -36,20 +41,25 @@
   }
  
   .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 60 9.1% 97.8%;
+    --background: 0 0% 15%;
+    --background-invert: 0 0% 98%;
+    --foreground: 0 0% 100%;
+    --foreground-invert: 0 0 9%;
  
-    --card: 20 14.3% 4.1%;
-    --card-foreground: 60 9.1% 97.8%;
+    --card: 0 0% 13%;
+    --card-foreground: 0 0% 100%;
  
     --popover: 20 14.3% 4.1%;
     --popover-foreground: 60 9.1% 97.8%;
  
-    --primary: 60 9.1% 97.8%;
+    --primary: 0 0% 98%;
     --primary-foreground: 24 9.8% 10%;
  
-    --secondary: 12 6.5% 15.1%;
-    --secondary-foreground: 60 9.1% 97.8%;
+    --secondary: 0 0% 83%;
+    --secondary-foreground: 24 9.8% 10%;
+
+    --subtle: 0 0% 25%;
+    --subtle-foreground: 0 0% 100%;
  
     --muted: 12 6.5% 15.1%;
     --muted-foreground: 24 5.4% 63.9%;
@@ -65,7 +75,7 @@
     --ring: 24 5.7% 82.9%;
   }
 }
- 
+/*  
 @layer base {
   * {
     @apply border-border;
@@ -73,4 +83,11 @@
   body {
     @apply bg-background text-foreground;
   }
+} */
+
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
 }
