@@ -3,11 +3,20 @@ import React from 'react';
 import '@/app/styles.css'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button.tsx'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 export default function SiteBar({ variant = 'default' }: { variant?: string}) {
   const isInverted = variant === "inverted";
 
-  let navStyling = "rounded-lg border-[#E4E4E7] bg-card elevation-1";
+  let navStyling = "rounded-lg border-border border bg-card elevation-1";
   let logoSrc = "/logo.svg";
   let mainText = "";
   let subText = "text-secondary font-500";
@@ -37,11 +46,24 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
             <small className={ subText }>Interaction Designer</small>
           </li>
           <li>
-            {isInverted ? 
-              (<Button variant="subtle-dark-locked">About the site</Button>)
-              :
-              (<Button variant="ghost">About the site</Button>)
-            }
+            <Dialog>
+              <DialogTrigger asChild>
+                { isInverted ? 
+                  (<Button variant="subtle-dark-locked">About the site</Button>)
+                  :
+                  (<Button variant="ghost">About the site</Button>)
+                }
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>About the site</DialogTitle>
+                  <DialogDescription>
+                    This website is built with React.js, Next.js, and notably shadcn/ui.
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
+            
           </li>
           <li>
             {isInverted ? 
@@ -51,6 +73,7 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
             }
           </li>
         </ul>
+
     </nav>
   );
 }
