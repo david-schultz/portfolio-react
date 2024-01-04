@@ -21,7 +21,7 @@ module.exports = {
       sans: ['var(--font-graphik)'],
     },
     fontSize: {
-      xs: ['0.625rem', '1.5em'],
+      xs: ['0.75rem', '1.5em'],
       sm: ['0.875rem', '1.5em'],
       md: ['1rem', '1.5em'],
       lg: ['1.25rem', '1.25em'],
