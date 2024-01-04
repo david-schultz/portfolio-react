@@ -9,12 +9,15 @@ export default function WorkLayout({
   children: React.ReactNode
 }) {
   return (
-    <main className="min-h-screen flex flex-col gap-4 mb-32">
+    <div className="min-h-screen flex flex-col gap-4 mb-32 items-stretch">
       <ScrollUp/>
-      <header className="mx-2 p-4 ">
+      <header className="mx-2 p-4">
         <SiteBar />
       </header>
-      {children}
-    </main>
+
+      <main className="mx-16 flex justify-around">
+        {children}
+      </main>
+    </div>
   )
 }
