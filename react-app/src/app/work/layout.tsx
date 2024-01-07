@@ -1,8 +1,6 @@
 import SiteBar from '@/components/SiteBar'
 import ScrollUp from '@/components/ScrollUp'
 
-import { useEffect } from 'react';
-
 export default function WorkLayout({
   children,
 }: {

@@ -63,3 +63,18 @@ small {
   font-weight: 400;
   line-height: 130%; /* 1.1375rem */
 }
+
+/* --- Video Player --- */
+/* src=https://stackoverflow.com/questions/49393838/how-to-make-reactplayer-scale-with-height-and-width */
+.player-wrapper {
+  width: auto;
+  height: auto;
+}
+.react-player {
+  padding-top: 56.25%; 
+  position: relative;
+}
+
+.react-player > div {
+  position: absolute;
+}
