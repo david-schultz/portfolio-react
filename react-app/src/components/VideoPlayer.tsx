@@ -13,7 +13,7 @@ interface VideoPlayerProps {
 
 const VideoPlayer: React.FunctionComponent<VideoPlayerProps> = (props) => {
   return (
-    <div className="player-wrapper">
+    <div className="player-wrapper border border-1 rounded-md elevation-1 overflow-clip">
       <ReactPlayer
         width={props.width}
         height={props.width}
@@ -22,6 +22,7 @@ const VideoPlayer: React.FunctionComponent<VideoPlayerProps> = (props) => {
         muted={true}
         playing={true}
         loop={true}
+        className={""}
       />
       <source src={props.videoUrl} type="video/mp4" />
     </div>

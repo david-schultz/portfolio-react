@@ -50,7 +50,7 @@ p {
   line-height: 150%; /* 1.5rem */
 }
 
-large {
+.text-large {
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
