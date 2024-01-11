@@ -11,10 +11,3 @@ export async function middleware() {
   return NextResponse.json(greeting);
 }
 
-
-
-export default function middleware(req, res) {
-  // Your middleware logic here
-  console.log('Middleware executed!');
-  res.status(200).json({ message: 'Middleware executed!' });
-}
