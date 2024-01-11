@@ -13,18 +13,15 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 
-import '@/app/styles.css'
-
 export default function Datavis() {
-
   return (
     <article className="basis-full max-w-[1200px] mt-16">
       <BackgroundSetter after="bg-white" />
       <div className="flex gap-1">
         <Badge>Case Study</Badge>
-        <Badge variant="outline">2023</Badge>
+        <Badge variant="outline">2022</Badge>
       </div>
-      <h1 className="mt-4 mb-6">sureUI Data Visualization</h1>
+      <h1 className="mt-2 mb-4 text-5xl font-600">sureUI Data Visualization</h1>
 
       <Tabs defaultValue="casestudy" className="">
         <TabsList className="mb-2">
@@ -49,7 +46,15 @@ export default function Datavis() {
             <section className="grid grid-cols-2 gap-x-16 gap-y-8">
               <p>Lorem ipsum dolor sit amet consectetur. At mi turpis nisi proin enim fermentum at pharetra sapien. Aliquam viverra massa aenean ipsum aenean enim. Commodo rhoncus arcu morbi pretium volutpat vitae nisl. Non nulla elit semper sit aliquam gravida ac magnis.</p>
               <p>Lorem ipsum dolor sit amet consectetur. Tristique mauris non ac eget. Mauris porta risus id diam morbi mattis. Sagittis condimentum ut convallis potenti arcu justo viverra aliquet. Magna lorem sapien id lectus ac at sit.</p>
-              <div className="placeholder h-64 w-full bg-neutral-400 col-span-2"></div>
+              <div className="col-span-2 card"><Image
+                src="https://fggzsvq4oc9hlhbo.public.blob.vercel-storage.com/dv_published-component-controls.png"
+                alt="published component controls"
+                height={0}
+                width={0}
+                sizes="100vw"
+                style={{ width: '100%', height: 'auto' }}
+                /></div>
+              
 
               <h3 className="col-span-2">Features <em className="font-400">(principles)</em></h3>
               <p>Lorem ipsum dolor sit amet consectetur. Ullamcorper ut quis pellentesque iaculis massa in at pellentesque. Semper blandit amet vitae aliquam pretium. Viverra elit viverra non justo vitae amet. Leo scelerisque commodo hac adipiscing sed ante.</p>
@@ -68,7 +73,7 @@ export default function Datavis() {
             
               <div className="flex flex-col justify-center gap-4 col-span-2">
                 <div className="placeholder h-64 w-full bg-neutral-200"></div>
-                <caption>All published components</caption>
+                <span className="text-caption">All published components</span>
               </div>
             </section>
 

@@ -13,7 +13,7 @@ interface VideoPlayerProps {
 
 const VideoPlayer: React.FunctionComponent<VideoPlayerProps> = (props) => {
   return (
-    <div className="player-wrapper border border-1 rounded-md elevation-1 overflow-clip">
+    <div className="player-wrapper card">
       <ReactPlayer
         width={props.width}
         height={props.width}

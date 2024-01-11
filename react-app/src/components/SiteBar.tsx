@@ -16,7 +16,7 @@ import {
 export default function SiteBar({ variant = 'default' }: { variant?: string}) {
   const isInverted = variant === "inverted";
 
-  let navStyling = "rounded-lg border-border border bg-card elevation-1";
+  let navStyling = "card";
   let logoSrc = "/logo.svg";
   let mainText = "";
   let subText = "text-secondary font-500";
