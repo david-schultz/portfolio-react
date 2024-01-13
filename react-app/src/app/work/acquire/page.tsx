@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/carousel"
 
 import VideoPlayer from "@/components/VideoPlayer.tsx"
+import AcquireWindow from '@/components/AcquireWindow';
 import BackgroundSetter from "@/lib/setbg.tsx";
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -145,15 +146,18 @@ export default function Acquire() {
         {/* ——————————————————————————————————————————————————————— */}
         <TabsContent value="gallery" className="w-full">
           <BackgroundSetter after="bg-background" before="bg-white" />
-          <Carousel className="card">
-            <CarouselContent>
-              <CarouselItem>...</CarouselItem>
-              <CarouselItem>...</CarouselItem>
-              <CarouselItem>...</CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+
+          <section className="grid grid-cols-2 gap-x-8 gap-y-8">
+            <AcquireWindow src="/images/aq/aq_quote-input.png" />
+            <AcquireWindow src="/images/aq/aq_quote-unavailable.png" />
+            <AcquireWindow src="/images/aq/aq_quote-details.png" />
+            <AcquireWindow src="/images/aq/aq_agent-quote.png" />
+            <AcquireWindow src="/images/aq/aq_application-basic.png" />
+            <AcquireWindow src="/images/aq/aq_application-beneficiaries.png" />
+            <AcquireWindow src="/images/aq/aq_ontrack-assigned.png" />
+            <AcquireWindow src="/images/aq/aq_ontrack-requirement.png" />
+            <AcquireWindow src="/images/aq/aq_ontrack-uptodate.png" />
+          </section>
         </TabsContent>
       </Tabs>
       
