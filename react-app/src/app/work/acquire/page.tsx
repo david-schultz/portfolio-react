@@ -6,12 +6,21 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from '@/components/ui/button';
 import { Separator } from "@/components/ui/separator"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 import VideoPlayer from "@/components/VideoPlayer.tsx"
 import BackgroundSetter from "@/lib/setbg.tsx";
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+
+import "@/lib/bigtext.css"
 
 export default function Acquire() {
   return (
@@ -34,33 +43,74 @@ export default function Acquire() {
                   alt="acquire overview"
                   height={0}
                   width={0}
-                  sizes="100vw"
+                  sizes="225vw"
                   style={{ width: '100%', height: 'auto' }}
                   /></div>
 
           <div className="max-w-[900px] mt-32">
-              
             <section className="max-w-[600px] flex flex-col gap-8">
               <h1>Digitizing the life insurance industry</h1>
-              <p className="text-large">Operating between carriers, agents, and policyholders,<code className="mx-1">SUREIFY</code>builds and whitelabels web-apps for life insurance carriers. One such product, LifetimeAcquire™, focuses on the application process—involving four distinct workflows and many different edge-cases.</p>
+              <p className="text-large">Operating between carriers, agents, and policyholders,<code className="mx-1">SUREIFY</code>builds and whitelabels web-apps for life insurance carriers. One such product, LifetimeAcquire™, focuses on the application process—involving five distinct workflows and many different edge-cases.</p>
+              <p className="text-large">In this project, our goal was to do a massive overhaul for the Acquire product—involving our new design system, brand new features, and major consideration to usability.</p>
+              <Button className="self-start pb-1" variant="outline">See the final screens<FontAwesomeIcon icon={faArrowRight} className="ml-2 mb-[2px]" /></Button>
             </section>
 
             <Separator className="my-8" />
 
-            <section className="grid grid-cols-2 gap-x-16 gap-y-8">
-              <div>
-                <p>For stakeholders, there were three goals behind developing the demo environment:</p>
-                <ol className="styled">
-                  <li>To create a space to rapidly ideate and test new features.</li>
-                  <li>To be used when pitching LifetimeAcquire™ to prospective clients.</li>
-                  <li>To unify various whitelabeled versions of the product with consistent design language.</li>
-                </ol>
+            <section className="grid grid-cols-2 gap-x-16 gap-y-12">
+              <div className="flex flex-col gap-4">
+                <h2>Building a clickable demo</h2>
+                <p className="mb-2">Up until this point, the core LifetimeAcquire™ product had been heavily neglected. Our direct customer implementations had been steadily diverging, and our product pitch was very outdated.</p>
+                <p><strong className="font-500">In short, Acquire was due for a refresh</strong>—and leadership decided the first step to unification would be to create a shiny new product demo, led by the pre-sales team.</p>
               </div>
-              <ul>
-                <li className="mb-6">We also used this as a way to try out new design methodology—in particular, something called “co-pilot designing”. This basically just means tickets are assigned to two designers, rather than just one.</li>
-                <li className="mb-6">The idea was that, with such a large project involving heavy ideation, a collaborative feedback cycle would generate ideas more quickly.</li>
-                <li>My co-pilot (DJ Mackintosh) and I found it pretty successful! No power-dynamics formed; rather, we grew to trust, respect, and synergize with each other’s design process.</li>
-              </ul>
+
+              <div className="card bg-neutral-100 relative">
+                <Image
+                  src="/images/aq_quote-window.png"
+                  alt="quote page"
+                  height={0}
+                  width={0}
+                  sizes="75vw"
+                  className="elevation-big absolute top-4 left-[50%] -translate-x-1/2 w-[calc(100%-3rem)]"
+                />
+              </div>
+              
+              <div className="col-span-2 card bg-slate-200 h-64"></div>
+
+              <div className="flex flex-col gap-6">
+                <p>Typically, design work at Sureify was scoped by either the <strong>product team</strong> or a <strong>client team</strong>.</p>
+                <p>In these situations, stakeholders were responsible for the vision and defining the path to implementation. This meant designers worked with clear specifications, and features that had already been well thought-out.</p>
+              </div>
+              <div className="flex flex-col gap-6">
+                <p>However, this project was issued to the <strong>demo team</strong>—and it created an entirely different paradigm for us, as designers.</p>
+                <p>Our work was exploratory. It was scrappy. Our job was to put rough ideas into a working prototype that we could pitch to prospective clients. Specs were drafted week-by-week, constraints were tight, and iteration needed to be rapid.</p>
+              </div>
+
+              <div className="col-span-2 my-4">
+                <Image
+                  src="/images/aq_progression.png"
+                  alt="progression between our reference and final product"
+                  height={0}
+                  width={0}
+                  sizes="225vw"
+                  style={{ width: '100%', height: 'auto' }}
+                  className="card"
+                  />
+              </div>
+
+
+              <div className="flex flex-col gap-6">
+                <p>I worked very closely on this project with another designer, DJ Mackintosh. Together, we built 5 distinct workflows for desktop + mobile viewports. </p>
+                <p>As we adjusted to the demo paradigm, our initial task was to refresh existing screens with the new sureUI design system.</p>
+                <p>This first workflow was a quote form for prospective policyholders.  Here, we encountered our first major hurdle—sureUI hadn’t yet encountered the complex form fields we needed to use. </p>
+              </div>
+              <div className="flex flex-col gap-6">
+                <p>For example, some inputs were to be paired with long, sentence-style questions. However, existing components could only handle labels with &lt;23 characters.</p>
+                <p>Our early solution was to use alternative components—but, as our devs were new to front-end, they were not feasible to implement within our tight deadlines. In response, I created a bespoke system of wrapper components which complemented both design and development constraints.</p>
+              </div>
+
+              
+              <div className="col-span-2 card bg-slate-200 h-64"></div>
               <div className="col-span-2 card"><Image
                 src="https://fggzsvq4oc9hlhbo.public.blob.vercel-storage.com/aq_mobile-form.png"
                 alt="different views of the mobile form"
@@ -69,48 +119,41 @@ export default function Acquire() {
                 sizes="100vw"
                 style={{ width: '100%', height: 'auto' }}
                 /></div>
-              
 
-              <h3 className="col-span-2">4 workflows</h3>
-              <p>Lorem ipsum dolor sit amet consectetur. Ullamcorper ut quis pellentesque iaculis massa in at pellentesque. Semper blandit amet vitae aliquam pretium. Viverra elit viverra non justo vitae amet. Leo scelerisque commodo hac adipiscing sed ante.</p>
-              <ul>
-                <li className="mb-2"><strong>Responsive:</strong> In a card-based paradigm for content organization, designers work with frames that constantly change size. Components should responsively re-size into any container, with little difficulty.</li>
-                <li className="mb-2"><strong>Modifiable:</strong> Non-truthy designs should not be delivered to stakeholders. As such, components should act as templates—intended to be changed. </li>
-                <li><strong>Translatable to code:</strong> Each variable should map 1-to-1 with controls in code. This mapping begins with component architecture, and should be supported by clear documentation.</li>
-              </ul>
-              <div className="placeholder h-64 w-full bg-neutral-200"></div>
-              <div className="placeholder h-64 w-full bg-neutral-200"></div>
-              <h3 className="col-span-2">Documentation</h3>
-              <p>A key requirement for the library was that it should support rigorous data visualization. This meant not just WCAG 2.0 compliance, but visualizations that accurately and intuitively reflect the data.</p>
-              <p>For example, you wouldn’t want to present discrete data with a line chart, because the connection between data points may imply continuous data. A histogram would better serve the dataset.</p>
-              <div></div>
-              <p>This type of decision-making can be informed by the components, but realistically needs to be supported through external documentation.</p>
-            
-              <div className="flex flex-col justify-center gap-4 col-span-2">
-                <div className="placeholder h-64 w-full bg-neutral-200"></div>
-                <span className="text-caption">All published components</span>
+              <p>In subsequent workflows, we moved further into unknown territory. If we were lucky, we had access to reference screens from competitors. But, to our knowledge, most of our work was novel.</p>
+              <p>It was at these points where my co-designer and I were given a large amount of agency in defining both the implementation, and the purpose of features.</p>
+
+
+              <div className="col-span-2 card bg-slate-200 h-64"></div>
+
+              <div className="flex flex-col gap-6">
+                <p>The idea behind OnTrack™ and e-Delivery (our final two workflows) was to give all people involved in the underwriting process a shared dashboard to track its progress.</p>
+                <p>In this stage of an insurance application, a whole host of documents are written, passed around, and signed. These are called requirements, and importantly, the responsible party changes as it’s passed around.</p>
               </div>
+
+
+              <div className="flex flex-col gap-6">
+                <p>Requirements can be grouped in four different ways: assigned to you, assigned to someone else, completed, and upcoming.</p>
+                <p>Hierarchically, the most important requirements are the current user’s action-items. The other categories exist to help users build a mental model of the rest of the underwriting process.</p>
+              </div>
+
             </section>
 
-            
-            <Separator />
-
-            <section className="grid grid-cols-2 gap-x-16 gap-y-4">
-              <h2>Process</h2>
-              <ul>
-                <li><h3>Stakeholder Groups</h3></li>
-                <li>Details and requirements were fuzzy at the beginning, so I began by defining three stakeholder groups, and talked with them to understand their needs:</li>
-                <li><strong>Product:</strong> This was the team mandating the use of data visualizations. They wanted documentation to inform their decision-making, as they scoped out work.</li>
-                <li><strong>Designers:</strong> Designers needed quick-and-easy chart templates that maintained consistency across use-cases. Their priority was to translate Product’s specifications quickly and consistently, with little overhead.</li>
-                <li><strong>Developers:</strong> Pretty Figma files meant nothing if they couldn’t be translated into code. Developers needed charts to be rooted in a common language, code. We settled on using Nivo, an open source React library which offered high flexibility and clear documentation.</li>
-              </ul>
-            </section>
           </div>
         
         </TabsContent>
+        {/* ——————————————————————————————————————————————————————— */}
         <TabsContent value="gallery" className="w-full">
           <BackgroundSetter after="bg-background" before="bg-white" />
-          
+          <Carousel className="card">
+            <CarouselContent>
+              <CarouselItem>...</CarouselItem>
+              <CarouselItem>...</CarouselItem>
+              <CarouselItem>...</CarouselItem>
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </TabsContent>
       </Tabs>
       

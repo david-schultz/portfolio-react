@@ -51,7 +51,7 @@ export default function Datavis() {
                 alt="published component controls"
                 height={0}
                 width={0}
-                sizes="100vw"
+                sizes="225vw"
                 style={{ width: '100%', height: 'auto' }}
                 /></div>
               
