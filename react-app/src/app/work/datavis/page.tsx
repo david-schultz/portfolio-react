@@ -47,7 +47,7 @@ export default function Datavis() {
               <p>Lorem ipsum dolor sit amet consectetur. At mi turpis nisi proin enim fermentum at pharetra sapien. Aliquam viverra massa aenean ipsum aenean enim. Commodo rhoncus arcu morbi pretium volutpat vitae nisl. Non nulla elit semper sit aliquam gravida ac magnis.</p>
               <p>Lorem ipsum dolor sit amet consectetur. Tristique mauris non ac eget. Mauris porta risus id diam morbi mattis. Sagittis condimentum ut convallis potenti arcu justo viverra aliquet. Magna lorem sapien id lectus ac at sit.</p>
               <div className="col-span-2 card"><Image
-                src="https://fggzsvq4oc9hlhbo.public.blob.vercel-storage.com/dv_published-component-controls.png"
+                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv_published-component-controls.png"
                 alt="published component controls"
                 height={0}
                 width={0}

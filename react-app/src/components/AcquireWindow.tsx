@@ -17,7 +17,7 @@ export default function AcquireWindow({ src = 'default' }: { src?: string}) {
   return (
     <div className="card bg-clip-border h-[400px]">
     <Image
-      src="/images/chrome-tool-bar.png"
+      src="/chrome-tool-bar.png"
       alt="toolbar"
       height={0}
       width={0}

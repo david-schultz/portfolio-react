@@ -66,3 +66,8 @@ small {
 .react-player > div {
   position: absolute;
 }
+
+/* Component-specific */
+.bg-gradient-dark-1 {
+  background: linear-gradient(180deg, #303B57 0%, #342C43 51%, #292530 100%);
+}

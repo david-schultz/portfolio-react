@@ -61,12 +61,15 @@ export default function Home() {
 }
 
 function ProjectCard() {
-  const bgImage = "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-render.png";
+  // if type is image bg
+  const bgImage = "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_render-nobg.png";
   const logoImage = "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png";
 
+
+  
   return (
     <Link href="/work/acquire">
-      <ul className="card relative max-w-xl mx-auto">
+      <ul className="card relative max-w-xl mx-auto bg-gradient-dark-1">
         <div className="absolute inset-0 m-4 flex flex-col justify-between">
           <div className='flex justify-between'>
             <h3 className='text-white'>Acquire Demo</h3>
@@ -97,4 +100,38 @@ function ProjectCard() {
     </Link>
     
   )
+
+  // return (
+  //   <Link href="/work/acquire">
+  //     <ul className="card relative max-w-xl mx-auto">
+  //       <div className="absolute inset-0 m-4 flex flex-col justify-between">
+  //         <div className='flex justify-between'>
+  //           <h3 className='text-white'>Acquire Demo</h3>
+  //           <Badge>2022</Badge>
+  //         </div>
+  //         <div className="flex items-center gap-2">
+  //           <Image 
+  //             src={ logoImage }
+  //             alt="logo"
+  //             height={24}
+  //             width={24}
+  //             sizes="50vw"
+  //             className="rounded-[10rem]"
+  //           />
+  //           <p className="text-white font-500">Sureify</p>
+
+  //         </div>
+  //       </div>
+  //       <Image 
+  //         src={ bgImage }
+  //         alt="logo"
+  //         height={0}
+  //         width={0}
+  //         sizes="100vw"
+  //         className="w-full bg-cover"
+  //       />
+  //     </ul>
+  //   </Link>
+    
+  // )
 }

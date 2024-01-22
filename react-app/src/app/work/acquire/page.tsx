@@ -40,7 +40,7 @@ export default function Acquire() {
         </TabsList>
         <TabsContent value="casestudy" className="w-full flex flex-col items-center">
           <div className="card"><Image
-                  src="https://fggzsvq4oc9hlhbo.public.blob.vercel-storage.com/aq_overview.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_overview.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
@@ -67,7 +67,7 @@ export default function Acquire() {
 
               <div className="card bg-neutral-100 relative">
                 <Image
-                  src="/images/aq_quote-window.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_quote-window.png"
                   alt="quote page"
                   height={0}
                   width={0}
@@ -89,7 +89,7 @@ export default function Acquire() {
 
               <div className="col-span-2 my-4">
                 <Image
-                  src="/images/aq_progression.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_progression.png"
                   alt="progression between our reference and final product"
                   height={0}
                   width={0}
@@ -113,7 +113,7 @@ export default function Acquire() {
               
               <div className="col-span-2 card bg-slate-200 h-64"></div>
               <div className="col-span-2 card"><Image
-                src="https://fggzsvq4oc9hlhbo.public.blob.vercel-storage.com/aq_mobile-form.png"
+                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_mobile-form.png"
                 alt="different views of the mobile form"
                 height={0}
                 width={0}
@@ -148,15 +148,15 @@ export default function Acquire() {
           <BackgroundSetter after="bg-background" before="bg-white" />
 
           <section className="grid grid-cols-2 gap-x-8 gap-y-8">
-            <AcquireWindow src="/images/aq/aq_quote-input.png" />
-            <AcquireWindow src="/images/aq/aq_quote-unavailable.png" />
-            <AcquireWindow src="/images/aq/aq_quote-details.png" />
-            <AcquireWindow src="/images/aq/aq_agent-quote.png" />
-            <AcquireWindow src="/images/aq/aq_application-basic.png" />
-            <AcquireWindow src="/images/aq/aq_application-beneficiaries.png" />
-            <AcquireWindow src="/images/aq/aq_ontrack-assigned.png" />
-            <AcquireWindow src="/images/aq/aq_ontrack-requirement.png" />
-            <AcquireWindow src="/images/aq/aq_ontrack-uptodate.png" />
+            <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_quote-input.png" />
+            <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_quote-unavailable.png" />
+            <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_quote-details.png" />
+            <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_agent-quote.png" />
+            <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_application-basic.png" />
+            <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_application-beneficiaries.png" />
+            <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_ontrack-assigned.png" />
+            <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_ontrack-requirement.png" />
+            <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_ontrack-uptodate.png" />
           </section>
         </TabsContent>
       </Tabs>
