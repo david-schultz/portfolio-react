@@ -7,7 +7,62 @@ import { ArrowDown } from "lucide-react"
 import '@/app/styles.css'
 import { Badge } from '@/components/ui/badge'
 
+
+type ProjectCardProps = {
+  name: string
+  year: string
+  imageSource: string
+  imageType: string
+  logoSource: string
+  logoName: string
+  link: string
+}
+
 export default function Home() {
+  const displayedProjects: Array<ProjectCardProps> = [
+    {
+      "name": "sureUI Data Visualization",
+      "year": "2021",
+      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/arb_cover.png",
+      "imageType": "bg",
+      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
+      "logoName": "Sureify",
+      "link": "/work/datavis"
+    },
+    {
+      "name": "Diversity in the Arboretum",
+      "year": "2022",
+      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb_cover.jpg",
+      "imageType": "bg",
+      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
+      "logoName": "University of Washington",
+      "link": "/work/arboretum"
+    },
+    {
+      "name": "Acquire Demo",
+      "year": "2021",
+      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_render-nobg.png",
+      "imageType": "block",
+      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
+      "logoName": "Sureify",
+      "link": "/work/acquire"
+    }
+  ];
+
+  const projects = displayedProjects.map(
+    // const contests = allContests.map(
+      project => <ProjectCard 
+        key={project.name}
+        name={project.name}
+        year={project.year}
+        imageSource={project.imageSource}
+        imageType={project.imageType}
+        logoSource={project.logoSource}
+        logoName={project.logoName}
+        link={project.link}
+      /> 
+    );
+
   return (
     <main className="min-h-screen flex flex-col gap-4 mb-32">
       <section className="mx-2 p-4 flex flex-col bg-neutral-800 rounded-b-lg">
@@ -38,66 +93,58 @@ export default function Home() {
         </div>
 
         <ul className="grid grid-cols-2 gap-4">
-          <Link href="/work/arboretum">
-            <li className="card p-4">
-              <h3 className="font-500">Diversity in the Arboretum</h3>
-            </li>
-          </Link>
-          <Link href="/work/datavis">
-            <li className="card p-4">
-              <h3 className="font-500">sureUI Data Visualization</h3>
-            </li>
-          </Link>
-          <Link href="/work/acquire">
-            <li className="card p-4">
-              <h3 className="font-500">Acquire Demo</h3>
-            </li>
-          </Link>
-          <ProjectCard />
+          { projects }
         </ul>
       </section>
     </main>
   )
 }
 
-function ProjectCard() {
+// type ProjectCardProps = {
+//   name: string
+//   year: string
+//   imageSource: string
+//   imageType: string
+//   logoSource: string
+//   logoName: string
+// }
+
+
+function ProjectCard(props: ProjectCardProps) {
   // if type is image bg
-  const bgImage = "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_render-nobg.png";
-  const logoImage = "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png";
-
-
+  
   
   return (
-    <Link href="/work/acquire">
-      <ul className="card relative max-w-xl mx-auto bg-gradient-dark-1">
-        <div className="absolute inset-0 m-4 flex flex-col justify-between">
-          <div className='flex justify-between'>
-            <h3 className='text-white'>Acquire Demo</h3>
-            <Badge>2022</Badge>
-          </div>
-          <div className="flex items-center gap-2">
-            <Image 
-              src={ logoImage }
-              alt="logo"
-              height={24}
-              width={24}
-              sizes="50vw"
-              className="rounded-[10rem]"
-            />
-            <p className="text-white font-500">Sureify</p>
+    <li className="card relative mx-auto bg-gradient-dark-1 min-h-[250px] overflow-hidden justify-self-stretch self-stretch w-full">
+      <Link href={props.link} >
+          <div className="absolute inset-0 m-4 flex flex-col justify-between">
+            <div className='flex justify-between items-start gap-2'>
+              <h3 className='text-white mix-blend-difference'>{props.name}</h3>
+              <Badge className="grow-0">{props.year}</Badge>
+            </div>
+            <div className="flex items-center gap-2">
+              <Image 
+                src={props.logoSource}
+                alt="logo"
+                height={24}
+                width={24}
+                sizes="10vw"
+                className="rounded-[10rem]"
+              />
+              <p className="text-white font-500 mix-blend-difference">{props.logoName}</p>
 
+            </div>
           </div>
-        </div>
-        <Image 
-          src={ bgImage }
-          alt="logo"
-          height={0}
-          width={0}
-          sizes="100vw"
-          className="w-full bg-cover"
-        />
-      </ul>
-    </Link>
+          <Image 
+            src={props.imageSource}
+            alt="logo"
+            height={0}
+            width={0}
+            sizes="100vw"
+            className="min-w-full min-h-full w-full object-cover"
+          />
+      </Link>
+    </li>
     
   )
 
