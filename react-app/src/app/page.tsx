@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button.tsx'
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import { ArrowDown } from "lucide-react"
 import '@/app/styles.css'
+import { Badge } from '@/components/ui/badge'
 
 export default function Home() {
   return (
@@ -52,8 +53,48 @@ export default function Home() {
               <h3 className="font-500">Acquire Demo</h3>
             </li>
           </Link>
+          <ProjectCard />
         </ul>
       </section>
     </main>
+  )
+}
+
+function ProjectCard() {
+  const bgImage = "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-render.png";
+  const logoImage = "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png";
+
+  return (
+    <Link href="/work/acquire">
+      <ul className="card relative max-w-xl mx-auto">
+        <div className="absolute inset-0 m-4 flex flex-col justify-between">
+          <div className='flex justify-between'>
+            <h3 className='text-white'>Acquire Demo</h3>
+            <Badge>2022</Badge>
+          </div>
+          <div className="flex items-center gap-2">
+            <Image 
+              src={ logoImage }
+              alt="logo"
+              height={24}
+              width={24}
+              sizes="50vw"
+              className="rounded-[10rem]"
+            />
+            <p className="text-white font-500">Sureify</p>
+
+          </div>
+        </div>
+        <Image 
+          src={ bgImage }
+          alt="logo"
+          height={0}
+          width={0}
+          sizes="100vw"
+          className="w-full bg-cover"
+        />
+      </ul>
+    </Link>
+    
   )
 }
