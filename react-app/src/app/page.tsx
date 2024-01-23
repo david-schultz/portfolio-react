@@ -1,3 +1,4 @@
+
 import Image from 'next/image'
 import Link from 'next/link'
 import SiteBar from '@/components/SiteBar'
@@ -5,7 +6,11 @@ import { Button } from '@/components/ui/button.tsx'
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import { ArrowDown } from "lucide-react"
 import '@/app/styles.css'
+import '@/lib/transform.css'
 import { Badge } from '@/components/ui/badge'
+
+import GlobeIcon from '@/../public/globe.svg'
+// import CursorDots from '@/components/ui/custom/CursorDots'
 
 
 type ProjectCardProps = {
@@ -68,22 +73,61 @@ export default function Home() {
       <section className="mx-2 p-4 flex flex-col bg-neutral-800 rounded-b-lg">
         <SiteBar variant="inverted" />
         <div className="grow-0 my-32 flex flex-col items-center">
-          <p className="mr-64 tracking-tighter text-9xl font-500 text-white">Interaction*</p>
-          <p className="ml-32 tracking-tighter text-9xl font-500 text-white">Designer</p>
+          <p className="mr-20 tracking-tighter text-9xl font-500 text-white">Interaction*</p>
+          <p className="ml-48 tracking-tighter text-9xl font-500 text-white">Designer</p>
         </div>
         {/* <div className="flex justify-end">
           <ModeToggle />
         </div> */}
       </section>
       <section className="mx-6">
-        <div className="card flex items-center py-5 px-6 gap-4">
-          <Image
-            src="/globe.svg"
-            width={32}
-            height={32}
-            alt="globe icon"
-          />
-          <h2>Hi, I’m David—a designer, front-end dev, photographer, and DJ.</h2>
+        <div className="card pt-5 pb-1 overflow-hidden">
+          <div className="marquee">
+              <div className="inline-block">
+                <Image
+                    src={ GlobeIcon }
+                    width={32}
+                    height={32}
+                    alt="globe icon"
+                    priority
+                    className="inline-block mx-4 mb-4"
+                  />
+                <h2>Hi, I’m David—a designer, front-end dev, and photographer.</h2>
+              </div>
+              <div className="inline-block">
+                <Image
+                    src={ GlobeIcon }
+                    width={32}
+                    height={32}
+                    alt="globe icon"
+                    priority
+                    className="inline-block mx-4 mb-4"
+                  />
+                <h2>Hi, I’m David—a designer, front-end dev, and photographer.</h2>
+              </div>
+              <div className="inline-block">
+                <Image
+                    src={ GlobeIcon }
+                    width={32}
+                    height={32}
+                    alt="globe icon"
+                    priority
+                    className="inline-block mx-4 mb-4"
+                  />
+                <h2>Hi, I’m David—a designer, front-end dev, and photographer.</h2>
+              </div>
+              <div className="inline-block">
+                <Image
+                    src={ GlobeIcon }
+                    width={32}
+                    height={32}
+                    alt="globe icon"
+                    priority
+                    className="inline-block mx-4 mb-4"
+                  />
+                <h2>Hi, I’m David—a designer, front-end dev, and photographer.</h2>
+              </div>
+          </div>
         </div>
       </section>
       <section className="mx-6">
@@ -132,7 +176,6 @@ function ProjectCard(props: ProjectCardProps) {
                 className="rounded-[10rem]"
               />
               <p className="text-white font-500 mix-blend-difference">{props.logoName}</p>
-
             </div>
           </div>
           <Image 
