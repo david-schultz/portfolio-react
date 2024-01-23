@@ -2,15 +2,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import SiteBar from '@/components/SiteBar'
-import { Button } from '@/components/ui/button.tsx'
-import { ModeToggle } from '@/components/ui/mode-toggle'
 import { ArrowDown } from "lucide-react"
+import { Badge } from '@/components/ui/badge'
 import '@/app/styles.css'
 import '@/lib/transform.css'
-import { Badge } from '@/components/ui/badge'
 
 import GlobeIcon from '@/../public/globe.svg'
-// import CursorDots from '@/components/ui/custom/CursorDots'
 
 
 type ProjectCardProps = {
@@ -76,9 +73,6 @@ export default function Home() {
           <p className="mr-20 tracking-tighter text-9xl font-500 text-white">Interaction*</p>
           <p className="ml-48 tracking-tighter text-9xl font-500 text-white">Designer</p>
         </div>
-        {/* <div className="flex justify-end">
-          <ModeToggle />
-        </div> */}
       </section>
       <section className="mx-6">
         <div className="card pt-5 pb-1 overflow-hidden">
