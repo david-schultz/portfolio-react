@@ -69,13 +69,11 @@ export default function Home() {
     <div className="inline-block">
       <Image
           src={ GlobeIcon }
-          width={32}
-          height={32}
           alt="globe icon"
           priority
-          className="inline-block mx-4 mb-4"
+          className="inline-block mx-4 mb-3 sm:mb-4 w-6 h-6 sm:w-8 sm:h-8"
         />
-      <h2>Hi, I’m David—a designer, front-end dev, and photographer.</h2>
+      <h2 className="text-xl sm:text-2xl">Hi, I’m David—a designer, front-end dev, and photographer.</h2>
     </div>
   )
 
@@ -83,9 +81,9 @@ export default function Home() {
     <main className="min-h-screen flex flex-col gap-4 mb-32">
       <section className="mx-2 p-4 flex flex-col bg-neutral-800 rounded-b-lg">
         <SiteBar variant="inverted" />
-        <div className="grow-0 my-32 flex flex-col items-center">
-          <p className="mr-20 tracking-tighter text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-500 text-white">Interaction*</p>
-          <p className="ml-48 tracking-tighter text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-500 text-white">Designer</p>
+        <div className="grow-0 my-16 sm:my-24 md:my-32 flex flex-col items-center">
+          <p className="mr-10 sm:mr-16 md:mr-20 tracking-tighter text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-500 text-white">Interaction*</p>
+          <p className="ml-20 sm:ml-32 md:ml-48 tracking-tighter text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-500 text-white">Designer</p>
         </div>
       </section>
       <section className="mx-6">

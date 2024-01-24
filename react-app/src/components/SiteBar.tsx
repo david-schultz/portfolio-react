@@ -13,6 +13,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+
 export default function SiteBar({ variant = 'default' }: { variant?: string}) {
   const isInverted = variant === "inverted";
 
@@ -45,7 +49,15 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
             <h4 className={ mainText }>David Schultz</h4>
             <small className={ subText }>Interaction Designer</small>
           </li>
-          <li>
+          <li className="block sm:hidden mr-4">
+            { isInverted ? 
+                  (<FontAwesomeIcon icon={faBars} className="text-white fa-xl" />)
+                  :
+                  (<FontAwesomeIcon icon={faBars} className="fa-xl"/>)
+                }
+          </li>
+
+          <li className="hidden sm:block">
             <Dialog>
               <DialogTrigger asChild>
                 { isInverted ? 
@@ -63,9 +75,8 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
                 </DialogHeader>
               </DialogContent>
             </Dialog>
-            
           </li>
-          <li>
+          <li className="hidden sm:block">
             {isInverted ? 
               (<Button variant="primary-locked">Contact</Button>)
               :
