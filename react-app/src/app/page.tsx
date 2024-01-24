@@ -65,62 +65,37 @@ export default function Home() {
       /> 
     );
 
+  const marqueeContent = (
+    <div className="inline-block">
+      <Image
+          src={ GlobeIcon }
+          width={32}
+          height={32}
+          alt="globe icon"
+          priority
+          className="inline-block mx-4 mb-4"
+        />
+      <h2>Hi, I’m David—a designer, front-end dev, and photographer.</h2>
+    </div>
+  )
+
   return (
     <main className="min-h-screen flex flex-col gap-4 mb-32">
       <section className="mx-2 p-4 flex flex-col bg-neutral-800 rounded-b-lg">
         <SiteBar variant="inverted" />
         <div className="grow-0 my-32 flex flex-col items-center">
-          <p className="mr-20 tracking-tighter text-9xl font-500 text-white">Interaction*</p>
-          <p className="ml-48 tracking-tighter text-9xl font-500 text-white">Designer</p>
+          <p className="mr-20 tracking-tighter text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-500 text-white">Interaction*</p>
+          <p className="ml-48 tracking-tighter text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-500 text-white">Designer</p>
         </div>
       </section>
       <section className="mx-6">
         <div className="card pt-5 pb-1 overflow-hidden">
           <div className="marquee">
-              <div className="inline-block">
-                <Image
-                    src={ GlobeIcon }
-                    width={32}
-                    height={32}
-                    alt="globe icon"
-                    priority
-                    className="inline-block mx-4 mb-4"
-                  />
-                <h2>Hi, I’m David—a designer, front-end dev, and photographer.</h2>
-              </div>
-              <div className="inline-block">
-                <Image
-                    src={ GlobeIcon }
-                    width={32}
-                    height={32}
-                    alt="globe icon"
-                    priority
-                    className="inline-block mx-4 mb-4"
-                  />
-                <h2>Hi, I’m David—a designer, front-end dev, and photographer.</h2>
-              </div>
-              <div className="inline-block">
-                <Image
-                    src={ GlobeIcon }
-                    width={32}
-                    height={32}
-                    alt="globe icon"
-                    priority
-                    className="inline-block mx-4 mb-4"
-                  />
-                <h2>Hi, I’m David—a designer, front-end dev, and photographer.</h2>
-              </div>
-              <div className="inline-block">
-                <Image
-                    src={ GlobeIcon }
-                    width={32}
-                    height={32}
-                    alt="globe icon"
-                    priority
-                    className="inline-block mx-4 mb-4"
-                  />
-                <h2>Hi, I’m David—a designer, front-end dev, and photographer.</h2>
-              </div>
+          {/* <div> */}
+            { marqueeContent }
+            { marqueeContent }
+            { marqueeContent }
+            { marqueeContent }
           </div>
         </div>
       </section>
@@ -130,7 +105,7 @@ export default function Home() {
           <Link href="/work"><h2>Work</h2></Link>
         </div>
 
-        <ul className="grid grid-cols-2 gap-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           { projects }
         </ul>
       </section>
@@ -157,7 +132,7 @@ function ProjectCard(props: ProjectCardProps) {
       <Link href={props.link} >
           <div className="absolute inset-0 m-4 flex flex-col justify-between">
             <div className='flex justify-between items-start gap-2'>
-              <h3 className='text-white mix-blend-difference'>{props.name}</h3>
+              <h3 className='text-white mix-blend-difference lg:text-3xl'>{props.name}</h3>
               <Badge className="grow-0">{props.year}</Badge>
             </div>
             <div className="flex items-center gap-2">

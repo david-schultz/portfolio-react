@@ -14,7 +14,11 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        xs: "480px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
       },
     },
     fontFamily: {
@@ -29,9 +33,10 @@ module.exports = {
       '2xl': ['2rem', '1.1em'],
       '3xl': ['2.25rem', '1.1em'],
       '4xl': ['3rem', '1.1em'],
-      '5xl': ['4rem', '1.1em'],
-      '6xl': ['6rem', '1.1em'],
-      '9xl': ['8rem', '0.9em'],
+      '5xl': ['4rem', '0.9em'],
+      '6xl': ['6rem', '0.9em'],
+      '7xl': ['7rem', '0.9em'],
+      '8xl': ['8rem', '0.9em'],
     },
     fontWeight: {
       '400': '400',
