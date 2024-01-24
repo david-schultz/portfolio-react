@@ -21,7 +21,7 @@ export default function Datavis() {
         <Badge>Case Study</Badge>
         <Badge variant="outline">2022</Badge>
       </div>
-      <h1 className="mt-2 mb-4 text-5xl font-600">sureUI Data Visualization</h1>
+      <h1 className="mt-2 mb-4 text-4xl sm:text-4xl md:text-5xl font-600">sureUI Data Visualization</h1>
 
       <Tabs defaultValue="casestudy" className="">
         <TabsList className="mb-2">
@@ -33,20 +33,19 @@ export default function Datavis() {
             videoUrl='https://firebasestorage.googleapis.com/v0/b/portfolio-95b18.appspot.com/o/casestudies%2Fdatavis%2Fvideos%2Fbarchart-demonstration.webm?alt=media&token=d46b6a27-fe9c-444c-9f89-28d3848c7d8a'
              />
 
-          <div className="max-w-[900px] mt-32">
-              
+          <div className="max-w-[900px] mt-16 sm:mt-24 md:mt-32">
             <section className="max-w-[600px] flex flex-col gap-8">
-              <h1>Building a component library for charts</h1>
+              <h1 className="text-3xl sm:text-4xl">Building a component library for charts</h1>
               <p className="text-large">At <code className="mx-1 relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-md font-600">SUREIFY DESIGN</code>, the team needed a way to present data consistently throughout its product lineup. I was responsible for building a component library in Figma—this would enable designers to drag-and-drop charts into their design files, and modify them for their use-cases.</p>
               <Button className="self-start">Try it out<FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" /></Button>
             </section>
 
             <Separator className="my-8" />
 
-            <section className="grid grid-cols-2 gap-x-16 gap-y-8">
+            <section className="flex flex-col sm:grid sm:grid-cols-2 gap-x-16 gapy-4 sm:gap-y-8">
               <p>Lorem ipsum dolor sit amet consectetur. At mi turpis nisi proin enim fermentum at pharetra sapien. Aliquam viverra massa aenean ipsum aenean enim. Commodo rhoncus arcu morbi pretium volutpat vitae nisl. Non nulla elit semper sit aliquam gravida ac magnis.</p>
               <p>Lorem ipsum dolor sit amet consectetur. Tristique mauris non ac eget. Mauris porta risus id diam morbi mattis. Sagittis condimentum ut convallis potenti arcu justo viverra aliquet. Magna lorem sapien id lectus ac at sit.</p>
-              <div className="col-span-2 card"><Image
+              <div className="col-span-2 card my-4"><Image
                 src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv_published-component-controls.png"
                 alt="published component controls"
                 height={0}
@@ -70,19 +69,17 @@ export default function Datavis() {
               <p>For example, you wouldn’t want to present discrete data with a line chart, because the connection between data points may imply continuous data. A histogram would better serve the dataset.</p>
               <div></div>
               <p>This type of decision-making can be informed by the components, but realistically needs to be supported through external documentation.</p>
-            
               <div className="flex flex-col justify-center gap-4 col-span-2">
                 <div className="placeholder h-64 w-full bg-neutral-200"></div>
-                <span className="text-caption">All published components</span>
+                <span className="text-caption text-center">All published components</span>
               </div>
             </section>
 
-            
-            <Separator />
+            <Separator className="my-8" />
 
-            <section className="grid grid-cols-2 gap-x-16 gap-y-4">
+            <section className="flex flex-col sm:grid sm:grid-cols-2 gap-x-16 gap-y-4">
               <h2>Process</h2>
-              <ul>
+              <ul className="flex flex-col gap-y-4">
                 <li><h3>Stakeholder Groups</h3></li>
                 <li>Details and requirements were fuzzy at the beginning, so I began by defining three stakeholder groups, and talked with them to understand their needs:</li>
                 <li><strong>Product:</strong> This was the team mandating the use of data visualizations. They wanted documentation to inform their decision-making, as they scoped out work.</li>

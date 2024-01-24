@@ -98,9 +98,9 @@ export default function Home() {
         </div>
       </section>
       <section className="mx-6">
-        <div className="card flex items-center py-5 px-6 gap-4 mb-4">
+        <div className="card flex items-center py-4 px-5 sm:py-5 sm:px-6 gap-3 sm:gap-4 mb-4">
           <ArrowDown size={32} />
-          <Link href="/work"><h2>Work</h2></Link>
+          <h2 className="text-xl sm:text-2xl">Work</h2>
         </div>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -126,7 +126,7 @@ function ProjectCard(props: ProjectCardProps) {
   
   
   return (
-    <li className="card relative mx-auto bg-gradient-dark-1 min-h-[250px] overflow-hidden justify-self-stretch self-stretch w-full">
+    <li className="card relative mx-auto bg-gradient-dark-2 min-h-[250px] overflow-hidden justify-self-stretch self-stretch w-full">
       <Link href={props.link} >
           <div className="absolute inset-0 m-4 flex flex-col justify-between">
             <div className='flex justify-between items-start gap-2'>

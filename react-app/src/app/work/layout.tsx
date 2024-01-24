@@ -13,7 +13,7 @@ export default function WorkLayout({
         <SiteBar />
       </header>
 
-      <main className="mx-16 flex justify-around">
+      <main className="mx-4 xs:mx-8 sm:mx-16 flex justify-around">
         {children}
       </main>
     </div>

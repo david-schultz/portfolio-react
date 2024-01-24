@@ -31,7 +31,7 @@ export default function Acquire() {
         <Badge>Case Study</Badge>
         <Badge variant="outline">2022</Badge>
       </div>
-      <h1 className="mt-2 mb-4 text-5xl font-600">Acquire Demo</h1>
+      <h1 className="mt-2 mb-4 text-4xl sm:text-4xl md:text-5xl font-600">Acquire Demo</h1>
 
       <Tabs defaultValue="casestudy" className="">
         <TabsList className="mb-2">
@@ -48,9 +48,9 @@ export default function Acquire() {
                   style={{ width: '100%', height: 'auto' }}
                   /></div>
 
-          <div className="max-w-[900px] mt-32">
+          <div className="max-w-[900px] mt-16 sm:mt-24 md:mt-32">
             <section className="max-w-[600px] flex flex-col gap-8">
-              <h1>Digitizing the life insurance industry</h1>
+              <h1 className="text-3xl sm:text-4xl">Digitizing the life insurance industry</h1>
               <p className="text-large">Operating between carriers, agents, and policyholders,<code className="mx-1">SUREIFY</code>builds and whitelabels web-apps for life insurance carriers. One such product, LifetimeAcquire™, focuses on the application process—involving five distinct workflows and many different edge-cases.</p>
               <p className="text-large">In this project, our goal was to do a massive overhaul for the Acquire product—involving our new design system, brand new features, and major consideration to usability.</p>
               <Button className="self-start pb-1" variant="outline">See the final screens<FontAwesomeIcon icon={faArrowRight} className="ml-2 mb-[2px]" /></Button>
@@ -58,14 +58,14 @@ export default function Acquire() {
 
             <Separator className="my-8" />
 
-            <section className="grid grid-cols-2 gap-x-16 gap-y-12">
-              <div className="flex flex-col gap-4">
+            <section className="flex flex-col sm:grid sm:grid-cols-2 gap-x-16 gap-y-8 sm:gap-y-12">
+              <div className="flex flex-col gap-4 col-span-1">
                 <h2>Building a clickable demo</h2>
                 <p className="mb-2">Up until this point, the core LifetimeAcquire™ product had been heavily neglected. Our direct customer implementations had been steadily diverging, and our product pitch was very outdated.</p>
                 <p><strong className="font-500">In short, Acquire was due for a refresh</strong>—and leadership decided the first step to unification would be to create a shiny new product demo, led by the pre-sales team.</p>
               </div>
 
-              <div className="card bg-neutral-100 relative">
+              <div className="card bg-neutral-100 relative smmax:h-96 xsmax:h-64">
                 <Image
                   src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_quote-window.png"
                   alt="quote page"
