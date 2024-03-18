@@ -12,7 +12,8 @@ import VideoPlayer from "@/components/VideoPlayer.tsx"
 import BackgroundSetter from "@/lib/setbg.tsx";
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare, faBullseye, faMagnifyingGlass, faUsers, faHammer, faFileLines } from '@fortawesome/free-solid-svg-icons'
+import { faArrowUpRightFromSquare, faBullseye, faMagnifyingGlass, faUsers, faHammer, faFileLines, faPieChart, faLineChart, faBarChart, faChartSimple } from '@fortawesome/free-solid-svg-icons'
+import { NivoDemo } from '@/components/nivo/nivoDemo';
 
 // import useWindowResize from '@/lib/useWindowResize';
 
@@ -35,24 +36,26 @@ export default function Datavis() {
       />
 
 
-      <Tabs defaultValue="deliverables" className="mt-16">
-        <TabsList className="mb-2 w-full sticky top-4">
+      <Tabs defaultValue="deliverables" className="mt-16 flex flex-col items-center">
+        <TabsList className="mb-32 w-full sticky top-4">
           <TabsTrigger value="deliverables" className="w-full">Deliverables</TabsTrigger>
           <TabsTrigger value="process" className="w-full">Process</TabsTrigger>
         </TabsList>
 
         {/* ====================================================== */}
 
-        <TabsContent value="deliverables" className="mx-2 flex flex-col items-center">
+        <TabsContent value="deliverables" className="px-2 flex flex-col items-center max-w-[900px]">
           {/* <BackgroundSetter after="bg-background" before="bg-white" /> */}
-          <div className="max-w-[900px] mt-16">
-            <section className="flex flex-col items-center">
+          {/* <div className="flex flex-col items-center max-w-[900px]"> */}
+            <section className="flex flex-col items-center ">
               <div className="text-center max-w-[500px]">
                 <p className="md:text-lg mb-3">Built with Figma</p>
                 <h1 className="text-3xl md:text-4xl">Responsive, flexible chart components</h1>
               </div>
 
-
+              <div className="mt-16">
+                <NivoDemo />
+              </div>
             </section>
             <Separator className="my-8" />{/*————————————————————————————*/}
             <section className="flex flex-col items-center">
@@ -91,13 +94,13 @@ export default function Datavis() {
             <Separator className="my-8" />{/*————————————————————————————*/}
 
 
-          </div>
+          {/* </div> */}
         </TabsContent>
 
         {/* ====================================================== */}
 
-        <TabsContent value="process" className="mx-2 flex flex-col items-center">
-          <div className="max-w-[900px] mt-16">
+        <TabsContent value="process" className="px-2 flex flex-col items-center max-w-[900px]">
+          {/* <div className="max-w-[900px] mt-16"> */}
             <section className="flex flex-col md:flex-row">
               <div className="max-w-[600px] flex flex-col gap-8 mb-8 md:mr-8">
                 <h1 className="text-3xl md:text-4xl">Building a component library for charts</h1>
@@ -204,8 +207,7 @@ export default function Datavis() {
             </section>
 
 
-          </div>
-
+          {/* </div> */}
         </TabsContent>
       </Tabs>
     </article>
