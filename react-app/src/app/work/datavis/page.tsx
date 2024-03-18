@@ -50,7 +50,7 @@ export default function Datavis() {
             </section>
             <Separator className="my-8" />{/*————————————————————————————*/}
             <section className="flex flex-col items-center">
-              <div className="card p-8 w-full">
+              {/* <div className="card p-8 w-full">
                 <div className="flex flex-col gap-2 max-w-[360px]">
                   <p className="text-xl">Designed for drag-and-drop</p>
                   <p className="text-secondary">Charts can be inserted into a a design file, and will responsively re-size to fit any viewport.</p>
@@ -73,7 +73,7 @@ export default function Datavis() {
                   </div>
                 </div>
 
-              </div>
+              </div> */}
             </section>
 
             <Separator className="my-8" />{/*————————————————————————————*/}
