@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from '@/components/ui/button';
 import { Separator } from "@/components/ui/separator"
-import { InfoBox, InfoBoxHeader, InfoBoxSection } from '@/components/ui/custom/infoBox'
 
 import VideoPlayer from "@/components/VideoPlayer.tsx"
 import BackgroundSetter from "@/lib/setbg.tsx";
@@ -22,103 +21,23 @@ export default function Datavis() {
         <Badge>Case Study</Badge>
         <Badge variant="outline">2022</Badge>
       </div>
-      <h1 className="mt-2 mb-16 text-4xl sm:text-4xl md:text-5xl font-500">sureUI Data Visualization</h1>
-      
-      <VideoPlayer width="600" height="400"
+      <h1 className="mt-2 mb-4 text-4xl sm:text-4xl md:text-5xl font-600">sureUI Data Visualization</h1>
+
+      <Tabs defaultValue="casestudy" className="">
+        <TabsList className="mb-2">
+          <TabsTrigger value="casestudy">Case Study</TabsTrigger>
+          <TabsTrigger value="gallery">Gallery</TabsTrigger>
+        </TabsList>
+        <TabsContent value="casestudy" className="w-full flex flex-col items-center">
+          <VideoPlayer width="600" height="400"
             videoUrl='https://firebasestorage.googleapis.com/v0/b/portfolio-95b18.appspot.com/o/casestudies%2Fdatavis%2Fvideos%2Fbarchart-demonstration.webm?alt=media&token=d46b6a27-fe9c-444c-9f89-28d3848c7d8a'
              />
 
-
-      <Tabs defaultValue="deliverables" className="mt-16">
-        <TabsList className="mb-2 w-full">
-          <TabsTrigger value="deliverables" className="w-full">Deliverables</TabsTrigger>
-          <TabsTrigger value="process" className="w-full">Process</TabsTrigger>
-        </TabsList>
-
-        {/* ====================================================== */}
-
-        <TabsContent value="deliverables" className="mx-2 flex flex-col items-center">
-          {/* <BackgroundSetter after="bg-background" before="bg-white" /> */}
-          <Separator className="mb-16"/>
-          <p className="text-lg">Built with Figma</p>
-          <p className="text-4xl mt-8">Responsive, flexible charts</p>
-          <section>
-
-          </section>
-          
-          <Separator className="my-16"/>
-          <section className="w-full">
-            <div className="card p-8 w-full">
-              <div className="flex flex-col gap-2 max-w-[360px]">
-                <p className="text-xl">Designed for drag-and-drop</p>
-                <p className="text-secondary">Charts can be inserted into a a design file, and will responsively re-size to fit any viewport.</p>
-              </div>
-            </div>
-
-            <div className="w-full flex gap-8 mt-8">
-
-              <div className="card p-8 w-full">
-                <div className="flex flex-col gap-2 max-w-[360px]">
-                  <p className="text-xl">Modular architecture</p>
-                  <p className="text-secondary">Charts support modification through various component controls, and direct selection.</p>
-                </div>
-              </div>
-
-              <div className="card p-8 w-full">
-                <div className="flex flex-col gap-2 max-w-[360px]">
-                  <p className="text-xl">Translatable into code</p>
-                  <p className="text-secondary">Component controls are mapped 1-to-1 with those in Nivo, and the default configuration is documented on the component itself.</p>
-                </div>
-              </div>
-
-            </div>
-          </section>
-
-          <Separator className="my-16"/>
-          <p className="text-3xl mb-8">Lorem ipsum del tolor</p>
-          <Button>Try it out <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2"/></Button>
-          
-          <Separator className="my-16"/>
-
-
-        </TabsContent>
-
-        {/* ====================================================== */}
-
-        <TabsContent value="process" className="mx-2 flex flex-col items-center">
-          
-
-          <div className="max-w-[900px] mt-4">
-            <section className="flex flex-col md:flex-row">
-              <div className="max-w-[600px] flex flex-col gap-8 mb-8 md:mr-8">
-                <h1 className="text-3xl sm:text-4xl">Building a component library for charts</h1>
-                <p className="text-large">At <code className="mx-1 relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-md font-600">SUREIFY DESIGN</code>, the team needed a way to present data consistently throughout its product lineup. I was responsible for building a component library in Figma—this would enable designers to drag-and-drop charts into their design files, and modify them for their use-cases.</p>
-                <Button className="self-start">Try it out<FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" /></Button>
-              </div>
-
-              <InfoBox>
-                <InfoBoxHeader title="sureUI Data Visualization" subtitle="Feb 2022 – Sep 2022" imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv_cover.png" />
-                <InfoBoxSection
-                  title="Details"
-                  format="A"
-                  dataRows={[
-                    { label: 'Client', value: 'Sureify' },
-                    { label: 'Role', value: 'Jr. Product Designer' },
-                    { label: 'Tooling', value: 'Figma' },
-                    { label: 'Domains', value: 'Design Systems, Components, Data Vis' },
-                  ]}
-                />
-                <InfoBoxSection
-                  title="Team"
-                  format="B"
-                  dataRows={[
-                    { label: 'David Schultz', value: 'Designer' },
-                    { label: 'Patrick Schaenzel', value: 'Design Advisor' },
-                    { label: 'Arjan van der Vlies', value: 'Design Advisor' },
-                    { label: 'Wasib Mohammed', value: 'Technical Architect' },
-                  ]}
-                />
-              </InfoBox>
+          <div className="max-w-[900px] mt-16 sm:mt-24 md:mt-32">
+            <section className="max-w-[600px] flex flex-col gap-8">
+              <h1 className="text-3xl sm:text-4xl">Building a component library for charts</h1>
+              <p className="text-large">At <code className="mx-1 relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-md font-600">SUREIFY DESIGN</code>, the team needed a way to present data consistently throughout its product lineup. I was responsible for building a component library in Figma—this would enable designers to drag-and-drop charts into their design files, and modify them for their use-cases.</p>
+              <Button className="self-start">Try it out<FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" /></Button>
             </section>
 
             <Separator className="my-8" />
@@ -170,6 +89,10 @@ export default function Datavis() {
             </section>
           </div>
         
+        </TabsContent>
+        <TabsContent value="gallery" className="w-full">
+          <BackgroundSetter after="bg-background" before="bg-white" />
+          
         </TabsContent>
       </Tabs>
       
