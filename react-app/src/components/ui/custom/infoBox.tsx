@@ -35,10 +35,6 @@ type InfoBoxSectionProps = {
   format: 'A' | 'B';
 };
 
-//TODO:
-// • Add accordion styling
-// • Update Image sizing
-
 export function InfoBox({ children }: InfoBoxProps) {
   const [isAccordion, setIsAccordion] = useState(false);
 
