@@ -14,6 +14,12 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare, faBullseye, faMagnifyingGlass, faUsers, faHammer, faFileLines } from '@fortawesome/free-solid-svg-icons'
 
+// import useWindowResize from '@/lib/useWindowResize';
+
+// // Inside your component
+// const isMobile = useWindowResize();
+
+
 export default function Datavis() {
   return (
     <article className="basis-full max-w-[1200px] mt-16">
@@ -42,8 +48,8 @@ export default function Datavis() {
           <div className="max-w-[900px] mt-16">
             <section className="flex flex-col items-center">
               <div className="text-center max-w-[500px]">
-                <p className="text-lg">Built with Figma</p>
-                <h1 className="text-3xl sm:text-4xl">Responsive, flexible chart components</h1>
+                <p className="md:text-lg mb-3">Built with Figma</p>
+                <h1 className="text-3xl md:text-4xl">Responsive, flexible chart components</h1>
               </div>
 
 
@@ -78,7 +84,7 @@ export default function Datavis() {
 
             <Separator className="my-8" />{/*————————————————————————————*/}
             <section className="flex flex-col items-center">
-              <p className="text-3xl mb-8">Lorem ipsum del tolor</p>
+              <p className="text-2xl md:text-3xl mb-8">Lorem ipsum del tolor</p>
               <Button>Try it out <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" /></Button>
             </section>
 
@@ -94,7 +100,7 @@ export default function Datavis() {
           <div className="max-w-[900px] mt-16">
             <section className="flex flex-col md:flex-row">
               <div className="max-w-[600px] flex flex-col gap-8 mb-8 md:mr-8">
-                <h1 className="text-3xl sm:text-4xl">Building a component library for charts</h1>
+                <h1 className="text-3xl md:text-4xl">Building a component library for charts</h1>
                 <p className="text-large">At <code className="mx-1 relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-md font-600">SUREIFY DESIGN</code>, the team needed a way to present data consistently throughout its product lineup. I was responsible for building a component library in Figma—this would enable designers to drag-and-drop charts into their design files, and modify them for their use-cases.</p>
                 <Button className="self-start">Try it out<FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" /></Button>
               </div>
@@ -127,13 +133,12 @@ export default function Datavis() {
             <Separator className="my-8" />{/*————————————————————————————*/}
 
             <section className="flex flex-col items-center text-center">
-              <div className="mt-4 p-3 rounded-md bg-[#EC3C3C]/[0.1]">
+              <div className="mt-4 p-2 md:p-3 rounded-md bg-[#EC3C3C]/[0.1]">
                 <FontAwesomeIcon icon={faBullseye} className="fa-2xl text-[#EC3C3C]" />
               </div>
-
               <div className="my-6 mb-6 max-w-[400px]">
-                <h2>Project Goal</h2>
-                <p className="mt-2 text-lg leading-normal">Build a system to help designers and developers implement data visualization across Sureify’s products.</p>
+                <h2 className="text-2xl md:text-4xl">Project Goal</h2>
+                <p className="mt-3 md:text-lg leading-normal">Build a system to help designers and developers implement data visualization across Sureify’s products.</p>
               </div>
 
               <div className="col-span-2 card my-4"><Image
@@ -152,10 +157,9 @@ export default function Datavis() {
               <div className="mt-4 p-3 rounded-md bg-[#3C8DEC]/[0.1]">
                 <FontAwesomeIcon icon={faUsers} className="fa-2xl text-[#3C8DEC]" />
               </div>
-
               <div className="my-6 mb-6 max-w-[400px]">
-                <h2>Understanding Stakeholders</h2>
-                <p className="mt-2 text-lg leading-normal">The first thing that put me on the path was understanding who my stakeholders were, and what they needed.</p>
+                <h2 className="text-2xl md:text-4xl">Understanding Stakeholders</h2>
+                <p className="mt-3 md:text-lg leading-normal">The first thing that put me on the path was understanding who my stakeholders were, and what they needed.</p>
               </div>
 
             </section>
@@ -166,10 +170,9 @@ export default function Datavis() {
               <div className="mt-4 p-3 rounded-md bg-[#FEC73A]/[0.1]">
                 <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-2xl text-[#FEC73A]" />
               </div>
-
               <div className="my-6 mb-6 max-w-[400px]">
-                <h2>Ideating & Defining</h2>
-                <p className="mt-2 text-lg leading-normal">Lorem ipsum.</p>
+                <h2 className="text-2xl md:text-4xl">Ideating & Defining</h2>
+                <p className="mt-3 md:text-lg leading-normal">Lorem ipsum.</p>
               </div>
 
             </section>
@@ -180,10 +183,9 @@ export default function Datavis() {
               <div className="mt-4 p-3 rounded-md bg-[#FE813A]/[0.1]">
                 <FontAwesomeIcon icon={faHammer} className="fa-2xl text-[#FE813A]" />
               </div>
-
               <div className="my-6 mb-6 max-w-[400px]">
-                <h2>Prototyping & Testing</h2>
-                <p className="mt-2 text-lg leading-normal">Implementing responsiveness [...].</p>
+                <h2 className="text-2xl md:text-4xl">Prototyping & Testing</h2>
+                <p className="mt-3 md:text-lg leading-normal">Implementing responsiveness [...].</p>
               </div>
 
             </section>
@@ -194,10 +196,9 @@ export default function Datavis() {
               <div className="mt-4 p-3 rounded-md bg-[#72C67B]/[0.1]">
                 <FontAwesomeIcon icon={faFileLines} className="fa-2xl text-[#72C67B]" />
               </div>
-
               <div className="my-6 mb-6 max-w-[400px]">
-                <h2>Communicating</h2>
-                <p className="mt-2 text-lg leading-normal">Writing solid documentation [...].</p>
+                <h2 className="text-2xl md:text-4xl">Communicating</h2>
+                <p className="mt-3 md:text-lg leading-normal">Writing solid documentation [...].</p>
               </div>
 
             </section>
