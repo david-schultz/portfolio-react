@@ -21,27 +21,27 @@ const BarChart = ({ isDashboard = false }) => {
         axis: {
           domain: {
             line: {
-              stroke: colors.gray[100],
+              stroke: colors.gray[600],
             },
           },
           legend: {
             text: {
-              fill: colors.gray[100],
+              fill: colors.gray[600],
             },
           },
           ticks: {
             line: {
-              stroke: colors.gray[100],
+              stroke: colors.gray[600],
               strokeWidth: 1,
             },
             text: {
-              fill: colors.gray[100],
+              fill: colors.gray[600],
             },
           },
         },
         legends: {
           text: {
-            fill: colors.gray[100],
+            fill: colors.gray[600],
           },
         },
       }}

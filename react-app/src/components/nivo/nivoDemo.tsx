@@ -8,14 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPieChart, faLineChart, faChartSimple } from '@fortawesome/free-solid-svg-icons'
 
 import BarChart from './exampleBarChart';
-// import LineChart from './exampleLineChart';
-// import PieChart from './exampleBarChart';
-
-
-import { mockBarData as barData } from "./mockData";
-import { mockLineData as lineData } from "./mockData";
-import { mockPieData as pieData } from "./mockData";
-
+import LineChart from './exampleLineChart';
+import PieChart from './examplePieChart';
 
 export function NivoDemo() {
   const isMobile = useWindowResize();
@@ -24,14 +18,22 @@ export function NivoDemo() {
   return (
     <div className={`flex gap-8 items-center ${isMobile ? 'flex-col' : ''}`}>
       <div className={`flex p-4 gap-4 card ${isMobile ? 'order-last' : 'flex-col'}`}>
-        <button onClick={() => setSelectedChart('bar')} className="p-3 rounded-md bg-[#2864CC]/[0.1]">
+        <button
+          onClick={() => setSelectedChart('bar')}
+          className={`p-3 rounded-md ${selectedChart === 'bar' ? 'bg-[#2864CC]/[0.1]' : ''}`}>
             <FontAwesomeIcon icon={faChartSimple} className="fa-2xl text-[#2864CC]" />
         </button>
-        <button onClick={() => setSelectedChart('line')} className="p-3 rounded-md bg-[#DC5858]/[0.1]">
-          <FontAwesomeIcon icon={faLineChart} className="fa-2xl text-[#DC5858]" />
+
+        <button 
+          onClick={() => setSelectedChart('line')}
+          className={`p-3 rounded-md ${selectedChart === 'line' ? 'bg-[#DC5858]/[0.1]' : ''}`}>
+            <FontAwesomeIcon icon={faLineChart} className="fa-2xl text-[#DC5858]" />
         </button>
-        <button onClick={() => setSelectedChart('pie')} className="p-3 rounded-md bg-[#FBC756]/[0.1]">
-          <FontAwesomeIcon icon={faPieChart} className="fa-2xl text-[#FBC756]" />
+
+        <button 
+          onClick={() => setSelectedChart('pie')}
+          className={`p-3 rounded-md ${selectedChart === 'pie' ? 'bg-[#FBC756]/[0.1]' : ''}`}>
+            <FontAwesomeIcon icon={faPieChart} className="fa-2xl text-[#FBC756]" />
         </button>
       </div>
 
@@ -41,13 +43,11 @@ export function NivoDemo() {
         )}
 
         {selectedChart === 'line' && (
-          // <LineChart />
-          <div></div>
+          <LineChart />
         )}
 
         {selectedChart === 'pie' && (
-          // <PieChart />
-          <div></div>
+          <PieChart />
         )}
       </div>
 
