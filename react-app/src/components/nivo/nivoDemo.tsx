@@ -37,18 +37,43 @@ export function NivoDemo() {
         </button>
       </div>
 
-      <div className="flex flex-col p-4 gap-4 card w-[80vw] md:w-[60vw] h-[350px] ">
-        {selectedChart === 'bar' && (
-          <BarChart />
-        )}
+      <div className="flex flex-col p-4 gap-4 card">
+        <div>
+          {selectedChart === 'bar' && (
+            <div>
+              <h4>Client Acquisition</h4>
+              <p className="text-sm">Number of new policies by quarter</p>
+            </div>
+          )}
 
-        {selectedChart === 'line' && (
-          <LineChart />
-        )}
+          {selectedChart === 'line' && (
+            <div>
+              <h4>Revenue from Premiums</h4>
+              <p className="text-sm">Revenue (in $) by month</p>
+            </div>
+          )}
 
-        {selectedChart === 'pie' && (
-          <PieChart />
-        )}
+          {selectedChart === 'pie' && (
+            <div>
+              <h4>Age Groups</h4>
+              <p className="text-sm">Distribution of policyholders by age</p>
+            </div>
+          )}
+        </div>
+
+        <div className="w-[80vw] md:w-[60vw] h-[350px]">
+          {selectedChart === 'bar' && (
+            <BarChart />
+          )}
+
+          {selectedChart === 'line' && (
+            <LineChart />
+          )}
+
+          {selectedChart === 'pie' && (
+            <PieChart />
+          )}
+        </div>
       </div>
 
 

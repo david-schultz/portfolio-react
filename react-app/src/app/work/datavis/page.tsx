@@ -37,7 +37,7 @@ export default function Datavis() {
 
 
       <Tabs defaultValue="deliverables" className="mt-16 flex flex-col items-center">
-        <TabsList className="mb-32 w-full sticky top-4">
+        <TabsList className="mb-32 w-full sticky top-4 z-[10000]">
           <TabsTrigger value="deliverables" className="w-full">Deliverables</TabsTrigger>
           <TabsTrigger value="process" className="w-full">Process</TabsTrigger>
         </TabsList>

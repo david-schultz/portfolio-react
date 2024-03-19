@@ -45,13 +45,13 @@ const BarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
-      indexBy="country"
+      keys={["term", "whole"]}
+      indexBy="quarter"
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
-      colors={{ scheme: "nivo" }}
+      colors={['#1E5FD0', '#65A2FF']}
       defs={[
         {
           id: "dots",
@@ -78,19 +78,19 @@ const BarChart = ({ isDashboard = false }) => {
       }}
       axisTop={null}
       axisRight={null}
-      axisBottom={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: isDashboard ? undefined : "country", // changed
-        legendPosition: "middle",
-        legendOffset: 32,
-      }}
+      // axisBottom={{
+      //   tickSize: 5,
+      //   tickPadding: 5,
+      //   tickRotation: 0,
+      //   legend: isDashboard ? undefined : "country", // changed
+      //   legendPosition: "middle",
+      //   legendOffset: 32,
+      // }}
       axisLeft={{
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "food", // changed
+        legend: isDashboard ? undefined : "new clients", // changed
         legendPosition: "middle",
         legendOffset: -40,
       }}
