@@ -41,8 +41,8 @@ export function NivoDemo() {
         <div>
           {selectedChart === 'bar' && (
             <div>
-              <h4>Client Acquisition</h4>
-              <p className="text-sm">Number of new policies by quarter</p>
+              <h4>Revenue from Premiums</h4>
+              <p className="text-sm">Quarterly revenue by policy type</p>
             </div>
           )}
 

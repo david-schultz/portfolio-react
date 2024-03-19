@@ -9,6 +9,11 @@ import colors from 'tailwindcss/colors'
 
 const BarChart = ({ isDashboard = false }) => {
 
+  const formatDollar = (tickItem: number) => {
+
+    return `$${tickItem/1000}k`;
+  }
+
   // const { theme, setTheme } = useTheme()
   // const theme = useTheme();
   // const colors = tokens(theme.palette.mode);
@@ -21,21 +26,21 @@ const BarChart = ({ isDashboard = false }) => {
         axis: {
           domain: {
             line: {
-              stroke: colors.gray[600],
+              stroke: "#EFF1F3",
             },
           },
           legend: {
             text: {
-              fill: colors.gray[600],
+              fill: "hsla(204, 61%, 15%, 56%)",
             },
           },
           ticks: {
             line: {
-              stroke: colors.gray[600],
+              stroke: "#A8B6C5",
               strokeWidth: 1,
             },
             text: {
-              fill: colors.gray[600],
+              fill: "hsla(204, 61%, 15%, 56%)",
             },
           },
         },
@@ -45,33 +50,13 @@ const BarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["term", "whole"]}
+      keys={["Term Life", "Whole Life"]}
       indexBy="quarter"
-      margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+      margin={{ top: 0, right: 30, bottom: 30, left: 50 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
       colors={['#1E5FD0', '#65A2FF']}
-      defs={[
-        {
-          id: "dots",
-          type: "patternDots",
-          background: "inherit",
-          color: "#38bcb2",
-          size: 4,
-          padding: 1,
-          stagger: true,
-        },
-        {
-          id: "lines",
-          type: "patternLines",
-          background: "inherit",
-          color: "#eed312",
-          rotation: -45,
-          lineWidth: 6,
-          spacing: 10,
-        },
-      ]}
       borderColor={{
         from: "color",
         modifiers: [["darker", 1.6]],
@@ -90,9 +75,10 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "new clients", // changed
-        legendPosition: "middle",
-        legendOffset: -40,
+        format: formatDollar,
+        // legend: isDashboard ? undefined : "new clients", // changed
+        // legendPosition: "middle",
+        // legendOffset: -40,
       }}
       enableLabel={false}
       labelSkipWidth={12}
@@ -101,33 +87,33 @@ const BarChart = ({ isDashboard = false }) => {
         from: "color",
         modifiers: [["darker", 1.6]],
       }}
-      legends={[
-        {
-          dataFrom: "keys",
-          anchor: "bottom-right",
-          direction: "column",
-          justify: false,
-          translateX: 120,
-          translateY: 0,
-          itemsSpacing: 2,
-          itemWidth: 100,
-          itemHeight: 20,
-          itemDirection: "left-to-right",
-          itemOpacity: 0.85,
-          symbolSize: 20,
-          effects: [
-            {
-              on: "hover",
-              style: {
-                itemOpacity: 1,
-              },
-            },
-          ],
-        },
-      ]}
+      // legends={[
+      //   {
+      //     dataFrom: "keys",
+      //     anchor: "top-right",
+      //     direction: "row",
+      //     justify: false,
+      //     // translateX: 120,
+      //     translateY: -50,
+      //     itemsSpacing: 2,
+      //     itemWidth: 100,
+      //     itemHeight: 20,
+      //     itemDirection: "left-to-right",
+      //     itemOpacity: 0.85,
+      //     symbolSize: 20,
+      //     effects: [
+      //       {
+      //         on: "hover",
+      //         style: {
+      //           itemOpacity: 1,
+      //         },
+      //       },
+      //     ],
+      //   },
+      // ]}
       role="application"
       barAriaLabel={function (e) {
-        return e.id + ": " + e.formattedValue + " in country: " + e.indexValue;
+        return e.id + ": " + e.formattedValue + " in quarter: " + e.indexValue;
       }}
     />
   );
