@@ -49,10 +49,15 @@ const BarChart = ({ isDashboard = false }) => {
             fill: colors.gray[600],
           },
         },
+        grid: {
+          line: {
+            stroke: '#EFF1F3',
+          },
+        },
       }}
       keys={["Term Life", "Whole Life"]}
       indexBy="quarter"
-      margin={{ top: 0, right: 30, bottom: 30, left: 50 }}
+      margin={{ top: 0, right: 30, bottom: 80, left: 50 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
@@ -80,6 +85,8 @@ const BarChart = ({ isDashboard = false }) => {
         // legendPosition: "middle",
         // legendOffset: -40,
       }}
+      // enableGridY={false}
+      enableGridX={true}
       enableLabel={false}
       labelSkipWidth={12}
       labelSkipHeight={12}
@@ -87,30 +94,30 @@ const BarChart = ({ isDashboard = false }) => {
         from: "color",
         modifiers: [["darker", 1.6]],
       }}
-      // legends={[
-      //   {
-      //     dataFrom: "keys",
-      //     anchor: "top-right",
-      //     direction: "row",
-      //     justify: false,
-      //     // translateX: 120,
-      //     translateY: -50,
-      //     itemsSpacing: 2,
-      //     itemWidth: 100,
-      //     itemHeight: 20,
-      //     itemDirection: "left-to-right",
-      //     itemOpacity: 0.85,
-      //     symbolSize: 20,
-      //     effects: [
-      //       {
-      //         on: "hover",
-      //         style: {
-      //           itemOpacity: 1,
-      //         },
-      //       },
-      //     ],
-      //   },
-      // ]}
+      legends={[
+        {
+          dataFrom: "keys",
+          anchor: "bottom",
+          direction: "row",
+          justify: false,
+          // translateX: 120,
+          translateY: 70,
+          itemsSpacing: 2,
+          itemWidth: 100,
+          itemHeight: 20,
+          itemDirection: "left-to-right",
+          itemOpacity: 0.85,
+          symbolSize: 20,
+          effects: [
+            {
+              on: "hover",
+              style: {
+                itemOpacity: 1,
+              },
+            },
+          ],
+        },
+      ]}
       role="application"
       barAriaLabel={function (e) {
         return e.id + ": " + e.formattedValue + " in quarter: " + e.indexValue;

@@ -49,7 +49,7 @@ export default function Datavis() {
           {/* <div className="flex flex-col items-center max-w-[900px]"> */}
             <section className="flex flex-col items-center ">
               <div className="text-center max-w-[500px]">
-                <p className="md:text-lg mb-3">Built with Figma</p>
+                <p className="md:text-lg mb-3">Built with Figma & Nivo</p>
                 <h1 className="text-3xl md:text-4xl">Responsive, flexible chart components</h1>
               </div>
 

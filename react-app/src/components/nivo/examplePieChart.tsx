@@ -41,8 +41,9 @@ const PieChart = () => {
           },
         },
       }}
+      colors={['#46B974', '#2864CC', '#1DAFCF', '#FBC756', '#B13984']}
       margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-      innerRadius={0.5}
+      innerRadius={0.6}
       padAngle={0.7}
       cornerRadius={3}
       activeOuterRadiusOffset={8}
@@ -50,6 +51,7 @@ const PieChart = () => {
         from: "color",
         modifiers: [["darker", 0.2]],
       }}
+      enableArcLinkLabels={false}
       arcLinkLabelsSkipAngle={10}
       arcLinkLabelsTextColor={colors.gray[600]}
       arcLinkLabelsThickness={2}
@@ -61,26 +63,6 @@ const PieChart = () => {
         from: "color",
         modifiers: [["darker", 2]],
       }}
-      defs={[
-        {
-          id: "dots",
-          type: "patternDots",
-          background: "inherit",
-          color: "rgba(255, 255, 255, 0.3)",
-          size: 4,
-          padding: 1,
-          stagger: true,
-        },
-        {
-          id: "lines",
-          type: "patternLines",
-          background: "inherit",
-          color: "rgba(255, 255, 255, 0.3)",
-          rotation: -45,
-          lineWidth: 6,
-          spacing: 10,
-        },
-      ]}
       legends={[
         {
           anchor: "bottom",
@@ -89,7 +71,7 @@ const PieChart = () => {
           translateX: 0,
           translateY: 56,
           itemsSpacing: 0,
-          itemWidth: 100,
+          itemWidth: 75,
           itemHeight: 18,
           itemTextColor: "#999",
           itemDirection: "left-to-right",

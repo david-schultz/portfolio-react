@@ -22,21 +22,21 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
         axis: {
           domain: {
             line: {
-              stroke: colors.gray[600],
+              stroke: "#EFF1F3",
             },
           },
           legend: {
             text: {
-              fill: colors.gray[600],
+              fill: "hsla(204, 61%, 15%, 56%)",
             },
           },
           ticks: {
             line: {
-              stroke: colors.gray[600],
+              stroke: "#A8B6C5",
               strokeWidth: 1,
             },
             text: {
-              fill: colors.gray[600],
+              fill: "hsla(204, 61%, 15%, 56%)",
             },
           },
         },
@@ -45,14 +45,14 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
             fill: colors.gray[600],
           },
         },
-        tooltip: {
-          container: {
-            color: colors.gray[500],
+        grid: {
+          line: {
+            stroke: '#EFF1F3',
           },
         },
       }}
       colors={['#DC5858']} // added
-      margin={{ top: 0, right: 30, bottom: 30, left: 50 }}
+      margin={{ top: 20, right: 30, bottom: 30, left: 50 }}
       xScale={{ type: "point" }}
       // yScale={{
       //   type: "linear",
@@ -85,8 +85,8 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
         // legendPosition: "middle",
         format: formatDollar,
       }}
-      enableGridX={false}
-      enableGridY={false}
+      enableGridX={true}
+      enableGridY={true}
       enableArea={true}
       pointSize={8}
       pointColor={"#DC5858"}
