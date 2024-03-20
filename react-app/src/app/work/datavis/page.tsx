@@ -1,5 +1,6 @@
 // 'use client'
 
+// import { useState } from 'react';
 import Image from 'next/image'
 import { get } from '@vercel/edge-config';
 import { Badge } from "@/components/ui/badge"
@@ -25,6 +26,16 @@ import ScrollTo from '@/lib/ScrollTo';
 
 
 export default function Datavis() {
+  // const [tabClicked, setTabClicked] = useState(false);
+
+  const handleTabClick = () => {
+    const element = document.getElementById("#tabs");
+    if (element) {
+      element.classList.add("scrollActivated");
+    }
+  }
+
+
   return (
     <article>
       <BackgroundSetter after="bg-white" />

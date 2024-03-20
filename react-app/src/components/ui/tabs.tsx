@@ -2,10 +2,30 @@
 
 import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
+import { useEffect } from 'react'
 
 import { cn } from "@/lib/utils"
 
 const Tabs = TabsPrimitive.Root
+
+const handleTabClick = () => {
+  const element = document.getElementById("tabs");
+  if (element) {
+    element.classList.add("scrollActivated");
+  }
+
+  // useEffect(() => {
+  //   const element = document.getElementById("tabs");
+  //   if (element) {
+  //     const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+  //     if(element.classList.contains("scrollActivated")) {
+  //       const shouldSmoothScroll = elementTop > window.pageYOffset;
+  //       element.scrollIntoView({ behavior: shouldSmoothScroll ? 'smooth' : 'auto' });
+  //     }
+  //   }
+  //   // element?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
+  // }); // re-run effect if id or smooth changes
+}
 
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
@@ -32,6 +52,7 @@ const TabsTrigger = React.forwardRef<
       "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-white data-[state=active]:text-foreground data-[state=active]:shadow-sm",
       className
     )}
+    onClick={() => handleTabClick()}
     {...props}
   />
 ))
