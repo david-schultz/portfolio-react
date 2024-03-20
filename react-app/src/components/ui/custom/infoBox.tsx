@@ -63,7 +63,7 @@ export function InfoBox({ children }: InfoBoxProps) {
   }
 
   return (
-    <div className={`max-w-[300px] flex flex-col card bg-background p-6 gap-3 ${isAccordion ? 'accordion' : ''}`}>
+    <div className={`md: min-w-[250px] max-w-[300px] flex flex-col card bg-background p-6 gap-3 ${isAccordion ? 'accordion' : ''}`}>
       {children}
     </div>
 

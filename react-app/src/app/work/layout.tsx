@@ -1,5 +1,5 @@
 import SiteBar from '@/components/SiteBar'
-import ScrollUp from '@/components/ScrollUp'
+import ScrollUp from '@/lib/ScrollUp'
 
 export default function WorkLayout({
   children,
@@ -9,13 +9,13 @@ export default function WorkLayout({
   return (
     <div className="min-h-screen flex flex-col gap-4 mb-32 items-stretch">
       <ScrollUp/>
-      <header className="mx-2 p-4">
+      {/* <header className="mx-2 p-4">
         <SiteBar />
-      </header>
+      </header> */}
 
-      <main className="mx-4 xs:mx-8 sm:mx-16 flex justify-around">
+      {/* <main className="mx-4 xs:mx-8 sm:mx-16 flex justify-around"> */}
         {children}
-      </main>
+      {/* </main> */}
     </div>
   )
 }
