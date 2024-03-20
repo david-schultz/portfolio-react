@@ -55,7 +55,7 @@ const BarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["Term Life", "Whole Life"]}
+      keys={["Term Life Premiums", "Whole Life Premiums"]}
       indexBy="quarter"
       margin={{ top: 0, right: 30, bottom: 80, left: 50 }}
       padding={0.3}
@@ -103,7 +103,7 @@ const BarChart = ({ isDashboard = false }) => {
           // translateX: 120,
           translateY: 70,
           itemsSpacing: 2,
-          itemWidth: 100,
+          itemWidth: 150,
           itemHeight: 20,
           itemDirection: "left-to-right",
           itemOpacity: 0.85,

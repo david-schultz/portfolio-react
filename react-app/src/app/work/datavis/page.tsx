@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from '@/components/ui/button';
 import { Separator } from "@/components/ui/separator"
 import { InfoBox, InfoBoxHeader, InfoBoxSection } from '@/components/ui/custom/infoBox'
+import FeatureCard from '@/components/ui/custom/featureCard';
 
 import VideoPlayer from "@/components/VideoPlayer.tsx"
 import BackgroundSetter from "@/lib/setbg.tsx";
@@ -47,51 +48,202 @@ export default function Datavis() {
         <TabsContent value="deliverables" className="px-2 flex flex-col items-center max-w-[900px]">
           {/* <BackgroundSetter after="bg-background" before="bg-white" /> */}
           {/* <div className="flex flex-col items-center max-w-[900px]"> */}
-            <section className="flex flex-col items-center ">
+            <section className="flex flex-col items-center mb-16">
               <div className="text-center max-w-[500px]">
                 <p className="md:text-lg mb-3">Built with Figma & Nivo</p>
                 <h1 className="text-3xl md:text-4xl">Responsive, flexible chart components</h1>
               </div>
-
               <div className="mt-16">
                 <NivoDemo />
               </div>
             </section>
-            <Separator className="my-8" />{/*————————————————————————————*/}
-            <section className="flex flex-col items-center">
-              {/* <div className="card p-8 w-full">
-                <div className="flex flex-col gap-2 max-w-[360px]">
-                  <p className="text-xl">Designed for drag-and-drop</p>
-                  <p className="text-secondary">Charts can be inserted into a a design file, and will responsively re-size to fit any viewport.</p>
+
+            <Separator className="my-4 md:hidden" />{/*————————————————————————————*/}
+
+            <section className="flex flex-col items-center md:flex-row gap-12 md:gap-12 lg:gap-16 my-16">
+              <div className="flex flex-col items-center text-center max-w-[465px] md:min-w-[334px] md:items-start md:text-left md:basis-1/2 md:mt-8">
+                <h2 className="text-xl md:text-2xl">A library by designers, for designers</h2>
+                <p className="md:text-lg mt-2 md:mt-4 mb-4 md:mb-12">Each component is built to support actual workflows, with usability, learnability, and flexibility in mind.</p>
+                <Button>Try it out <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" /></Button>
+              </div>
+              <div className="card md:basis-1/2 mx-16 md:mx-0">
+                <Image
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-components.png"
+                  alt=""
+                  height={0}
+                  width={0}
+                  sizes="100vw"
+                  style={{ width: '100%', height: 'auto' }}
+                />
+              </div>
+            </section>
+
+            <Separator className="my-4 md:hidden" />{/*————————————————————————————*/}
+
+            <section className="flex flex-col md:flex-row gap-8 my-16">
+              <div className="flex flex-col gap-8">
+                <FeatureCard
+                  color="hsla(41, 95%, 66%"
+                  badge="Responsive"
+                  h3="Built for drag-and-drop"
+                  p="Charts can be inserted into a a design file, and will responsively re-size to fit any viewport."
+                  imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-drag_drop.png"
+                />
+                
+                <FeatureCard
+                  color="hsla(104, 65%, 63%"
+                  badge="Useful"
+                  h3="Translatable into code"
+                  p="Component controls are mapped 1-to-1 with those in Nivo, a React library built on D3."
+                  imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-nivo.png"
+                />
+              </div>
+              <div className="flex flex-col gap-8 md:mt-20">
+              <FeatureCard
+                  color="hsla(212, 100%, 70%"
+                  badge="Flexible"
+                  h3="Modular architecture"
+                  p="Charts support modification through various component controls, and direct selection."
+                  imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-component_controls.png"
+                />
+                <FeatureCard
+                  color="hsla(284, 100%, 70%"
+                  badge="Learnable"
+                  h3="In-depth documentation"
+                  p="Docs covering best practices, visual encoding, architecture, and hand-off support learnability."
+                  imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-docs.png"
+                />
+              </div>
+            </section>
+
+            <Separator className="my-4 md:hidden" />{/*————————————————————————————*/}
+
+            <section className="flex flex-col items-center md:flex-row gap-12 md:gap-12 lg:gap-16 my-16">
+              <div className="flex flex-col items-center text-center max-w-[465px] md:min-w-[334px] md:items-start md:text-left md:basis-1/2 md:mt-8">
+                <h2 className="text-xl md:text-2xl">A Figma library that actually works</h2>
+                <p className="md:text-lg mt-2 md:mt-4 mb-4 md:mb-12">Unlike existing libraries or plugins (which require heavy intervention), this library was built to be used.</p>
+                <Button>Try it out <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" /></Button>
+              </div>
+              <div className="card md:basis-1/2 md:order-first mx-16 md:mx-0">
+                <Image
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-comissions.png"
+                  alt=""
+                  height={0}
+                  width={0}
+                  sizes="100vw"
+                  style={{ width: '100%', height: 'auto' }}
+                />
+              </div>
+            </section>
+
+            <Separator className="my-4" />{/*————————————————————————————*/}
+
+            <section className="flex flex-col gap-8 my-16">
+              <h2 className="text-xl md:text-2xl mb-8 text-center">Gallery</h2>
+              <div className="flex flex-row gap-4">
+                <div className="flex flex-col gap-4 basis-1/2">
+                  <div className="card">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-gallery-bar1.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
+                  <div className="card">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-gallery-bar2.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4 basis-1/2">
+                  <div className="card">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-gallery-bar3.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
+                  <div className="card">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-gallery-bar4.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
                 </div>
               </div>
+              <div className="card">
+                  <Image
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-gallery-charts.png"
+                    alt=""
+                    height={0}
+                    width={0}
+                    sizes="100vw"
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+              </div>
 
-              <div className="w-full flex gap-8 mt-8">
-
-                <div className="card p-8 w-full">
-                  <div className="flex flex-col gap-2 max-w-[360px]">
-                    <p className="text-xl">Modular architecture</p>
-                    <p className="text-secondary">Charts support modification through various component controls, and direct selection.</p>
+              <div className="flex flex-row gap-4">
+                <div className="flex flex-col gap-4 basis-1/2">
+                  <div className="card">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-gallery-pie_card.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
+                  <div className="card">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-gallery-donut.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
                   </div>
                 </div>
-
-                <div className="card p-8 w-full">
-                  <div className="flex flex-col gap-2 max-w-[360px]">
-                    <p className="text-xl">Translatable into code</p>
-                    <p className="text-secondary">Component controls are mapped 1-to-1 with those in Nivo, and the default configuration is documented on the component itself.</p>
+                <div className="flex flex-col gap-4 basis-1/2">
+                  <div className="card">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-gallery-marimekko.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
+                  <div className="card">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-gallery-bar_card.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
                   </div>
                 </div>
-
-              </div> */}
+              </div>
             </section>
-
-            <Separator className="my-8" />{/*————————————————————————————*/}
-            <section className="flex flex-col items-center">
-              <p className="text-2xl md:text-3xl mb-8">Lorem ipsum del tolor</p>
-              <Button>Try it out <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" /></Button>
-            </section>
-
-            <Separator className="my-8" />{/*————————————————————————————*/}
 
 
           {/* </div> */}
@@ -144,14 +296,16 @@ export default function Datavis() {
                 <p className="mt-3 md:text-lg leading-normal">Build a system to help designers and developers implement data visualization across Sureify’s products.</p>
               </div>
 
-              <div className="col-span-2 card my-4"><Image
-                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv_published-component-controls.png"
-                alt="published component controls"
-                height={0}
-                width={0}
-                sizes="225vw"
-                style={{ width: '100%', height: 'auto' }}
-              /></div>
+              <div className="col-span-2 card my-4">
+                <Image
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv_published-component-controls.png"
+                  alt="published component controls"
+                  height={0}
+                  width={0}
+                  sizes="225vw"
+                  style={{ width: '100%', height: 'auto' }}
+                />
+              </div>
             </section>
 
             <Separator className="my-8" />{/*————————————————————————————*/}

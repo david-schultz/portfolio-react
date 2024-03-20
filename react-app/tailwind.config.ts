@@ -40,9 +40,9 @@ module.exports = {
       xs: ['0.75rem', '1.5em'],
       sm: ['0.875rem', '1.5em'],
       md: ['1rem', '1.5em'],
-      lg: ['1.25rem', '1.25em'],
-      xl: ['1.5rem', '1.15em'],
-      '2xl': ['2rem', '1.1em'],
+      lg: ['1.25rem', '1.5em'],
+      xl: ['1.5rem', '1.25em'],
+      '2xl': ['2rem', '1.25em'],
       '3xl': ['2.25rem', '1.1em'],
       '4xl': ['3rem', '1.1em'],
       '5xl': ['4rem', '0.9em'],
@@ -160,8 +160,13 @@ module.exports = {
             light: "#CB98FF",
             dark: "#3B0077",
           },
-
         },
+        random: {
+          green: "84DE64",
+          fairy: "D765FF",
+          blue: "65ACFF",
+          yellow: "#FBC756",
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
