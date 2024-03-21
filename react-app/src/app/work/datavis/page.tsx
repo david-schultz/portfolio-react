@@ -37,10 +37,10 @@ export default function Datavis() {
 
 
   return (
-    <article>
+    <article className="flex flex-col items-center">
       <BackgroundSetter after="bg-white" />
-      <header className="">
-        <div className="mx-2 p-4 sticky top-4">
+      <header className="w-full flex flex-col items-center">
+        <div className="mx-2 p-4 sticky top-4 w-full">
           <SiteBar />
         </div>
         <div className="mx-4 xs:mx-8 sm:mx-16 max-w-[1200px] mt-16">

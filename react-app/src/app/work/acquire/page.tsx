@@ -27,11 +27,11 @@ import "@/lib/bigtext.css"
 
 export default function Acquire() {
   return (
-    <article>
+    <article className="flex flex-col items-center">
       
       <BackgroundSetter after="bg-white" />
-      <header className="">
-        <div className="mx-2 p-4 sticky top-4">
+      <header className="w-full flex flex-col items-center">
+        <div className="mx-2 p-4 sticky top-4 w-full">
           <SiteBar />
         </div>
         <div className="mx-4 xs:mx-8 sm:mx-16 max-w-[1200px] mt-16">
@@ -164,11 +164,12 @@ export default function Acquire() {
           {/* ====================================================== */}
 
 
-          <TabsContent value="deliverables" className="w-full">
+          <TabsContent value="deliverables" className="w-full flex flex-col items-center">
             <ScrollTo id="tabs" smooth={true}/>
             <BackgroundSetter after="bg-background" before="bg-white" />
+            <div></div>
 
-            <section className="grid grid-cols-2 gap-x-8 gap-y-8">
+            {/* <section className="grid grid-cols-2 gap-x-8 gap-y-8">
               <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_quote-input.png" />
               <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_quote-unavailable.png" />
               <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_quote-details.png" />
@@ -178,7 +179,7 @@ export default function Acquire() {
               <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_ontrack-assigned.png" />
               <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_ontrack-requirement.png" />
               <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_ontrack-uptodate.png" />
-            </section>
+            </section> */}
           </TabsContent>
         </Tabs>
       </main>
