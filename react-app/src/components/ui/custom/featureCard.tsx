@@ -17,10 +17,11 @@ type FeatureCardProps = {
   h3: string;
   p: string;
   imageSrc: string;
+  imageShadow: boolean;
 };
 
 
-export default function FeatureCard({ color, badge, h3, p, imageSrc }: FeatureCardProps) {
+export default function FeatureCard({ color, badge, h3, p, imageSrc, imageShadow }: FeatureCardProps) {
 
   return (
     <div
@@ -35,7 +36,8 @@ export default function FeatureCard({ color, badge, h3, p, imageSrc }: FeatureCa
         </Badge>
         <h3 className="font-500 mt-4 mb-2">{h3}</h3>
         <p>{p}</p>
-        <div className="card mt-8">
+        <div className="card mt-8"
+              style={ imageShadow ? { boxShadow: "0px 15px 15px 0px rgba(0, 0, 0, 0.10)"} : {} } >
           <Image
             src={imageSrc}
             alt=""

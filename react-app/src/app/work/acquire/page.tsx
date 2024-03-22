@@ -14,14 +14,15 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import SiteBar from '@/components/SiteBar'
-import ScrollTo from '@/lib/ScrollTo';
+import { InfoBox, InfoBoxHeader, InfoBoxSection } from '@/components/ui/custom/infoBox'
+import FeatureCard from '@/components/ui/custom/featureCard';
 
 import VideoPlayer from "@/components/VideoPlayer.tsx"
 import AcquireWindow from '@/components/AcquireWindow';
 import BackgroundSetter from "@/lib/setbg.tsx";
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faUsers, faBullseye, faHammer, faClipboardList, faTableColumns, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 import "@/lib/bigtext.css"
 
@@ -51,140 +52,381 @@ export default function Acquire() {
         </div>
       </header>
 
-      <main className="mx-4 xs:mx-8 sm:mx-16 max-w-[1200px]">
-        <Tabs id="tabs" defaultValue="deliverables" className="mt-16 flex flex-col items-center">
-          <TabsList className="mb-2 w-full sticky top-4">
-            <TabsTrigger value="deliverables" className="w-full">Deliverables</TabsTrigger>
-            <TabsTrigger value="process" className="w-full">Process</TabsTrigger>
-          </TabsList>
+      <main className="mx-4 xs:mx-8 sm:mx-16 max-w-[900px] mt-16">
+        <section className="flex flex-col md:flex-row md:gap-8">
+          <div className="max-w-[600px] flex flex-col gap-8 mb-8 md:mr-8 md:mt-16">
+            <h1 className="text-3xl md:text-4xl">Digitizing the life insurance industry</h1>
+            <p className="text-large">Operating between carriers, agents, and policyholders,<code className="mx-1 relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-md font-600">SUREIFY</code>builds and whitelabels web-apps for life insurance carriers. One such product, LifetimeAcquire™, focuses on the application process—involving five distinct workflows and many different edge-cases.</p>
+            <p className="text-large">In this project, our goal was to do a massive overhaul for the Acquire product—involving our new design system, brand new features, and major consideration to usability.</p>
+          </div>
 
-          {/* ====================================================== */}
-
-          <TabsContent value="process" className="w-full flex flex-col items-center">
-            <ScrollTo id="tabs" smooth={true}/>
-            
-
-            <div className="max-w-[900px] mt-16 sm:mt-24 md:mt-32">
-              <section className="max-w-[600px] flex flex-col gap-8">
-                <h1 className="text-3xl sm:text-4xl">Digitizing the life insurance industry</h1>
-                <p className="text-large">Operating between carriers, agents, and policyholders,<code className="mx-1">SUREIFY</code>builds and whitelabels web-apps for life insurance carriers. One such product, LifetimeAcquire™, focuses on the application process—involving five distinct workflows and many different edge-cases.</p>
-                <p className="text-large">In this project, our goal was to do a massive overhaul for the Acquire product—involving our new design system, brand new features, and major consideration to usability.</p>
-                <Button className="self-start pb-1" variant="outline">See the final screens<FontAwesomeIcon icon={faArrowRight} className="ml-2 mb-[2px]" /></Button>
-              </section>
-
-              <Separator className="my-8" />
-
-              <section className="flex flex-col sm:grid sm:grid-cols-2 gap-x-16 gap-y-8 sm:gap-y-12">
-                <div className="flex flex-col gap-4 col-span-1">
-                  <h2>Building a clickable demo</h2>
-                  <p className="mb-2">Up until this point, the core LifetimeAcquire™ product had been heavily neglected. Our direct customer implementations had been steadily diverging, and our product pitch was very outdated.</p>
-                  <p><strong className="font-500">In short, Acquire was due for a refresh</strong>—and leadership decided the first step to unification would be to create a shiny new product demo, led by the pre-sales team.</p>
-                </div>
-
-                <div className="card bg-neutral-100 relative smmax:h-96 xsmax:h-64">
-                  <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_quote-window.png"
-                    alt="quote page"
-                    height={0}
-                    width={0}
-                    sizes="75vw"
-                    className="elevation-big absolute top-4 left-[50%] -translate-x-1/2 w-[calc(100%-3rem)]"
-                  />
-                </div>
-                
-                <div className="col-span-2 card bg-slate-200 h-64"></div>
-
-                <div className="flex flex-col gap-6">
-                  <p>Typically, design work at Sureify was scoped by either the <strong>product team</strong> or a <strong>client team</strong>.</p>
-                  <p>In these situations, stakeholders were responsible for the vision and defining the path to implementation. This meant designers worked with clear specifications, and features that had already been well thought-out.</p>
-                </div>
-                <div className="flex flex-col gap-6">
-                  <p>However, this project was issued to the <strong>demo team</strong>—and it created an entirely different paradigm for us, as designers.</p>
-                  <p>Our work was exploratory. It was scrappy. Our job was to put rough ideas into a working prototype that we could pitch to prospective clients. Specs were drafted week-by-week, constraints were tight, and iteration needed to be rapid.</p>
-                </div>
-
-                <div className="col-span-2 my-4">
-                  <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_progression.png"
-                    alt="progression between our reference and final product"
-                    height={0}
-                    width={0}
-                    sizes="225vw"
-                    style={{ width: '100%', height: 'auto' }}
-                    className="card"
-                    />
-                </div>
+          <InfoBox>
+            <InfoBoxHeader title="Acquire Demo" subtitle="Jun 2022 – Sep 2022" imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-cover.png" />
+            <InfoBoxSection
+              title="Details"
+              format="A"
+              dataRows={[
+                { label: 'Client', value: 'Sureify' },
+                { label: 'Role', value: 'Jr. Product Designer' },
+                { label: 'Tooling', value: 'Figma' },
+                { label: 'Domains', value: 'Form Design, Design Systems, Components' },
+              ]}
+            />
+            <InfoBoxSection
+              title="Team"
+              format="B"
+              dataRows={[
+                { label: 'David Schultz', value: 'Designer' },
+                { label: 'DJ Mackintosh', value: 'Designer' },
+                { label: 'Nav Badheka', value: 'Customer Delivery' },
+                { label: 'Pooja Rao', value: 'Product Owner' },
+                { label: 'Nancy Bush', value: 'VP Pre-Sales' },
+              ]}
+            />
+          </InfoBox>
+        </section>
 
 
-                <div className="flex flex-col gap-6">
-                  <p>I worked very closely on this project with another designer, DJ Mackintosh. Together, we built 5 distinct workflows for desktop + mobile viewports. </p>
-                  <p>As we adjusted to the demo paradigm, our initial task was to refresh existing screens with the new sureUI design system.</p>
-                  <p>This first workflow was a quote form for prospective policyholders.  Here, we encountered our first major hurdle—sureUI hadn’t yet encountered the complex form fields we needed to use. </p>
-                </div>
-                <div className="flex flex-col gap-6">
-                  <p>For example, some inputs were to be paired with long, sentence-style questions. However, existing components could only handle labels with &lt;23 characters.</p>
-                  <p>Our early solution was to use alternative components—but, as our devs were new to front-end, they were not feasible to implement within our tight deadlines. In response, I created a bespoke system of wrapper components which complemented both design and development constraints.</p>
-                </div>
 
-                
-                <div className="col-span-2 card bg-slate-200 h-64"></div>
-                <div className="col-span-2 card"><Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_mobile-form.png"
-                  alt="different views of the mobile form"
-                  height={0}
-                  width={0}
-                  sizes="100vw"
-                  style={{ width: '100%', height: 'auto' }}
-                  /></div>
-
-                <p>In subsequent workflows, we moved further into unknown territory. If we were lucky, we had access to reference screens from competitors. But, to our knowledge, most of our work was novel.</p>
-                <p>It was at these points where my co-designer and I were given a large amount of agency in defining both the implementation, and the purpose of features.</p>
-
-
-                <div className="col-span-2 card bg-slate-200 h-64"></div>
-
-                <div className="flex flex-col gap-6">
-                  <p>The idea behind OnTrack™ and e-Delivery (our final two workflows) was to give all people involved in the underwriting process a shared dashboard to track its progress.</p>
-                  <p>In this stage of an insurance application, a whole host of documents are written, passed around, and signed. These are called requirements, and importantly, the responsible party changes as it’s passed around.</p>
-                </div>
-
-
-                <div className="flex flex-col gap-6">
-                  <p>Requirements can be grouped in four different ways: assigned to you, assigned to someone else, completed, and upcoming.</p>
-                  <p>Hierarchically, the most important requirements are the current user’s action-items. The other categories exist to help users build a mental model of the rest of the underwriting process.</p>
-                </div>
-
-              </section>
-
+        <section className="flex flex-col items-center text-center mt-12">
+            <div className="mt-4 p-2 md:p-3 rounded-md bg-[#EC3C3C]/[0.1]">
+              <FontAwesomeIcon icon={faBullseye} className="fa-2xl text-[#EC3C3C]" />
             </div>
-          
-          </TabsContent>
+            <div className="my-6 mb-12 max-w-[700px]">
+              <h2 className="text-2xl md:text-3xl">Project Goals</h2>
+            </div>
+            <div className="flex flex-col gap-4 md:grid md:grid-cols-3 md:gap-8 text-left">
+              <div className="flex flex-col items-start gap-3 p-6 rounded-xl bg-[#FBC756]/[0.5]">
+                <Badge className="text-foreground bg-[#FBC756]/[0.8]">01</Badge>
+                <h4>Build a clickable demo</h4>
+                <p>i.e., an actual webpage that Sales could use for product demos.</p>
+              </div>
+              <div className="flex flex-col items-start gap-3 p-6 rounded-xl bg-[#65ACFF]/[0.5]">
+                <Badge className="text-foreground bg-[#65ACFF]/[0.8]">02</Badge>
+                <h4>Upgrade to sureUI</h4>
+                <p>LifetimeAcquire™ hadn’t seen a significant update since sureUI (our design system) was released.</p>
+              </div>
+              <div className="flex flex-col items-start gap-3 p-6 rounded-xl bg-[#D765FF]/[0.5]">
+                <Badge className="text-foreground bg-[#D765FF]/[0.8]">03</Badge>
+                <h4>Prototype new features</h4>
+                <p>Sales had been selling the *idea* of new features, but they hadn’t truly been fleshed out yet.</p>
+              </div>
+            </div>
+
+            
+        </section>
 
 
-          {/* ====================================================== */}
 
 
-          <TabsContent value="deliverables" className="w-full flex flex-col items-center">
-            <ScrollTo id="tabs" smooth={true}/>
-            <BackgroundSetter after="bg-background" before="bg-white" />
-            <div></div>
+        <section className="flex flex-col items-center text-center mt-24">
+            <div className="mt-4 p-2 md:p-3 rounded-md bg-[#3C8DEC]/[0.1]">
+              <FontAwesomeIcon icon={faUsers} className="fa-2xl text-[#3C8DEC]" />
+            </div>
+            <div className="my-6 mb-6 max-w-[700px]">
+              <h2 className="text-2xl md:text-3xl">Navigating a new design paradigm</h2>
+              <p className="mt-3 md:text-lg leading-normal">Typically, design work at Sureify was scoped by either the product team or a client team. However, this project was issued to the demo team—and it created an entirely different paradigm for us (as designers).</p>
+            </div>
 
-            {/* <section className="grid grid-cols-2 gap-x-8 gap-y-8">
-              <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_quote-input.png" />
-              <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_quote-unavailable.png" />
-              <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_quote-details.png" />
-              <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_agent-quote.png" />
-              <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_application-basic.png" />
-              <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_application-beneficiaries.png" />
-              <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_ontrack-assigned.png" />
-              <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_ontrack-requirement.png" />
-              <AcquireWindow src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_ontrack-uptodate.png" />
-            </section> */}
-          </TabsContent>
-        </Tabs>
+            <div className="grid md:grid-cols-4 gap-8 mt-8">
+                <div className="col-span-2">
+                  <div className="card">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-quote_tall.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="225vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
+                </div>
+                <div className="col-span-2 flex flex-col gap-4">
+                  <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
+                    <h4>Where’s the project manager?</h4>
+                    <p>You may have noticed that we didn’t have a PM on this project*.</p>
+                    <p className="italic text-sm text-secondary">*...well, sort of. Nav Badheka acted as our PM, issuing tickets and coordinating with the dev + Sales teams. (he was excellent!)</p>
+                  </div>
+                  <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
+                    <h4>High levels of agency</h4>
+                    <p>Without a traditional PM, it was on us (as designers) to be decisive & set the groundwork for new iterations of LifetimeAcquire™.</p>
+                    <p>Our work was exploratory. It was scrappy. We took rough ideas, and molded them into a working prototype. We drafted tickets as we learned to navigate our constraints.</p>
+                    <h4 className="mt-6">Quick turnarounds</h4>
+                    <p>Specs were drafted week-by-week, constraints were tight, and iteration needed to be rapid. Additionally, everything we designed needed to be quick for our dev team to implement.</p>
+                  </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section className="flex flex-col items-center text-center mt-24">
+            <div className="mt-4 p-2 md:p-3 rounded-md bg-[#BF3AFE]/[0.1]">
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-2xl text-[#BF3AFE]" />
+            </div>
+            <div className="my-6 mb-6 max-w-[700px]">
+              <h2 className="text-2xl md:text-3xl">Scope (4 main workflows)</h2>
+              <p className="mt-3 md:text-lg leading-normal">I worked very closely on this project with another designer, DJ Mackintosh. Together, we built 4 distinct workflows for desktop + mobile viewports. </p>
+            </div>
+
+            <div className="flex flex-col md:flex-row gap-8 my-16">
+              <div className="flex flex-col gap-8">
+                  <FeatureCard
+                    color="hsla(212, 100%, 70%"
+                    badge="User Form"
+                    h3="Quote Form for Policyholders"
+                    p="A straightforward, 2-page form for prospective policyholders to receive a brief quote."
+                    imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-user_quote.png"
+                    imageShadow={true}
+                  />
+                  
+                  <FeatureCard
+                    color="hsla(104, 66%, 63%"
+                    badge="User Form"
+                    h3="Application Form"
+                    p="After receiving a quote, users then fill out an extended application form."
+                    imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-application.png"
+                    imageShadow={true}
+                  />
+                  
+                  <div className="hidden md:block">
+                    <FeatureCard
+                      color="hsla(0, 0%, 69%"
+                      badge="In-betweens"
+                      h3="Miscellaneous Pages"
+                      p="Various confirmation, error, and other in-between pages were needed to link the experience together."
+                      imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-sorry.png"
+                      imageShadow={true}
+                    />
+                  </div>
+              </div>
+              <div className="flex flex-col gap-8 md:mt-20">
+                  <FeatureCard
+                    color="hsla(41, 95%, 66%"
+                    badge="Agent Tooling"
+                    h3="Quote Tool for Agents"
+                    p="A 1-page tool, formatted for power-users. Intended for agents who generate quotes on a routine basis."
+                    imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-agent_quote.png"
+                    imageShadow={true}
+                  />
+                  <FeatureCard
+                    color="hsla(27, 98%, 47%"
+                    badge="Dashboard"
+                    h3="OnTrack™ & eDelivery"
+                    p="Once an application is submitted, it needs to go through underwriting before approval. OnTrack™ coordinates this process."
+                    imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-ontrack.png"
+                    imageShadow={true}
+                  />
+                  
+                  <div className="block md:hidden">
+                    <FeatureCard
+                      color="hsla(0, 0%, 69%"
+                      badge="In-betweens"
+                      h3="Miscellaneous Pages"
+                      p="Various confirmation, error, and other in-between pages were needed to link the experience together."
+                      imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-sorry.png"
+                      imageShadow={true}
+                    />
+                  </div>
+              </div>
+            </div>
+        </section>
+
+
+
+
+        
+        <section className="flex flex-col items-center text-center mt-24">
+            <div className="mt-4 p-2 md:p-3 rounded-md bg-[#FE813A]/[0.1]">
+              <FontAwesomeIcon icon={faHammer} className="fa-2xl text-[#FE813A]" />
+            </div>
+            <div className="my-6 mb-6 max-w-[700px]">
+              <h2 className="text-2xl md:text-3xl">Upgrading to sureUI</h2>
+              <p className="mt-3 md:text-lg leading-normal">As we adjusted to the demo paradigm, our initial task was to refresh existing screens with the new sureUI design system. In the first few weeks, DJ and I laid the groundwork for the layout, look, and feel of the new experience.</p>
+            </div>
+            <div className="card mt-4">
+              <Image
+                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-quote_iteration.png"
+                alt=""
+                height={0}
+                width={0}
+                sizes="225vw"
+                style={{ width: '100%', height: 'auto' }}
+              />
+            </div>
+            <div className="card mt-4">
+              <Image
+                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-quote_mobile.png"
+                alt=""
+                height={0}
+                width={0}
+                sizes="225vw"
+                style={{ width: '100%', height: 'auto' }}
+              />
+            </div>
+            <div className="card mt-4">
+              <Image
+                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-upload.png"
+                alt=""
+                height={0}
+                width={0}
+                sizes="225vw"
+                style={{ width: '100%', height: 'auto' }}
+              />
+            </div>
+        </section>
+
+
+
+
+
+        <section className="flex flex-col items-center text-center mt-24">
+            <div className="mt-4 p-2 md:p-3 rounded-md bg-[#43C797]/[0.1]">
+              <FontAwesomeIcon icon={faClipboardList} className="fa-2xl text-[#43C797]" />
+            </div>
+            <div className="my-6 mb-6 max-w-[700px]">
+              <h2 className="text-2xl md:text-3xl">Managing complex form fields</h2>
+              <p className="mt-3 md:text-lg leading-normal">Pretty quickly, we ran into our first major hurdle—sureUI hadn’t yet encountered the complex form fields necessary for insurance applications.</p>
+            </div>
+            <div className="grid md:grid-cols-4 gap-8 mt-8">
+                <div className="col-span-2">
+                  <div className="card">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-coverage_calc.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="225vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
+                  <div className="card mt-4 hidden md:block">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-form_labels.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="225vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
+                </div>
+                <div className="col-span-2 flex flex-col gap-4">
+                  <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
+                    <h4>Sentence-length labels</h4>
+                    <p>sureUI’s form fields were conceived for simple input (e.g. a login form).</p>
+                    <p>However, insurance forms often ask sentence-length questions, with necessary context behind them. This meant our existing components were woefully unequipped.</p>
+                    <h4 className="mt-6">Developer constraints</h4>
+                    <p>An early solution I proposed was to use alternative field components—namely, ones that use box-fill styling (as seen in Material-UI).</p>
+                    <p>However, due to tight deadlines + a more novice dev team, we needed to work with what we had.</p>
+                  </div>
+                  <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
+                    <p>In response, I designed a system of wrapper components, which separate the field label into a separate hierarchy. These satisfied both design and development constraints.</p>
+                  </div>
+                  {/* <div className="card bg-background p-6 text-left flex flex-col gap-3">
+                    <h4>Hindsight is 20/20</h4>
+                    <p>In hindsight, these form fields would not be adequate for a final product launch. If I were to go back-in-time, I’d advocate for more visual separation between components. (Google Forms seems like a great reference)</p>
+                    <p>But as a junior designer, in the thick of a (very) tangled web of constraints and tight deadlines, my solutions worked!</p>
+                  </div> */}
+
+                  <div className="card mt-4 block md:hidden">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-form_fields.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="225vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section className="flex flex-col items-center text-center mt-24">
+            <div className="mt-4 p-2 md:p-3 rounded-md bg-[#43C797]/[0.1]">
+              <FontAwesomeIcon icon={faTableColumns} className="fa-2xl text-[#43C797]" />
+            </div>
+            <div className="my-6 mb-6 max-w-[700px]">
+              <h2 className="text-2xl md:text-3xl">OnTrack™: A multi-user dashboard</h2>
+              <p className="mt-3 md:text-lg leading-normal">The idea behind OnTrack™ and e-Delivery was to give all parties involved (in underwriting) a shared dashboard to track its progress.</p>
+            </div>
+            <div className="card mt-4"
+                  style={{boxShadow: "0px 15px 15px 0px rgba(0, 0, 0, 0.10)"}}>
+              <Image
+                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-ontrack_browser.png"
+                alt=""
+                height={0}
+                width={0}
+                sizes="225vw"
+                style={{ width: '100%', height: 'auto' }}
+              />
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-8 my-24">
+                <div className="col-span-2">
+                  <div className="card">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-pizza_tracker.png"
+                      alt=""
+                      height={0}
+                      width={0}
+                      sizes="225vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
+                </div>
+                <div className="col-span-2 flex flex-col gap-4">
+                  <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
+                    <h4>What is underwriting?</h4>
+                    <p>At this stage of an insurance application, a number of documents (i.e. requirements) are written, passed around, and signed.</p>
+                    <h4 className="mt-6">Problem: it gets confusing</h4>
+                    <p>With multiple parties involved, it gets difficult to see how far along the process is, who is responsible for what, etc.</p>
+                    <h4 className="mt-6">Solution: a pizza tracker!</h4>
+                    <p>Sales realized that our clients needed a product/feature that addressed this issue. Something like... a pizza tracker?</p>
+                    <p>This idea formed the basis for the OnTrack™ dashboard, and is where DJ & I started our ideation.</p>
+                  </div>
+                </div>
+            </div>
+
+            <div className="card mt-4">
+              <Image
+                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-ontrack_caught_up.png"
+                alt=""
+                height={0}
+                width={0}
+                sizes="225vw"
+                style={{ width: '100%', height: 'auto' }}
+              />
+            </div>
+            <div className="card mt-4">
+              <Image
+                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-ontrack_mobile_requirements.png"
+                alt=""
+                height={0}
+                width={0}
+                sizes="225vw"
+                style={{ width: '100%', height: 'auto' }}
+              />
+            </div>
+            <div className="card mt-4">
+              <Image
+                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-ontrack_requirement.png"
+                alt=""
+                height={0}
+                width={0}
+                sizes="225vw"
+                style={{ width: '100%', height: 'auto' }}
+              />
+            </div>
+
+        </section>
+
       </main>
-      
-      
     </article>
   )
 }

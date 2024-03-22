@@ -56,8 +56,8 @@ export default function Datavis() {
         </div>
       </header>
 
-      <main className="mx-4 xs:mx-8 sm:mx-16 max-w-[1200px]">
-        <Tabs id="tabs" defaultValue="deliverables" className="mt-16 flex flex-col items-center">
+      <main className="w-full flex flex-col items-center">
+        <Tabs id="tabs" defaultValue="deliverables" className="mt-16 mx-4 xs:mx-8 sm:mx-16 w-full max-w-[1200px] flex flex-col items-center">
           <TabsList className="mb-32 w-full sticky top-4 z-[10000]">
             <TabsTrigger value="deliverables" className="w-full">Deliverables</TabsTrigger>
             <TabsTrigger value="process" className="w-full">Process</TabsTrigger>
@@ -109,6 +109,7 @@ export default function Datavis() {
                     h3="Built for drag-and-drop"
                     p="Charts can be inserted into a a design file, and will responsively re-size to fit any viewport."
                     imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-drag_drop.png"
+                    imageShadow={false}
                   />
                   
                   <FeatureCard
@@ -117,6 +118,7 @@ export default function Datavis() {
                     h3="Translatable into code"
                     p="Component controls are mapped 1-to-1 with those in Nivo, a React library built on D3."
                     imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-nivo.png"
+                    imageShadow={false}
                   />
                 </div>
                 <div className="flex flex-col gap-8 md:mt-20">
@@ -126,6 +128,7 @@ export default function Datavis() {
                     h3="Modular architecture"
                     p="Charts support modification through various component controls, and direct selection."
                     imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-component_controls.png"
+                    imageShadow={false}
                   />
                   <FeatureCard
                     color="hsla(284, 100%, 70%"
@@ -133,6 +136,7 @@ export default function Datavis() {
                     h3="In-depth documentation"
                     p="Docs covering best practices, visual encoding, architecture, and hand-off support learnability."
                     imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-docs.png"
+                    imageShadow={false}
                   />
                 </div>
               </section>
@@ -306,10 +310,10 @@ export default function Datavis() {
                   />
                 </InfoBox>
               </section>
+              
 
-              <Separator className="my-12" />{/*————————————————————————————*/}
 
-              <section className="flex flex-col items-center text-center">
+              <section className="flex flex-col items-center text-center mt-24">
                 <div className="mt-4 p-2 md:p-3 rounded-md bg-[#EC3C3C]/[0.1]">
                   <FontAwesomeIcon icon={faBullseye} className="fa-2xl text-[#EC3C3C]" />
                 </div>
@@ -330,15 +334,16 @@ export default function Datavis() {
                 </div>
               </section>
 
-              <Separator className="my-12" />{/*————————————————————————————*/}
 
-              <section className="flex flex-col items-center text-center">
+
+
+              <section className="flex flex-col items-center text-center mt-24">
                 <div className="mt-4 p-3 rounded-md bg-[#3C8DEC]/[0.1]">
                   <FontAwesomeIcon icon={faUsers} className="fa-2xl text-[#3C8DEC]" />
                 </div>
                 <div className="my-6 mb-6 max-w-[400px]">
                   <h2 className="text-2xl md:text-3xl">Understanding Stakeholders</h2>
-                  <p className="mt-3 md:text-lg leading-normal">The first thing that put me on the path was understanding who my stakeholders were, and what they needed.</p>
+                  <p className="mt-3 md:text-lg leading-normal">The first thing to get me on the right path was understanding who my stakeholders were, and what they needed.</p>
                 </div>
                 <div className="grid md:grid-cols-4 gap-8 mt-8">
                   <div className="col-span-2">
@@ -354,7 +359,7 @@ export default function Datavis() {
                     </div>
                   </div>
                   <div className="col-span-2 flex flex-col gap-4">
-                    <div className="card bg-background p-6 text-left flex flex-col gap-3">
+                    <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
                       <h4>Designers</h4>
                       <p>As primary users, designers needed to be able to insert a chart in their design, and adjust it to their use-case. This meant the library needed to be:</p>
                       <ul className="list-disc pl-4">
@@ -363,7 +368,7 @@ export default function Datavis() {
                         <li className="mb-1"><strong>Modifiable</strong> (sense of control over the tool)</li>
                       </ul>
                     </div>
-                    <div className="card bg-background p-6 text-left flex flex-col gap-3">
+                    <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
                       <h4>Developers</h4>
                       <p>As secondary users, developers needed to be able to easily translate designs to code.</p>
                       <p>Discussions led us to <a href="https://nivo.rocks" className="underline">nivo.rocks</a>, an open-source React library for charts. This library serves as the foundation for the one in Figma.</p>
@@ -372,9 +377,10 @@ export default function Datavis() {
                 </div>
               </section>
 
-              <Separator className="my-12" />{/*————————————————————————————*/}
 
-              <section className="flex flex-col items-center text-center">
+
+
+              <section className="flex flex-col items-center text-center mt-24">
                 <div className="mt-4 p-3 rounded-md bg-[#FEC73A]/[0.1]">
                   <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-2xl text-[#FEC73A]" />
                 </div>
@@ -396,21 +402,19 @@ export default function Datavis() {
                     </div>
                   </div>
                   <div className="col-span-2 flex flex-col gap-4">
-                    <div className="card bg-background p-6 text-left flex flex-col gap-3">
+                    <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
                       <h4>Building an MVP</h4>
-                      <p>I soon learned that data visualization is... very broad. The literature mainly concerns the communication of data—not so much how I could actually build* a component library.</p>
-                      <small className="italic">*community examples on Figma did not fit our need for responsiveness.</small>
-                    </div>
-                    <div className="card bg-background p-6 text-left flex flex-col gap-3">
+                      <p>I soon learned that data visualization is... very broad. The literature mainly concerns the communication of data—not so much how I could actually build a component library.</p>
                       <p>Patrick, my advisor, suggested I start by creating a few bespoke charts. This was great advice, as it helped me gather my bearings.</p>
                     </div>
                   </div>
                 </div>
               </section>
 
-              <Separator className="my-12" />{/*————————————————————————————*/}
 
-              <section className="flex flex-col items-center text-center">
+
+
+              <section className="flex flex-col items-center text-center mt-24">
                 <div className="mt-4 p-3 rounded-md bg-[#FE813A]/[0.1]">
                   <FontAwesomeIcon icon={faHammer} className="fa-2xl text-[#FE813A]" />
                 </div>
@@ -432,12 +436,12 @@ export default function Datavis() {
                     </div>
                   </div>
                   <div className="col-span-2 flex flex-col gap-4">
-                    <div className="card bg-background p-6 text-left flex flex-col gap-3">
+                    <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
                       <h4>The meat of it all</h4>
                       <p>Lorem ipsum</p>
                       <small className="italic">*community examples on Figma did not fit our need for responsiveness.</small>
                     </div>
-                    <div className="card bg-background p-6 text-left flex flex-col gap-3">
+                    <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
                       <h4>Insufficient tooling</h4>
                       <p>Figma, for all it’s strengths, is not a great tool to create chart components.</p>
                     </div>
@@ -445,9 +449,10 @@ export default function Datavis() {
                 </div>
               </section>
 
-              <Separator className="my-12" />{/*————————————————————————————*/}
 
-              <section className="flex flex-col items-center text-center">
+
+
+              <section className="flex flex-col items-center text-center mt-24">
                 <div className="mt-4 p-3 rounded-md bg-[#72C67B]/[0.1]">
                   <FontAwesomeIcon icon={faFileLines} className="fa-2xl text-[#72C67B]" />
                 </div>
@@ -457,11 +462,11 @@ export default function Datavis() {
                 </div>
                 <div className="grid md:grid-cols-5 gap-8 mt-8">
                   <div className="md:col-span-3 md:col-start-2 flex flex-col gap-4">
-                    <div className="card bg-background p-6 text-left flex flex-col gap-3">
+                    <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
                       <h4>Best Practices</h4>
                       <p>I had guidance from my mentor, Arjan, on setting up an internal wiki. He recommended Claus Wilke’s textbook on the <a href="https://clauswilke.com/dataviz/" className="underline">Fundamentals of Data Visualization</a> (which to this day shows up in my auto-complete).</p>
                     </div>
-                    <div className="card bg-background p-6 text-left flex flex-col gap-3">
+                    <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
                       <h4>Visual Encoding</h4>
                       <p>The first question when visualizing data is, what kind of chart should we use? To answer this, we should consider data types: amounts, proportions, distributions, xy relationships, etc.</p>
                       <div className="card">
@@ -475,7 +480,7 @@ export default function Datavis() {
                         />
                       </div>
                     </div>
-                    <div className="card bg-background p-6 text-left flex flex-col gap-3">
+                    <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
                       <h4>Color Theory</h4>
                       <p>Is it more important that colors are pretty, or that they are informative? We settled on the latter, emphasizing the use of sequential, categorical, and diverging data sets.</p>
                       <div className="card">
@@ -489,7 +494,7 @@ export default function Datavis() {
                         />
                       </div>
                     </div>
-                    <div className="card bg-background p-6 text-left flex flex-col gap-3">
+                    <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
                       <h4>Developer Handoff</h4>
                       <p>How does a chart go from conceptualization to production? As this question is relevant to designer, developer, and product stakeholders, this page is written to address each perspective.</p>
                       <div className="card">
@@ -503,7 +508,7 @@ export default function Datavis() {
                         />
                       </div>
                     </div>
-                    <div className="card bg-background p-6 text-left flex flex-col gap-3">
+                    <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
                       <h4>Component Architecture</h4>
                       <p>Because of the requirement for responsiveness, components get complex, fast. I wrote two pages here: one outlining how to manipulate components, and one to guide further updates.</p>
                       <div className="card">
