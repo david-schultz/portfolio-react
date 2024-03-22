@@ -14,7 +14,7 @@ import VideoPlayer from "@/components/VideoPlayer.tsx"
 import BackgroundSetter from "@/lib/setbg.tsx";
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare, faBullseye, faMagnifyingGlass, faUsers, faHammer, faFileLines, faPieChart, faLineChart, faBarChart, faChartSimple } from '@fortawesome/free-solid-svg-icons'
+import { faArrowUpRightFromSquare, faBullseye, faMagnifyingGlass, faUsers, faHammer, faFileLines, faPieChart, faLineChart, faBarChart, faChartSimple, faCamera } from '@fortawesome/free-solid-svg-icons'
 import { NivoDemo } from '@/components/nivo/nivoDemo';
 import SiteBar from '@/components/SiteBar'
 import ScrollTo from '@/lib/ScrollTo';
@@ -37,13 +37,13 @@ export default function Datavis() {
 
 
   return (
-    <article className="flex flex-col items-center">
+    <article className="flex flex-col items-center ">
       <BackgroundSetter after="bg-white" />
       <header className="w-full flex flex-col items-center">
-        <div className="mx-2 p-4 sticky top-4 w-full">
+        <div className="mx-2 p-4 sticky top-1 w-full">
           <SiteBar />
         </div>
-        <div className="mx-4 xs:mx-8 sm:mx-16 max-w-[1200px] mt-16">
+        <div className="max-w-[1200px] mt-16 mx-4 xs:mx-8 sm:mx-16 ">
           <div className="flex gap-1">
             <Badge>Case Study</Badge>
             <Badge variant="outline">2022</Badge>
@@ -56,8 +56,8 @@ export default function Datavis() {
         </div>
       </header>
 
-      <main className="w-full flex flex-col items-center">
-        <Tabs id="tabs" defaultValue="deliverables" className="mt-16 mx-4 xs:mx-8 sm:mx-16 w-full max-w-[1200px] flex flex-col items-center">
+      <main className="flex flex-col items-center mx-4 xs:mx-8 sm:mx-16">
+        <Tabs id="tabs" defaultValue="deliverables" className="mt-16 w-full max-w-[1200px] flex flex-col items-center">
           <TabsList className="mb-32 w-full sticky top-4 z-[10000]">
             <TabsTrigger value="deliverables" className="w-full">Deliverables</TabsTrigger>
             <TabsTrigger value="process" className="w-full">Process</TabsTrigger>
@@ -347,7 +347,7 @@ export default function Datavis() {
                 </div>
                 <div className="grid md:grid-cols-4 gap-8 mt-8">
                   <div className="col-span-2">
-                    <div className="card">
+                    {/* <div className="card">
                       <Image
                         src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv_published-component-controls.png"
                         alt="published component controls"
@@ -356,9 +356,7 @@ export default function Datavis() {
                         sizes="225vw"
                         style={{ width: '100%', height: 'auto' }}
                       />
-                    </div>
-                  </div>
-                  <div className="col-span-2 flex flex-col gap-4">
+                    </div> */}
                     <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
                       <h4>Designers</h4>
                       <p>As primary users, designers needed to be able to insert a chart in their design, and adjust it to their use-case. This meant the library needed to be:</p>
@@ -368,6 +366,9 @@ export default function Datavis() {
                         <li className="mb-1"><strong>Modifiable</strong> (sense of control over the tool)</li>
                       </ul>
                     </div>
+                  </div>
+                  <div className="col-span-2 flex flex-col gap-4">
+                    
                     <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
                       <h4>Developers</h4>
                       <p>As secondary users, developers needed to be able to easily translate designs to code.</p>
@@ -381,18 +382,18 @@ export default function Datavis() {
 
 
               <section className="flex flex-col items-center text-center mt-24">
-                <div className="mt-4 p-3 rounded-md bg-[#FEC73A]/[0.1]">
-                  <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-2xl text-[#FEC73A]" />
+                <div className="mt-4 p-3 rounded-md bg-[#BF3AFE]/[0.1]">
+                  <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-2xl text-[#BF3AFE]" />
                 </div>
                 <div className="my-6 mb-6 max-w-[400px]">
-                  <h2 className="text-2xl md:text-3xl">Ideating & Defining</h2>
-                  <p className="mt-3 md:text-lg leading-normal">Lorem ipsum.</p>
+                  <h2 className="text-2xl md:text-3xl">Navigating Figma’s Limits</h2>
+                  <p className="mt-3 md:text-lg leading-normal">Figma, for all its strengths, is not exactly equipped for responsive data visualization.</p>
                 </div>
                 <div className="grid md:grid-cols-4 gap-8 mt-8">
                   <div className="col-span-2">
-                    <div className="card">
+                    <div className="">
                       <Image
-                        src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-ideation.png"
+                        src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-basic_line_chart.png"
                         alt="published component controls"
                         height={0}
                         width={0}
@@ -403,11 +404,100 @@ export default function Datavis() {
                   </div>
                   <div className="col-span-2 flex flex-col gap-4">
                     <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
-                      <h4>Building an MVP</h4>
-                      <p>I soon learned that data visualization is... very broad. The literature mainly concerns the communication of data—not so much how I could actually build a component library.</p>
-                      <p>Patrick, my advisor, suggested I start by creating a few bespoke charts. This was great advice, as it helped me gather my bearings.</p>
+                      <h4>Responsive design in Figma</h4>
+                      <p>Figma’s <span className="text-[#7D2BCE]">Auto Layout</span> property is kind of the bread-and-butter of responsive web design.</p>
+                      <p>It’s a very powerful feature which allows elements to grow/shrink as its viewport is resized.</p>
+                      <p>However, you quickly learn the limitations of auto layout when building a component library like this.</p>
                     </div>
                   </div>
+                </div>
+
+                <div className="rounded-xl bg-[#F7F7F7] grid lg:grid-cols-2 gap-6 p-6 mt-8">
+                    <div className="flex flex-col gap-4 p-4 text-left col-span-1">
+                      <h4>Issue #1: Layering</h4>
+                      <p>The fundamental problem with auto layout is that you can’t place items on top of each other in the same frame.</p>
+                      <p>This creates an issue if, say, you needed data to be displayed on top of grid lines.</p>
+                    </div>
+                    <div className="rounded-lg bg-white overflow-clip">
+                      <Image
+                        src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-chart_anatomy-line.png"
+                        alt="published component controls"
+                        height={0}
+                        width={0}
+                        sizes="225vw"
+                        style={{ width: '100%', height: 'auto' }}
+                      />
+                    </div>
+                </div>
+                <div className="rounded-xl bg-[#F7F7F7] grid lg:grid-cols-2 gap-6 p-6 mt-8">
+                    <div className="flex flex-col gap-4 p-4 text-left col-span-1">
+                      <h4>Issue #2: Alignment</h4>
+                      <p>Even after figuring out a way to stack layers, how do you keep your data, grid, and labels aligned?</p>
+                      <p>For example, on the right: when stacked elements don’t share the same width, they won’t line up.</p>
+                    </div>
+                    <div className="rounded-lg bg-white overflow-clip">
+                      <Image
+                        src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-grid_alignment.png"
+                        alt="published component controls"
+                        height={0}
+                        width={0}
+                        sizes="225vw"
+                        style={{ width: '100%', height: 'auto' }}
+                      />
+                    </div>
+                </div>
+                <div className="rounded-xl bg-[#F7F7F7] grid lg:grid-cols-2 gap-6 p-6 mt-8">
+                    <div className="flex flex-col gap-4 p-4 text-left col-span-1">
+                      <h4>Issue #3: Toggles</h4>
+                      <p>Ideally, a designer should be able to customize a chart for different use-cases.</p>
+                      <p>Colors, rounded corners, and text are easy.</p>
+                      <p>But for structural changes—like toggling an axis, or changing the amount of data shown—how do you ensure things continue to line up?</p>
+                    </div>
+                    <div className="rounded-lg bg-white overflow-clip">
+                      <Image
+                        src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-data_controls.png"
+                        alt="published component controls"
+                        height={0}
+                        width={0}
+                        sizes="225vw"
+                        style={{ width: '100%', height: 'auto' }}
+                      />
+                    </div>
+                </div>
+                <div className="rounded-xl bg-[#F7F7F7] grid lg:grid-cols-2 gap-6 p-6 mt-8">
+                    <div className="flex flex-col gap-4 p-4 text-left col-span-1">
+                      <h4>Issue #4: Component limitations</h4>
+                      <p>In a Figma component, you can’t resize or add new elements.</p>
+                      <p>This is a problem for users who need to edit the shape of their data (e.g., changing the height of a bar).</p>
+                      <p>The last thing you want them to do is detach the instance and lose functionality.</p>
+                    </div>
+                    <div className="rounded-lg bg-white overflow-clip">
+                      <Image
+                        src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-component_limitations.png"
+                        alt="published component controls"
+                        height={0}
+                        width={0}
+                        sizes="225vw"
+                        style={{ width: '100%', height: 'auto' }}
+                      />
+                    </div>
+                </div>
+                <div className="rounded-xl bg-[#F7F7F7] grid lg:grid-cols-2 gap-6 p-6 mt-8">
+                    <div className="flex flex-col gap-4 p-4 text-left col-span-1">
+                      <h4>Issue #5: Complexity</h4>
+                      <p>With all these issues, some pretty insane workarounds start to pop up—and they get confusing to work with, fast.</p>
+                      <p>How do you keep things streamlined? Which solutions are more intuitive than others? How do you support learnability?</p>
+                    </div>
+                    <div className="rounded-lg bg-white overflow-clip">
+                      <Image
+                        src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-chart_anatomy.png"
+                        alt="published component controls"
+                        height={0}
+                        width={0}
+                        sizes="225vw"
+                        style={{ width: '100%', height: 'auto' }}
+                      />
+                    </div>
                 </div>
               </section>
 
@@ -419,33 +509,61 @@ export default function Datavis() {
                   <FontAwesomeIcon icon={faHammer} className="fa-2xl text-[#FE813A]" />
                 </div>
                 <div className="my-6 mb-6 max-w-[400px]">
-                  <h2 className="text-2xl md:text-3xl">Prototyping & Testing</h2>
-                  <p className="mt-3 md:text-lg leading-normal">Implementing responsiveness [...].</p>
+                  <h2 className="text-2xl md:text-3xl">Strategies & Solutions</h2>
+                  <p className="mt-3 md:text-lg leading-normal">So how do you go about implementing responsiveness?</p>
                 </div>
-                <div className="grid md:grid-cols-4 gap-8 mt-8">
-                  <div className="col-span-2">
-                    <div className="card">
-                      <Image
-                        src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-frame_constraints.png"
-                        alt="published component controls"
-                        height={0}
-                        width={0}
-                        sizes="225vw"
-                        style={{ width: '100%', height: 'auto' }}
-                      />
+                <div className="max-w-[388px] md:max-w-full grid md:grid-cols-2 gap-6 mt-8 text-left">
+                    <div className="col-span-1 flex flex-col gap-6">
+                      <div className="rounded-lg bg-background flex flex-col gap-4 p-6">
+                        <h4>Utilize frame constraints</h4>
+                        <p>Constraints are the only way to create responsiveness with stacked layers. Pixel perfect placement is very important here, or else scaling will not work properly.</p>
+                      </div>
+                      <div className="rounded-lg bg-background flex flex-col gap-4 p-6">
+                        <h4>Set very specific heights & widths</h4>
+                        <p>To ensure elements always line up properly, force them to maintain the same dimensions at all times.</p>
+                        <p>This can be done by putting them in a noclip frame.</p>
+                        <p>Note: this may cause text to overlap, which is an unfortunate, but unavoidable side-effect.</p>
+                      </div>
+                      <div className="rounded-lg bg-background flex flex-col gap-4 p-6">
+                        <h4>Hide complexity under-the-hood</h4>
+                        <p>While understanding how things work is always good for usability, there is too much going on here for a new user.</p>
+                        <p>Follow Apple’s model—make it work out-of-the-box, and hide structural controls where possible.</p>
+                      </div>
+                      <div className="rounded-lg bg-background flex flex-col gap-4 p-6">
+                        <h4>Encourage the use of ⌘ + click</h4>
+                        <p>With so many layers in these components, it can be a pain to dig through them all.</p>
+                        <p>As a general principle, place modifiable elements (e.g. text values or colors) at the lowest level of hierarchy to increase usability.</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-span-2 flex flex-col gap-4">
-                    <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
-                      <h4>The meat of it all</h4>
-                      <p>Lorem ipsum</p>
-                      <small className="italic">*community examples on Figma did not fit our need for responsiveness.</small>
+                    <div className="col-span-1 flex flex-col gap-6">
+                      <div className="rounded-lg bg-background flex flex-col gap-4 p-6">
+                        <h4>Create presets</h4>
+                        <p>For most use-cases, a user doesn’t need full control over the shape of their data.</p>
+                        <p>Create a handful of “presets”, which make it easy to break the monotony between charts.</p>
+                      </div>
+                      <div className="rounded-lg bg-background flex flex-col gap-4 p-6">
+                        <h4>Write good documentation</h4>
+                        <p>While user testing with my team, we found that imitating examples was the easiest way to learn how to use the library.</p>
+                        <p>Additionally, adding a description to each component seemed to be quite helpful.</p>
+                      </div>
+                      <div className="rounded-lg bg-background flex flex-col gap-4 p-6">
+                        <h4>Define how to make an modification</h4>
+                        <p>There are three forms of modification to the chart components:</p>
+                        <ul className="list-disc pl-4 mt-2">
+                          <li className="mb-3">Direct selection, where a user can select an element and modify it’s color, text content, etc.</li>
+                          <li className="mb-3">Component controls, which are primarily used to modify large structural changes (e.g. visible axes, number of bar segments, etc.).</li>
+                          <li className="">Show/hide an element (e.g. number of grid lines, etc.).</li>
+                        </ul>
+                      </div>
+                      <div className="rounded-lg bg-background flex flex-col gap-4 p-6">
+                        <h4>Devise a naming convention</h4>
+                        <p>With many different layers and sub-components in a chart, users need some way to differentiate between what they “can” and “cannot” touch.</p>
+                        <ul className="list-disc pl-4 mt-2">
+                          <li className="mb-3"><code className="mx-1 relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-md font-600">PascalCase</code> (capital letters) indicate a component that is intended to be editable.</li>
+                          <li className="mb-3"><code className="mx-1 relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-md font-600">kebab-case</code> (dashes) indicate components which should not be touched. These are the “under-the-hood changes”.</li>
+                        </ul>
+                      </div>
                     </div>
-                    <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
-                      <h4>Insufficient tooling</h4>
-                      <p>Figma, for all it’s strengths, is not a great tool to create chart components.</p>
-                    </div>
-                  </div>
                 </div>
               </section>
 

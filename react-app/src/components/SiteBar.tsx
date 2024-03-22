@@ -20,7 +20,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 export default function SiteBar({ variant = 'default' }: { variant?: string}) {
   const isInverted = variant === "inverted";
 
-  let navStyling = "card";
+  let navStyling = "card glass";
   let logoSrc = "/logo.svg";
   let mainText = "";
   let subText = "text-secondary font-500";

@@ -79,3 +79,9 @@ strong {
 .bg-gradient-dark-2 {
   background: linear-gradient(180deg, #0E1A1F 0%, #1D2645 51.53%, #261E46 100%);
 }
+
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+}

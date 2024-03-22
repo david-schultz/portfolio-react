@@ -32,7 +32,7 @@ export default function Acquire() {
       
       <BackgroundSetter after="bg-white" />
       <header className="w-full flex flex-col items-center">
-        <div className="mx-2 p-4 sticky top-4 w-full">
+        <div className="mx-2 p-4 sticky top-1 w-full">
           <SiteBar />
         </div>
         <div className="mx-4 xs:mx-8 sm:mx-16 max-w-[1200px] mt-16">
@@ -243,7 +243,7 @@ export default function Acquire() {
             </div>
             <div className="my-6 mb-6 max-w-[700px]">
               <h2 className="text-2xl md:text-3xl">Upgrading to sureUI</h2>
-              <p className="mt-3 md:text-lg leading-normal">As we adjusted to the demo paradigm, our initial task was to refresh existing screens with the new sureUI design system. In the first few weeks, DJ and I laid the groundwork for the layout, look, and feel of the new experience.</p>
+              <p className="mt-3 md:text-lg leading-normal">As we adjusted to the demo paradigm, our initial task was to refresh existing screens with the new sureUI design system. In the first few weeks, we laid the groundwork for the layout, look, and feel of the new experience.</p>
             </div>
             <div className="card mt-4">
               <Image
@@ -322,7 +322,8 @@ export default function Acquire() {
                     <p>However, due to tight deadlines + a more novice dev team, we needed to work with what we had.</p>
                   </div>
                   <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
-                    <p>In response, I designed a system of wrapper components, which separate the field label into a separate hierarchy. These satisfied both design and development constraints.</p>
+                  <h4>In response</h4>
+                    <p>I designed a system of wrapper components, which separate the field label into a separate hierarchy. These satisfied both design and development constraints.</p>
                   </div>
                   {/* <div className="card bg-background p-6 text-left flex flex-col gap-3">
                     <h4>Hindsight is 20/20</h4>

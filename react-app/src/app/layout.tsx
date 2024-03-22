@@ -36,14 +36,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={graphik.className}>
       <body className="bg-background">
-        <ThemeProvider
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
+        > */}
         {children}
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   )
