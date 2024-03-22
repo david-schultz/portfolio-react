@@ -18,6 +18,8 @@ import { faArrowUpRightFromSquare, faBullseye, faMagnifyingGlass, faUsers, faHam
 import { NivoDemo } from '@/components/nivo/nivoDemo';
 import SiteBar from '@/components/SiteBar'
 import ScrollTo from '@/lib/ScrollTo';
+import ScrollUp from '@/lib/ScrollUp';
+import { Scroll } from 'lucide-react';
 
 // import useWindowResize from '@/lib/useWindowResize';
 
@@ -27,14 +29,6 @@ import ScrollTo from '@/lib/ScrollTo';
 
 export default function Datavis() {
   // const [tabClicked, setTabClicked] = useState(false);
-
-  const handleTabClick = () => {
-    const element = document.getElementById("#tabs");
-    if (element) {
-      element.classList.add("scrollActivated");
-    }
-  }
-
 
   return (
     <article className="flex flex-col items-center ">

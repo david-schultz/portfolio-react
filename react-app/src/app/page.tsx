@@ -31,15 +31,6 @@ export default function Home() {
       "logoName": "Sureify",
       "link": "/work/datavis"
     },
-    // {
-    //   "name": "Diversity in the Arboretum",
-    //   "year": "2022",
-    //   "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb_cover.jpg",
-    //   "imageType": "bg",
-    //   "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
-    //   "logoName": "University of Washington",
-    //   "link": "/work/arboretum"
-    // },
     {
       "name": "Acquire Demo",
       "year": "2022",
@@ -48,6 +39,15 @@ export default function Home() {
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
       "logoName": "Sureify",
       "link": "/work/acquire"
+    },
+    {
+      "name": "Diversity in the Arboretum",
+      "year": "2022",
+      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb_cover.jpg",
+      "imageType": "bg",
+      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
+      "logoName": "University of Washington",
+      "link": "/work/arboretum"
     }
   ];
 
