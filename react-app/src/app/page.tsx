@@ -24,7 +24,7 @@ export default function Home() {
   const displayedProjects: Array<ProjectCardProps> = [
     {
       "name": "sureUI Data Visualization",
-      "year": "2021",
+      "year": "2022",
       "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-cover.png",
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
@@ -42,7 +42,7 @@ export default function Home() {
     // },
     {
       "name": "Acquire Demo",
-      "year": "2021",
+      "year": "2022",
       "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_render-nobg.png",
       "imageType": "block",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
