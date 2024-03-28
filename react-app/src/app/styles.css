@@ -85,3 +85,9 @@ strong {
   backdrop-filter: blur(10px);
   border-radius: 10px;
 }
+
+.glass-darker {
+  background: rgba(240, 240, 240, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+}

@@ -49,7 +49,18 @@ export default function Datavis() {
           /> */}
           <VideoPlayer width="600" height="400"
             videoUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-bar_animation.webm'
+            gifUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-bar_animation.gif'
           />
+          {/* <div className="card">
+            <Image
+              src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-bar_animation.gif"
+              alt=""
+              height={0}
+              width={0}
+              sizes="100vw"
+              style={{ width: '100%', height: 'auto' }}
+            />
+          </div> */}
         </div>
       </header>
 
