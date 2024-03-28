@@ -2,6 +2,7 @@
 import React from 'react';
 import '@/app/styles.css'
 import Image from 'next/image'
+import Link from 'next/link';
 import { Button } from '@/components/ui/button.tsx'
 import {
   Dialog,
@@ -58,6 +59,18 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
           </li>
 
           <li className="hidden sm:block">
+            {isInverted ? 
+              (<Button variant="subtle-dark-locked" asChild>
+                <Link href="https://medium.com/@schultzdavidg" target="_blank">Blog</Link>
+              </Button>)
+              :
+              (<Button variant="ghost" asChild>
+                <Link href="https://medium.com/@schultzdavidg" target="_blank">Blog</Link>
+              </Button>)
+            }
+          </li>
+
+          <li className="hidden sm:block">
             <Dialog>
               <DialogTrigger asChild>
                 { isInverted ? 
@@ -77,12 +90,31 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
             </Dialog>
           </li>
           <li className="hidden sm:block">
+          <Dialog>
+              <DialogTrigger asChild>
+                { isInverted ? 
+                  (<Button variant="primary-locked">Contact</Button>)
+                  :
+                  (<Button variant="subtle">Contact</Button>)
+                }
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Contact</DialogTitle>
+                  <DialogDescription>
+                    Shoot me an email at david@davidschultz.co!
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
+          </li>
+          {/* <li className="hidden sm:block">
             {isInverted ? 
               (<Button variant="primary-locked">Contact</Button>)
               :
               (<Button variant="subtle">Contact</Button>)
             }
-          </li>
+          </li> */}
         </ul>
 
     </nav>

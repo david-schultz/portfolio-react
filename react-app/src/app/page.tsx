@@ -18,6 +18,7 @@ type ProjectCardProps = {
   logoSource: string
   logoName: string
   link: string
+  textColor: string
 }
 
 export default function Home() {
@@ -29,7 +30,8 @@ export default function Home() {
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
       "logoName": "Sureify",
-      "link": "/work/datavis"
+      "link": "/work/datavis",
+      "textColor": "black"
     },
     {
       "name": "Acquire Demo",
@@ -38,16 +40,18 @@ export default function Home() {
       "imageType": "block",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
       "logoName": "Sureify",
-      "link": "/work/acquire"
+      "link": "/work/acquire",
+      "textColor": "white"
     },
     {
       "name": "Diversity in the Arboretum",
-      "year": "2022",
+      "year": "2023",
       "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb_cover.jpg",
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
-      "link": "/work/arboretum"
+      "link": "/work/arboretum",
+      "textColor": "white"
     }
   ];
 
@@ -62,6 +66,7 @@ export default function Home() {
         logoSource={project.logoSource}
         logoName={project.logoName}
         link={project.link}
+        textColor={project.textColor}
       /> 
     );
 
@@ -73,6 +78,7 @@ export default function Home() {
           priority
           className="inline-block mx-4 mb-3 sm:mb-4 w-6 h-6 sm:w-8 sm:h-8"
         />
+      {/* <h2 className="text-xl sm:text-2xl">Designing & developing in mixed reality!</h2> */}
       <h2 className="text-xl sm:text-2xl">Hi, I’m David—a designer, front-end dev, and photographer.</h2>
     </div>
   )
@@ -95,6 +101,26 @@ export default function Home() {
             { marqueeContent }
             { marqueeContent }
           </div>
+        </div>
+      </section>
+      <section className="mx-6">
+        <div className="card grid grid-cols-5 py-4 px-5 sm:py-5 sm:px-6 gap-4 sm:gap-6">
+            <div className="card col-span-2">
+                <Image
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/selfie.jpg"
+                    alt="a selfie of the soul"
+                    height={0}
+                    width={0}
+                    sizes="225vw"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+            </div>
+            <div className="flex flex-col py-4 gap-4 col-span-3 lg:col-span-2">
+              {/* <h2 className="text-xl sm:text-3xl">Hey, I'm David.</h2> */}
+              <h3>Hi!</h3>
+              <p className="text-lg">I’m David, an interaction designer who believes in the future of spatial experiences.</p>
+              <p className="text-lg">I’m currently working on my design capstone, a mixed reality app for personal project management.</p>
+            </div>
         </div>
       </section>
       <section className="mx-6">
@@ -124,13 +150,12 @@ export default function Home() {
 function ProjectCard(props: ProjectCardProps) {
   // if type is image bg
   
-  
   return (
-    <li className="card relative mx-auto bg-gradient-dark-2 min-h-[250px] overflow-hidden justify-self-stretch self-stretch w-full">
+    <li className={`card relative mx-auto bg-gradient-dark-2 min-h-[250px] overflow-hidden justify-self-stretch self-stretch w-full ${props.textColor === 'white' ? 'text-white' : 'text-foreground'}`}>
       <Link href={props.link} >
           <div className="absolute inset-0 m-4 flex flex-col justify-between">
             <div className='flex justify-between items-start gap-2'>
-              <h3 className='text-white mix-blend-difference lg:text-3xl'>{props.name}</h3>
+              <h3 className='lg:text-3xl'>{props.name}</h3>
               <Badge className="grow-0">{props.year}</Badge>
             </div>
             <div className="flex items-center gap-2">
@@ -142,7 +167,7 @@ function ProjectCard(props: ProjectCardProps) {
                 sizes="10vw"
                 className="rounded-[10rem]"
               />
-              <p className="text-white font-500 mix-blend-difference">{props.logoName}</p>
+              <p className="font-500">{props.logoName}</p>
             </div>
           </div>
           <Image 
