@@ -44,8 +44,11 @@ export default function Datavis() {
           </div>
           <h1 className="mt-2 mb-4 sm:mb-8 text-3xl sm:text-4xl md:text-5xl font-500">sureUI Data Visualization</h1>
 
-          <VideoPlayer width="600" height="400"
+          {/* <VideoPlayer width="600" height="400"
             videoUrl='https://firebasestorage.googleapis.com/v0/b/portfolio-95b18.appspot.com/o/casestudies%2Fdatavis%2Fvideos%2Fbarchart-demonstration.webm?alt=media&token=d46b6a27-fe9c-444c-9f89-28d3848c7d8a'
+          /> */}
+          <VideoPlayer width="600" height="400"
+            videoUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-bar_animation.webm'
           />
         </div>
       </header>

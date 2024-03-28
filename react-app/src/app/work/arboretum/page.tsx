@@ -25,7 +25,7 @@ export default function Arboretum() {
           </div>
           <h1 className="mt-4 mb-4 sm:mb-8 text-3xl sm:text-4xl md:text-5xl font-500">Diversity in the Arboretum</h1>
           <div className="card"><Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-cover.jpg"
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-cover-min.jpg"
                     alt="acquire overview"
                     height={0}
                     width={0}
@@ -54,7 +54,7 @@ export default function Arboretum() {
             <div className="block md:hidden my-10">
               <div className="card">
                 <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-park_map.png"
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-park_map-min.png"
                     alt="acquire overview"
                     height={0}
                     width={0}
@@ -73,7 +73,7 @@ export default function Arboretum() {
             <div className="hidden md:block">
               <div className="card">
                 <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-park_map.png"
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-park_map-min.png"
                     alt="acquire overview"
                     height={0}
                     width={0}
@@ -85,7 +85,7 @@ export default function Arboretum() {
             <div className="">
               <div className="card">
                 <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-walkthrough.jpg"
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-walkthrough-min.jpg"
                     alt="acquire overview"
                     height={0}
                     width={0}
@@ -107,7 +107,7 @@ export default function Arboretum() {
 
           <div className="card mt-16">
             <Image
-              src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-side_profile.jpg"
+              src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-side_profile-min.jpg"
               alt="acquire overview"
               height={0}
               width={0}
@@ -130,7 +130,7 @@ export default function Arboretum() {
             <div className="col-span-1">
               <div className="card">
                 <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-top_compass.jpg"
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-top_compass-min.jpg"
                     alt="acquire overview"
                     height={0}
                     width={0}
@@ -142,7 +142,7 @@ export default function Arboretum() {
             <div className="col-span-1">
               <div className="card">
                 <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-top_title.jpg"
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-top_title-min.jpg"
                     alt="acquire overview"
                     height={0}
                     width={0}
@@ -171,7 +171,7 @@ export default function Arboretum() {
         <section className="flex flex-col gap-4 mt-16">
             <div className="card">
               <Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-slide_1.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-slide_1-min.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
@@ -181,7 +181,7 @@ export default function Arboretum() {
             </div>
             <div className="card">
               <Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-slide_2.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-slide_2-min.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
@@ -191,7 +191,7 @@ export default function Arboretum() {
             </div>
             <div className="card">
               <Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-slide_3.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-slide_3-min.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
@@ -201,7 +201,7 @@ export default function Arboretum() {
             </div>
             <div className="card">
               <Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-slide_4.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-slide_4-min.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
@@ -211,7 +211,7 @@ export default function Arboretum() {
             </div>
             <div className="card">
               <Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-slide_5.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-slide_5-min.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
@@ -221,7 +221,7 @@ export default function Arboretum() {
             </div>
             <div className="card">
               <Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-slide_6.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-slide_6-min.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
@@ -231,7 +231,7 @@ export default function Arboretum() {
             </div>
             <div className="card">
               <Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-slide_7.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-slide_7-min.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
@@ -241,7 +241,7 @@ export default function Arboretum() {
             </div>
             <div className="card">
               <Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-slide_8.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-slide_8-min.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
@@ -251,7 +251,7 @@ export default function Arboretum() {
             </div>
             <div className="card">
               <Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-slide_9.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-slide_9-min.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
@@ -261,7 +261,7 @@ export default function Arboretum() {
             </div>
             <div className="card">
               <Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-slide_10.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-slide_10-min.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
@@ -271,7 +271,7 @@ export default function Arboretum() {
             </div>
             <div className="card">
               <Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-slide_11.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-slide_11-min.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
@@ -281,7 +281,7 @@ export default function Arboretum() {
             </div>
             <div className="card">
               <Image
-                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb-slide_12.png"
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-slide_12-min.png"
                   alt="acquire overview"
                   height={0}
                   width={0}
