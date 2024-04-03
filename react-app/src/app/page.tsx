@@ -142,10 +142,10 @@ export default function Home() {
               <p className="text-md lg:text-lg">I’m currently working on my design capstone, a mixed reality app for personal project management.</p>
               {/* <a href="/">Resume</a> */}
               <ul>
-                <li className="text-sm underline"><a href="https://www.linkedin.com/in/schultzdavidg/" target="_blank">LinkedIn</a></li>
-                <li className="text-sm underline"><a href="https://read.cv/davidschultz" target="_blank">Read.cv</a></li>
-                <li className="text-sm underline"><a href="https://medium.com/@schultzdavidg" target="_blank">Medium</a></li>
-                <li className="text-sm underline"><a href="https://unsplash.com/@davidschultz" target="_blank">Unsplash</a></li>
+                <li className="underline"><a href="https://www.linkedin.com/in/schultzdavidg/" target="_blank">LinkedIn</a></li>
+                <li className="underline"><a href="https://read.cv/davidschultz" target="_blank">Read.cv</a></li>
+                <li className="underline"><a href="https://medium.com/@schultzdavidg" target="_blank">Medium</a></li>
+                <li className="underline"><a href="https://unsplash.com/@davidschultz" target="_blank">Unsplash</a></li>
               </ul>
             </div>
         </div>
@@ -182,7 +182,7 @@ export default function Home() {
                     width={0}
                     sizes="225vw"
                     style={{ width: '100%', height: 'auto',  }}
-                    className="mt-2 card"
+                    className="mt-2 card max-w-[250px]"
                   />
               <h4 className="mt-3 mb-1">Building an Infinite Circular Feed [devlog.02]</h4>
               <a href="https://medium.com/@schultzdavidg/building-an-infinite-circular-feed-devlog-02-12d7fafb1981" target="_blank" className="flex gap-1 items-center">

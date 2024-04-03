@@ -13,6 +13,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
 import SiteBar from '@/components/SiteBar'
 import { InfoBox, InfoBoxHeader, InfoBoxSection } from '@/components/ui/custom/infoBox'
 import FeatureCard from '@/components/ui/custom/featureCard';
@@ -130,16 +140,35 @@ export default function Acquire() {
 
             <div className="grid md:grid-cols-4 gap-8 mt-8">
                 <div className="col-span-2">
-                  <div className="card">
-                    <Image
-                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-quote_tall.png"
-                      alt=""
-                      height={0}
-                      width={0}
-                      sizes="225vw"
-                      style={{ width: '100%', height: 'auto' }}
-                    />
-                  </div>
+                  <Dialog>
+                    <DialogTrigger>
+                      <div className="card">
+                        <Image
+                          src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-quote_tall.png"
+                          alt=""
+                          height={0}
+                          width={0}
+                          sizes="225vw"
+                          style={{ width: '100%', height: 'auto' }}
+                        />
+                      </div>
+                    </DialogTrigger>
+                    <DialogContent className="bg-[#EEEEEE] md:min-w-[calc(100vw-16rem)] overflow-y-scroll max-h-screen sm:max-h-[calc(100vh-8rem)]">
+                      <DialogHeader>
+                        {/* <DialogTitle></DialogTitle> */}
+                        <DialogDescription>
+                          <Image
+                            src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-quote_full.png"
+                            alt=""
+                            height={0}
+                            width={0}
+                            sizes="225vw"
+                            style={{ width: '100%', height: 'auto' }}
+                          />
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
                 </div>
                 <div className="col-span-2 flex flex-col gap-4">
                   <div className="rounded-lg bg-background p-6 text-left flex flex-col gap-3">
