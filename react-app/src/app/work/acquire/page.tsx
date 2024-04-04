@@ -153,10 +153,8 @@ export default function Acquire() {
                         />
                       </div>
                     </DialogTrigger>
-                    <DialogContent className="bg-[#EEEEEE] md:min-w-[calc(100vw-16rem)] overflow-y-scroll max-h-screen sm:max-h-[calc(100vh-8rem)]">
-                      <DialogHeader>
-                        {/* <DialogTitle></DialogTitle> */}
-                        <DialogDescription>
+                    <DialogContent className="bg-[#EEEEEE] max-w-[calc(100vw-4rem)] md:min-w-[calc(100vw-16rem)] overflow-clip">
+                      <DialogDescription className="overflow-y-scroll w-full max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-8rem)]">
                           <Image
                             src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-quote_full.png"
                             alt=""
@@ -166,7 +164,6 @@ export default function Acquire() {
                             style={{ width: '100%', height: 'auto' }}
                           />
                         </DialogDescription>
-                      </DialogHeader>
                     </DialogContent>
                   </Dialog>
                 </div>

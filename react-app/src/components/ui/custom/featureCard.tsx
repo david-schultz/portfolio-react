@@ -94,15 +94,17 @@ export default function FeatureCard({ color, badge, h3, p, imagePreviewSrc, imag
                   />
                 </div>
               </DialogTrigger>
-              <DialogContent className="bg-[#EEEEEE] md:min-w-[calc(100vw-16rem)] overflow-y-scroll max-h-screen sm:max-h-[calc(100vh-8rem)]">
-                <Image
-                  src={imageFullSrc[0]}
-                  alt=""
-                  height={0}
-                  width={0}
-                  sizes="225vw"
-                  style={{ width: '100%', height: 'auto' }}
-                />
+              <DialogContent className="bg-[#EEEEEE] max-w-[calc(100vw-4rem)] md:min-w-[calc(100vw-16rem)] overflow-clip">
+                <DialogDescription className="overflow-y-scroll w-full max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-8rem)]">
+                  <Image
+                    src={imageFullSrc[0]}
+                    alt=""
+                    height={0}
+                    width={0}
+                    sizes="225vw"
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                </DialogDescription>
 
                 {/* {imageFullSrc.length === 1 ? 
                     <Image
