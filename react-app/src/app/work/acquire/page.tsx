@@ -206,7 +206,11 @@ export default function Acquire() {
                     badge="User Form"
                     h3="Quote Form for Policyholders"
                     p="A straightforward, 2-page form for prospective policyholders to receive a brief quote."
-                    imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-user_quote.png"
+                    imagePreviewSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-user_quote.png"
+                    imageFullSrc={[
+                      "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-quote_1-full.jpg",
+                      "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-quote_2-full.jpg",
+                    ]}
                     imageShadow={true}
                   />
                   
@@ -215,28 +219,25 @@ export default function Acquire() {
                     badge="User Form"
                     h3="Application Form"
                     p="After receiving a quote, users then fill out an extended application form."
-                    imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-application.png"
+                    imagePreviewSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-application.png"
+                    imageFullSrc={[
+                      "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-application_1-full.jpg",
+                      "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-application_2-full.jpg",
+                    ]}
                     imageShadow={true}
                   />
-                  
-                  <div className="hidden md:block">
-                    <FeatureCard
-                      color="hsla(0, 0%, 69%"
-                      badge="In-betweens"
-                      h3="Miscellaneous Pages"
-                      p="Various confirmation, error, and other in-between pages were needed to link the experience together."
-                      imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-sorry.png"
-                      imageShadow={true}
-                    />
-                  </div>
               </div>
+
               <div className="flex flex-col gap-8 md:mt-20">
                   <FeatureCard
                     color="hsla(41, 95%, 66%"
                     badge="Agent Tooling"
                     h3="Quote Tool for Agents"
                     p="A 1-page tool, formatted for power-users. Intended for agents who generate quotes on a routine basis."
-                    imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-agent_quote.png"
+                    imagePreviewSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-agent_quote.png"
+                    imageFullSrc={[
+                      "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-agent_quote-full.jpg",
+                    ]}
                     imageShadow={true}
                   />
                   <FeatureCard
@@ -244,20 +245,16 @@ export default function Acquire() {
                     badge="Dashboard"
                     h3="OnTrack™ & eDelivery"
                     p="Once an application is submitted, it needs to go through underwriting before approval. OnTrack™ coordinates this process."
-                    imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-ontrack.png"
+                    imagePreviewSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-ontrack.png"
+                    imageFullSrc={[
+                      "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-ontrack_1-full.jpg",
+                      "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-ontrack_2-full.jpg",
+                      "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-ontrack_3-full.jpg",
+                      "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-ontrack_4-full.jpg",
+                      "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-ontrack_5-full.jpg",
+                    ]}
                     imageShadow={true}
                   />
-                  
-                  <div className="block md:hidden">
-                    <FeatureCard
-                      color="hsla(0, 0%, 69%"
-                      badge="In-betweens"
-                      h3="Miscellaneous Pages"
-                      p="Various confirmation, error, and other in-between pages were needed to link the experience together."
-                      imageSrc="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq-sorry.png"
-                      imageShadow={true}
-                    />
-                  </div>
               </div>
             </div>
         </section>

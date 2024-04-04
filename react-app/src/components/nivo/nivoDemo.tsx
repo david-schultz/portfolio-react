@@ -20,19 +20,19 @@ export function NivoDemo() {
       <div className={`flex p-4 gap-4 card ${isMobile ? 'order-last' : 'flex-col'}`}>
         <button
           onClick={() => setSelectedChart('bar')}
-          className={`p-3 rounded-md ${selectedChart === 'bar' ? 'bg-[#2864CC]/[0.1]' : ''}`}>
+          className={`p-3 rounded-md hover:bg-[#2864CC]/[0.1] ${selectedChart === 'bar' ? 'bg-[#2864CC]/[0.1]' : ''}`}>
             <FontAwesomeIcon icon={faChartSimple} className="fa-2xl text-[#2864CC]" />
         </button>
 
         <button 
           onClick={() => setSelectedChart('line')}
-          className={`p-3 rounded-md ${selectedChart === 'line' ? 'bg-[#DC5858]/[0.1]' : ''}`}>
+          className={`p-3 rounded-md hover:bg-[#DC5858]/[0.1] ${selectedChart === 'line' ? 'bg-[#DC5858]/[0.1]' : ''}`}>
             <FontAwesomeIcon icon={faLineChart} className="fa-2xl text-[#DC5858]" />
         </button>
 
         <button 
           onClick={() => setSelectedChart('pie')}
-          className={`p-3 rounded-md ${selectedChart === 'pie' ? 'bg-[#FBC756]/[0.1]' : ''}`}>
+          className={`p-3 rounded-md hover:bg-[#FBC756]/[0.1] ${selectedChart === 'pie' ? 'bg-[#FBC756]/[0.1]' : ''}`}>
             <FontAwesomeIcon icon={faPieChart} className="fa-2xl text-[#FBC756]" />
         </button>
       </div>
