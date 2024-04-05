@@ -15,7 +15,7 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer: React.FunctionComponent<VideoPlayerProps> = (props) => {
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
 
 
   return (

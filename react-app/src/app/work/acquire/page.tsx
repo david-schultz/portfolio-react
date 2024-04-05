@@ -188,8 +188,8 @@ export default function Acquire() {
 
 
         <section className="flex flex-col items-center text-center mt-24">
-            <div className="mt-4 p-2 md:p-3 rounded-md bg-[#BF3AFE]/[0.1]">
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-2xl text-[#BF3AFE]" />
+            <div className="mt-4 p-2 md:p-3 rounded-md bg-[#3C8DEC]/[0.1]">
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-2xl text-[#3C8DEC]" />
             </div>
             <div className="my-6 mb-6 max-w-[700px]">
               <h2 className="text-2xl md:text-3xl">Scope (4 main workflows)</h2>
