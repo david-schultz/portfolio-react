@@ -21,7 +21,7 @@ import SiteBar from '@/components/SiteBar'
 import ScrollTo from '@/lib/ScrollTo';
 import ScrollUp from '@/lib/ScrollUp';
 import { Scroll } from 'lucide-react';
-import DataVisTabs from '@/components/ui/custom/datavisTabs';
+import DataVisTabs from '@/app/work/datavis/datavisTabs';
 
 // import useWindowResize from '@/lib/useWindowResize';
 

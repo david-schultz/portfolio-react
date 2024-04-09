@@ -35,6 +35,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['var(--font-graphik)'],
+      // mono: ['var(--font-graphik)'],
     },
     fontSize: {
       xs: ['0.75rem', '1.5em'],
@@ -97,6 +98,9 @@ module.exports = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        hypergold: {
+          DEFAULT: "hsl(var(--hypergold))",
         },
         sequential: {
           blue: {

@@ -118,6 +118,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
       <section className="mx-6 grid grid-cols-5 gap-4 sm:gap-6">
         <div className="card grid grid-cols-5 py-4 px-5 sm:py-5 sm:px-6 gap-4 sm:gap-6
                         col-span-5 md:col-span-3">
