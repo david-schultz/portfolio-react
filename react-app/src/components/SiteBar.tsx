@@ -50,13 +50,13 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
             <h4 className={ mainText }>David Schultz</h4>
             <small className={ subText }>Interaction Designer</small>
           </li>
-          <li className="block sm:hidden mr-4">
+          {/* <li className="block sm:hidden mr-4">
             { isInverted ? 
                   (<FontAwesomeIcon icon={faBars} className="text-white fa-xl" />)
                   :
                   (<FontAwesomeIcon icon={faBars} className="fa-xl"/>)
                 }
-          </li>
+          </li> */}
 
           <li className="hidden sm:block">
             {isInverted ? 
@@ -70,7 +70,7 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
             }
           </li>
 
-          <li className="hidden sm:block">
+          {/* <li className="hidden sm:block">
             <Dialog>
               <DialogTrigger asChild>
                 { isInverted ? 
@@ -88,19 +88,20 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
                 </DialogHeader>
               </DialogContent>
             </Dialog>
-          </li>
-          <li className="hidden sm:block">
+          </li> */}
+
+          <li className="">
           <Dialog>
               <DialogTrigger asChild>
                 { isInverted ? 
-                  (<Button variant="primary-locked">Contact</Button>)
+                  (<Button variant="primary-locked">Let's connect!</Button>)
                   :
-                  (<Button variant="subtle">Contact</Button>)
+                  (<Button variant="subtle">Let's connect!</Button>)
                 }
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Contact</DialogTitle>
+                  <DialogTitle>Let's connect!</DialogTitle>
                   <DialogDescription>
                     Shoot me an email at david@davidschultz.co!
                   </DialogDescription>
