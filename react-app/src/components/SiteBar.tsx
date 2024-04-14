@@ -101,7 +101,7 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Let's connect!</DialogTitle>
+                  <DialogTitle>Let&apos;s connect!</DialogTitle>
                   <DialogDescription>
                     Shoot me an email at david@davidschultz.co!
                   </DialogDescription>
