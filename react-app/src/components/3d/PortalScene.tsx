@@ -12,7 +12,11 @@ import { useGLTF, OrbitControls, Environment, Text, Text3D, MeshTransmissionMate
 import { Physics, RigidBody, RapierRigidBody, MeshCollider, CuboidCollider, RigidBodyTypeString } from '@react-three/rapier'
 
 import { Panel, PanelHole, PanelSlope, Portal } from '@/components/3d/thinking-with-portals.jsx'
+import { update } from '@react-spring/web'
 
+interface ILayoutProps {
+  // clippingPlane: THREE.Plane;
+}
 
 interface IPortalProps {
   id: number;
@@ -25,20 +29,28 @@ interface ITeleporterProps {
   nextId: number;
   setTarget: Dispatch<SetStateAction<number>>;
   setTeleport: Dispatch<SetStateAction<boolean>>;
+  teleport: boolean;
 }
 
 interface IPlaneActivatorProps {
-  portal: IPortalProps;
-  plane: THREE.Plane;
-  setActivePlanes: Dispatch<SetStateAction<THREE.Plane[]>>;
+  index: number;
+  setCurClip: Dispatch<SetStateAction<number>>;
 }
 
 interface ICubeProps {
+  name: string;
   planes: THREE.Plane[];
   isActive: boolean;
 }
 
 export default function PortalScene() {
+
+  // const plane = useMemo(() => {
+  //   console.log("test");
+  //   return new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+  // }, [])
+
+  // const [plane, setPlane] = useState<THREE.Plane>(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0));
   
   return (
     <Canvas
@@ -55,7 +67,8 @@ export default function PortalScene() {
       <ambientLight intensity={1} />
       <directionalLight position={[-10, 10, 0]} intensity={3} />
       <Suspense fallback={null}>
-        <Physics debug>
+        <Physics>
+          {/* <RoomLayout clippingPlane={plane} /> */}
           <RoomLayout />
         </Physics>
       </Suspense>
@@ -69,6 +82,7 @@ export default function PortalScene() {
 
 
 
+// function RoomLayout({clippingPlane}: ILayoutProps) {
 function RoomLayout() {
   const { nodes, materials } = useGLTF('./models/thinking-with-portals.gltf')
   let portals: IPortalProps[] = [
@@ -78,10 +92,13 @@ function RoomLayout() {
   ];
 
   const [isLoaded, setIsLoaded] = useState(false);
-  const [allPlanesState, setAllPlanesState] = useState<THREE.Plane[]>([]);
+  // const [allPlanesState, setAllPlanesState] = useState<THREE.Plane[]>([]);
   const [activePlanes, setActivePlanes] = useState<THREE.Plane[]>([]);
+  const [clippingPlane, setClippingPlane] = useState<THREE.Plane>(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0));
 
+  const [lastTarget, setLastTarget] = useState(-1);
   const [target, setTarget] = useState(0);
+  const [curClip, setCurClip] = useState(0);
   const [teleport, setTeleport] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   
@@ -91,63 +108,52 @@ function RoomLayout() {
   const cubeARef = useRef<RapierRigidBody>(null);
   const cubeBRef = useRef<RapierRigidBody>(null);
 
-  const cubeRef = useRef<RapierRigidBody>(null);
+  function updateClipping(index: number) {
+    // console.log('====== changing clip for: ' + index + ' =====');
+    // console.log('before: ', clippingPlane.constant);
 
-  const planesGeoRef = useRef<Mesh[]>([]);
-  const cubeRefs = useRef<RapierRigidBody[]>([]);
+    let portal = portals[index];
+    let point = new THREE.Vector3(portal.position.x, portal.position.y, portal.position.z);
+    let normal = new THREE.Vector3(portal.normal.x, portal.normal.y, portal.normal.z).normalize();
+    let originPlane = new THREE.Plane(normal, 0);
 
+    // console.table([point, normal]);
+    // console.log(originPlane.distanceToPoint(point));
 
-  const planeGeo = useMemo(() => {
-    return new THREE.PlaneGeometry(2.5, 2.5)
-  }, [])
+    // originPlane.set(normal, originPlane.distanceToPoint(point));
+    // console.log('origin: ', originPlane);
 
-  const cubeA = useMemo(() => {
-    // let active = false;
-    // let physType: RigidBodyTypeString = "fixed";
-    // if (activeCube === cubeARef.current) {
-    //   active = true;
-    //   physType = "dynamic";
-    // }
-    console.log('cubeA memoized');
-    console.log(activePlanes);
+    // clippingPlane.set(normal, originPlane.distanceToPoint(point));
 
-    return (
-      <RigidBody ref={cubeARef} name="CubeA" type={"dynamic"}>
-        <Cube planes={activePlanes} isActive={activeCube === cubeARef.current} />
-      </RigidBody>
-    )
-  }, [activePlanes, activeCube]);
+    let newPlane = new THREE.Plane(normal, originPlane.distanceToPoint(point));
+    // console.log("new plane", newPlane);
+    setClippingPlane(newPlane);
 
-  const cubeB = useMemo(() => {
-    console.log('cubeB memoized');
-    console.log(activePlanes);
-    return (
-      <RigidBody ref={cubeBRef} name="CubeB" type={"dynamic"}>
-        <Cube planes={activePlanes} isActive={activeCube === cubeBRef.current} />
-      </RigidBody>
-    )
-  }, [activePlanes, activeCube]);
+    // let plane = clippingPlane;
+    // plane.constant = originPlane.distanceToPoint(point);
+    // plane.coplanarPoint(point);
+
+    // clippingPlane.constant = originPlane.distanceToPoint(point);
+    // clippingPlane.coplanarPoint(point);
+
+    // console.log('after: ', clippingPlane.constant);
+    // console.log(clippingPlane);
+    // console.log();
+    // console.log();
+    // console.log();
+
+    // console.log('=================================');
+  }
+
+  useEffect(() => {
+    updateClipping(curClip);
+  }, [curClip]);
 
   // i.e. Initialize
   useEffect(() => {
     if (isLoaded) return;
     console.log('Initializing...');
-    const allPlanesTemp: THREE.Plane[] = [];
-
-    portals.forEach((surface) => {
-      let point = new THREE.Vector3(surface.position.x, surface.position.y, surface.position.z);
-      let normal = new THREE.Vector3(surface.normal.x, surface.normal.y, surface.normal.z).normalize();
-      let originPlane = new THREE.Plane(normal, 0);
-
-      let plane = new THREE.Plane(normal, originPlane.distanceToPoint(point));
-
-      allPlanesTemp.push(plane);
-      setAllPlanesState(oldArray => [...oldArray, plane]);
-    });
-
-    console.log(allPlanesTemp);
-
-    setActivePlanes([allPlanesTemp[0]]);
+    updateClipping(2);
 
     if (cubeARef.current && cubeBRef.current) {
       setActiveCube(cubeARef.current);
@@ -174,20 +180,19 @@ function RoomLayout() {
     }
   }, [isClicked]);
 
-  // useEffect(() => {
-  //   console.log('Active planes:', activePlanes);
-  // }, [activePlanes])
 
 
   // i.e., TELEPORTATION
   useEffect(() => {
+    console.table(target);
     if (!isLoaded) return;
     if (isClicked) return;
     if (!cubeARef.current || !cubeBRef.current || !activeCube || !inactiveCube || !portals[target]) return;
 
-    // console.log('============== TELEPORTATION');
     if (teleport) {
-      // console.log('== Telporting to: ', target);
+      setTeleport(false);
+      if (target === lastTarget) return;
+      setLastTarget(target);
       // Get position of the portal
       let pos = portals[target].position;
 
@@ -195,6 +200,7 @@ function RoomLayout() {
       let rotation = activeCube.rotation();
       let curVel = activeCube.linvel();
       let magnitude = Math.sqrt(curVel.x * curVel.x + curVel.y * curVel.y + curVel.z * curVel.z);
+      magnitude = 5;
 
       // Determine the new velocity: same magnitude, new direction
       let normal = new THREE.Vector3(portals[target].normal.x, portals[target].normal.y, portals[target].normal.z).normalize();
@@ -206,111 +212,71 @@ function RoomLayout() {
       inactiveCube.setLinvel({ x: normal.x, y: normal.y, z: normal.z }, true);
 
       // Update clipping planes
-      if (allPlanesState[target]) {
-        // setActivePlanes([allPlanesState[target]]);
-      }
+      // updateClipping(target);
 
-      
-      // Swap the active and inactive cubes
-      if (activeCube === cubeARef.current) {
-        setActiveCube(cubeBRef.current);
-        setInactiveCube(cubeARef.current);
-      } else {
-        setActiveCube(cubeARef.current);
-        setInactiveCube(cubeBRef.current);
-      }
+      setTimeout(() => {
+        if (!cubeARef.current || !cubeBRef.current) return;
+        // Swap the active and inactive cubes
+        if (activeCube === cubeARef.current) {
+          setActiveCube(cubeBRef.current);
+          setInactiveCube(cubeARef.current);
+        } else {
+          setActiveCube(cubeARef.current);
+          setInactiveCube(cubeBRef.current);
+        }
+
+      }, 10);
 
 
-      setTeleport(false);
 
     }
   }, [teleport]);
 
 
-  // function init() {
-  //   portals.forEach((surface) => {
-  //     let point = new THREE.Vector3(surface.position.x, surface.position.y, surface.position.z);
-  //     let normal = new THREE.Vector3(surface.normal.x, surface.normal.y, surface.normal.z).normalize();
-  //     let originPlane = new THREE.Plane(normal, 0);
-  //     // console.log("Id:", surface.id);
-  //     // console.log("Normals:", surface.normal, normal);
-
-  //     let plane = new THREE.Plane(normal, originPlane.distanceToPoint(point));
-  //     // console.log("Planes:", originPlane, plane, originPlane.distanceToPoint(point));
-
-  //     setAllPlanes(prevClipPlanes => [...prevClipPlanes, plane]);
-
-  //   });
-
-  //   setActivePlanes([allPlanes[0]]);
-  // }
-
-  // const teleportTo = (target: number) => {
-  //   if (!cubeRef.current) return;
-  //   if (portals[target]) {
-
-  //     // Teleport the cube to the portal
-  //     let pos = portals[target].position;
-  //     cubeRef.current.setTranslation({ x: pos.x, y: pos.y, z: pos.z }, true);  
-
-  //     // Get current velocity + its magnitude
-  //     const curV = cubeRef.current.linvel();
-  //     let magnitude = Math.sqrt(curV.x * curV.x + curV.y * curV.y + curV.z * curV.z);
-
-  //     // Determine the new velocity: same magnitude, new direction
-  //     let normal = new THREE.Vector3(portals[target].normal.x, portals[target].normal.y, portals[target].normal.z).normalize();
-  //     normal.multiplyScalar(magnitude);
-
-  //     cubeRef.current.setLinvel({ x: normal.x, y: normal.y, z: normal.z }, true);
-  //   }
-
-  // }
 
 
-
-
-
-  
 
   return (
     <group onClick={() => {
       setIsClicked(!isClicked)
     }}>
-      {/* <ClipPlanes /> */}
-      {/* <Clipper geo={geo} planesOffset={[0.33, 0.34, 0.28]} /> */}
 
       <group position={[-2.5, 3, 0]}>
-        {cubeA}
+        <RigidBody ref={cubeARef} name="CubeA" type={"dynamic"}>
+          <Cube name="coobA" planes={[clippingPlane]} isActive={activeCube === cubeARef.current} />
+        </RigidBody>
       </group>
 
       <group position={[0, -10, 0]}>
-      {cubeB}
+        <RigidBody ref={cubeBRef} name="CubeB" type={"dynamic"}>
+          <Cube name="coobB" planes={[clippingPlane]} isActive={activeCube === cubeBRef.current} />
+        </RigidBody>
       </group>
 
 
       
       <group position={[-2.5, 1, 0]}>
-        {/* <PlaneActivator portal={portals[0]} plane={allPlanesState[0]} setActivePlanes={setActivePlanes}/> */}
+        <PlaneActivator index={0} setCurClip={setCurClip}/>
         <PanelHole />
         <group position={[0, 0.05, 0]}>
           <Portal />
-          <Teleporter nextId={1} setTarget={setTarget} setTeleport={setTeleport} />
+          <Teleporter nextId={1} setTarget={setTarget} setTeleport={setTeleport} teleport={teleport}/>
         </group>
       </group>
-      <group position={[0, 0, 0]} >
-        {/* <PlaneActivator portal={portals[1]} plane={allPlanesState[1]} setActivePlanes={setActivePlanes}/> */}
+      <group position={[0, 0, 0]} rotation={[0, 0, 0]}>
+        <PlaneActivator index={1} setCurClip={setCurClip}/>
         <PanelHole />
         <group position={[0, 0.05, 0]}>
           <Portal />
-          <Teleporter nextId={2} setTarget={setTarget} setTeleport={setTeleport} />
+          <Teleporter nextId={2} setTarget={setTarget} setTeleport={setTeleport} teleport={teleport}/>
         </group>
       </group>
       <group position={[2.5, -1, 0]} >
-        {/* <PlaneActivator portal={portals[2]} plane={allPlanesState[2]} setActivePlanes={setActivePlanes}/> */}
+        <PlaneActivator index={2} setCurClip={setCurClip}/>
         <PanelHole />
         <group position={[0, 0.05, 0]}>
           <Portal />
-          <Teleporter nextId={0} setTarget={setTarget} setTeleport={setTeleport} />
+          <Teleporter nextId={0} setTarget={setTarget} setTeleport={setTeleport} teleport={teleport}/>
         </group>
       </group>
 
@@ -325,40 +291,42 @@ function RoomLayout() {
 
 
 
-function Cube({planes, isActive}: ICubeProps) {
+function Cube({name, planes, isActive}: ICubeProps) {
   const { nodes, materials } = useGLTF('./models/thinking-with-portals.gltf')
   return (
-    <group scale={[0.75, 0.75, 0.75]}>
-      {/* <mesh geometry={(nodes.Cube001 as THREE.Mesh).geometry} >
+
+      <group scale={[0.75, 0.75, 0.75]}>
+      <mesh geometry={(nodes.Cube001 as THREE.Mesh).geometry} >
         <meshStandardMaterial
-          clippingPlanes={planes} 
+          // clippingPlanes={planes} 
           // clipShadows={true}
           color={"blue"}
-          transparent={!isActive}
+          visible={isActive}
         />
       </mesh>
       <mesh geometry={(nodes.Cube001_1 as THREE.Mesh).geometry} >
         <meshStandardMaterial
-          clippingPlanes={planes} 
+          // clippingPlanes={planes} 
           // clipShadows={true}
           color={"white"}
-          transparent={!isActive}
+          visible={isActive}
         />
-      </mesh> */}
+      </mesh>
       <mesh geometry={(nodes.Cube001_2 as THREE.Mesh).geometry} >
         <meshStandardMaterial
-          clippingPlanes={planes} 
+          // clippingPlanes={planes} 
           // clipShadows={true}
           color={"grey"}
-          transparent={!isActive}
+          visible={isActive}
         />
       </mesh>
     </group>
+
   );
 }
 
 
-function PlaneActivator({portal, plane, setActivePlanes}: IPlaneActivatorProps) {
+function PlaneActivator({index, setCurClip}: IPlaneActivatorProps) {
   return (
     <group >
       {/* Activator */}
@@ -367,20 +335,16 @@ function PlaneActivator({portal, plane, setActivePlanes}: IPlaneActivatorProps) 
         name="Teleporter"
         sensor
         onIntersectionEnter={() => {
-          console.log('Activating plane ' + portal.id);
-          if (plane) {
-            // console.log(plane);
-            setActivePlanes([plane]);
-          }
+          setCurClip(index);
         }}
       />
     </group>
   );
 }
 
-function Teleporter({nextId, setTarget, setTeleport}: ITeleporterProps) {
+function Teleporter({nextId, setTarget, setTeleport, teleport}: ITeleporterProps) {
   return (
-    <group position={[0, -1, 0]}>
+    <group position={[0, -0.8, 0]}>
       <CuboidCollider
         args={[1, 0.02, 1]}
         name="Teleporter"
