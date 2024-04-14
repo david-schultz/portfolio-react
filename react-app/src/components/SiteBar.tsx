@@ -94,9 +94,9 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
           <Dialog>
               <DialogTrigger asChild>
                 { isInverted ? 
-                  (<Button variant="primary-locked">Let's connect!</Button>)
+                  (<Button variant="primary-locked">Let&apos;s connect!</Button>)
                   :
-                  (<Button variant="subtle">Let's connect!</Button>)
+                  (<Button variant="subtle">Let&apos;s connect!</Button>)
                 }
               </DialogTrigger>
               <DialogContent>
