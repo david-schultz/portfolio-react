@@ -24,20 +24,20 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
 
   let navStyling = "card glass";
   let logoSrc = "/logo.svg";
-  let mainText = "";
-  let subText = "text-secondary font-500";
+  let mainText = "text-md sm:text-lg leading-tight xs:leading-normal";
+  let subText = "text-secondary font-500 hidden xs:inline-block";
 
   if (isInverted) {
     navStyling = "grow";
     logoSrc = "/logo-invert.svg";
     mainText = "text-invert text-md sm:text-lg leading-tight xs:leading-normal";
-    subText = "text-neutral-300 font-500 invisible xs:visible";
+    subText = "text-neutral-300 font-500 hidden xs:inline-block";
   }
   
   return (
     <nav className={navStyling}>
-         <ul className="grow flex items-center justify-between p-4 gap-3 xs:gap-4">
-           <li className="flex-shrink-0 h-[44px] w-[44px] sm:h-[48px] sm:w-[48px]">
+         <ul className="flex items-center justify-between p-4 gap-3 xs:gap-4">
+           <li className="flex-shrink-0 h-[32px] w-[32px] xs:h-[48px] xs:w-[48px]">
              {/* <a href="/">
               <Image
                 src={logoSrc}

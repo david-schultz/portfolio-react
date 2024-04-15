@@ -1,3 +1,4 @@
+import { is } from '@react-three/fiber/dist/declarations/src/core/utils';
 import Image from 'next/image';
 
 export default function Logo ({ isInverted = false }: { isInverted?: boolean}) {
@@ -15,8 +16,8 @@ export default function Logo ({ isInverted = false }: { isInverted?: boolean}) {
         height={128}
         alt="Partial asterisk"
       /> */}
-      <img src="/logo.svg" className={isInverted ? 'filter-white' : 'filter-black'}
-        style={{transform: [{rotate: '0.01deg'}] as any }}/>
+      { isInverted ? <img src="/logo-invert.svg"/> : <img src="/logo.svg"/>}
+      {/* <img src="/logo.svg" className={isInverted ? 'filter-white' : 'filter-black'}/> */}
     </a>
   );
 };

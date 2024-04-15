@@ -84,7 +84,7 @@ export default function PortalScene({ isRunning }: { isRunning: boolean }) {
         </Physics>
       </Suspense>
       <Environment preset="sunset" />
-      {/* <OrbitControls /> */}
+      <OrbitControls enableZoom={false} enableRotate={false} />
     </Canvas>
   );
 }
