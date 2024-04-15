@@ -48,7 +48,9 @@ export function PanelHole(props) {
           <mesh geometry={nodes.Cube_1.geometry} material={materials.Top} />
           <mesh geometry={nodes.Cube_2.geometry} material={materials.Sides} />
         </MeshCollider>
+
       </RigidBody>
+      <mesh geometry={nodes.Portal.geometry} material={materials['Material.002']} scale={[0.611, 0.72, 0.871]}  position={[0, 0.05, 0]}/>
     </group>
   );
 }
@@ -61,18 +63,6 @@ export function PanelSlope(props) {
         <mesh geometry={nodes.Shape001.geometry} material={materials.Top} />
         <mesh geometry={nodes.Shape001_1.geometry} material={materials.Sides} />
       </group>
-    </group>
-  );
-}
-
-export function Portal(props) {
-  const { nodes, materials } = useGLTF('./models/thinking-with-portals.gltf')
-  
-  return (
-    <group {...props} dispose={null}>
-      <mesh geometry={nodes.Portal.geometry} material={materials['Material.002']} scale={[0.611, 0.72, 0.871]} >
-        
-      </mesh>
     </group>
   );
 }

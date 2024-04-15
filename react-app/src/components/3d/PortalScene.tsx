@@ -5,13 +5,13 @@ import SiteBar from '@/components/SiteBar'
 
 import { useRef, useState, useEffect, Suspense, useMemo, Dispatch, SetStateAction } from 'react'
 import * as THREE from "three"
-import { Mesh, Euler, Plane, Vector3 } from 'three'
+import { Mesh, Euler, Plane, Vector3, Quaternion } from 'three'
 import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { useGLTF, OrbitControls, Environment, Text, Text3D, MeshTransmissionMaterial, OrthographicCamera, PerspectiveCamera, Box} from '@react-three/drei'
 import { Physics, RigidBody, RapierRigidBody, MeshCollider, CuboidCollider, RigidBodyTypeString } from '@react-three/rapier'
 
-import { Panel, PanelHole, PanelSlope, Portal } from '@/components/3d/thinking-with-portals.jsx'
+import { Panel, PanelHole, PanelSlope } from '@/components/3d/thinking-with-portals.jsx'
 import { update } from '@react-spring/web'
 
 interface ILayoutProps {
@@ -23,6 +23,14 @@ interface IPortalProps {
   type: string;
   position: { x: number, y: number, z: number };
   normal: { x: number, y: number, z: number };
+}
+
+interface IPortalObject {
+  portal: IPortalProps;
+  nextId: number;
+  setTarget: Dispatch<SetStateAction<number>>;
+  setTeleport: Dispatch<SetStateAction<boolean>>;
+  teleport: boolean;
 }
 
 interface ITeleporterProps {
@@ -43,19 +51,22 @@ interface ICubeProps {
   isActive: boolean;
 }
 
-export default function PortalScene() {
-
-  // const plane = useMemo(() => {
-  //   console.log("test");
-  //   return new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-  // }, [])
-
-  // const [plane, setPlane] = useState<THREE.Plane>(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0));
+export default function PortalScene({ isRunning }: { isRunning: boolean }) {
+    useEffect(() => {
+    if (isRunning) {
+      // Start physics and collider interactions
+      // Reset all elements in the scene
+      console.log("Playing...");
+    } else {
+      // Stop physics and collider interactions
+      console.log("Pausing...");
+    }
+  }, [isRunning]);
   
   return (
     <Canvas
       // gl={{ localClippingEnabled: true }}
-      onCreated={(state) => (state.gl.localClippingEnabled = true)}
+      // onCreated={(state) => (state.gl.localClippingEnabled = true)}
     >
       <PerspectiveCamera
         makeDefault
@@ -67,13 +78,13 @@ export default function PortalScene() {
       <ambientLight intensity={1} />
       <directionalLight position={[-10, 10, 0]} intensity={3} />
       <Suspense fallback={null}>
-        <Physics>
+        <Physics paused={!isRunning}>
           {/* <RoomLayout clippingPlane={plane} /> */}
           <RoomLayout />
         </Physics>
       </Suspense>
       <Environment preset="sunset" />
-      <OrbitControls />
+      {/* <OrbitControls /> */}
     </Canvas>
   );
 }
@@ -84,7 +95,6 @@ export default function PortalScene() {
 
 // function RoomLayout({clippingPlane}: ILayoutProps) {
 function RoomLayout() {
-  const { nodes, materials } = useGLTF('./models/thinking-with-portals.gltf')
   let portals: IPortalProps[] = [
     { id: 0, type: 'PanelHole', position: { x: -2.5, y: 1, z: 0 }, normal: { x: 0, y: 1, z: 0 } },
     { id: 1, type: 'PanelHole', position: { x: 0, y: 0, z: 0 }, normal: { x: 0, y: 1, z: 0 } },
@@ -254,32 +264,70 @@ function RoomLayout() {
       </group>
 
 
-      
-      <group position={[-2.5, 1, 0]}>
-        <PlaneActivator index={0} setCurClip={setCurClip}/>
-        <PanelHole />
-        <group position={[0, 0.05, 0]}>
-          <Portal />
-          <Teleporter nextId={1} setTarget={setTarget} setTeleport={setTeleport} teleport={teleport}/>
-        </group>
-      </group>
-      <group position={[0, 0, 0]} rotation={[0, 0, 0]}>
-        <PlaneActivator index={1} setCurClip={setCurClip}/>
-        <PanelHole />
-        <group position={[0, 0.05, 0]}>
-          <Portal />
-          <Teleporter nextId={2} setTarget={setTarget} setTeleport={setTeleport} teleport={teleport}/>
-        </group>
-      </group>
-      <group position={[2.5, -1, 0]} >
-        <PlaneActivator index={2} setCurClip={setCurClip}/>
-        <PanelHole />
-        <group position={[0, 0.05, 0]}>
-          <Portal />
-          <Teleporter nextId={0} setTarget={setTarget} setTeleport={setTeleport} teleport={teleport}/>
-        </group>
-      </group>
+      {/* TODO: TEST AND SEE IF <PORTAL> CAN REPLACE THE BELOW CODE */}
+      {/* 
+      // 
+      // 
+      // 
+      // 
+      //  */}
+      {portals.map((portal: IPortalProps, index: number) => {
+        if (portal.type === 'PanelHole') {
+          return (
+            <Portal
+              key={index}
+              portal={portal}
+              nextId={(index + 1) % portals.length}
+              setTarget={setTarget}
+              setTeleport={setTeleport}
+              teleport={teleport}
+            />
+          );
 
+        }
+      })}
+
+    </group>
+  );
+}
+
+
+// { id: 0, type: 'PanelHole', position: { x: -2.5, y: 1, z: 0 }, normal: { x: 0, y: 1, z: 0 } },
+
+function Portal({portal, nextId, setTarget, setTeleport, teleport}: IPortalObject) {
+
+  function rotateVectorWithNormal(toRotate: Vector3, normal: Vector3) {
+    const newVector: Vector3 = new Vector3().copy(toRotate);
+
+    // set up direction
+    let up = new Vector3(0, 1, 0);
+    let axis: Vector3;
+    // we want the vector to point in the direction of the face normal
+    // determine an axis to rotate around
+    // cross will not work if vec == +up or -up, so there is a special case
+    if (normal.y == 1 || normal.y == -1) {
+      axis = new Vector3(1, 0, 0);
+    } else {
+      axis = up.clone().cross(normal);
+    }
+
+    // determine the amount to rotate
+    let radians = Math.acos(normal.dot(up));
+    const quat = new Quaternion().setFromAxisAngle(axis, radians);
+    newVector.applyQuaternion(quat);
+
+    return newVector;
+
+}
+
+
+  console.log(portal);
+  return (
+    <group position={[portal.position.x, portal.position.y, portal.position.z]}>
+      <PanelHole />
+      <group position={[0, 0.05, 0]}>
+        <Teleporter nextId={nextId} setTarget={setTarget} setTeleport={setTeleport} teleport={teleport}/>
+      </group>
     </group>
   );
 }

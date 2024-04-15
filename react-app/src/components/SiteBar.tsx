@@ -17,6 +17,7 @@ import {
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import Logo from './ui/custom/logo';
 
 export default function SiteBar({ variant = 'default' }: { variant?: string}) {
   const isInverted = variant === "inverted";
@@ -29,24 +30,25 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
   if (isInverted) {
     navStyling = "grow";
     logoSrc = "/logo-invert.svg";
-    mainText = "text-invert";
-    subText = "text-neutral-300 font-500";
+    mainText = "text-invert text-md sm:text-lg leading-tight xs:leading-normal";
+    subText = "text-neutral-300 font-500 invisible xs:visible";
   }
   
   return (
     <nav className={navStyling}>
-         <ul className="grow flex items-center justify-between p-4 gap-4">
-           <li>
-             <a href="/">
-             <Image
-              src={logoSrc}
-              width={48}
-              height={48}
-              alt="Partial asterisk"
-            />
-            </a>
+         <ul className="grow flex items-center justify-between p-4 gap-3 xs:gap-4">
+           <li className="flex-shrink-0 h-[44px] w-[44px] sm:h-[48px] sm:w-[48px]">
+             {/* <a href="/">
+              <Image
+                src={logoSrc}
+                width={48}
+                height={48}
+                alt="Partial asterisk"
+              />
+            </a> */}
+            <Logo isInverted={isInverted}/>
           </li>
-          <li className="grow flex flex-col gap-0">
+          <li className="grow flex xs:flex-col gap-0">
             <h4 className={ mainText }>David Schultz</h4>
             <small className={ subText }>Interaction Designer</small>
           </li>

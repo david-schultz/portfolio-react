@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import BackgroundSetter from '@/lib/setbg'
 import SiteBar from '@/components/SiteBar'
+import { Button } from '@/components/ui/button'
 
 import { useRef, useState, useEffect } from 'react'
 import * as THREE from "three"
@@ -21,6 +22,7 @@ import { EffectComposer, N8AO, SMAA } from "@react-three/postprocessing"
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader"
 import { Orbit } from 'next/font/google'
 import PortalScene from '@/components/3d/PortalScene'
+import { button } from 'leva'
 
 
 let gogglesSrc = "/fa/head-side-goggles-solid.svg";
@@ -55,6 +57,8 @@ const GlassScene = dynamic(() => import('@/components/3d/glassScene.tsx'), {
 
 
 export default function Sandbox() {
+  const [isRunning, setIsRunning] = useState(true); // Add this line
+
   const [color, setColor] = useState("white");
   let interact = () => {
     let colors = ["white", "black", "yellow"];
@@ -62,12 +66,17 @@ export default function Sandbox() {
     setColor(randomColor);
   }
 
+  // Add this function
+  let toggleRunning = () => {
+    setIsRunning(!isRunning);
+  }
+
   return (
     <main className="min-h-screen flex flex-col gap-4 mb-32">
 
        <section className="mx-2 bg-neutral-800 rounded-b-lg mb-64 h-[800px] md:h-[928px]">
 
-        <div className="absolute w-[calc(100vw-4rem)] top-[calc(100vh-32rem)] md:top-[calc(100vh-24rem)] px-8 sm:px-16 md:px-24 lg:px-32 ">
+        <div className="absolute w-[calc(100vw-4rem)] top-[500px] md:top-[650px] px-8 sm:px-16 md:px-24 lg:px-32 ">
           <h1 className="ml-1 text-5xl text-white">Interaction Designer</h1>
           <h3 className="ml-1 text-hypergold mt-3">Seattle, WA</h3>
 
@@ -80,7 +89,8 @@ export default function Sandbox() {
                   alt="vr goggles icon"
                   className="mr-1"
                 />
-                <p className="font-500 " style={{"leading-trim": 'both', 'text-edge': 'cap'}}>Mixed Reality</p>
+                <p className="font-500">Mixed Reality</p>
+                {/* <p className="font-500" style={{"leading-trim": 'both', 'text-edge': 'cap'}}>Mixed Reality</p> */}
             </div>
             <div className="flex bg-foreground rounded-full py-1 px-4">
                 <Image
@@ -90,17 +100,22 @@ export default function Sandbox() {
                   alt="browser icon"
                   className="mr-1"
                 />
-                <p className="font-500 " style={{"leading-trim": 'both', 'text-edge': 'cap'}}>Front-end</p>
+                <p className="font-500">Front-end</p>
+                {/* <p className="font-500 " style={{"leading-trim": 'both', 'text-edge': 'cap'}}>Front-end</p> */}
             </div>
           </div>
         </div>
 
         <div className="w-full h-[800px] md:h-[928px] top-0">
-          <PortalScene />
+          <PortalScene isRunning={isRunning} />
         </div>
 
         <div className="absolute top-0 z-1 w-[calc(100vw-2rem)] p-6">
           <SiteBar variant="inverted" className="" />
+        </div>
+
+        <div className="absolute z-1 p-6 top-[calc(100vh-32rem)] md:top-[calc(100vh-24rem)] right-16">
+          <Button onClick={toggleRunning} className={isRunning ? "bg-red-600 hover:bg-red-700" : "bg-blue-600 hover:bg-blue-700"}>{isRunning ? "Pause Sim" : "Start Sim"}</Button>
         </div>
       </section>
     </main>
