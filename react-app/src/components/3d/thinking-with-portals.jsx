@@ -68,7 +68,20 @@ export function PanelSlope(props) {
   );
 }
 
+export function PistonSurface(props) {
+  const { nodes, materials } = useGLTF('./models/piston_surface.gltf')
+  return (
+    <group {...props} dispose={null}>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.144}>
+        <mesh geometry={nodes.Body_dmxpiston_lift_top_modeldmx_MESH.geometry} material={materials['AR/VR Glass for GLTF extension']} />
+        <mesh geometry={nodes.Body_dmxpiston_lift_top_modeldmx_MESH_1.geometry} material={materials.platform} />
+      </group>
+    </group>
+  );
+}
+
 
 useGLTF.preload('./models/thinking-with-portals.gltf');
 
 useGLTF.preload('./models/portal-models.gltf');
+useGLTF.preload('./models/piston_surface.gltf');
