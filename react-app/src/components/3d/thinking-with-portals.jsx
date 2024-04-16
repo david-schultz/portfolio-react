@@ -5,6 +5,7 @@ Command: npx gltfjsx@6.2.16 public/models/thinking-with-portals.gltf
 //@ts-nocheck
 
 import React, { useRef } from 'react'
+import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 import { RigidBody, RapierRigidBody, MeshCollider, CuboidCollider } from '@react-three/rapier'
 
@@ -69,3 +70,5 @@ export function PanelSlope(props) {
 
 
 useGLTF.preload('./models/thinking-with-portals.gltf');
+
+useGLTF.preload('./models/portal-models.gltf');
