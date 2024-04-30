@@ -1,7 +1,7 @@
 import '@/app/styles.css'
 import dynamic from 'next/dynamic'
 import BackgroundSetter from '@/lib/setbg'
-import SiteBar from '@/components/SiteBar'
+import SiteBar from '@/components/ui/custom/SiteBar'
 
 import { useRef, useState, useEffect, Suspense, useMemo, Dispatch, SetStateAction } from 'react'
 import * as THREE from "three"
@@ -11,7 +11,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { useGLTF, OrbitControls, Environment, Text, Text3D, MeshTransmissionMaterial, OrthographicCamera, PerspectiveCamera, Box} from '@react-three/drei'
 import { Physics, RigidBody, RapierRigidBody, MeshCollider, CuboidCollider, RigidBodyTypeString, vec3 } from '@react-three/rapier'
 
-import { Panel, PanelHole, PanelSlope, PistonSurface } from '@/components/3d/thinking-with-portals.jsx'
+import { FullScene, Panel, PanelHole, PanelSlope, PistonSurface } from '@/components/3d/thinking-with-portals.jsx'
 import { update } from '@react-spring/web'
 import { group } from 'console'
 
@@ -86,19 +86,19 @@ export default function PortalScene({ isRunning }: { isRunning: boolean }) {
         fov={45}
         near={0.1}
         far={1000}
-        position={[10, 5, 10]}
+        position={[8, 5, 8]}
       />
       <ambientLight intensity={1} />
       <directionalLight position={[-10, 10, 0]} intensity={3} />
       <Suspense fallback={null}>
-        <Physics paused={!isRunning} >
+        <Physics paused={!isRunning} debug>
           <RoomLayout />
         </Physics>
       </Suspense>
       <Environment preset="sunset" />
       <OrbitControls 
         enableZoom={false} 
-        enableRotate={false}
+        // enableRotate={false}
       />
     </Canvas>
   );
@@ -219,7 +219,9 @@ function RoomLayout() {
       setIsClicked(!isClicked)
     }}>
 
-      <group position={[portals[0].position.x, portals[0].position.y + 2, portals[0].position.z]}>
+      <FullScene position={[0, -3, 0]}/>
+
+      {/* <group position={[portals[0].position.x, portals[0].position.y + 2, portals[0].position.z]}>
         <RigidBody ref={cubeARef} name="CubeA" type={"dynamic"}>
           <Cube name="coobA" isActive={activeCube === cubeARef.current} />
         </RigidBody>
@@ -257,7 +259,7 @@ function RoomLayout() {
               activeCubeName={activeCubeName}
             />
           );
-      })}
+      })} */}
 
 
 

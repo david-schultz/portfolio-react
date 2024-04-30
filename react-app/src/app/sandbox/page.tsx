@@ -5,7 +5,7 @@ import '@/app/styles.css'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import BackgroundSetter from '@/lib/setbg'
-import SiteBar from '@/components/SiteBar'
+import SiteBar from '@/components/ui/custom/SiteBar'
 import { Button } from '@/components/ui/button'
 
 import { useRef, useState, useEffect } from 'react'

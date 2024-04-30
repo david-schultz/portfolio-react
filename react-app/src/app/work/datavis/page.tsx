@@ -17,7 +17,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare, faBullseye, faMagnifyingGlass, faUsers, faHammer, faFileLines, faPieChart, faLineChart, faBarChart, faChartSimple, faCamera } from '@fortawesome/free-solid-svg-icons'
 import { NivoDemo } from '@/components/nivo/nivoDemo';
-import SiteBar from '@/components/SiteBar'
+import SiteBar from '@/components/ui/custom/SiteBar'
 import ScrollTo from '@/lib/ScrollTo';
 import ScrollUp from '@/lib/ScrollUp';
 import { Scroll } from 'lucide-react';

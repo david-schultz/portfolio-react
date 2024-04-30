@@ -23,7 +23,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-import SiteBar from '@/components/SiteBar'
+import SiteBar from '@/components/ui/custom/SiteBar'
 import { InfoBox, InfoBoxHeader, InfoBoxSection } from '@/components/ui/custom/infoBox'
 import FeatureCard from '@/components/ui/custom/featureCard';
 

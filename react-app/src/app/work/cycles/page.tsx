@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import '@/app/styles.css'
 import BackgroundSetter from '@/lib/setbg'
-import SiteBar from '@/components/SiteBar'
+import SiteBar from '@/components/ui/custom/SiteBar'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import VideoPlayer from "@/components/VideoPlayer.tsx"
@@ -30,35 +30,48 @@ export default function Cycles() {
         <div className="mx-4 xs:mx-8 sm:mx-16 max-w-[1200px] mt-16">
           <h1 className="mt-4 mb-4 text-3xl sm:text-4xl md:text-5xl font-500">Cycles</h1>
           <p className="text-lg">Re-imagining the calendar in mixed reality</p>
-          <div className="grid grid-cols-6 align-bottom mt-16">
-            <ul className="col-span-2 flex flex-col gap-1 text-sm justify-end">
-              <li className="text-xs font-600">[DETAILS]</li>
-              <li>Jan 2024 – Mar 2024</li>
-              <li>DESIGN 483: Advanced Interfaces</li>
-              <li>Unity, Quest 3</li>
-            </ul>
-            <ul className="col-span-2 flex flex-col gap-1 text-sm justify-end">
-              <li className="text-xs font-600">[TEAM]</li>
-              <li>David Schultz</li>
-              <li>Nat Musenga</li>
-              <li>Maggie Zheng</li>
-              <li>Emi White</li>
-            </ul>
-            <ul className="col-span-2 flex flex-col gap-1 text-sm justify-end">
-              <li className="text-xs font-600">[RESPONSIBILITIES]</li>
-              <li>Design philosophy, conceptual ideation, prototyping in ShapesXR & Unity</li>
-            </ul>
-          </div>
+
           <div className="card mt-4 sm:mt-8">
             {/* <VideoPlayer width="600" height="400"
               videoUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo.webm'
               gifUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo.gif'
             /> */}
+            <Image
+              src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero.png"
+              alt="a selfie of the soul"
+              height={0}
+              width={0}
+              sizes="225vw"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
           </div>
+
+          <div className="grid grid-cols-6 mt-8">
+            <ul className="col-span-2 flex flex-col gap-1 text-sm">
+              <li className="text-xs font-600">[DETAILS]</li>
+              <li>Jan 2024 – Mar 2024</li>
+              <li>DESIGN 483: Advanced Interfaces</li>
+              <li>Unity, Quest 3</li>
+            </ul>
+            <ul className="col-span-2 flex flex-col gap-1 text-sm">
+              <li className="text-xs font-600">[TEAM]</li>
+              <li>Nat Musenga</li>
+              <li>David Schultz</li>
+              <li>Emi White</li>
+              <li>Maggie Zheng</li>
+            </ul>
+            <ul className="col-span-2 flex flex-col gap-1 text-sm">
+              <li className="text-xs font-600">[RESPONSIBILITIES]</li>
+              <li>Design philosophy, conceptual ideation, prototyping in ShapesXR & Unity</li>
+            </ul>
+          </div>
+          <Separator className="my-16" />{/*————————————————————————————*/}
         </div>
       </header>
 
-      <article className="mx-4 xs:mx-8 sm:mx-16 max-w-[900px] mt-24">
+
+
+      <article className="mx-4 xs:mx-8 sm:mx-16 max-w-[900px] mt-16">
         <section className="grid md:grid-cols-5 gap-8 md:gap-16">
           <div className="md:col-span-3 flex flex-col gap-6 max-w-[450px]">
             <h2 className="mb-2">Mixed Reality—<br/>A new design paradigm</h2>
@@ -87,18 +100,67 @@ export default function Cycles() {
         <Separator className="my-12" />{/*————————————————————————————*/}
 
         <section className="flex flex-col gap-4 ">
+          <h3>Managing position-in-time</h3>
+          <div className="grid md:grid-cols-2 gap-6 md:gap-16 mt-4">
+            <div className="flex flex-col col-span-1 gap-2">
+              <p>In conceptualizing a “time machine”, our group wanted to focus on managing time in the present & future. This led us to think about the calendar, and how we might design one for 3d-space.</p>
+            </div>
+            <div className="flex flex-col col-span-1 gap-2">
+              <p>In particular, we thought a lot about the calendar’s ability to help people manage their “position-in-time.”</p>
+              <p>This is basically the idea that calendars aren’t just used for concrete events—sometimes they’re used more abstractly, indicating where your mental headspace needs to be.</p>
+            </div>
+          </div>
+
+          <div className="card mt-4">
+                <Image
+                  src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/subconscious-position.png"
+                  alt="video of me, prototyping with ShapesXR"
+                  height={0}
+                  width={0}
+                  sizes="225vw"
+                  style={{ width: '100%', height: 'auto' }}
+                />
+          </div>
+        </section>
+
+        <section className="flex flex-col gap-4 my-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-16 mt-4">
+            <div className="flex flex-col col-span-1 gap-2">
+              <h3>Thinking in cycles</h3>
+              <p>Now, how do you represent time, physically?</p>
+              <p>One option is to lay it out as a timeline in front of you. Give it a start + end, throw some events on, and call it a day. But... we noticed that, if you scrolled far into the future, you’d start to lose a sense of scale. How far away from the present were you?</p>
+              <p>Another option is to model it after a metaphor, like the Earth orbiting around the Sun. In this case, the viewable span of time would be anchored in its relation to the current cycle.</p>
+            </div>
+            <div className="flex flex-col col-span-1 gap-2">
+              <div className="card">
+                    <Image
+                      src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/linear-shapesxr.png"
+                      alt="video of me, prototyping with ShapesXR"
+                      height={0}
+                      width={0}
+                      sizes="225vw"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+              </div>
+              <p className="text-sm text-center mt-2">Early iteration in ShapesXR</p>
+            </div>
+          </div>
+        </section>
+
+        <Separator className="my-12" />{/*————————————————————————————*/}
+
+        <section className="flex flex-col gap-4 ">
           <h2>Prototype Demo</h2>
-          <p className="text-lg mb-8">So here’s the basic concept: <span className="font-500">“How might we represent the cyclical nature of time?”</span></p>
+          <p className="text-lg mb-8">So here’s the basic idea: <span className="font-500">“How might we represent the cyclical nature of time?”</span></p>
           <VideoPlayer width="600" height="400"
               videoUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo.webm'
-              gifUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo.gif'
+              gifUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-quick.gif'
           />
-          <h3 className="mt-12">Trying new things</h3>
           <div className="grid md:grid-cols-2 gap-6 md:gap-16">
             <div className="flex flex-col gap-6 col-span-1">
                 <div className="card">
                   <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/ocean.jpg"
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-spin.gif"
                     alt="a selfie of the soul"
                     height={0}
                     width={0}
@@ -121,7 +183,7 @@ export default function Cycles() {
             <div className="flex flex-col gap-6 col-span-1">
                 <div className="card">
                   <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/ocean.jpg"
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-addtask.gif"
                     alt="a selfie of the soul"
                     height={0}
                     width={0}
@@ -168,7 +230,7 @@ export default function Cycles() {
               <p className="text-caption text-center">Maggie giving a demo</p>
             </div>
             <div className="flex flex-col gap-6 col-span-1">
-              <div className="card">
+              {/* <div className="card">
                 <Image
                   src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/selfie.jpg"
                   alt="a selfie of the soul"
@@ -178,7 +240,7 @@ export default function Cycles() {
                   style={{ width: '100%', height: 'auto' }}
                 />
               </div>
-              <p className="text-caption text-center">I’m very glad I did!</p>
+              <p className="text-caption text-center">I’m very glad I did!</p> */}
               <div className="card mt-4">
                 <Image
                   src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/david_shapesxr.gif"

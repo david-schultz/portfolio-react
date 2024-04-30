@@ -1,7 +1,7 @@
 import '@/app/styles.css'
 import dynamic from 'next/dynamic'
 import BackgroundSetter from '@/lib/setbg'
-import SiteBar from '@/components/SiteBar'
+import SiteBar from '@/components/ui/custom/SiteBar'
 
 import { useRef, useState, useEffect, Suspense, useMemo } from 'react'
 import * as THREE from "three"

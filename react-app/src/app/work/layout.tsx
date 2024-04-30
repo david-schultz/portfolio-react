@@ -1,4 +1,4 @@
-import SiteBar from '@/components/SiteBar'
+import SiteBar from '@/components/ui/custom/SiteBar'
 import ScrollUp from '@/lib/ScrollUp'
 
 export default function WorkLayout({

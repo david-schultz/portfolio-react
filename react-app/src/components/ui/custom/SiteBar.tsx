@@ -17,7 +17,7 @@ import {
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import Logo from './ui/custom/logo';
+import Logo from './logo';
 
 export default function SiteBar({ variant = 'default' }: { variant?: string}) {
   const isInverted = variant === "inverted";

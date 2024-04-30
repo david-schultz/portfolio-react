@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import '@/app/styles.css'
 import BackgroundSetter from '@/lib/setbg'
-import SiteBar from '@/components/SiteBar'
+import SiteBar from '@/components/ui/custom/SiteBar'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 
