@@ -16,6 +16,7 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
 type ProjectCardProps = {
@@ -30,9 +31,13 @@ type ProjectCardProps = {
 }
 
 
+
 let readcvSrc = "/fa/readcv.svg";
 
 export default function Home() {
+  // const displayedNews: Array<NewsCardProps> = [
+
+  // ];
   const displayedProjects: Array<ProjectCardProps> = [
     {
       "name": "sureUI Data Visualization",
@@ -67,7 +72,7 @@ export default function Home() {
     {
       "name": "Cycles",
       "year": "2024",
-      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero.png",
+      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero.jpg",
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
@@ -91,6 +96,10 @@ export default function Home() {
       /> 
     );
 
+  // const newscards = displayedNews.map(
+
+  // );
+
   const marqueeContent = (
     <div className="inline-block">
       <Image
@@ -103,6 +112,7 @@ export default function Home() {
       <h2 className="text-xl sm:text-2xl">Hi, I’m David—a designer, developer, and hobbyist.</h2>
     </div>
   )
+
 
   return (
     <main className="min-h-screen flex flex-col gap-4 mb-32">
@@ -186,16 +196,29 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="workSection" className="mt-16 md:mt-0 mb-64 md:max-w-[600px]">
-          <header className="card flex items-center py-4 px-5 sm:py-5 sm:px-6 gap-3 sm:gap-4 mb-4">
-            {/* <ArrowDown size={32} /> */}
+        <section id="workSection" className="md:mt-0 mb-64 md:max-w-[600px]">
+          {/* <header className="card flex items-center py-4 px-5 sm:py-5 sm:px-6 gap-3 sm:gap-4 mb-4">
             <FontAwesomeIcon icon={faArrowDown} className="fa-xl" />
             <h2 className="text-xl sm:text-2xl">Work</h2>
-          </header>
+          </header> */}
+          <Tabs id="tabs" defaultValue="work" className="w-full max-w-[1200px] flex flex-col items-center">
+            <TabsList className="mb-4 w-full sticky top-16 z-[10000]">
+              <TabsTrigger value="work" className="w-full">Work</TabsTrigger>
+              <TabsTrigger value="news" className="w-full">News</TabsTrigger>
+            </TabsList>
 
-          <ul className="grid grid-cols-1 gap-4">
-            { projects }
-          </ul>
+            <TabsContent value="work" className="px-2 flex flex-col items-center max-w-[900px]">
+              <ul className="grid grid-cols-1 gap-4">
+                { projects }
+              </ul>
+            </TabsContent>
+            <TabsContent value="news" className="px-2 flex flex-col items-center max-w-[900px]">
+              <ul className="grid grid-cols-1 gap-4">
+                {/* { newscards } */}
+              </ul>
+            </TabsContent>
+          </Tabs>
+
         </section>
 
       </div>
