@@ -35,6 +35,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUsers, faBullseye, faHammer, faClipboardList, faTableColumns, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 import "@/lib/bigtext.css"
+import ScrollButton from '@/components/ui/custom/scroll-button';
 
 export default function Acquire() {
   return (
@@ -451,6 +452,8 @@ export default function Acquire() {
         </section>
 
       </main>
+
+      <ScrollButton />
     </article>
   )
 }

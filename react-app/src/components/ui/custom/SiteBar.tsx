@@ -24,19 +24,39 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
 
   let navStyling = "card glass";
   let logoSrc = "/logo.svg";
-  let mainText = "text-md sm:text-lg leading-tight xs:leading-normal";
+  let mainText = "text-mdlg sm:text-lg leading-tight xs:leading-normal";
   let subText = "text-secondary font-500 hidden xs:inline-block";
 
   if (isInverted) {
-    navStyling = "grow";
+    navStyling = "grow glass-dark";
     logoSrc = "/logo-invert.svg";
-    mainText = "text-invert text-md sm:text-lg leading-tight xs:leading-normal";
+    mainText = "text-invert text-mdlg sm:text-lg leading-tight xs:leading-normal";
     subText = "text-neutral-300 font-500 hidden xs:inline-block";
   }
+
+  // const [scrollData, setScrollData] = useState({
+  //   y: 0,
+  //   lastY: 0
+  // });
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollData(prevState => {
+  //       return {
+  //         y: window.scrollY,
+  //         lastY: prevState.y
+  //       }
+  //     })
+  //   }
+
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+
+  // }, []);
   
   return (
     <nav className={navStyling}>
-         <ul className="flex items-center justify-between p-4 gap-3 xs:gap-4">
+         <ul className="flex items-center justify-between p-2 xs:p-4 gap-3 xs:gap-4">
            <li className="flex-shrink-0 h-[32px] w-[32px] xs:h-[48px] xs:w-[48px]">
              {/* <a href="/">
               <Image
@@ -71,26 +91,6 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
               </Button>)
             }
           </li>
-
-          {/* <li className="hidden sm:block">
-            <Dialog>
-              <DialogTrigger asChild>
-                { isInverted ? 
-                  (<Button variant="subtle-dark-locked">About the site</Button>)
-                  :
-                  (<Button variant="ghost">About the site</Button>)
-                }
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>About the site</DialogTitle>
-                  <DialogDescription>
-                    This website is built with React.js, Next.js, and notably shadcn/ui.
-                  </DialogDescription>
-                </DialogHeader>
-              </DialogContent>
-            </Dialog>
-          </li> */}
 
           <li className="">
           <Dialog>

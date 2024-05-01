@@ -13,7 +13,6 @@ import { faArrowDown, faArrowUpRightFromSquare, faEnvelope, faFile, faGraduation
 import { faFaceSmile, faNewspaper } from '@fortawesome/free-regular-svg-icons'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
-
 let readcvSrc = "/fa/readcv.svg";
 
 interface AboutSectionProps {
@@ -90,11 +89,15 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
             </div>
           : 
             <div id="detailsView" className="flex flex-col">
-              <div className="flex items-center gap-2 mb-2 text-red-500">
+              {/* <div className="flex items-center gap-2 mb-2 text-red-500">
                 <FontAwesomeIcon icon={faMapPin} />
                 <span className="font-500">Seattle, WA</span>
+              </div> */}
+              <div className="bg-background p-4 rounded-lg">
+                <p>I'm an Interaction Design student at the University of Washington. I'm excited about mixed reality, and designing experiences that pull us back into the world around us!</p>
               </div>
-              <p>I'm an Interaction Design student at the University of Washington. I'm excited about mixed reality, and designing experiences that pull us back into the world around us!</p>
+
+              
               {/* <p className="font-500">B.Des from the University of Washington</p> */}
               {/* <div className="flex items-center gap-2 mb-2 text-purple-600">
                 <FontAwesomeIcon icon={faGraduationCap} />

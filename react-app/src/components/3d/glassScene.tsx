@@ -31,7 +31,7 @@ export default function GlassScene() {
 
       </Suspense>
       {/* <OrbitControls /> */}
-      <Environment preset="sunset" />
+      <Environment preset="city" />
 
       {/* <EffectComposer multisampling={0}>
         <N8AO halfRes color="black" aoRadius={2} intensity={1} aoSamples={6} denoiseSamples={4} />

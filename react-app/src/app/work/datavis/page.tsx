@@ -22,6 +22,7 @@ import ScrollTo from '@/lib/ScrollTo';
 import ScrollUp from '@/lib/ScrollUp';
 import { Scroll } from 'lucide-react';
 import DataVisTabs from '@/app/work/datavis/datavisTabs';
+import ScrollButton from '@/components/ui/custom/scroll-button';
 
 // import useWindowResize from '@/lib/useWindowResize';
 
@@ -69,6 +70,8 @@ export default function Datavis() {
       <main className="flex flex-col items-center mx-4 xs:mx-8 sm:mx-16">
         <DataVisTabs />
       </main>
+
+      <ScrollButton />
     </article>
   )
 }

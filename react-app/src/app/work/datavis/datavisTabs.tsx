@@ -33,7 +33,7 @@ const DataVisTabs: React.FC<DataVisTabsProps> = (props) => {
   };
 
   return (
-    <Tabs id="tabs" defaultValue="process" className="mt-24 w-full max-w-[1200px] flex flex-col items-center">
+    <Tabs id="tabs" defaultValue="process" className="mt-8 w-full max-w-[1200px] flex flex-col items-center">
           <TabsList className="mb-16 w-full sticky top-4 z-[10000]">
             <TabsTrigger value="process" className="w-full" onClick={handleTabClick}>Process</TabsTrigger>
             <TabsTrigger value="deliverables" className="w-full" onClick={handleTabClick}>Deliverables</TabsTrigger>

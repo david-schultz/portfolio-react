@@ -8,6 +8,7 @@ import { Separator } from '@/components/ui/separator'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+import ScrollButton from '@/components/ui/custom/scroll-button'
 
 export default function Arboretum() {
   return (
@@ -293,6 +294,8 @@ export default function Arboretum() {
 
 
       </main>
+      
+      <ScrollButton />
     </article>
   )
 }

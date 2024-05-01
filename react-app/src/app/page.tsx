@@ -19,6 +19,7 @@ import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
+import HeroSection from '@/components/ui/custom/hero-section'
 import AboutSection from '@/components/ui/custom/about-section'
 
 
@@ -38,9 +39,6 @@ type ProjectCardProps = {
 let readcvSrc = "/fa/readcv.svg";
 
 export default function Home() {
-  // const displayedNews: Array<NewsCardProps> = [
-
-  // ];
   const displayedProjects: Array<ProjectCardProps> = [
     {
       "name": "sureUI Data Visualization",
@@ -84,8 +82,11 @@ export default function Home() {
     }
   ];
 
+  // const displayedNews: Array<NewsCardProps> = [
+
+  // ];
+
   const projects = displayedProjects.map(
-    // const contests = allContests.map(
       project => <ProjectCard 
         key={project.name}
         name={project.name}
@@ -126,7 +127,8 @@ export default function Home() {
           <p className="ml-20 sm:ml-32 md:ml-48 tracking-tighter text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-500 text-white">Designer</p>
         </div>
       </section>
-      <section className="mx-6">
+      {/* <HeroSection /> */}
+      <section className="mx-2">
         <div className="card pt-5 pb-1 overflow-hidden">
           <div className="marquee">
           {/* <div> */}
@@ -138,7 +140,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="mt-4 mx-6 flex flex-col md:flex-row md:justify-center gap-4 md:gap-8 lg:gap-16">
+      <div className="mx-6 flex flex-col md:flex-row md:justify-center gap-4 md:gap-8 lg:gap-16">
         <AboutSection />
 
         <section id="workSection" className="md:mt-0 mb-64 md:max-w-[600px]">
