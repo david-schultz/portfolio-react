@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import SiteBar from '@/components/ui/custom/SiteBar'
+import SiteBarScroll from '@/components/ui/custom/SiteBar'
 import { ArrowDown } from "lucide-react"
 import { Badge } from '@/components/ui/badge'
 import '@/app/styles.css'
@@ -17,6 +18,8 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+
+import AboutSection from '@/components/ui/custom/about-section'
 
 
 type ProjectCardProps = {
@@ -136,72 +139,17 @@ export default function Home() {
       </section>
 
       <div className="mt-4 mx-6 flex flex-col md:flex-row md:justify-center gap-4 md:gap-8 lg:gap-16">
-        <section id="aboutSection" className="flex flex-col self-start gap-4 md:sticky md:top-16 md:min-w-[300px] md:max-w-[400px]">
-          <div className="card">
-            <Image
-                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/selfie.jpg"
-                alt="a selfie of the soul"
-                height={0}
-                width={0}
-                sizes="225vw"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-          </div>
-          <div className="card flex flex-col px-6 py-5 gap-4">
-            <div className="flex">
-              <div className="flex flex-col w-full">
-                <h4>David Schultz</h4>
-                <p className="text-secondary">Interaction Designer</p>
-              </div>
-              <Button variant="default">About</Button>
-            </div>
-            <Separator  />
-            <div id="contactSection"className="flex flex-col gap-3">
-              <div className="flex gap-4">
-                <Button variant="subtle" className="w-full" asChild>
-                  <Link href="" target="_blank">
-                      <FontAwesomeIcon icon={faFile as IconProp} className="mr-2" />
-                      Resume
-                  </Link>
-                </Button>
-                <Button variant="subtle" className="w-full" asChild>
-                  <Link href="https://www.linkedin.com/in/schultzdavidg/" target="_blank">
-                      <FontAwesomeIcon icon={faLinkedin as IconProp} className="mr-2" />
-                      LinkedIn
-                  </Link>
-                </Button>
-              </div>
-              <div className="flex gap-4">
-                <Button variant="subtle" className="w-full" asChild>
-                  <Link href="" target="_blank">
-                      <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
-                      Email
-                  </Link>
-                </Button>
-                <Button variant="subtle" className="w-full" asChild>
-                  <Link href="https://read.cv/davidschultz" target="_blank">
-                    <Image
-                      src={readcvSrc}
-                      width={16}
-                      height={16}
-                      alt="readcv logo"
-                      className="mr-2"
-                    />
-                      read.cv
-                  </Link>
-                </Button>
-              </div>
-
-            </div>
-          </div>
-        </section>
+        <AboutSection />
 
         <section id="workSection" className="md:mt-0 mb-64 md:max-w-[600px]">
-          {/* <header className="card flex items-center py-4 px-5 sm:py-5 sm:px-6 gap-3 sm:gap-4 mb-4">
+          <header className="card flex items-center py-4 px-5 sm:py-5 sm:px-6 gap-3 sm:gap-4 mb-4">
             <FontAwesomeIcon icon={faArrowDown} className="fa-xl" />
             <h2 className="text-xl sm:text-2xl">Work</h2>
-          </header> */}
-          <Tabs id="tabs" defaultValue="work" className="w-full max-w-[1200px] flex flex-col items-center">
+          </header>
+          <ul className="grid grid-cols-1 gap-4">
+            { projects }
+          </ul>
+          {/* <Tabs id="tabs" defaultValue="work" className="w-full max-w-[1200px] flex flex-col items-center">
             <TabsList className="mb-4 w-full sticky top-16 z-[10000]">
               <TabsTrigger value="work" className="w-full">Work</TabsTrigger>
               <TabsTrigger value="news" className="w-full">News</TabsTrigger>
@@ -214,10 +162,10 @@ export default function Home() {
             </TabsContent>
             <TabsContent value="news" className="px-2 flex flex-col items-center max-w-[900px]">
               <ul className="grid grid-cols-1 gap-4">
-                {/* { newscards } */}
+                { newscards }
               </ul>
             </TabsContent>
-          </Tabs>
+          </Tabs> */}
 
         </section>
 

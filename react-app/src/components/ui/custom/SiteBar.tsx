@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '@/app/styles.css'
 import Image from 'next/image'
 import Link from 'next/link';
@@ -121,6 +121,37 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
         </ul>
 
     </nav>
+  );
+}
+
+export function SiteBarScroll() {
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+    if (scrollY > 0) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const navbarClasses = `
+  mx-2 p-4 sticky top-1 w-full
+  ${isVisible ? 'block' : 'hidden'}
+`;
+  
+  return (
+    <div className="navbarClasses" >
+      <SiteBar />
+    </div>
   );
 }
 
