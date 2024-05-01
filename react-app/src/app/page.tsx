@@ -51,16 +51,6 @@ export default function Home() {
       "textColor": "black"
     },
     {
-      "name": "Acquire Demo",
-      "year": "2022",
-      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_render-nobg.png",
-      "imageType": "block",
-      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
-      "logoName": "Sureify",
-      "link": "/work/acquire",
-      "textColor": "white"
-    },
-    {
       "name": "Diversity in the Arboretum",
       "year": "2023",
       "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb_cover.jpg",
@@ -68,6 +58,16 @@ export default function Home() {
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
       "link": "/work/arboretum",
+      "textColor": "white"
+    },
+    {
+      "name": "Acquire Demo",
+      "year": "2022",
+      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_render-nobg.png",
+      "imageType": "block",
+      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
+      "logoName": "Sureify",
+      "link": "/work/acquire",
       "textColor": "white"
     },
     {

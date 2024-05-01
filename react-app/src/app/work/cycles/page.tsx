@@ -24,7 +24,7 @@ export default function Cycles() {
     <main className="flex flex-col items-center">
         
       <BackgroundSetter after="bg-white" />
-      <header className="w-full flex flex-col items-center">
+      {/* <header className="w-full flex flex-col items-center">
         <div className="mx-2 p-4 sticky top-1 w-full">
           <SiteBar />
         </div>
@@ -33,17 +33,13 @@ export default function Cycles() {
           <p className="text-lg">Re-imagining the calendar in mixed reality</p>
 
           <div className="card mt-4 sm:mt-8">
-            {/* <VideoPlayer width="600" height="400"
-              videoUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo.webm'
-              gifUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo.gif'
-            /> */}
             <Image
               src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero.png"
               alt="a selfie of the soul"
               height={0}
               width={0}
               sizes="225vw"
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              style={{ width: '100%', height: 'auto' }}
             />
           </div>
 
@@ -66,7 +62,28 @@ export default function Cycles() {
               <li>Design philosophy, conceptual ideation, prototyping in ShapesXR & Unity</li>
             </ul>
           </div>
-          <Separator className="my-16" />{/*————————————————————————————*/}
+          <Separator className="my-16" /> 
+        </div>
+      </header> */}
+
+      <header className="w-full flex flex-col items-center">
+        <div className="mx-2 p-4 sticky top-1 w-full">
+          <SiteBar />
+        </div>
+        <div className="mx-4 xs:mx-8 sm:mx-16 max-w-[1200px] mt-16">
+          <div className="flex gap-1">
+            <Badge>Case Study</Badge>
+            <Badge variant="outline">Winter 2024</Badge>
+          </div>
+          <h1 className="mt-4 mb-4 sm:mb-8 text-3xl sm:text-4xl md:text-5xl font-500">Cycles</h1>
+          <div className="card"><Image
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero.jpg"
+                    alt="acquire overview"
+                    height={0}
+                    width={0}
+                    sizes="225vw"
+                    style={{ width: '100%', height: 'auto' }}
+                    /></div>
         </div>
       </header>
 
@@ -100,37 +117,62 @@ export default function Cycles() {
 
         <Separator className="my-12" />{/*————————————————————————————*/}
 
-        {/* <section className="flex flex-col gap-4 ">
-          <h3>Position-in-time</h3>
-          <div className="grid md:grid-cols-2 gap-6 md:gap-16">
-            <div className="flex flex-col col-span-1 gap-4">
-              <p>In conceptualizing a “time machine”, our group wanted to focus on managing time in the present & future. This led us to think about the calendar, and how we might design one for 3d-space.</p>
-            </div>
-            <div className="flex flex-col col-span-1 gap-4">
-              <p>In particular, we thought a lot about the calendar’s ability to help people manage their “position-in-time.” This is basically the idea that calendars aren’t just used for concrete events—sometimes they’re used more abstractly.</p>
-            </div>
-          </div>
+        <section className="flex flex-col">
+          <h2>Prototype Demo</h2>
+          <p className="text-lg mt-4 mb-8">So here’s the basic idea: <span className="font-500">“How might we represent the cyclical nature of time?”</span></p>
+          {/* <VideoPlayer width="600" height="400"
+              videoUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo.webm'
+              gifUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-quick.gif'
+          /> */}
 
-          <div className="flex flex-col items-center gap-4">
-            <div className="card mt-4">
+          <div className="card mb-6 md:mb-16">
                   <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/subconscious-position.png"
-                    alt="video of me, prototyping with ShapesXR"
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-quick.gif"
+                    alt="a selfie of the soul"
                     height={0}
                     width={0}
                     sizes="225vw"
-                    style={{ width: '100%', height: 'auto' }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
-            </div>
-            <a href="https://medium.com/@schultzdavidg/managing-your-position-in-time-78d1db921e7e" target="_blank" className="text-sm underline">Blog Post: Managing your Position-in-Time <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2 fa-xs" /></a>
-          
           </div>
-        </section> */}
+          <div className="grid md:grid-cols-2 gap-6 md:gap-16">
+            <div className="flex flex-col gap-2 col-span-1">
+                <div className="card mb-4">
+                  <Image
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-addtask.gif"
+                    alt="a selfie of the soul"
+                    height={0}
+                    width={0}
+                    sizes="225vw"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+                <h4>Organizing by task (not event)</h4>
+                <p>The big idea here is an emphasis on tasks (as opposed to events). When a user creates a task and places it on the timeline, it acts like a beacon, indicating a general vibe of what’s going on, rather than a strict outline of their day.</p>
+            </div>
+            <div className="flex flex-col gap-2 col-span-1">
+                <div className="card mb-4">
+                  <Image
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-spin.gif"
+                    alt="a selfie of the soul"
+                    height={0}
+                    width={0}
+                    sizes="225vw"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+                <h4>Breaking away from grids</h4>
+                <p>In the spirit of trying new things, we deviated as far as we could from your typical, grid-based calendar. This resulted in a circular form, broken by a gap to indicate the starting- and end-points of the currently visible range of time.</p>
+            </div>
+          </div>
+        </section>
+
+        <Separator className="my-12" />{/*————————————————————————————*/}
 
         <section className="flex flex-col my-8">
           <div className="grid md:grid-cols-2 gap-6 md:gap-16 mt-4">
             <div className="flex flex-col col-span-1 gap-4">
-              <h3>Early iterations in form</h3>
+              <h2>Early iterations in form</h2>
               <p>How do you represent time, physically? One option is to lay it out as a timeline in front of you. Cut off the ends, throw on some events, and call it a day.</p>
               <p>We gave it a shot, but decided that this iteration didn't work for two main reasons; for one, a calendar doesn't need to occupy a user's full "viewport". It's probably better suited to the peripheral.</p>
               <p>Second, and more fundamentally, this linear form factor didn't feel "anchored." It didn't give you a sense of where you were in your day.</p>
@@ -194,57 +236,6 @@ export default function Cycles() {
 
         <Separator className="my-12" />{/*————————————————————————————*/}
 
-        <section className="flex flex-col">
-          <h2>Prototype Demo</h2>
-          <p className="text-lg mt-4 mb-8">So here’s the basic idea: <span className="font-500">“How might we represent the cyclical nature of time?”</span></p>
-          {/* <VideoPlayer width="600" height="400"
-              videoUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo.webm'
-              gifUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-quick.gif'
-          /> */}
-
-          <div className="card mb-6 md:mb-16">
-                  <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-quick.gif"
-                    alt="a selfie of the soul"
-                    height={0}
-                    width={0}
-                    sizes="225vw"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-          </div>
-          <div className="grid md:grid-cols-2 gap-6 md:gap-16">
-            <div className="flex flex-col gap-2 col-span-1">
-                <div className="card mb-4">
-                  <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-addtask.gif"
-                    alt="a selfie of the soul"
-                    height={0}
-                    width={0}
-                    sizes="225vw"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </div>
-                <h4>Organizing by task (not event)</h4>
-                <p>The big idea here is an emphasis on tasks (as opposed to events). When a user creates a task and places it on the timeline, it acts like a beacon, indicating a general vibe of what’s going on, rather than a strict outline of their day.</p>
-            </div>
-            <div className="flex flex-col gap-2 col-span-1">
-                <div className="card mb-4">
-                  <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-spin.gif"
-                    alt="a selfie of the soul"
-                    height={0}
-                    width={0}
-                    sizes="225vw"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </div>
-                <h4>Breaking away from grids</h4>
-                <p>In the spirit of trying new things, we deviated as far as we could from your typical, grid-based calendar. This resulted in a circular form, broken by a gap to indicate the starting- and end-points of the currently visible range of time.</p>
-            </div>
-          </div>
-        </section>
-
-        <Separator className="my-12" />{/*————————————————————————————*/}
 
         <section className="flex flex-col gap-4 ">
 

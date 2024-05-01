@@ -12,7 +12,7 @@ import ScrollButton from '@/components/ui/custom/scroll-button'
 
 export default function Arboretum() {
   return (
-    <article className="flex flex-col items-center">
+    <main className="flex flex-col items-center">
         
       {/* <BackgroundSetter after="bg-background" /> */}
       <header className="w-full flex flex-col items-center">
@@ -36,7 +36,7 @@ export default function Arboretum() {
         </div>
       </header>
 
-      <main className="mx-4 xs:mx-8 sm:mx-16 max-w-[900px] mt-24">
+      <article className="mx-4 xs:mx-8 sm:mx-16 max-w-[900px] mt-24">
         <section className="flex flex-col md:flex-row">
           <div className="max-w-[650px] flex flex-col gap-8">
             <h1 className="text-3xl md:text-4xl">Exploring + ‘visceralizing’ an incomplete dataset</h1>
@@ -293,9 +293,9 @@ export default function Arboretum() {
         </section>
 
 
-      </main>
-      
+      </article>
+
       <ScrollButton />
-    </article>
+    </main>
   )
 }
