@@ -174,8 +174,8 @@ export default function Cycles() {
             <div className="flex flex-col col-span-1 gap-4">
               <h2>Early iterations in form</h2>
               <p>How do you represent time, physically? One option is to lay it out as a timeline in front of you. Cut off the ends, throw on some events, and call it a day.</p>
-              <p>We gave it a shot, but decided that this iteration didn't work for two main reasons; for one, a calendar doesn't need to occupy a user's full "viewport". It's probably better suited to the peripheral.</p>
-              <p>Second, and more fundamentally, this linear form factor didn't feel "anchored." It didn't give you a sense of where you were in your day.</p>
+              <p>We gave it a shot, but decided that this iteration didn&apos;t work for two main reasons; for one, a calendar doesn't need to occupy a user&apos;s full &quot;viewport&quot;. It&apos;s probably better suited to the peripheral.</p>
+              <p>Second, and more fundamentally, this linear form factor didn&apos;t feel &quot;anchored.&quot; It didn&apos;t give you a sense of where you were in your day.</p>
             </div>
             <div className="flex flex-col col-span-1 gap-2">
               <div className="card">
