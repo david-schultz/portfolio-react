@@ -35,7 +35,7 @@ export default function TerrariumXR() {
           </div>
           <h1 className="mt-4 mb-4 sm:mb-8 text-3xl sm:text-4xl md:text-5xl font-500">TerrariumXR</h1>
           <div className="card"><Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/hero.png"
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/terrariumxr-hero.jpg"
                     alt="acquire overview"
                     height={0}
                     width={0}
@@ -80,7 +80,7 @@ export default function TerrariumXR() {
 
           <div className="card mt-4">
                   <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/apr25-demo.gif"
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/may2-demo.gif"
                     alt="pinch + dragging vertices with hands"
                     height={0}
                     width={0}

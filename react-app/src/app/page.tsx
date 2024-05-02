@@ -43,7 +43,7 @@ export default function Home() {
     {
       "name": "TerrariumXR (in-progress)",
       "year": "2024",
-      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/hero.png",
+      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/terrariumxr-hero.jpg",
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
