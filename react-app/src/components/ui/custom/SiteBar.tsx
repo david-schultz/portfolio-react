@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import '@/app/styles.css'
+import Logo from './logo';
 import Image from 'next/image'
 import Link from 'next/link';
 import { Button } from '@/components/ui/button.tsx'
@@ -14,10 +15,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
+import AboutSection from '@/components/ui/custom/about-section'
+
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import Logo from './logo';
 
 export default function SiteBar({ variant = 'default' }: { variant?: string}) {
   const isInverted = variant === "inverted";
@@ -102,12 +104,17 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
                 }
               </DialogTrigger>
               <DialogContent>
-                <DialogHeader>
+                <div className="w-full flex flex-col justify-center items-center">
+                  <AboutSection />
+
+                </div>
+
+                {/* <DialogHeader>
                   <DialogTitle>Let&apos;s connect!</DialogTitle>
                   <DialogDescription>
                     Shoot me an email at david@davidschultz.co!
                   </DialogDescription>
-                </DialogHeader>
+                </DialogHeader> */}
               </DialogContent>
             </Dialog>
           </li>

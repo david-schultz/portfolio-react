@@ -33,10 +33,10 @@ const DataVisTabs: React.FC<DataVisTabsProps> = (props) => {
   };
 
   return (
-    <Tabs id="tabs" defaultValue="process" className="mt-8 w-full max-w-[1200px] flex flex-col items-center">
+    <Tabs id="tabs" defaultValue="deliverables" className="mt-8 w-full max-w-[1200px] flex flex-col items-center">
           <TabsList className="mb-16 w-full sticky top-4 z-[10000]">
-            <TabsTrigger value="process" className="w-full" onClick={handleTabClick}>Process</TabsTrigger>
             <TabsTrigger value="deliverables" className="w-full" onClick={handleTabClick}>Deliverables</TabsTrigger>
+            <TabsTrigger value="process" className="w-full" onClick={handleTabClick}>Process</TabsTrigger>
           </TabsList>
 
           {/* ====================================================== */}
@@ -345,7 +345,7 @@ const DataVisTabs: React.FC<DataVisTabsProps> = (props) => {
                 </div>
                 <div className="my-6 mb-6 max-w-[400px]">
                   <h2 className="text-2xl md:text-3xl">Documentation</h2>
-                  <p className="mt-3 md:text-lg">Lorem ipsum [...]. The documentation I wrote covers:</p>
+                  <p className="mt-3 md:text-lg">It was important that all parties involved had guidance on creating visualizations. The documentation I wrote covers:</p>
                 </div>
                 <div className="grid md:grid-cols-5 gap-8 mt-8">
                   <div className="md:col-span-3 md:col-start-2 flex flex-col gap-4">

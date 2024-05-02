@@ -9,7 +9,7 @@ import { Separator } from '@/components/ui/separator'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faArrowDown, faArrowUpRightFromSquare, faEnvelope, faFile, faGraduationCap, faMapPin } from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown, faArrowUpRightFromSquare, faEnvelope, faFile, faGraduationCap, faLink, faMapPin, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faFaceSmile, faNewspaper } from '@fortawesome/free-regular-svg-icons'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
@@ -23,8 +23,8 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
   const [contactView, setContactView] = useState(true);
 
   return (
-      <section id="aboutSection" className="flex flex-col self-start gap-4 md:sticky md:top-16 md:min-w-[300px] md:max-w-[400px]">
-        <div className="card">
+      <section id="aboutSection" className="flex flex-col gap-4 md:sticky md:top-16 md:min-w-[300px] md:max-w-[400px]">
+        <div className="rounded-md overflow-clip">
           <Image
               src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/selfie.jpg"
               alt="a selfie of the soul"
@@ -42,9 +42,15 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
             </div>
 
             {contactView ? 
-              <Button variant="default" onClick={() => setContactView(!contactView)}>About</Button>
+              <Button variant="default" onClick={() => setContactView(!contactView)}>
+                About
+                <FontAwesomeIcon icon={faPlus} className="ml-2" />
+              </Button>
             :
-              <Button variant="default" onClick={() => setContactView(!contactView)}>Contact</Button>
+              <Button variant="default" onClick={() => setContactView(!contactView)}>
+                About
+                <FontAwesomeIcon icon={faMinus} className="ml-2" />
+              </Button>
             }
           </div>
 
@@ -54,7 +60,7 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
             <div id="contactView"className="flex flex-col gap-3">
               <div className="flex gap-4">
                 <Button variant="subtle" className="w-full" asChild>
-                  <Link href="" target="_blank">
+                  <Link href="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/DavidSchultz-Resume.pdf" target="_blank">
                       <FontAwesomeIcon icon={faFile as IconProp} className="mr-2" />
                       Resume
                   </Link>
@@ -68,7 +74,7 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
               </div>
               <div className="flex gap-4">
                 <Button variant="subtle" className="w-full" asChild>
-                  <Link href="" target="_blank">
+                  <Link href="mailto:david@davidschultz.co" target="_blank">
                       <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
                       Email
                   </Link>
@@ -94,7 +100,7 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
                 <span className="font-500">Seattle, WA</span>
               </div> */}
               <div className="bg-background p-4 rounded-lg">
-                <p>I'm an Interaction Design student at the University of Washington. I'm excited about mixed reality, and designing experiences that pull us back into the world around us!</p>
+                <p>I recently graduated with a B.Des from the <strong>University of Washington</strong>. I'm excited about mixed reality, and designing experiences that pull us back into the world around us.</p>
               </div>
 
               

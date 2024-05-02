@@ -41,14 +41,14 @@ let readcvSrc = "/fa/readcv.svg";
 export default function Home() {
   const displayedProjects: Array<ProjectCardProps> = [
     {
-      "name": "sureUI Data Visualization",
-      "year": "2022",
-      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-cover.png",
+      "name": "Cycles",
+      "year": "2024",
+      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero.jpg",
       "imageType": "bg",
-      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
-      "logoName": "Sureify",
-      "link": "/work/datavis",
-      "textColor": "black"
+      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
+      "logoName": "University of Washington",
+      "link": "/work/cycles",
+      "textColor": "white"
     },
     {
       "name": "Diversity in the Arboretum",
@@ -61,24 +61,24 @@ export default function Home() {
       "textColor": "white"
     },
     {
+      "name": "sureUI Data Visualization",
+      "year": "2022",
+      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-cover.png",
+      "imageType": "bg",
+      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
+      "logoName": "Sureify",
+      "link": "/work/datavis",
+      "textColor": "black"
+    },
+    {
       "name": "Acquire Demo",
       "year": "2022",
-      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_render-nobg.png",
+      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_overview.png",
       "imageType": "block",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
       "logoName": "Sureify",
       "link": "/work/acquire",
-      "textColor": "white"
-    },
-    {
-      "name": "Cycles",
-      "year": "2024",
-      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero.jpg",
-      "imageType": "bg",
-      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
-      "logoName": "University of Washington",
-      "link": "/work/cycles",
-      "textColor": "white"
+      "textColor": "black"
     }
   ];
 

@@ -10,9 +10,10 @@ import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
 
 interface ScrollButtonProps {
   // Add any props you need for your ScrollButton component
+  isActive?: boolean;
 }
 
-const ScrollButton: React.FC<ScrollButtonProps> = () => {
+const ScrollButton: React.FC<ScrollButtonProps> = ({ isActive = true }) => {
   const [isTop, setIsTop] = useState(true);
   
   useEffect(() => {
@@ -38,10 +39,10 @@ const ScrollButton: React.FC<ScrollButtonProps> = () => {
 
   return (
     <>
-    { isTop ?
+    { isTop && isActive ?
       <></>
       :
-      <button className="fixed bottom-8 right-8 z-[100000] elevation-2 glass-darker p-2 rounded-max w-[48px] h-[48px]" onClick={scrollUp}>
+      <button className="fixed bottom-8 right-8 z-[49] elevation-2 glass-darker p-2 rounded-max w-[48px] h-[48px]" onClick={scrollUp}>
         <FontAwesomeIcon icon={faAnglesUp} size="lg" className="text-secondary" />
       </button>
     }
