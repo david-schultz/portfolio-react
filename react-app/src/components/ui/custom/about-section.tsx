@@ -100,7 +100,7 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
                 <span className="font-500">Seattle, WA</span>
               </div> */}
               <div className="bg-background p-4 rounded-lg">
-                <p>I recently graduated with a B.Des from the <strong>University of Washington</strong>. I'm excited about mixed reality, and designing experiences that pull us back into the world around us.</p>
+                <p>I am a soon-to-be <strong>University of Washington</strong> B.Des graduate. I'm excited about mixed reality, and designing experiences that pull us back into the world around us.</p>
               </div>
 
               
