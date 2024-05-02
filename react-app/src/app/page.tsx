@@ -41,6 +41,16 @@ let readcvSrc = "/fa/readcv.svg";
 export default function Home() {
   const displayedProjects: Array<ProjectCardProps> = [
     {
+      "name": "TerrariumXR (in-progress)",
+      "year": "2024",
+      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/hero.png",
+      "imageType": "bg",
+      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
+      "logoName": "University of Washington",
+      "link": "/work/terrariumxr",
+      "textColor": "white"
+    },
+    {
       "name": "Cycles",
       "year": "2024",
       "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero.jpg",

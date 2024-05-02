@@ -128,7 +128,7 @@ export default function Cycles() {
           <div className="card mb-6 md:mb-16">
                   <Image
                     src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-quick.gif"
-                    alt="a selfie of the soul"
+                    alt="unity demo"
                     height={0}
                     width={0}
                     sizes="225vw"
@@ -140,7 +140,7 @@ export default function Cycles() {
                 <div className="card mb-4">
                   <Image
                     src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-addtask.gif"
-                    alt="a selfie of the soul"
+                    alt="unity demo"
                     height={0}
                     width={0}
                     sizes="225vw"
@@ -154,7 +154,7 @@ export default function Cycles() {
                 <div className="card mb-4">
                   <Image
                     src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-spin.gif"
-                    alt="a selfie of the soul"
+                    alt="unity demo"
                     height={0}
                     width={0}
                     sizes="225vw"
@@ -209,7 +209,7 @@ export default function Cycles() {
               <div className="card">
                     <Image
                       src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/desk-sketch-2.png"
-                      alt="video of me, prototyping with ShapesXR"
+                      alt="desk sketch of a design iteration"
                       height={0}
                       width={0}
                       sizes="225vw"
@@ -222,7 +222,7 @@ export default function Cycles() {
               <div className="card">
                     <Image
                       src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/shapesxr-cropped.png"
-                      alt="video of me, prototyping with ShapesXR"
+                      alt="design iteration in ShapesXR"
                       height={0}
                       width={0}
                       sizes="225vw"
@@ -295,7 +295,7 @@ export default function Cycles() {
              <div className="card">
                 <Image
                   src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/feed-diagram.png"
-                  alt="a selfie of the soul"
+                  alt="a diagram demonstrating the programming challenge"
                   height={0}
                   width={0}
                   sizes="225vw"
