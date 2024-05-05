@@ -123,7 +123,7 @@ export default function Home() {
           className="inline-block mx-4 mb-3 sm:mb-4 w-6 h-6 sm:w-8 sm:h-8"
         />
       {/* <h2 className="text-xl sm:text-2xl">Designing & developing in mixed reality!</h2> */}
-      <h2 className="text-xl sm:text-2xl">Hi, I’m David—a designer, developer, and hobbyist.</h2>
+      <h2 className="text-xl sm:text-2xl">Hi, I’m David—a designer, developer, and tinkerer.</h2>
     </div>
   )
 
