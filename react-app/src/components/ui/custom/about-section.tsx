@@ -60,7 +60,7 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
             <div id="contactView"className="flex flex-col gap-3">
               <div className="flex gap-4">
                 <Button variant="subtle" className="w-full" asChild>
-                  <Link href="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/DavidSchultz-Resume.pdf" target="_blank">
+                  <Link href="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/DavidSchultz_Resume.pdf" target="_blank">
                       <FontAwesomeIcon icon={faFile as IconProp} className="mr-2" />
                       Resume
                   </Link>
