@@ -36,10 +36,11 @@ import { faUsers, faBullseye, faHammer, faClipboardList, faTableColumns, faMagni
 
 import "@/lib/bigtext.css"
 import ScrollButton from '@/components/ui/custom/scroll-button';
+import Footer from '@/components/ui/custom/footer';
 
 export default function Acquire() {
   return (
-    <article className="flex flex-col items-center">
+    <main className="flex flex-col items-center">
       
       <BackgroundSetter after="bg-white" />
       <header className="w-full flex flex-col items-center">
@@ -63,7 +64,7 @@ export default function Acquire() {
         </div>
       </header>
 
-      <main className="mx-4 xs:mx-8 sm:mx-16 max-w-[900px] mt-16">
+      <article className="mx-4 xs:mx-8 sm:mx-16 max-w-[900px] mt-16 pb-32">
         <section className="flex flex-col md:flex-row md:gap-8">
           <div className="max-w-[600px] flex flex-col gap-8 mb-8 md:mr-8 md:mt-16">
             <h1 className="text-3xl md:text-4xl">Digitizing the life insurance industry</h1>
@@ -451,9 +452,13 @@ export default function Acquire() {
 
         </section>
 
-      </main>
+      </article>
 
       <ScrollButton />
-    </article>
+
+      <div className="w-[calc(100vw-2rem)] m-2">
+        <Footer />
+      </div>
+    </main>
   )
 }

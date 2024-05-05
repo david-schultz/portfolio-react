@@ -18,6 +18,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import ScrollButton from '@/components/ui/custom/scroll-button'
+import Footer from '@/components/ui/custom/footer'
 
 export default function TerrariumXR() {
   return (
@@ -47,7 +48,7 @@ export default function TerrariumXR() {
 
 
 
-      <article className="mx-4 xs:mx-8 sm:mx-16 max-w-[900px] mt-16">
+      <article className="mx-4 xs:mx-8 sm:mx-16 max-w-[900px] mt-16 pb-32">
         <section className="grid md:grid-cols-5 gap-8 md:gap-16">
           <div className="md:col-span-3 flex flex-col gap-6 max-w-[460px]">
             <h2 className="mb-2">Exploring the possibilities of gestural interaction</h2>
@@ -93,6 +94,10 @@ export default function TerrariumXR() {
       </article>
 
       <ScrollButton />
+
+      <div className="w-[calc(100vw-2rem)] m-2">
+        <Footer />
+      </div>
     </main>
   )
 }

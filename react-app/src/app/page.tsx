@@ -21,6 +21,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import HeroSection from '@/components/ui/custom/hero-section'
 import AboutSection from '@/components/ui/custom/about-section'
+import Footer from '@/components/ui/custom/footer'
 
 
 type ProjectCardProps = {
@@ -211,7 +212,9 @@ export default function Home() {
         </div>
       </section> */}
 
-      
+      <div className="m-2">
+        <Footer />
+      </div>
     </main>
   )
 }

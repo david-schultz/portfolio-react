@@ -23,6 +23,7 @@ import ScrollUp from '@/lib/ScrollUp';
 import { Scroll } from 'lucide-react';
 import DataVisTabs from '@/app/work/datavis/datavisTabs';
 import ScrollButton from '@/components/ui/custom/scroll-button';
+import Footer from '@/components/ui/custom/footer';
 
 // import useWindowResize from '@/lib/useWindowResize';
 
@@ -34,7 +35,7 @@ export default function Datavis() {
   // const [tabClicked, setTabClicked] = useState(false);
 
   return (
-    <article className="flex flex-col items-center ">
+    <main className="flex flex-col items-center">
       <BackgroundSetter after="bg-white" />
       <header className="w-full flex flex-col items-center">
         <div className="mx-2 p-4 sticky top-1 w-full">
@@ -67,12 +68,16 @@ export default function Datavis() {
         </div>
       </header>
 
-      <main className="flex flex-col items-center mx-4 xs:mx-8 sm:mx-16">
+      <article className="flex flex-col items-center mx-4 xs:mx-8 sm:mx-16 pb-32">
         <DataVisTabs />
-      </main>
+      </article>
 
       <ScrollButton />
-    </article>
+
+      <div className="w-[calc(100vw-2rem)] m-2">
+        <Footer />
+      </div>
+    </main>
   )
 }
 

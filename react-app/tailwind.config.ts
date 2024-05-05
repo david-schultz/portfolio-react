@@ -103,6 +103,9 @@ module.exports = {
         hypergold: {
           DEFAULT: "hsl(var(--hypergold))",
         },
+        fabric: {
+          DEFAULT: "hsl(var(--fabric))",
+        },
         sequential: {
           blue: {
             50: "#EFF6FF",

@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import { ThemeProvider } from "@/components/theme-provider"
 import './globals.css'
+import Footer from '@/components/ui/custom/footer'
 
 const inter = Inter({ subsets: ['latin'] })
 const graphik = localFont({
