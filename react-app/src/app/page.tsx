@@ -129,7 +129,7 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen flex flex-col gap-4 mb-32">
+    <main className="min-h-screen flex flex-col gap-4 bg-repeat bg-[url('/patterns/dot-bg2.png')]">
       <section className="mx-2 p-4 flex flex-col bg-neutral-800 rounded-b-lg">
         <SiteBar variant="inverted" />
         <div className="grow-0 my-16 sm:my-24 md:my-32 flex flex-col items-center">
