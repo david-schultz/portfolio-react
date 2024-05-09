@@ -78,6 +78,9 @@ export function InfoBoxHeader({ title, subtitle, imageSrc }: InfoBoxHeaderProps)
     <div className="flex flex-col text-center">
       <h4>{title}</h4>
       <p className="text-secondary">{subtitle}</p>
+      { imageSrc == "" ?
+      <></>
+      :
       <div className="card mt-4 mb-2">
         <Image  src={imageSrc} alt={title}
                 height={0}
@@ -85,6 +88,7 @@ export function InfoBoxHeader({ title, subtitle, imageSrc }: InfoBoxHeaderProps)
                 sizes="100vw"
                 style={{ width: '100%', height: 'auto' }} />
       </div>
+      }
     </div>
   );
 }
@@ -96,9 +100,9 @@ export function InfoBoxSection({ title, dataRows, format }: InfoBoxSectionProps)
       <div className="mb-4 flex py-1 justify-center items-center self-stretch bg-[#8D9FFF]/[0.2]">
         <p className="font-500">{title}</p>
       </div>
-      <div className="flex flex-col gap-2 self-stretch">
+      <div className={`gap-2 self-stretch ${format === 'A' ? 'flex flex-col' : 'grid grid-cols-2 md:flex md:flex-col'}`}>
         {dataRows.map((row, index) => (
-          <div key={index} className={`flex ${format === 'A' ? 'flex-row' : 'flex-col text-center'}`}>
+          <div key={index} className={`flex ${format === 'A' ? 'flex-row' : 'flex-col md:text-center'}`}>
             {/* <p className="text-sm font-500 w-[4rem]">{row.label}</p>
             <p className="text-sm font-400 grow">{row.value}</p> */}
             <p className={`text-sm font-500 ${format === 'A' ? 'w-[8rem]' : 'grow'}`}>{row.label}</p>

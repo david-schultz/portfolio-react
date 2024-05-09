@@ -54,7 +54,7 @@ export default function Home() {
     {
       "name": "Cycles",
       "year": "2024",
-      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero.jpg",
+      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero2.jpg",
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
@@ -237,7 +237,9 @@ function ProjectCard(props: ProjectCardProps) {
       <Link href={props.link} >
           <div className="absolute inset-0 m-4 flex flex-col justify-between">
             <div className='flex justify-between items-start gap-2'>
-              <h3 className='lg:text-3xl'>{props.name}</h3>
+              <div className={`px-2 py-1 ${props.textColor === 'white' ? 'glass-dark-subtle' : 'glass-subtle'}`}>
+                <h3 className='lg:text-3xl'>{props.name}</h3>
+              </div>
               <Badge className="grow-0">{props.year}</Badge>
             </div>
             <div className="flex items-center gap-2">
