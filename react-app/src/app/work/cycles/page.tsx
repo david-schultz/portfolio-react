@@ -277,7 +277,7 @@ export default function Cycles() {
                 <p>From the get-go, my team had been prototyping in ShapesXR on my teammate&apos;s Quest 2. The controls took some getting used-to, and it was difficult to collaborate—but the power of working in an immersive environment was immediately apparent.</p>
                 <p className="mt-4">Thinking long-term, I noticed two major problems:</p>
                 <ol className="list-decimal pl-6 flex flex-col gap-2 mb-4">
-                  <li>We needed to be able to record passthrough, which isn't possible on Quest 2.</li>
+                  <li>We needed to be able to record passthrough, which isn&apos;t possible on Quest 2.</li>
                   <li>ShapesXR&apos;s limited interaction capabilties were becoming a obstacle for ideation.</li>
                 </ol>
                 <p>With a clear need, and a strong desire to explore XR, I pulled the trigger and saddled up to learn Unity.</p>

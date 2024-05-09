@@ -38,7 +38,7 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
           <div className="flex">
             <div className="flex flex-col w-full">
               <h4>David Schultz</h4>
-              <p className="text-secondary">Interaction Designer</p>
+              <p className="text-secondary">AR/VR/XR Designer</p>
             </div>
 
             {contactView ? 
