@@ -23,7 +23,7 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
   const [contactView, setContactView] = useState(true);
 
   return (
-      <section id="aboutSection" className="flex flex-col gap-4 md:sticky md:top-16 md:min-w-[300px] md:max-w-[400px]">
+      <section id="aboutSection" className="flex flex-col gap-4 md:sticky md:top-16 md:min-w-[300px] md:max-w-[400px] elevation-1 ">
         <div className="rounded-md overflow-clip">
           <Image
               src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/selfie.jpg"

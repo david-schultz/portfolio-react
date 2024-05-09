@@ -152,9 +152,11 @@ export default function Home() {
       </section>
 
       <div className="mx-6 flex flex-col md:flex-row md:justify-center gap-4 md:gap-8 lg:gap-16">
-        <AboutSection />
+        <div>
+          <AboutSection />
+        </div>
 
-        <section id="workSection" className="md:mt-0 mb-64 md:max-w-[600px]">
+        <section id="workSection" className="md:mt-0 md:max-w-[600px]">
           <header className="card flex items-center py-4 px-5 sm:py-5 sm:px-6 gap-3 sm:gap-4 mb-4">
             <FontAwesomeIcon icon={faArrowDown} className="fa-xl" />
             <h2 className="text-xl sm:text-2xl">Work</h2>
@@ -212,7 +214,7 @@ export default function Home() {
         </div>
       </section> */}
 
-      <div className="m-2">
+      <div className="m-2 mt-64">
         <Footer />
       </div>
     </main>
@@ -233,7 +235,7 @@ function ProjectCard(props: ProjectCardProps) {
   // if type is image bg
   
   return (
-    <li className={`card relative mx-auto bg-gradient-dark-2 min-h-[250px] overflow-hidden justify-self-stretch self-stretch w-full ${props.textColor === 'white' ? 'text-white' : 'text-foreground'}`}>
+    <li className={`card elevation-1 relative mx-auto bg-gradient-dark-2 min-h-[250px] overflow-hidden justify-self-stretch self-stretch w-full ${props.textColor === 'white' ? 'text-white' : 'text-foreground'}`}>
       <Link href={props.link} >
           <div className="absolute inset-0 m-4 flex flex-col justify-between">
             <div className='flex justify-between items-start gap-2'>

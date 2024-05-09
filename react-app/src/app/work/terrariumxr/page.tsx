@@ -22,7 +22,7 @@ import Footer from '@/components/ui/custom/footer'
 
 export default function TerrariumXR() {
   return (
-    <main className="flex flex-col items-center">
+    <main className="flex flex-col items-center bg-repeat bg-[url('/patterns/topo-bg.png')]">
         
       <BackgroundSetter after="bg-white" />
       <header className="w-full flex flex-col items-center">

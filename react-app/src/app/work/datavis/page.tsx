@@ -35,7 +35,7 @@ export default function Datavis() {
   // const [tabClicked, setTabClicked] = useState(false);
 
   return (
-    <main className="flex flex-col items-center">
+    <main className="flex flex-col items-center bg-repeat bg-[url('/patterns/topo-bg.png')]">
       <BackgroundSetter after="bg-white" />
       <header className="w-full flex flex-col items-center">
         <div className="mx-2 p-4 sticky top-1 w-full">
