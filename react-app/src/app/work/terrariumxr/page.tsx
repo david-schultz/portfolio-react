@@ -75,11 +75,18 @@ export default function TerrariumXR() {
 
         <Separator className="my-12" />{/*————————————————————————————*/}
 
-        <section className="flex flex-col my-8">
-          <h3>Quick Demo</h3>
-          <p className="">Please note that this project is a WIP.</p>
+        <section className="flex flex-col my-8 gap-4">
+          <h2>WIP Demo</h2>
+          {/* <p className="">Please note that this project is a WIP.</p> */}
 
-          <div className="card mt-4">
+          {/* <VideoPlayer width="600" height="800"
+            videoUrl='https://www.youtube.com/embed/KL_WpeDrkkI?si=YDh8MgjIxrCPjL_u'
+            gifUrl='https://www.youtube.com/embed/KL_WpeDrkkI?si=YDh8MgjIxrCPjL_u'
+          /> */}
+          <div className="mt-4 video-container">
+            <iframe width="1120" height="630" src="https://www.youtube.com/embed/KL_WpeDrkkI?si=YDh8MgjIxrCPjL_u" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+          </div>
+          {/* <div className="card mt-4">
                   <Image
                     src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/may2-demo.gif"
                     alt="pinch + dragging vertices with hands"
@@ -88,7 +95,7 @@ export default function TerrariumXR() {
                     sizes="225vw"
                     style={{ width: '100%', height: 'auto' }}
                   />
-              </div>
+              </div> */}
         </section>
 
       </article>
