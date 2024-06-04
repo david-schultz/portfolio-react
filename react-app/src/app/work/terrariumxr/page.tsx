@@ -96,7 +96,7 @@ export default function TerrariumXR() {
           /> */}
           <div className="mt-4 mb-64 video-container">
             {/* <iframe width="1120" height="630" src="https://www.youtube.com/embed/KL_WpeDrkkI?si=YDh8MgjIxrCPjL_u" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe> */}
-            <div style={{padding: "100% 0 0 0", position: "relative"}}><iframe src="https://player.vimeo.com/video/953718998?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}} title="TerrariumXR (v0.6.6)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <div style={{padding: "100% 0 0 0", position: "relative"}}><iframe src="https://player.vimeo.com/video/953718998?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}} title="TerrariumXR (v0.6.6)"></iframe></div>
           </div>
           {/* <div className="card mt-4">
                   <Image
