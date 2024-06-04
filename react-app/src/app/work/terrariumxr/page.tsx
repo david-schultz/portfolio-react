@@ -36,7 +36,7 @@ export default function TerrariumXR() {
           </div>
           <h1 className="mt-4 mb-4 sm:mb-8 text-3xl sm:text-4xl md:text-5xl font-500">TerrariumXR</h1>
           <div className="card"><Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/terrariumxr-hero.jpg"
+                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/outside-render.jpg"
                     alt="acquire overview"
                     height={0}
                     width={0}
@@ -71,6 +71,17 @@ export default function TerrariumXR() {
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
           </div>
+
+          <div className="card md:max-h-none md:col-span-5">
+            <Image
+              src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/render.jpg"
+              alt="a selfie of the soul"
+              height={0}
+              width={0}
+              sizes="225vw"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          </div>
         </section>
 
         <Separator className="my-12" />{/*————————————————————————————*/}
@@ -83,8 +94,9 @@ export default function TerrariumXR() {
             videoUrl='https://www.youtube.com/embed/KL_WpeDrkkI?si=YDh8MgjIxrCPjL_u'
             gifUrl='https://www.youtube.com/embed/KL_WpeDrkkI?si=YDh8MgjIxrCPjL_u'
           /> */}
-          <div className="mt-4 video-container">
-            <iframe width="1120" height="630" src="https://www.youtube.com/embed/KL_WpeDrkkI?si=YDh8MgjIxrCPjL_u" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+          <div className="mt-4 mb-64 video-container">
+            {/* <iframe width="1120" height="630" src="https://www.youtube.com/embed/KL_WpeDrkkI?si=YDh8MgjIxrCPjL_u" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe> */}
+            <div style={{padding: "100% 0 0 0", position: "relative"}}><iframe src="https://player.vimeo.com/video/953718998?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}} title="TerrariumXR (v0.6.6)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
           </div>
           {/* <div className="card mt-4">
                   <Image
