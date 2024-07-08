@@ -42,7 +42,7 @@ let readcvSrc = "/fa/readcv.svg";
 export default function Home() {
   const displayedProjects: Array<ProjectCardProps> = [
     {
-      "name": "TerrariumXR (in-progress)",
+      "name": "TerrariumXR",
       "year": "2024",
       "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/outside-render.jpg",
       "imageType": "bg",
