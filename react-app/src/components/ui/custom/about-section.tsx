@@ -99,9 +99,10 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
                 <FontAwesomeIcon icon={faMapPin} />
                 <span className="font-500">Seattle, WA</span>
               </div> */}
-              <div className="bg-background p-4 rounded-lg">
-                <p>I will soon be graduating from the <strong>University of Washington</strong>&apos;s Interaction Design program!</p>
-                <p className="mt-2">I&apos;m particularly excited about mixed reality, and designing experiences that pull us back into the world around us.</p>
+              <div className="bg-background flex flex-col gap-2">
+                <p>Hi! I&apos;m <strong>David</strong>, and I love to tinker.</p>
+                <p>My niche is in <strong>extended reality (XR) prototyping</strong>, which brings together my design and programming skillsets.</p>
+                <p>I&apos;m particularly excited about gestural interactions—i.e., designing for a future without controllers.</p>
               </div>
 
               
