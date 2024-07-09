@@ -102,7 +102,7 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
               <div className="bg-background flex flex-col gap-2">
                 <p>Hi! I&apos;m <strong>David</strong>, and I love to tinker.</p>
                 <p>My niche is in <strong>extended reality (XR) prototyping</strong>, which brings together my design and programming skillsets.</p>
-                <p>I&apos;m particularly excited about gestural interactions—i.e., designing for a future without controllers.</p>
+                <p>I&apos;m particularly excited about gestural interactions—i.e., designing for a future without traditional controllers.</p>
               </div>
 
               
