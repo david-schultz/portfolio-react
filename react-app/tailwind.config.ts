@@ -34,8 +34,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ['var(--font-graphik)'],
-      // mono: ['var(--font-graphik)'],
+      serif: ['var(--font-louize)'],
+      mono: ['var(--font-fraktion)'],
     },
     fontSize: {
       xs: ['0.75rem', '1.5em'],

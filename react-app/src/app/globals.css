@@ -10,6 +10,9 @@ body {
 
 @layer base {
   :root {
+    /* --font-louize: 'Louize';
+    --font-fraktion: 'Fraktion'; */
+
     --background: 0 0% 98%;
     --background-invert: 0 0% 15%;
     --foreground: 0 0% 9%;

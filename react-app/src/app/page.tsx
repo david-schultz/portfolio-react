@@ -131,44 +131,28 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex flex-col gap-4 bg-repeat bg-[url('/patterns/dot-bg2.png')]">
-      <section className="mx-2 p-4 flex flex-col bg-neutral-800 rounded-b-lg">
-        <SiteBar variant="inverted" />
-        <div className="grow-0 my-16 sm:my-24 md:my-32 flex flex-col items-center">
-          <p className="mr-10 sm:mr-16 md:mr-20 tracking-tighter text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-500 text-white">Interaction*</p>
-          <p className="ml-20 sm:ml-32 md:ml-48 tracking-tighter text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-500 text-white">Designer</p>
-        </div>
+      <section className="flex flex-col gap-4">
+        <div className="w-[100px] h-[100px] bg-red-500"></div>
+        <h1 className="font-serif">david schultz</h1>
+        <ul className="font-mono">
+          <li>※ Interaction designer</li>
+          <li>※ read.cv</li>
+          <li>☞ Contact</li>
+        </ul>
       </section>
-      {/* <HeroSection /> */}
-      <section className="mx-2">
-        <div className="card pt-5 pb-1 overflow-hidden">
-          <div className="marquee">
-          {/* <div> */}
-            { marqueeContent }
-            { marqueeContent }
-            { marqueeContent }
-            { marqueeContent }
-          </div>
-        </div>
-      </section>
+      {/* <AboutSection /> */}
 
-      <div className="mx-6 flex flex-col md:flex-row md:justify-center gap-4 md:gap-8 lg:gap-16">
-        <div>
-          <AboutSection />
-        </div>
-
-        <section id="workSection" className="md:mt-0 md:max-w-[600px]">
-          <header className="card flex items-center py-4 px-5 sm:py-5 sm:px-6 gap-3 sm:gap-4 mb-4">
-            <FontAwesomeIcon icon={faArrowDown} className="fa-xl" />
-            <h2 className="text-xl sm:text-2xl">Work</h2>
-          </header>
-          <ul className="grid grid-cols-1 gap-4">
-            { projects }
-          </ul>
-          {/* <Tabs id="tabs" defaultValue="work" className="w-full max-w-[1200px] flex flex-col items-center">
+      <section>
+        <Tabs id="tabs" defaultValue="work" className="w-full max-w-[1200px] flex flex-col items-center">
+          <div className="flex gap-4">
+          <span>davidschultz.co</span>
+          <span>/</span>
             <TabsList className="mb-4 w-full sticky top-16 z-[10000]">
-              <TabsTrigger value="work" className="w-full">Work</TabsTrigger>
-              <TabsTrigger value="news" className="w-full">News</TabsTrigger>
+              <TabsTrigger value="work" className="w-full">write-ups</TabsTrigger>
+              <TabsTrigger value="news" className="w-full">gallery</TabsTrigger>
             </TabsList>
+          </div>
+            
 
             <TabsContent value="work" className="px-2 flex flex-col items-center max-w-[900px]">
               <ul className="grid grid-cols-1 gap-4">
@@ -177,42 +161,13 @@ export default function Home() {
             </TabsContent>
             <TabsContent value="news" className="px-2 flex flex-col items-center max-w-[900px]">
               <ul className="grid grid-cols-1 gap-4">
-                { newscards }
+                {/* { newscards } */}
               </ul>
             </TabsContent>
-          </Tabs> */}
+        </Tabs>
+      </section>
 
-        </section>
 
-      </div>
-
-      {/* <section className="mx-6 grid grid-cols-5 gap-4 sm:gap-6">
-
-        <div className="card flex flex-col py-4 px-5 sm:py-5 sm:px-6 gap-4 sm:gap-6
-                        col-span-5 md:col-span-2">
-            <header className="flex items-center gap-3 sm:gap-4">
-              <FontAwesomeIcon icon={faNewspaper as IconProp} className="fa-xl" />
-              <h2 className="text-xl sm:text-2xl">News</h2>
-            </header>
-            <div>
-              <Badge variant="outline">March 2024</Badge>
-              <Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles-demo.gif"
-                    alt="gif of demo"
-                    height={0}
-                    width={0}
-                    sizes="225vw"
-                    style={{ width: '100%', height: 'auto',  }}
-                    className="mt-2 card max-w-[250px]"
-                  />
-              <h4 className="mt-3 mb-1">Building an Infinite Circular Feed [devlog.02]</h4>
-              <a href="https://medium.com/@schultzdavidg/building-an-infinite-circular-feed-devlog-02-12d7fafb1981" target="_blank" className="flex gap-1 items-center">
-                <p className="text-sm underline">medium.com</p>
-                <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="fa-xs" />
-              </a>
-            </div>
-        </div>
-      </section> */}
 
       <div className="m-2 mt-64">
         <Footer />
@@ -269,37 +224,4 @@ function ProjectCard(props: ProjectCardProps) {
     
   )
 
-  // return (
-  //   <Link href="/work/acquire">
-  //     <ul className="card relative max-w-xl mx-auto">
-  //       <div className="absolute inset-0 m-4 flex flex-col justify-between">
-  //         <div className='flex justify-between'>
-  //           <h3 className='text-white'>Acquire Demo</h3>
-  //           <Badge>2022</Badge>
-  //         </div>
-  //         <div className="flex items-center gap-2">
-  //           <Image 
-  //             src={ logoImage }
-  //             alt="logo"
-  //             height={24}
-  //             width={24}
-  //             sizes="50vw"
-  //             className="rounded-[10rem]"
-  //           />
-  //           <p className="text-white font-500">Sureify</p>
-
-  //         </div>
-  //       </div>
-  //       <Image 
-  //         src={ bgImage }
-  //         alt="logo"
-  //         height={0}
-  //         width={0}
-  //         sizes="100vw"
-  //         className="w-full bg-cover"
-  //       />
-  //     </ul>
-  //   </Link>
-    
-  // )
 }

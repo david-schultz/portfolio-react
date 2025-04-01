@@ -5,6 +5,38 @@ import { ThemeProvider } from "@/components/theme-provider"
 import './globals.css'
 import Footer from '@/components/ui/custom/footer'
 
+const louize = localFont({ 
+  src: [
+    {
+      path: '../fonts/Louize/205TF-Louize-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Louize/205TF-Louize-Italic.woff2',
+      weight: '400',
+      style: 'italic'
+    },
+  ],
+  variable: '--font-louize'
+});
+
+const fraktion = localFont({ 
+  src: [
+    {
+      path: '../fonts/Fraktion/PPFraktionMono-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Fraktion/PPFraktionMono-RegularItalic.woff2',
+      weight: '400',
+      style: 'italic'
+    },
+  ],
+  variable: '--font-fraktion'
+});
+
 const inter = Inter({ subsets: ['latin'] })
 const graphik = localFont({
   src: [
@@ -35,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={graphik.className}>
+    <html lang="en" className={`${louize.variable} ${fraktion.variable}`}>
       <head>
         <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png"/>
         <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png"/>
