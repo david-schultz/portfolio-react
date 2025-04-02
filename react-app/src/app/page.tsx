@@ -130,11 +130,11 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen flex flex-col gap-4 bg-repeat bg-[url('/patterns/dot-bg2.png')]">
-      <section className="flex flex-col gap-4">
+    <main className="w-full max-w-[64rem] p-4 sm:p-16 grid grid-cols-1 md:grid-cols-12 gap-8">
+      <section className="md:col-span-4 flex flex-col gap-4">
         <div className="w-[100px] h-[100px] bg-red-500"></div>
         <h1 className="font-serif">david schultz</h1>
-        <ul className="font-mono">
+        <ul className="font-mono italic flex flex-col gap-2">
           <li>※ Interaction designer</li>
           <li>※ read.cv</li>
           <li>☞ Contact</li>
@@ -142,12 +142,12 @@ export default function Home() {
       </section>
       {/* <AboutSection /> */}
 
-      <section>
-        <Tabs id="tabs" defaultValue="work" className="w-full max-w-[1200px] flex flex-col items-center">
+      <section className="md:col-span-8">
+        <Tabs id="tabs" defaultValue="work" className="flex flex-col">
           <div className="flex gap-4">
           <span>davidschultz.co</span>
           <span>/</span>
-            <TabsList className="mb-4 w-full sticky top-16 z-[10000]">
+            <TabsList className="mb-4 sticky top-16 z-[10000]">
               <TabsTrigger value="work" className="w-full">write-ups</TabsTrigger>
               <TabsTrigger value="news" className="w-full">gallery</TabsTrigger>
             </TabsList>
@@ -167,11 +167,6 @@ export default function Home() {
         </Tabs>
       </section>
 
-
-
-      <div className="m-2 mt-64">
-        <Footer />
-      </div>
     </main>
   )
 }

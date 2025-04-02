@@ -93,7 +93,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/> */}
       </head>
-      <body className="bg-background">
+      <body className="bg-background font-serif flex flex-col items-center min-h-screen">
         {/* <ThemeProvider
           attribute="class"
           defaultTheme="system"
