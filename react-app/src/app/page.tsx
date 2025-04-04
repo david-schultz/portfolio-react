@@ -141,16 +141,22 @@ export default function Home() {
       <section className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
         <div className="w-[100px] h-[100px] bg-red-500"></div>
         <h1 className="font-serif text-tx">david schultz</h1>
-        <ul className="font-mono italic flex flex-col gap-2">
+        <ul className="flex flex-col gap-2">
           <li className="flex gap-2">
-              <Button variant="simple-italic" asChild>
-                <Link href="/about"><span className="w-4">※</span>Interaction designer</Link>
-              </Button>
-            
-            
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/about"><span className="w-4">※</span>Interaction designer</Link>
+            </Button>
           </li>
-          <li className="flex gap-2"><span className="w-4">※</span>read.cv</li>
-          <li className="flex gap-2"><span className="w-4">☞</span>Contact</li>
+          <li className="flex gap-2">
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="https://read.cv/davidschultz"><span className="w-4">※</span>read.cv</Link>
+            </Button>
+          </li>
+          <li className="flex gap-2">
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="https://read.cv/davidschultz"><span className="w-4">☞</span>Contact</Link>
+            </Button>
+          </li>
         </ul>
       </section>
       {/* <AboutSection /> */}
@@ -159,9 +165,13 @@ export default function Home() {
         <Tabs id="tabs" defaultValue="work" className="flex flex-col">
           <div className="flex font-mono items-center">
             <div className="text-sm font-mono text-tx-primary flex gap-1">
-              <button className="hover:bg-black/[0.05] border-b-[1.5px] border-bd/0 pt-1.5 pb-[7px] px-1">davidschultz.co</button>
-              <span className="border-b-[1.5px] border-bd/0 pt-1.5 pb-[7px] px-1">/</span>
+              {/* <button className="hover:bg-black/[0.05] border-b-[1.5px] border-bd/0 pt-1.5 pb-[7px] px-1">davidschultz.co</button> */}
+              <Button variant="tab" size="tab" asChild>
+                <Link href="/">davidschultz.co</Link>
+              </Button>
+              <span className="border-b-[1px] border-bd/0 pt-1.5 pb-[7px] px-1 text-ic-tertiary">/</span>
             </div>
+            
             <TabsList className="sticky top-16 z-[10000]">
               <TabsTrigger value="work" className="w-full">write-ups</TabsTrigger>
               <TabsTrigger value="news" className="w-full">gallery</TabsTrigger>

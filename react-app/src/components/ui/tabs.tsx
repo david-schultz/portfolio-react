@@ -69,7 +69,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap pt-1.5 pb-[7px] px-1 text-sm font-mono border-b-[1.5px] border-bd/0 ring-offset-background transition-all hover:bg-bg-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-bd-base data-[state=active]:text-tx-primary",
+      "inline-flex items-center justify-center whitespace-nowrap pt-1.5 pb-[7px] px-1 text-xs font-mono text-tx-tertiary border-b-[1px] border-bd/0 hover:bg-bg-disabled active:bg-bg-hover data-[state=active]:border-bd-base data-[state=active]:text-tx-primary disabled:opacity-50 ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none",
       className
     )}
     onClick={() => tabClick()}

@@ -8,10 +8,10 @@ export default function About() {
     <main className="w-full max-w-[64rem] p-4 sm:p-16 grid grid-cols-1 md:grid-cols-12 gap-8">
         <section className="md:col-span-4 flex flex-col gap-4">
         <div className="w-[100px] h-[100px] bg-red-500"></div>
-        <h1 className="font-serif">david schultz</h1>
+        <Link href="/"><h1>david schultz</h1></Link>
         <ul className="font-mono italic flex flex-col gap-2">
             <li className="flex gap-2">
-                <Button variant="simple-italic" asChild>
+                <Button variant="ghost" size="sm" asChild>
                     <Link href="/about"><span className="w-4">※</span>Interaction designer</Link>
                 </Button>
             
