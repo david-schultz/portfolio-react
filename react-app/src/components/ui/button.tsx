@@ -22,6 +22,7 @@ const buttonVariants = cva(
         "primary-locked": "bg-neutral-50 text-neutral-900 hover:bg-neutral-50/90",
         "subtle-dark-locked": "bg-neutral-50/5 text-neutral-100 hover:bg-neutral-50/10",
         "subtle-locked": "bg-neutral-100/5 hover:bg-neutral-100/10",
+        "simple-italic": "hover:bg-black/[0.05]"
       },
       size: {
         default: "h-10 px-4 py-2",

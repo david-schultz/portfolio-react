@@ -33,6 +33,7 @@ type ProjectCardProps = {
   logoName: string
   link: string
   textColor: string
+  categories: string
 }
 
 
@@ -49,7 +50,8 @@ export default function Home() {
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
       "link": "/work/terrariumxr",
-      "textColor": "white"
+      "textColor": "white",
+      "categories": "XR prototyping",
     },
     {
       "name": "Cycles",
@@ -59,7 +61,8 @@ export default function Home() {
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
       "link": "/work/cycles",
-      "textColor": "white"
+      "textColor": "white",
+      "categories": "XR prototyping",
     },
     {
       "name": "Diversity in the Arboretum",
@@ -69,7 +72,8 @@ export default function Home() {
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
       "link": "/work/arboretum",
-      "textColor": "white"
+      "textColor": "white",
+      "categories": "Physical data vis",
     },
     {
       "name": "sureUI Data Visualization",
@@ -79,7 +83,8 @@ export default function Home() {
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
       "logoName": "Sureify",
       "link": "/work/datavis",
-      "textColor": "black"
+      "textColor": "black",
+      "categories": "Design systems",
     },
     {
       "name": "Acquire Demo",
@@ -89,7 +94,8 @@ export default function Home() {
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
       "logoName": "Sureify",
       "link": "/work/acquire",
-      "textColor": "black"
+      "textColor": "black",
+      "categories": "UI",
     }
   ];
 
@@ -108,6 +114,7 @@ export default function Home() {
         logoName={project.logoName}
         link={project.link}
         textColor={project.textColor}
+        categories={project.categories}
       /> 
     );
 
@@ -131,23 +138,31 @@ export default function Home() {
 
   return (
     <main className="w-full max-w-[64rem] p-4 sm:p-16 grid grid-cols-1 md:grid-cols-12 gap-8">
-      <section className="md:col-span-4 flex flex-col gap-4">
+      <section className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
         <div className="w-[100px] h-[100px] bg-red-500"></div>
-        <h1 className="font-serif">david schultz</h1>
+        <h1 className="font-serif text-tx">david schultz</h1>
         <ul className="font-mono italic flex flex-col gap-2">
-          <li>※ Interaction designer</li>
-          <li>※ read.cv</li>
-          <li>☞ Contact</li>
+          <li className="flex gap-2">
+              <Button variant="simple-italic" asChild>
+                <Link href="/about"><span className="w-4">※</span>Interaction designer</Link>
+              </Button>
+            
+            
+          </li>
+          <li className="flex gap-2"><span className="w-4">※</span>read.cv</li>
+          <li className="flex gap-2"><span className="w-4">☞</span>Contact</li>
         </ul>
       </section>
       {/* <AboutSection /> */}
 
       <section className="md:col-span-8">
         <Tabs id="tabs" defaultValue="work" className="flex flex-col">
-          <div className="flex gap-4">
-          <span>davidschultz.co</span>
-          <span>/</span>
-            <TabsList className="mb-4 sticky top-16 z-[10000]">
+          <div className="flex font-mono items-center">
+            <div className="text-sm font-mono text-tx-primary flex gap-1">
+              <button className="hover:bg-black/[0.05] border-b-[1.5px] border-bd/0 pt-1.5 pb-[7px] px-1">davidschultz.co</button>
+              <span className="border-b-[1.5px] border-bd/0 pt-1.5 pb-[7px] px-1">/</span>
+            </div>
+            <TabsList className="sticky top-16 z-[10000]">
               <TabsTrigger value="work" className="w-full">write-ups</TabsTrigger>
               <TabsTrigger value="news" className="w-full">gallery</TabsTrigger>
             </TabsList>
@@ -185,27 +200,9 @@ function ProjectCard(props: ProjectCardProps) {
   // if type is image bg
   
   return (
-    <li className={`card elevation-1 relative mx-auto bg-gradient-dark-2 min-h-[250px] overflow-hidden justify-self-stretch self-stretch w-full ${props.textColor === 'white' ? 'text-white' : 'text-foreground'}`}>
-      <Link href={props.link} >
-          <div className="absolute inset-0 m-4 flex flex-col justify-between">
-            <div className='flex justify-between items-start gap-2'>
-              <div className={`px-2 py-1 ${props.textColor === 'white' ? 'glass-dark-subtle' : 'glass-subtle'}`}>
-                <h3 className='lg:text-3xl'>{props.name}</h3>
-              </div>
-              <Badge className="grow-0">{props.year}</Badge>
-            </div>
-            <div className="flex items-center gap-2">
-              <Image 
-                src={props.logoSource}
-                alt="logo"
-                height={24}
-                width={24}
-                sizes="10vw"
-                className="rounded-[10rem]"
-              />
-              <p className="font-500">{props.logoName}</p>
-            </div>
-          </div>
+    <li>
+      <Link href={props.link} className="flex flex-col gap-4">
+        <div className="border-[1px] border-border-base/80">
           <Image 
             src={props.imageSource}
             alt="logo"
@@ -214,8 +211,49 @@ function ProjectCard(props: ProjectCardProps) {
             sizes="100vw"
             className="min-w-full min-h-full w-full object-cover"
           />
+        </div>
+
+        <div className="flex">
+          <div className="flex flex-col gap-1 w-full">
+            <h3>{props.name}</h3>
+            <p className="font-mono text-sm">{props.year} ※ {props.categories}</p>
+          </div>
+          <button>➡️</button>
+        </div>
+
       </Link>
     </li>
+    // <li className={`card elevation-1 relative mx-auto bg-gradient-dark-2 min-h-[250px] overflow-hidden justify-self-stretch self-stretch w-full ${props.textColor === 'white' ? 'text-white' : 'text-foreground'}`}>
+    //   <Link href={props.link} >
+    //       <div className="absolute inset-0 m-4 flex flex-col justify-between">
+    //         <div className='flex justify-between items-start gap-2'>
+    //           <div className={`px-2 py-1 ${props.textColor === 'white' ? 'glass-dark-subtle' : 'glass-subtle'}`}>
+    //             <h3 className='lg:text-3xl'>{props.name}</h3>
+    //           </div>
+    //           <Badge className="grow-0">{props.year}</Badge>
+    //         </div>
+    //         <div className="flex items-center gap-2">
+    //           <Image 
+    //             src={props.logoSource}
+    //             alt="logo"
+    //             height={24}
+    //             width={24}
+    //             sizes="10vw"
+    //             className="rounded-[10rem]"
+    //           />
+    //           <p className="font-500">{props.logoName}</p>
+    //         </div>
+    //       </div>
+    //       <Image 
+    //         src={props.imageSource}
+    //         alt="logo"
+    //         height={0}
+    //         width={0}
+    //         sizes="100vw"
+    //         className="min-w-full min-h-full w-full object-cover"
+    //       />
+    //   </Link>
+    // </li>
     
   )
 

@@ -8,7 +8,7 @@ export default function WorkLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="min-h-screen flex flex-col gap-4 items-stretch">
+    <div className="bg-background font-serif flex flex-col items-center min-h-screen">
       <ScrollUp/>
       {/* <header className="mx-2 p-4">
         <SiteBar />

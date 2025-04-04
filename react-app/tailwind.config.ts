@@ -60,121 +60,80 @@ module.exports = {
     extend: {
       colors: {
         invert: "#FFFFFF",
-        border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
 
-        background: {
-          DEFAULT: "hsl(var(--background))",
-          invert: "hsl(var(--background-invert))",
-        },
-        foreground: {
-          DEFAULT: "hsl(var(--foreground))",
-          invert: "hsl(var(--foreground-invert))",
-        },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        hypergold: {
-          DEFAULT: "hsl(var(--hypergold))",
-        },
-        fabric: {
-          DEFAULT: "hsl(var(--fabric))",
-        },
-        sequential: {
-          blue: {
-            50: "#EFF6FF",
-            100: "#D9EAFF",
-            200: "#C5DCFF",
-            300: "#AECEFF",
-            400: "#94BEFF",
-            500: "#79ADFC",
-            600: "#5394F5",
-            700: "#0D429E",
-            800: "#00235F",
-            900: "#001436",
-          },
-          purple: {
-            50: "#F7EEFF",
-            100: "#E9D1FF",
-            200: "#D7AEFF",
-            300: "#C68DFF",
-            400: "#AD68F2",
-            500: "#9843ED",
-            600: "#7D2BCE",
-            700: "#5E0DAE",
-            800: "#3C0077",
-            900: "#230045",
+        light: "hsl(var(--light-100))",
+        dark: "hsl(var(--dark-800))",
+        brand: "hsl(var(--brand))",
+
+        tx: {
+          DEFAULT: "hsl(var(--dark-800))",
+          body: "hsl(var(--dark-800) / 0.95)",
+          primary: "hsl(var(--dark-800))",
+          secondary: "hsl(var(--dark-800) / 0.7)",
+          tertiary: "hsl(var(--dark-800) / 0.5)",
+          disabled: "hsl(var(--dark-800) / 0.22)",
+          button: "hsl(var(--light-100))",
+          brand: {
+            DEFAULT: "hsl(var(--brand) / 0.95)",
+            disabled: "hsl(var(--brand) / 0.35)",
           },
         },
-        categorical: {
-          blue: {
-            base: "#71A9FF",
-            light: "#2864CC",
-            dark: "#0A3684",
-          },
-          turquoise: {
-            base: "#1DAFCF",
-            light: "#88E7E7",
-            dark: "#018092",
-          },
-          green: {
-            base: "#46B974",
-            light: "#92E56B",
-            dark: "#0F8A40",
-          },
-          yellow: {
-            base: "#E19C35",
-            light: "#FBC756",
-            dark: "#AE600C",
-          },
-          red: {
-            base: "#DC5858",
-            light: "#FF918A",
-            dark: "#9E2828",
-          },
-          fuschia: {
-            base: "#B13984",
-            light: "#EF86C8",
-            dark: "#620A41",
-          },
-          purple: {
-            base: "#9D53E7",
-            light: "#CB98FF",
-            dark: "#3B0077",
+
+        ic: {
+          DEFAULT: "hsl(var(--dark-800))",
+          primary: "hsl(var(--dark-800) / 0.9)",
+          secondary: "hsl(var(--dark-800) / 0.6)",
+          tertiary: "hsl(var(--dark-800) / 0.4)",
+          disabled: "hsl(var(--dark-800) / 0.15)",
+          button: "hsl(var(--light-100))",
+          brand: {
+            DEFAULT: "hsl(var(--brand) / 0.9)",
+            disabled: "hsl(var(--brand) / 0.5)",
           },
         },
-        random: {
-          green: "84DE64",
-          fairy: "D765FF",
-          blue: "65ACFF",
-          yellow: "#FBC756",
-        }
+
+        bg: {
+          DEFAULT: "hsl(var(--light-100))",
+          base: "hsl(var(--light-100))",
+          card: "hsl(var(--light-200))",
+          primary: "hsl(var(--dark-800) / 0.08)",
+          secondary: "hsl(var(--dark-800) / 0.03)",
+          hover: "hsl(var(--dark-800) / 0.1)",
+          pressed: "hsl(var(--dark-800) / 0.13)",
+          disabled: "hsl(var(--dark-800) / 0.04)",
+          brand: {
+            DEFAULT: "hsl(var(--brand) / 0.12)",
+            hover: "hsl(var(--brand) / 0.18)",
+            pressed: "hsl(var(--brand) / 0.22)",
+            disabled: "hsl(var(--brand) / 0.06)",
+          },
+          button: {
+            DEFAULT: "hsl(var(--dark-800))",
+            hover: "hsl(var(--dark-900) / 0.18)",
+            pressed: "hsl(var(--dark-950) / 0.22)",
+            disabled: "hsl(var(--brand) / 0.15)",
+          },
+        },
+
+        bd: {
+          DEFAULT: "hsl(var(--light-900))",
+          base: "hsl(var(--light-900) / 0.8)",
+          card: "hsl(var(--light-600) / 0.35)",
+          primary: "hsl(var(--dark-800) / 0.15)",
+          secondary: "hsl(var(--dark-800) / 0.08)",
+          hover: "hsl(var(--dark-800) / 0.17)",
+          pressed: "hsl(var(--dark-800) / 0.18)",
+          disabled: "hsl(var(--dark-800) / 0.05)",
+          brand: {
+            DEFAULT: "hsl(var(--brand) / 0.55)",
+            hover: "hsl(var(--brand) / 0.6)",
+            pressed: "hsl(var(--brand) / 0.63)",
+            disabled: "hsl(var(--brand) / 0.15)",
+          },
+        },
+
       },
       borderRadius: {
         lg: "var(--radius)",
