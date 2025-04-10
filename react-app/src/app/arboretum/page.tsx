@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import '@/app/styles.css'
-import BackgroundSetter from '@/lib/setbg'
 import SiteBar from '@/components/ui/custom/SiteBar'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
@@ -10,41 +9,42 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import ScrollButton from '@/components/ui/custom/scroll-button'
 import Footer from '@/components/ui/custom/footer'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export default function Arboretum() {
   return (
-    <main className="flex flex-col items-center bg-repeat bg-[url('/patterns/topo-bg.png')]">
-      {/* <TiledBg variant="topographic"></TiledBg> */}
-        
-      {/* <BackgroundSetter after="bg-background" /> */}
-      <header className="w-full flex flex-col items-center">
-        <div className="mx-2 p-4 sticky top-1 w-full">
-          <SiteBar />
-        </div>
-        <div className="mx-4 xs:mx-8 sm:mx-16 max-w-[1200px] mt-16">
-          <div className="flex gap-1">
-            <Badge>Case Study</Badge>
-            <Badge variant="outline">Winter 2023</Badge>
-          </div>
-          <h1 className="mt-4 mb-4 sm:mb-8 text-3xl sm:text-4xl md:text-5xl font-500">Diversity in the Arboretum</h1>
-          <div className="card"><Image
-                    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-cover-min.jpg"
-                    alt="acquire overview"
-                    height={0}
-                    width={0}
-                    sizes="225vw"
-                    style={{ width: '100%', height: 'auto' }}
-                    /></div>
-        </div>
-      </header>
+    <main className="md:col-span-8">
 
-      <article className="mx-4 xs:mx-8 sm:mx-16 max-w-[900px] mt-24 pb-32">
-        <section className="flex flex-col md:flex-row">
-          <div className="max-w-[650px] flex flex-col gap-8">
-            <h1 className="text-3xl md:text-4xl">Exploring + ‘visceralizing’ an incomplete dataset</h1>
-            <p className="text-large">In <code className="mx-1 relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-md font-600">DESIGN 384: INFORMATION VISUALIZATION</code>, a course I took at the UW, students were asked to visualize a database of accession data from the Seattle Arboretum.</p>
+      <nav className="flex gap-1 font-mono text-xs sticky top-0 pt-16 bg-bg z-[10000]">
+            <Button variant="tab" size="tab" asChild>
+              <Link href="/">davidschultz.co</Link>
+            </Button>
+            <span className="border-b-[1px] border-bd/0 pt-1.5 pb-[7px] px-1 text-ic-tertiary">/</span>
+            <Button variant="tab" size="tab" asChild>
+              <Link href="/">write-ups</Link>
+            </Button>
+            <span className="border-b-[1px] border-bd/0 pt-1.5 pb-[7px] px-1 text-ic-tertiary">/</span>
+            <span className="border-b-[1px] border-bd-base pt-1.5 pb-[7px] px-1 text-tx-primary">arboretum</span>
+      </nav>
+
+      <article className="text-tx-body mt-16">
+        <header>
+          <h1 className="text-tx-primary">Visceralizing plant diversity in the Seattle Arboretum</h1>
+          <h3 className="font-mono text-tx-tertiary">2023 ※ Physical data visualization</h3>
+          <p className="text-md">Students were asked to visualize a database of accession data from the Seattle Arboretum.</p>
+          <div className="card mb-4 ">
+              <Image
+                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/compressed/arb-cover-min.jpg"
+                alt="datavis"
+                height={0}
+                width={0}
+                sizes="225vw"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+              <small className="text-tx-tertiary">Produced for DESIGN 384: Information Visualization, at the University of Washington.</small>
           </div>
-        </section>
+        </header>
 
         <Separator className="my-12" />{/*————————————————————————————*/}
 
@@ -156,7 +156,6 @@ export default function Arboretum() {
             </div>
           </div>
         </section>
-
         <Separator className="my-16 md:my-24" />{/*————————————————————————————*/}
 
         <section>
@@ -293,15 +292,9 @@ export default function Arboretum() {
                 />
             </div>
         </section>
-
-
       </article>
 
       <ScrollButton />
-
-      <div className="w-[calc(100vw-2rem)] m-2">
-        <Footer />
-      </div>
     </main>
   )
 }

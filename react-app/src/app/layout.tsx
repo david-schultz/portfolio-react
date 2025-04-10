@@ -4,6 +4,8 @@ import localFont from 'next/font/local'
 import { ThemeProvider } from "@/components/theme-provider"
 import './globals.css'
 import Footer from '@/components/ui/custom/footer'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 const louize = localFont({ 
   src: [
@@ -93,14 +95,42 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/> */}
       </head>
-      <body className="bg-bg-base font-serif flex flex-col items-center min-h-screen">
+      <body className="bg-bg-base font-serif flex flex-col items-center min-h-screen bg-repeat bg-[url('/patterns/topo-bg.png')]">
         {/* <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         > */}
-        {children}
+
+        <div className="w-full max-w-[64rem] px-4 sm:px-16 grid grid-cols-1 md:grid-cols-12 gap-8">
+          <div className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
+            <div className="w-[100px] h-[100px] bg-red-500"></div>
+            <Link href="/"><h1 className="font-serif text-tx">david schultz</h1></Link>
+            <ul className="flex flex-col gap-2">
+              <li className="flex gap-2">
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="/about"><span className="w-4">※</span>Interaction designer</Link>
+                </Button>
+              </li>
+              <li className="flex gap-2">
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="https://read.cv/davidschultz"><span className="w-4">※</span>read.cv</Link>
+                </Button>
+              </li>
+              <li className="flex gap-2">
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="https://read.cv/davidschultz"><span className="w-4">☞</span>Contact</Link>
+                </Button>
+              </li>
+            </ul>
+          </div>
+
+          {children}
+          
+        </div>
+
+
         {/* </ThemeProvider> */}
       </body>
     </html>

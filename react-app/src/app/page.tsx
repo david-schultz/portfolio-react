@@ -49,7 +49,7 @@ export default function Home() {
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
-      "link": "/work/terrariumxr",
+      "link": "/terrariumxr",
       "textColor": "white",
       "categories": "XR prototyping",
     },
@@ -60,7 +60,7 @@ export default function Home() {
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
-      "link": "/work/cycles",
+      "link": "/cycles",
       "textColor": "white",
       "categories": "XR prototyping",
     },
@@ -71,7 +71,7 @@ export default function Home() {
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
-      "link": "/work/arboretum",
+      "link": "/arboretum",
       "textColor": "white",
       "categories": "Physical data vis",
     },
@@ -82,7 +82,7 @@ export default function Home() {
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
       "logoName": "Sureify",
-      "link": "/work/datavis",
+      "link": "/datavis",
       "textColor": "black",
       "categories": "Design systems",
     },
@@ -93,7 +93,7 @@ export default function Home() {
       "imageType": "block",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
       "logoName": "Sureify",
-      "link": "/work/acquire",
+      "link": "/acquire",
       "textColor": "black",
       "categories": "UI",
     }
@@ -137,61 +137,33 @@ export default function Home() {
 
 
   return (
-    <main className="w-full max-w-[64rem] p-4 sm:p-16 grid grid-cols-1 md:grid-cols-12 gap-8">
-      <section className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
-        <div className="w-[100px] h-[100px] bg-red-500"></div>
-        <h1 className="font-serif text-tx">david schultz</h1>
-        <ul className="flex flex-col gap-2">
-          <li className="flex gap-2">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/about"><span className="w-4">※</span>Interaction designer</Link>
+    <main className="md:col-span-8">
+      <Tabs id="tabs" defaultValue="write-ups" className="flex flex-col">
+        <div className="flex gap-1 font-mono text-xs items-center sticky top-0 pt-16 bg-bg z-[10000]">
+          <div className="font-mono text-tx-primary">
+            <Button variant="tab" size="tab" asChild>
+              <Link href="/">davidschultz.co</Link>
             </Button>
-          </li>
-          <li className="flex gap-2">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="https://read.cv/davidschultz"><span className="w-4">※</span>read.cv</Link>
-            </Button>
-          </li>
-          <li className="flex gap-2">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="https://read.cv/davidschultz"><span className="w-4">☞</span>Contact</Link>
-            </Button>
-          </li>
-        </ul>
-      </section>
-      {/* <AboutSection /> */}
-
-      <section className="md:col-span-8">
-        <Tabs id="tabs" defaultValue="work" className="flex flex-col">
-          <div className="flex font-mono items-center">
-            <div className="text-sm font-mono text-tx-primary flex gap-1">
-              {/* <button className="hover:bg-black/[0.05] border-b-[1.5px] border-bd/0 pt-1.5 pb-[7px] px-1">davidschultz.co</button> */}
-              <Button variant="tab" size="tab" asChild>
-                <Link href="/">davidschultz.co</Link>
-              </Button>
-              <span className="border-b-[1px] border-bd/0 pt-1.5 pb-[7px] px-1 text-ic-tertiary">/</span>
-            </div>
-            
-            <TabsList className="sticky top-16 z-[10000]">
-              <TabsTrigger value="work" className="w-full">write-ups</TabsTrigger>
-              <TabsTrigger value="news" className="w-full">gallery</TabsTrigger>
-            </TabsList>
           </div>
-            
+          <span className="border-b-[1px] border-bd/0 pt-1.5 pb-[7px] px-1 text-ic-secondary">/</span>
+          
+          <TabsList className="">
+            <TabsTrigger value="write-ups" className="w-full">write-ups</TabsTrigger>
+            <TabsTrigger value="gallery" className="w-full">gallery</TabsTrigger>
+          </TabsList>
+        </div>
 
-            <TabsContent value="work" className="px-2 flex flex-col items-center max-w-[900px]">
-              <ul className="grid grid-cols-1 gap-4">
-                { projects }
-              </ul>
-            </TabsContent>
-            <TabsContent value="news" className="px-2 flex flex-col items-center max-w-[900px]">
-              <ul className="grid grid-cols-1 gap-4">
-                {/* { newscards } */}
-              </ul>
-            </TabsContent>
-        </Tabs>
-      </section>
-
+        <TabsContent value="write-ups" className="px-2 flex flex-col items-center max-w-[900px] mt-16">
+          <ul className="grid grid-cols-1 gap-4">
+            { projects }
+          </ul>
+        </TabsContent>
+        <TabsContent value="gallery" className="px-2 flex flex-col items-center max-w-[900px]">
+          <ul className="grid grid-cols-1 gap-4">
+            {/* { newscards } */}
+          </ul>
+        </TabsContent>
+      </Tabs>
     </main>
   )
 }
