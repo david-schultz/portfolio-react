@@ -21,7 +21,7 @@ import SiteBar from '@/components/ui/custom/SiteBar'
 import ScrollTo from '@/lib/ScrollTo';
 import ScrollUp from '@/lib/ScrollUp';
 import { Scroll } from 'lucide-react';
-import DataVisTabs from '@/app/work/datavis/datavisTabs';
+import DataVisTabs from '@/app/datavis/datavisTabs';
 import ScrollButton from '@/components/ui/custom/scroll-button';
 import Footer from '@/components/ui/custom/footer';
 
@@ -35,48 +35,36 @@ export default function Datavis() {
   // const [tabClicked, setTabClicked] = useState(false);
 
   return (
-    <main className="flex flex-col items-center bg-repeat bg-[url('/patterns/topo-bg.png')]">
-      <BackgroundSetter after="bg-white" />
-      <header className="w-full flex flex-col items-center">
-        <div className="mx-2 p-4 sticky top-1 w-full">
-          <SiteBar />
-        </div>
-        <div className="max-w-[1200px] mt-16 mx-4 xs:mx-8 sm:mx-16 ">
-          <div className="flex gap-1">
-            <Badge>Case Study</Badge>
-            <Badge variant="outline">2022</Badge>
+    <main className="md:col-span-8">
+
+      <nav className="flex gap-1 font-mono text-xs sticky top-0 pt-16 bg-bg z-[10000]">
+            <Button variant="tab" size="tab" asChild>
+              <Link href="/">davidschultz.co</Link>
+            </Button>
+            <span className="border-b-[1px] border-bd/0 pt-1.5 pb-[7px] px-1 text-ic-tertiary">/</span>
+            <Button variant="tab" size="tab" asChild>
+              <Link href="/">write-ups</Link>
+            </Button>
+            <span className="border-b-[1px] border-bd/0 pt-1.5 pb-[7px] px-1 text-ic-tertiary">/</span>
+            <span className="border-b-[1px] border-bd-base pt-1.5 pb-[7px] px-1 text-tx-primary">datavis</span>
+      </nav>
+
+      <article className="text-tx-body mt-16">
+        <header>
+          <h1 className="text-tx-primary">sureUI Data Visualization</h1>
+          <h3 className="font-mono text-tx-tertiary">2022 ※ Design systems, components</h3>
+          <p className="text-md">Building a “time machine” in mixed reality. This course was my first encounter with designing in XR. My team designed a new type of calendar—one that utilizes 3d-space. I was responsible for building a working prototype in Unity for the Quest 3.</p>
+          <div className="card mb-4 ">
+              <VideoPlayer width="600" height="400"
+                videoUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-bar_animation.webm'
+                gifUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-bar_animation.gif'
+              />
+              <small className="text-tx-tertiary">Advised by Arjan van der Vlies, Anders Houston, Patrick Schaenzel</small>
           </div>
-          <h1 className="mt-2 mb-4 sm:mb-8 text-3xl sm:text-4xl md:text-5xl font-500">sureUI Data Visualization</h1>
-
-          {/* <VideoPlayer width="600" height="400"
-            videoUrl='https://firebasestorage.googleapis.com/v0/b/portfolio-95b18.appspot.com/o/casestudies%2Fdatavis%2Fvideos%2Fbarchart-demonstration.webm?alt=media&token=d46b6a27-fe9c-444c-9f89-28d3848c7d8a'
-          /> */}
-          <VideoPlayer width="600" height="400"
-            videoUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-bar_animation.webm'
-            gifUrl='https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-bar_animation.gif'
-          />
-          {/* <div className="card">
-            <Image
-              src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-bar_animation.gif"
-              alt=""
-              height={0}
-              width={0}
-              sizes="100vw"
-              style={{ width: '100%', height: 'auto' }}
-            />
-          </div> */}
-        </div>
-      </header>
-
-      <article className="flex flex-col items-center mx-4 xs:mx-8 sm:mx-16 pb-32">
+        </header>
         <DataVisTabs />
       </article>
-
       <ScrollButton />
-
-      <div className="w-[calc(100vw-2rem)] m-2">
-        <Footer />
-      </div>
     </main>
   )
 }

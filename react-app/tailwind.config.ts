@@ -112,6 +112,7 @@ module.exports = {
             hover: "hsl(var(--dark-900) / 0.18)",
             pressed: "hsl(var(--dark-950) / 0.22)",
             disabled: "hsl(var(--brand) / 0.15)",
+            brand: "hsl(var(--brand))",
           },
         },
 
