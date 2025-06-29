@@ -1,4 +1,4 @@
-
+import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import SiteBar from '@/components/ui/custom/SiteBar'
@@ -24,6 +24,12 @@ import AboutSection from '@/components/ui/custom/about-section'
 import Footer from '@/components/ui/custom/footer'
 
 
+import { Markdown } from '../components/Markdown'
+// import { Category, PageProps } from '../lib/posts'
+import { Category, PageProps } from '../lib/articles'
+import { getAllArticles } from '@/lib/articles'
+
+
 type ProjectCardProps = {
   name: string
   year: string
@@ -36,11 +42,32 @@ type ProjectCardProps = {
   categories: string
 }
 
-
-
 let readcvSrc = "/fa/readcv.svg";
 
-export default function Home() {
+export default async function Home() {
+  // Fetch articles data directly in the component
+  const articles = await getAllArticles()
+  
+  // Group articles by category
+  const categories = articles.reduce((acc, article) => {
+    let category = acc.find((category) => category.name === article.category)
+    if (!category) {
+      category = {
+        name: article.category,
+        articles: [],
+      }
+      acc.push(category)
+    }
+
+    // Shorten content to minimize build size but allow previewing
+    category.articles.push({
+      ...article,
+      content: article.content.slice(0, 300),
+    })
+
+    return acc
+  }, [] as Category[])
+
   const displayedProjects: Array<ProjectCardProps> = [
     {
       "name": "TerrariumXR",
@@ -160,12 +187,6 @@ export default function Home() {
     <main className="md:col-span-8">
       <Tabs id="tabs" defaultValue="write-ups" className="flex flex-col">
         <div className="flex gap-1 font-mono text-xs items-center sticky top-0 pt-16 bg-bg z-[10000]">
-          <div className="font-mono text-tx-primary">
-            <Button variant="tab" size="tab" asChild>
-              <Link href="/">davidschultz.co</Link>
-            </Button>
-          </div>
-          <span className="border-b-[1px] border-bd/0 pt-1.5 pb-[7px] px-1 text-ic-secondary">/</span>
           
           <TabsList className="">
             <TabsTrigger value="write-ups" className="w-full">write-ups</TabsTrigger>
@@ -181,7 +202,11 @@ export default function Home() {
         </TabsContent>
         <TabsContent value="gallery" className="px-2 flex flex-col items-center max-w-[900px]">
           <ul className="grid grid-cols-1 gap-4">
-            {/* { newscards } */}
+            { categories
+              .filter(({ articles }) => articles.some(({ visible }) => visible)) 
+              .flatMap((category) => (
+                <HomeCategory key={category.name || ''} category={category} />
+            ))}
           </ul>
         </TabsContent>
         <TabsContent value="about" className="px-2 flex flex-col items-center max-w-[900px]">
@@ -202,6 +227,46 @@ export default function Home() {
 //   logoSource: string
 //   logoName: string
 // }
+
+
+export type HomeCategoryProps = {
+  category: Category
+}
+
+export const HomeCategory = ({
+  category: { name, articles },
+}: HomeCategoryProps) => (
+  <div className="flex flex-col gap-2">
+    <p className="text-2xl">{name}</p>
+
+    <div className="grid grid-cols-1 gap-2 xs:grid-cols-2">
+      {articles
+        .filter(({ visible }) => visible)
+        .map(({ title, subtitle, content, path }) => (
+          <Link
+            key={path}
+            className={clsx(
+              'flex shrink-0 flex-col justify-between gap-6 rounded-sm border border-emerald-950 p-4',
+              // Background effects
+              'bg-transparent transition hover:bg-emerald-950 active:bg-emerald-900'
+            )}
+            href={path}
+          >
+            <div className="space-y-1">
+              <p>{title}</p>
+              <p className="text-xs italic opacity-60">{subtitle}</p>
+            </div>
+
+            {/* <Markdown
+              className="pointer-events-none line-clamp-2 text-sm opacity-70"
+              markdown={content}
+            /> */}
+          </Link>
+        ))}
+    </div>
+  </div>
+)
+
 
 
 function ProjectCard(props: ProjectCardProps) {

@@ -3,9 +3,8 @@ import fsPromises from 'fs/promises'
 import path from 'path'
 
 import matter from 'gray-matter'
-import { GetStaticPaths, GetStaticProps } from 'next'
 
-export type Post = {
+export type Article = {
   path: string
   title: string
   subtitle: string
@@ -15,8 +14,8 @@ export type Post = {
   order: number | null
   // If true, will show up in navigation.
   visible: boolean
-  // Posts of like-category will be grouped together. The categories will be
-  // ordered based on the smallest order of a post in that category.
+  // Articles of like-category will be grouped together. The categories will be
+  // ordered based on the smallest order of a article in that category.
   category: string | null
 
   // Added during static generation.
@@ -24,9 +23,9 @@ export type Post = {
 }
 
 export type Category = {
-  // Posts with no category will be grouped together with a null name.
+  // Articles with no category will be grouped together with a null name.
   name: string | null
-  posts: Post[]
+  articles: Article[]
 
   // Added during static generation.
   active?: boolean
@@ -34,10 +33,10 @@ export type Category = {
 
 export type PageProps = {
   categories: Category[]
-  post: Post | null
+  article: Article | null
 }
 
-const postsFolder = path.join(process.cwd(), 'posts')
+const articlesFolder = path.join(process.cwd(), 'public/articles')
 
 const walk = async (dirPath: string): Promise<string[]> =>
   (
@@ -57,17 +56,19 @@ const walk = async (dirPath: string): Promise<string[]> =>
     )
   ).flat()
 
-export const getAllPosts = async (): Promise<Post[]> =>
-  (await walk(postsFolder))
-    .map((fileName): Post => {
+export const getAllArticles = async (): Promise<Article[]> =>
+  (await walk(articlesFolder))
+    .map((fileName): Article => {
       const { data, content } = matter(
-        fs.readFileSync(path.join(postsFolder, fileName)).toString()
+        fs.readFileSync(path.join(articlesFolder, fileName)).toString()
       )
+
+
 
       const paths = fileName.split('/').map((s) => s.replace(/\.mdx?$/, ''))
       const title = data.title || paths[paths.length - 1]
 
-      const wordCount = content.split(/\s+/gu).length
+      const wordCount = content.split(/\s+/g).length
       const subtitle = `${wordCount} words (~${Math.round(
         wordCount / 250
       ).toLocaleString()} minute read)`
@@ -98,66 +99,3 @@ export const getAllPosts = async (): Promise<Post[]> =>
         ? a.title.localeCompare(b.title)
         : aOrder - bOrder
     })
-
-export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
-  const posts = await getAllPosts()
-
-  const post =
-    context.params?.slug && Array.isArray(context.params.slug)
-      ? posts.find(
-          (post) =>
-            post.path === '/' + (context.params!.slug as string[]).join('/')
-        ) || null
-      : null
-  if (post) {
-    post.active = true
-  }
-
-  // Shorten content from posts to minimize build size but allow previewing on
-  // the homepage.
-  const postsWithoutContent = posts.map((post) => ({
-    ...post,
-    content: post.content.slice(0, 300),
-  }))
-
-  // Group posts by category. Categories are already sorted based on post order.
-  const categories = postsWithoutContent.reduce((acc, post) => {
-    let category = acc.find((category) => category.name === post.category)
-    if (!category) {
-      category = {
-        name: post.category,
-        posts: [],
-      }
-      acc.push(category)
-    }
-
-    category.posts.push(post)
-    if (post.active) {
-      category.active = true
-    }
-
-    return acc
-  }, [] as Category[])
-
-  return {
-    props: {
-      categories,
-      post,
-    },
-  }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPosts()
-  const paths = posts.map(({ path }) => ({
-    params: {
-      // Get rid of leading slash.
-      slug: path.slice(1).split('/'),
-    },
-  }))
-
-  return {
-    paths,
-    fallback: false,
-  }
-}

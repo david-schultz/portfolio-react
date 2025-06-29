@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
-import 'katex/dist/katex.min.css'
+// import 'katex/dist/katex.min.css'
 
 export type MarkdownProps = {
   markdown: string
