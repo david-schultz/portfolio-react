@@ -122,6 +122,26 @@ export default function Home() {
 
   // );
 
+  const aboutContent = (
+    <div className="flex flex-col md:flex-row gap-8">
+        <div className="border-b-[1.5px] border-border-base/80 w-[200px] h-[200px]">
+            <Image
+                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/selfie-mirror.png"
+                alt="a selfie of the soul"
+                height={0}
+                width={0}
+                sizes="225vw"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', mixBlendMode: 'color-burn' }}
+            />
+        </div>
+        <div className="w-fit">
+            <p>Hey, it’s nice to meet you! As a designer, it feels strange to put myself in a bucket; we’re a multi-disciplinary bunch. </p>
+            <p>What I will say, is, I’m driven by __. Spatial mediums, and gestural interactions, are particular areas of interest for me.</p>
+            <p>I graduated in 2024 from UW Design in Seattle. </p>
+        </div>
+    </div>
+  );
+
   const marqueeContent = (
     <div className="inline-block">
       <Image
@@ -150,6 +170,7 @@ export default function Home() {
           <TabsList className="">
             <TabsTrigger value="write-ups" className="w-full">write-ups</TabsTrigger>
             <TabsTrigger value="gallery" className="w-full">gallery</TabsTrigger>
+            <TabsTrigger value="about" className="w-full">about</TabsTrigger>
           </TabsList>
         </div>
 
@@ -161,6 +182,11 @@ export default function Home() {
         <TabsContent value="gallery" className="px-2 flex flex-col items-center max-w-[900px]">
           <ul className="grid grid-cols-1 gap-4">
             {/* { newscards } */}
+          </ul>
+        </TabsContent>
+        <TabsContent value="about" className="px-2 flex flex-col items-center max-w-[900px]">
+          <ul className="grid grid-cols-1 gap-4">
+            { aboutContent }
           </ul>
         </TabsContent>
       </Tabs>
