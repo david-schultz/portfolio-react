@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { useRouter } from 'next/router'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import { ThemeProvider } from "@/components/theme-provider"
@@ -89,11 +90,6 @@ export default function RootLayout({
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png"/>
         <meta name="theme-color" content="#ffffff"/>
 
-        {/* <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png"/>
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"/>
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/> */}
       </head>
       <body className="bg-bg-base font-serif flex flex-col items-center min-h-screen bg-repeat bg-[url('/patterns/topo-bg.png')]">
         {/* <ThemeProvider

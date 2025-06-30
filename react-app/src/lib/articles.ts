@@ -8,6 +8,7 @@ export type Article = {
   path: string
   title: string
   subtitle: string
+  date: string
   content: string
   // Smaller order shown first. Null order is last. Sorted alphabetically within
   // order.
@@ -17,6 +18,7 @@ export type Article = {
   // Articles of like-category will be grouped together. The categories will be
   // ordered based on the smallest order of a article in that category.
   category: string | null
+  slug: string
 
   // Added during static generation.
   active?: boolean
@@ -77,6 +79,7 @@ export const getAllArticles = async (): Promise<Article[]> =>
         path: '/' + paths.join('/'),
         title,
         subtitle,
+        date: data.date,
         content,
         order:
           typeof data.order === 'number'
@@ -87,6 +90,7 @@ export const getAllArticles = async (): Promise<Article[]> =>
         visible: data.visible === true,
         category:
           (typeof data.category === 'string' && data.category.trim()) || null,
+        slug: fileName.replace(/\.md$/, '')
       }
     })
     // Sort by order.
@@ -99,3 +103,9 @@ export const getAllArticles = async (): Promise<Article[]> =>
         ? a.title.localeCompare(b.title)
         : aOrder - bOrder
     })
+
+
+export async function getArticleBySlug(slug: string) {
+  const articles = await getAllArticles()
+  return articles.find(article => article.slug === slug) || null
+}
