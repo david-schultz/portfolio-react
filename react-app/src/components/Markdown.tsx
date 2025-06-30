@@ -10,12 +10,12 @@ export type MarkdownProps = {
 }
 
 export const Markdown = ({ markdown, className }: MarkdownProps) => (
-  <ReactMarkdown
-    className={clsx('prose break-words dark:prose-invert', className)}
-    components={{}}
-    linkTarget="_blank"
-    remarkPlugins={[remarkGfm]}
-  >
-    {markdown}
-  </ReactMarkdown>
+  <div className={clsx('prose break-words dark:prose-invert', className)}>
+    <ReactMarkdown
+      components={{}}
+      remarkPlugins={[remarkGfm]}
+    >
+      {markdown}
+    </ReactMarkdown>
+  </div>
 )

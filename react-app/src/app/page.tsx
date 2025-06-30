@@ -261,6 +261,7 @@ export const HomeCategory = ({
               className="pointer-events-none line-clamp-2 text-sm opacity-70"
               markdown={content}
             /> */}
+            <Markdown markdown={content} />
           </Link>
         ))}
     </div>
