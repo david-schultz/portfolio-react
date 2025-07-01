@@ -27,7 +27,7 @@ import Footer from '@/components/ui/custom/footer'
 import { Markdown } from '../components/Markdown'
 // import { Category, PageProps } from '../lib/posts'
 import { Category, PageProps } from '../lib/articles'
-import { getAllArticles } from '@/lib/articles'
+import { getAllSlicedArticles } from '@/lib/articles'
 
 
 type ProjectCardProps = {
@@ -46,27 +46,29 @@ let readcvSrc = "/fa/readcv.svg";
 
 export default async function Home() {
   // Fetch articles data directly in the component
-  const articles = await getAllArticles()
+  const sliced = true;
+  const articles = await getAllSlicedArticles();
+
   
   // Group articles by category
-  const categories = articles.reduce((acc, article) => {
-    let category = acc.find((category) => category.name === article.category)
-    if (!category) {
-      category = {
-        name: article.category,
-        articles: [],
-      }
-      acc.push(category)
-    }
+  // const categories = articles.reduce((acc, article) => {
+  //   let category = acc.find((category) => category.name === article.category)
+  //   if (!category) {
+  //     category = {
+  //       name: article.category,
+  //       articles: [],
+  //     }
+  //     acc.push(category)
+  //   }
 
-    // Shorten content to minimize build size but allow previewing
-    category.articles.push({
-      ...article,
-      content: article.content.slice(0, 100),
-    })
+  //   // Shorten content to minimize build size but allow previewing
+  //   category.articles.push({
+  //     ...article,
+  //     content: article.content.slice(0, 100),
+  //   })
 
-    return acc
-  }, [] as Category[])
+  //   return acc
+  // }, [] as Category[])
 
   const displayedProjects: Array<ProjectCardProps> = [
     {
@@ -76,7 +78,7 @@ export default async function Home() {
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
-      "link": "/terrariumxr",
+      "link": "/work/terrariumxr",
       "textColor": "white",
       "categories": "XR prototyping",
     },
@@ -87,7 +89,7 @@ export default async function Home() {
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
-      "link": "/cycles",
+      "link": "/work/cycles",
       "textColor": "white",
       "categories": "XR prototyping",
     },
@@ -98,7 +100,7 @@ export default async function Home() {
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
       "logoName": "University of Washington",
-      "link": "/arboretum",
+      "link": "/work/arboretum",
       "textColor": "white",
       "categories": "Physical data vis",
     },
@@ -109,7 +111,7 @@ export default async function Home() {
       "imageType": "bg",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
       "logoName": "Sureify",
-      "link": "/datavis",
+      "link": "/work/datavis",
       "textColor": "black",
       "categories": "Design systems",
     },
@@ -120,15 +122,12 @@ export default async function Home() {
       "imageType": "block",
       "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
       "logoName": "Sureify",
-      "link": "/acquire",
+      "link": "/work/acquire",
       "textColor": "black",
       "categories": "UI",
     }
   ];
 
-  // const displayedNews: Array<NewsCardProps> = [
-
-  // ];
 
   const projects = displayedProjects.map(
       project => <ProjectCard 
@@ -145,73 +144,60 @@ export default async function Home() {
       /> 
     );
 
-  // const newscards = displayedNews.map(
-
-  // );
-
-  const aboutContent = (
-    <div className="flex flex-col md:flex-row gap-8">
-        <div className="border-b-[1.5px] border-border-base/80 w-[200px] h-[200px]">
-            <Image
-                src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/selfie-mirror.png"
-                alt="a selfie of the soul"
-                height={0}
-                width={0}
-                sizes="225vw"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', mixBlendMode: 'color-burn' }}
-            />
-        </div>
-        <div className="w-fit">
-            <p>Hey, it’s nice to meet you! As a designer, it feels strange to put myself in a bucket; we’re a multi-disciplinary bunch. </p>
-            <p>What I will say, is, I’m driven by __. Spatial mediums, and gestural interactions, are particular areas of interest for me.</p>
-            <p>I graduated in 2024 from UW Design in Seattle. </p>
-        </div>
-    </div>
-  );
-
-  const marqueeContent = (
-    <div className="inline-block">
-      <Image
-          src={ GlobeIcon }
-          alt="globe icon"
-          priority
-          className="inline-block mx-4 mb-3 sm:mb-4 w-6 h-6 sm:w-8 sm:h-8"
-        />
-      {/* <h2 className="text-xl sm:text-2xl">Designing & developing in mixed reality!</h2> */}
-      <h2 className="text-xl sm:text-2xl">Hi, I’m David—a designer, developer, and tinkerer.</h2>
-    </div>
-  )
-
 
   return (
     <main className="md:col-span-8">
-      <Tabs id="tabs" defaultValue="write-ups" className="flex flex-col">
+      <Tabs id="tabs" defaultValue="work" className="flex flex-col">
         <div className="flex gap-1 font-mono text-xs items-center sticky top-0 pt-16 bg-bg z-[10000]">
           
           <TabsList className="">
-            <TabsTrigger value="write-ups" className="w-full">write-ups</TabsTrigger>
+            <TabsTrigger value="work" className="w-full">work</TabsTrigger>
             <TabsTrigger value="gallery" className="w-full">gallery</TabsTrigger>
             <TabsTrigger value="about" className="w-full">about</TabsTrigger>
           </TabsList>
         </div>
 
-        <TabsContent value="write-ups" className="px-2 flex flex-col items-center max-w-[900px] mt-16">
+        <TabsContent value="work" className="px-2 flex flex-col items-center max-w-[900px] mt-16">
           <ul className="grid grid-cols-1 gap-4">
             { projects }
           </ul>
         </TabsContent>
         <TabsContent value="gallery" className="px-2 flex flex-col items-center max-w-[900px]">
           <ul className="grid grid-cols-1 gap-4">
-            { categories
+            {/* { categories
               .filter(({ articles }) => articles.some(({ visible }) => visible)) 
               .flatMap((category) => (
                 <HomeCategory key={category.name || ''} category={category} />
-            ))}
+            ))} */}
+                {articles
+                  .filter(({ visible }) => visible)
+                  .map(({ title, subtitle, content, path }) => (
+                    <Link
+                      key={path}
+                      className={clsx(
+                        'flex shrink-0 flex-col justify-between gap-6 rounded-sm border border-emerald-950 p-4',
+                        // Background effects
+                        'bg-transparent transition hover:bg-emerald-950 active:bg-emerald-900'
+                      )}
+                      href={path}
+                    >
+                      <div className="space-y-1">
+                        <p>{title}</p>
+                        <p className="text-xs italic opacity-60">{subtitle}</p>
+                      </div>
+
+                      {/* <Markdown
+                        className="pointer-events-none line-clamp-2 text-sm opacity-70"
+                        markdown={content}
+                      /> */}
+                      <Markdown markdown={content} />
+                    </Link>
+                  ))}
           </ul>
         </TabsContent>
         <TabsContent value="about" className="px-2 flex flex-col items-center max-w-[900px]">
           <ul className="grid grid-cols-1 gap-4">
-            { aboutContent }
+            {/* { aboutContent } */}
           </ul>
         </TabsContent>
       </Tabs>
