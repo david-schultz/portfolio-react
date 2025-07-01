@@ -1,21 +1,20 @@
-import { getAllArticles, getArticleBySlug } from '@/lib/articles'
+import { getAllArticles } from '@/lib/articles'
 import { Markdown } from '@/components/Markdown'
 import { notFound } from 'next/navigation'
+// import { PageProps } from '@/lib/articles'
 
-type Props = {
-  params: { slug: string }
+interface PageProps {
+  params: {
+    slug: string
+  }
 }
 
-export async function generateStaticParams() {
+export default async function ArticlePage({ params }: PageProps) {
   const articles = await getAllArticles()
+  const article = articles.find(a => a.path === ("/work/" + params.slug))
   
-  return articles.map((article) => ({
-    slug: article.slug,
-  }))
-}
-
-export default async function ArticlePage({ params }: Props) {
-  const article = await getArticleBySlug(params.slug)
+  // console.log(articles)
+  console.log('Article:', params, article);
   
   if (!article) {
     notFound()

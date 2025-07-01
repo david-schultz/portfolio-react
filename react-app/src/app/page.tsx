@@ -62,7 +62,7 @@ export default async function Home() {
     // Shorten content to minimize build size but allow previewing
     category.articles.push({
       ...article,
-      content: article.content.slice(0, 300),
+      content: article.content.slice(0, 100),
     })
 
     return acc

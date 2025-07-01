@@ -18,7 +18,7 @@ export type Article = {
   // Articles of like-category will be grouped together. The categories will be
   // ordered based on the smallest order of a article in that category.
   category: string | null
-  slug: string
+//   slug: string
 
   // Added during static generation.
   active?: boolean
@@ -65,8 +65,6 @@ export const getAllArticles = async (): Promise<Article[]> =>
         fs.readFileSync(path.join(articlesFolder, fileName)).toString()
       )
 
-
-
       const paths = fileName.split('/').map((s) => s.replace(/\.mdx?$/, ''))
       const title = data.title || paths[paths.length - 1]
 
@@ -90,7 +88,7 @@ export const getAllArticles = async (): Promise<Article[]> =>
         visible: data.visible === true,
         category:
           (typeof data.category === 'string' && data.category.trim()) || null,
-        slug: fileName.replace(/\.md$/, '')
+        // slug: fileName.replace(/\.md$/, '')
       }
     })
     // Sort by order.
@@ -105,7 +103,7 @@ export const getAllArticles = async (): Promise<Article[]> =>
     })
 
 
-export async function getArticleBySlug(slug: string) {
-  const articles = await getAllArticles()
-  return articles.find(article => article.slug === slug) || null
-}
+// export async function getArticleBySlug(slug: string) {
+//   const articles = await getAllArticles()
+//   return articles.find(article => article.slug === slug) || null
+// }
