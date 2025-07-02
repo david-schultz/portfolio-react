@@ -9,7 +9,7 @@ export type Article = {
   path: string
   title: string
   subtitle: string
-  date: string
+  year: string
   thumbnail: string
   // Smaller order shown first. Null order is last. Sorted alphabetically within
   // order.
@@ -74,7 +74,7 @@ export const getAllArticles = async (): Promise<Article[]> =>
         path: '/' + paths.join('/'),
         title: title,
         subtitle: data.subtitle,
-        date: data.date,
+        year: data.year,
         thumbnail: data.thumbnail,
         content,
         order:

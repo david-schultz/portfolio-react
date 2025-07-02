@@ -83,8 +83,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         {article.subtitle && (
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-4">{article.subtitle}</p>
         )}
-        {article.date && (
-          <p className="text-sm text-gray-500">{article.date}</p>
+        {article.year && (
+          <p className="text-sm text-gray-500">{article.year}</p>
         )}
         {isMDX && (
           <div className="mt-2">

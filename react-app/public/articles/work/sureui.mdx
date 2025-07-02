@@ -1,0 +1,121 @@
+---
+title: sureUI Data Visualization
+subtitle: 2022 ※ component library
+altsubtitle: Component library
+year: 2022
+thumbnail: https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-cover.png
+order: 2
+visible: true
+---
+
+# sureUI Data Visualization
+##### 2022 ※ Component library
+
+At SUREIFY DESIGN, the team needed a way to present data consistently throughout its product lineup. I was responsible for building a component library in Figma—this would enable designers to drag-and-drop charts into their design files, and modify them for their use-cases.
+
+
+---
+
+
+## A library by designers, for designers
+
+The problem statement, essentially. Lorem ipsum dolor sit amet consectetur. Amet laoreet lacus orci nunc accumsan aliquam tincidunt. Turpis ipsum vel commodo nibh leo id donec arcu egestas. Augue tristique lectus pharetra senectus. Et semper curabitur etiam nisl lectus adipiscing nisi in ut.
+
+> *“We need a figma library that enables us to actually design how data is communicated.”*
+> *- Anders Houston*
+
+![drag-and-drop](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-drag_drop.png)
+
+
+---
+
+## Understanding my stakeholders
+
+The first thing to get me on the right path was understanding who my stakeholders were, and what they needed.
+
+![component controls](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-component_controls.png)
+
+
+### → Designers
+
+As primary users, designers needed to be able to insert a chart in their design, and adjust it to their use-case. This meant the library needed to be:
+- Intuitive (easy to use out-of-the-box)
+- Responsive (flex into different viewports)
+- Modifiable (sense of control over the tool)
+
+### → Developers
+
+As secondary users, developers needed to be able to easily translate designs to code.
+
+Discussions led us to nivo.rocks, an open-source React library for charts. This library serves as the foundation for the one in Figma.
+
+![nivo.rocks screenshot](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-nivo.png)
+
+
+---
+
+
+## Breaking the limits of Figma
+
+Figma, for all its strengths, is not exactly equipped for responsive data visualization.
+
+The core problem: **layering**. Though auto-layout is powerful, it’s modeled after CSS flexbox—which fundamentally does not support layered elements. This means, to achieve responsiveness, I needed to find a way to combine auto-layout with constraints.
+
+![line chart anatomy](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-chart_anatomy-line.png)
+
+
+### Nailing the alignment
+
+Even after figuring out a way to stack layers, how do you keep your data, grid, and labels aligned?
+
+In a line/area chart, the grid extends to the edges of the container. This is because points don’t occupy horizontal space. Bar charts, on the otherhand, *do* fill up space—which means the grid needs to align itself by 
+
+The solution I found was to force sub-components to maintain the same dimensions at all times. This can be done by putting them in a constrained noclip frame.
+
+![example of poor grid alignment](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-grid_alignment.png)
+
+
+### Variants vs. direct-selection
+
+There are three forms of modification to the chart components:
+
+- **Direct selection**, where a user can select an element and modify it’s color, text content, etc.
+- **Component controls**, which are primarily used to modify large structural changes (e.g. visible axes, number of bar segments, etc.).
+- **Show/hide** a given element (e.g. number of bars, every other gridline, etc.).
+
+
+### Naming conventions & documentation
+
+With many different layers and sub-components in a chart, users need some way to differentiate between what they “can” and “cannot” touch.
+
+- **PascalCase** (capital letters) indicate a component that is intended to be editable.
+- **kebab-case** (dashes) indicate components which should not be touched. These are the “under-the-hood changes”.
+
+![screenshot of documentation](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-docs.png)
+
+Additionally, I wrote extensive documentation. It covered topics such as:
+
+- **Component architecture;** components get complex, fast. I wrote two pages here: one outlining how to manipulate components, and one to guide further updates.
+- **Visual encoding;** the first question when visualizing data is, what kind of chart should we use? To answer this, we should consider data types: amounts, proportions, distributions, xy relationships, etc.
+- **Color theory;** is it more important that colors are pretty, or that they are informative? We settled on the latter, emphasizing the use of sequential, categorical, and diverging data sets.
+- **Dev hand-off;** how does a chart go from conceptualization to production? As this question is relevant to designer, developer, and product stakeholders, this page is written to address each perspective.
+
+
+
+### Presets make it easy
+
+For most use-cases, a user doesn’t need full control over the shape of their data. By establishing presets for: the shape of data; labels + styles; date ranges + density—I could hide complexity under-the-hood—decreasing cognitive overload.
+
+
+
+---
+
+## Things I'd do differently
+
+I’m very proud of the system I developed. I was a junior at this time, and this project forced me to progress my technical skillset through a lot of trial and error.
+
+But there are a few things I’d do differently, and they all coalesce around focusing my time into things that actually matter.
+
+The responsiveness and flexibility I achieved was met with a lot of positive reception, but in practice I observed that designers would often just... break the component, and apply changes manually. They didn’t need all the bells and whistles I provided! They just needed a foundational structure.
+
+So this project set the groundwork for two important skills: resilience and creativity towards technical problems, and a stronger appreciation for how I align my energy with what my team needs.

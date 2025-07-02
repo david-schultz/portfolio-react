@@ -31,118 +31,127 @@ import { getAllSlicedArticles } from '@/lib/articles'
 
 
 type ProjectCardProps = {
-  name: string
+  title: string
+  subtitle: string
   year: string
   imageSource: string
   imageType: string
-  logoSource: string
-  logoName: string
-  link: string
-  textColor: string
-  categories: string
 }
 
-let readcvSrc = "/fa/readcv.svg";
+
+
+// function ProjectCard(props: ProjectCardProps) {
+//   // if type is image bg
+  
+//   return (
+//     <li>
+//       <Link href={props.link} className="flex flex-col gap-4">
+//         <div className="border-[1px] border-border-base/80">
+//           <Image 
+//             src={props.imageSource}
+//             alt="logo"
+//             height={0}
+//             width={0}
+//             sizes="100vw"
+//             className="min-w-full min-h-full w-full object-cover"
+//           />
+//         </div>
+
+//         <div className="flex">
+//           <div className="flex flex-col gap-1 w-full">
+//             <h3>{props.name}</h3>
+//             <p className="font-mono text-sm">{props.year} ※ {props.categories}</p>
+//           </div>
+//           <button>➡️</button>
+//         </div>
+
+//       </Link>
+//     </li>
+    
+//   )
+
+// }
+
 
 export default async function Home() {
   // Fetch articles data directly in the component
   const sliced = true;
   const articles = await getAllSlicedArticles();
 
-  
-  // Group articles by category
-  // const categories = articles.reduce((acc, article) => {
-  //   let category = acc.find((category) => category.name === article.category)
-  //   if (!category) {
-  //     category = {
-  //       name: article.category,
-  //       articles: [],
-  //     }
-  //     acc.push(category)
+
+  // const displayedProjects: Array<ProjectCardProps> = [
+  //   {
+  //     "name": "TerrariumXR",
+  //     "year": "2024",
+  //     "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/outside-render.jpg",
+  //     "imageType": "bg",
+  //     "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
+  //     "logoName": "University of Washington",
+  //     "link": "/work/terrariumxr",
+  //     "textColor": "white",
+  //     "categories": "XR prototyping",
+  //   },
+  //   {
+  //     "name": "Cycles",
+  //     "year": "2024",
+  //     "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero2.jpg",
+  //     "imageType": "bg",
+  //     "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
+  //     "logoName": "University of Washington",
+  //     "link": "/work/cycles",
+  //     "textColor": "white",
+  //     "categories": "XR prototyping",
+  //   },
+  //   {
+  //     "name": "Diversity in the Arboretum",
+  //     "year": "2023",
+  //     "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb_cover.jpg",
+  //     "imageType": "bg",
+  //     "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
+  //     "logoName": "University of Washington",
+  //     "link": "/work/arboretum",
+  //     "textColor": "white",
+  //     "categories": "Physical data vis",
+  //   },
+  //   {
+  //     "name": "sureUI Data Visualization",
+  //     "year": "2022",
+  //     "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-cover.png",
+  //     "imageType": "bg",
+  //     "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
+  //     "logoName": "Sureify",
+  //     "link": "/work/datavis",
+  //     "textColor": "black",
+  //     "categories": "Design systems",
+  //   },
+  //   {
+  //     "name": "Acquire Demo",
+  //     "year": "2022",
+  //     "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_overview.png",
+  //     "imageType": "block",
+  //     "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
+  //     "logoName": "Sureify",
+  //     "link": "/work/acquire",
+  //     "textColor": "black",
+  //     "categories": "UI",
   //   }
-
-  //   // Shorten content to minimize build size but allow previewing
-  //   category.articles.push({
-  //     ...article,
-  //     content: article.content.slice(0, 100),
-  //   })
-
-  //   return acc
-  // }, [] as Category[])
-
-  const displayedProjects: Array<ProjectCardProps> = [
-    {
-      "name": "TerrariumXR",
-      "year": "2024",
-      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/outside-render.jpg",
-      "imageType": "bg",
-      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
-      "logoName": "University of Washington",
-      "link": "/work/terrariumxr",
-      "textColor": "white",
-      "categories": "XR prototyping",
-    },
-    {
-      "name": "Cycles",
-      "year": "2024",
-      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero2.jpg",
-      "imageType": "bg",
-      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
-      "logoName": "University of Washington",
-      "link": "/work/cycles",
-      "textColor": "white",
-      "categories": "XR prototyping",
-    },
-    {
-      "name": "Diversity in the Arboretum",
-      "year": "2023",
-      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb_cover.jpg",
-      "imageType": "bg",
-      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
-      "logoName": "University of Washington",
-      "link": "/work/arboretum",
-      "textColor": "white",
-      "categories": "Physical data vis",
-    },
-    {
-      "name": "sureUI Data Visualization",
-      "year": "2022",
-      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-cover.png",
-      "imageType": "bg",
-      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
-      "logoName": "Sureify",
-      "link": "/work/datavis",
-      "textColor": "black",
-      "categories": "Design systems",
-    },
-    {
-      "name": "Acquire Demo",
-      "year": "2022",
-      "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_overview.png",
-      "imageType": "block",
-      "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
-      "logoName": "Sureify",
-      "link": "/work/acquire",
-      "textColor": "black",
-      "categories": "UI",
-    }
-  ];
+  // ];
 
 
-  const projects = displayedProjects.map(
-      project => <ProjectCard 
-        key={project.name}
-        name={project.name}
-        year={project.year}
-        imageSource={project.imageSource}
-        imageType={project.imageType}
-        logoSource={project.logoSource}
-        logoName={project.logoName}
-        link={project.link}
-        textColor={project.textColor}
-        categories={project.categories}
-      /> 
-    );
+  // const projects = displayedProjects.map(
+  //     project => <ProjectCard 
+  //       key={project.name}
+  //       name={project.name}
+  //       year={project.year}
+  //       imageSource={project.imageSource}
+  //       imageType={project.imageType}
+  //       logoSource={project.logoSource}
+  //       logoName={project.logoName}
+  //       link={project.link}
+  //       textColor={project.textColor}
+  //       categories={project.categories}
+  //     /> 
+  //   );
 
 
   return (
@@ -159,7 +168,36 @@ export default async function Home() {
 
         <TabsContent value="work" className="px-2 flex flex-col items-center max-w-[900px] mt-16">
           <ul className="grid grid-cols-1 gap-4">
-            { projects }
+            { articles
+              .filter(({ visible }) => visible)
+              .map(({ title, subtitle, year, thumbnail, path }) => (
+                <Link
+                  key={path}
+                  className={clsx(
+                    'flex flex-col gap-4'
+                  )}
+                  href={path}
+                >
+                  <div className="border-[1px] border-border-base/80">
+                    <Image 
+                      src={thumbnail}
+                      alt="thumbnail"
+                      height={0}
+                      width={0}
+                      sizes="100vw"
+                      className="min-w-full min-h-full w-full object-cover"
+                    />
+                  </div>
+
+                  <div className="flex">
+                    <div className="flex flex-col gap-1 w-full">
+                      <h3>{title}</h3>
+                      <p className="font-mono text-sm">{subtitle}</p>
+                    </div>
+                    <p>{year}</p>
+                  </div>
+                </Link>
+              ))}
           </ul>
         </TabsContent>
         <TabsContent value="gallery" className="px-2 flex flex-col items-center max-w-[900px]">
@@ -169,30 +207,6 @@ export default async function Home() {
               .flatMap((category) => (
                 <HomeCategory key={category.name || ''} category={category} />
             ))} */}
-                {articles
-                  .filter(({ visible }) => visible)
-                  .map(({ title, subtitle, content, path }) => (
-                    <Link
-                      key={path}
-                      className={clsx(
-                        'flex shrink-0 flex-col justify-between gap-6 rounded-sm border border-emerald-950 p-4',
-                        // Background effects
-                        'bg-transparent transition hover:bg-emerald-950 active:bg-emerald-900'
-                      )}
-                      href={path}
-                    >
-                      <div className="space-y-1">
-                        <p>{title}</p>
-                        <p className="text-xs italic opacity-60">{subtitle}</p>
-                      </div>
-
-                      {/* <Markdown
-                        className="pointer-events-none line-clamp-2 text-sm opacity-70"
-                        markdown={content}
-                      /> */}
-                      <Markdown markdown={content} />
-                    </Link>
-                  ))}
           </ul>
         </TabsContent>
         <TabsContent value="about" className="px-2 flex flex-col items-center max-w-[900px]">
@@ -254,67 +268,3 @@ export const HomeCategory = ({
   </div>
 )
 
-
-
-function ProjectCard(props: ProjectCardProps) {
-  // if type is image bg
-  
-  return (
-    <li>
-      <Link href={props.link} className="flex flex-col gap-4">
-        <div className="border-[1px] border-border-base/80">
-          <Image 
-            src={props.imageSource}
-            alt="logo"
-            height={0}
-            width={0}
-            sizes="100vw"
-            className="min-w-full min-h-full w-full object-cover"
-          />
-        </div>
-
-        <div className="flex">
-          <div className="flex flex-col gap-1 w-full">
-            <h3>{props.name}</h3>
-            <p className="font-mono text-sm">{props.year} ※ {props.categories}</p>
-          </div>
-          <button>➡️</button>
-        </div>
-
-      </Link>
-    </li>
-    // <li className={`card elevation-1 relative mx-auto bg-gradient-dark-2 min-h-[250px] overflow-hidden justify-self-stretch self-stretch w-full ${props.textColor === 'white' ? 'text-white' : 'text-foreground'}`}>
-    //   <Link href={props.link} >
-    //       <div className="absolute inset-0 m-4 flex flex-col justify-between">
-    //         <div className='flex justify-between items-start gap-2'>
-    //           <div className={`px-2 py-1 ${props.textColor === 'white' ? 'glass-dark-subtle' : 'glass-subtle'}`}>
-    //             <h3 className='lg:text-3xl'>{props.name}</h3>
-    //           </div>
-    //           <Badge className="grow-0">{props.year}</Badge>
-    //         </div>
-    //         <div className="flex items-center gap-2">
-    //           <Image 
-    //             src={props.logoSource}
-    //             alt="logo"
-    //             height={24}
-    //             width={24}
-    //             sizes="10vw"
-    //             className="rounded-[10rem]"
-    //           />
-    //           <p className="font-500">{props.logoName}</p>
-    //         </div>
-    //       </div>
-    //       <Image 
-    //         src={props.imageSource}
-    //         alt="logo"
-    //         height={0}
-    //         width={0}
-    //         sizes="100vw"
-    //         className="min-w-full min-h-full w-full object-cover"
-    //       />
-    //   </Link>
-    // </li>
-    
-  )
-
-}
