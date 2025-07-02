@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import { getAllArticles } from '@/lib/articles'
 import { Markdown } from '@/components/Markdown'
 import { renderMDXContent } from '@/lib/mdx'
-// import { PageProps } from '@/lib/articles'
+import { ArrowLeft } from 'lucide-react'
 
 interface PageProps {
   params: {
@@ -59,11 +59,30 @@ export default async function ArticlePage({ params }: PageProps) {
 
 
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
-      {/* <div className="prose prose-lg max-w-none">
-        <Markdown markdown={article.content} />
-      </div> */}
-      {renderedContent}
-    </article>
+    <>
+
+      <div className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
+        <p>hi</p>
+      </div>
+
+      <main className="md:col-span-8 flex flex-col">
+        <nav className="flex gap-1 font-mono text-xs items-center sticky top-0 pt-16 bg-bg z-[10000]">
+
+            <Link href="/" className="py-2 px-4 hover:bg-bg
+            inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors">
+            
+                <ArrowLeft size={16} />
+                home / work /
+            </Link>
+            <span>arboretum</span>
+
+        </nav>
+
+        <article className="max-w-4xl mx-auto px-4 py-8">
+          {renderedContent}
+        </article>
+      </main>
+    
+    </>
   )
 }
