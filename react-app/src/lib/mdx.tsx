@@ -1,6 +1,6 @@
 import { compileMDX } from 'next-mdx-remote/rsc'
 import matter from 'gray-matter'
-import { Highlight, Callout } from '../components/MDXCustomComponents'
+import { Highlight, Callout } from '@/components/MDXCustomComponents'
 
 interface Frontmatter {
   title?: string
@@ -14,9 +14,9 @@ interface Frontmatter {
 const components = {
   // Custom components for MDX rendering
   h1: (props: any) => <h1 className="text-xl text-tx-primary" {...props} />,
-  h2: (props: any) => <h2 className="text-2xl font-semibold mb-3" {...props} />,
-  h3: (props: any) => <h3 className="text-xl font-medium mb-2" {...props} />,
-  h4: (props: any) => <h4 className="text-xl font-medium mb-2" {...props} />,
+  h2: (props: any) => <h2 className="text-lg text-tx-primary mb-3" {...props} />,
+  h3: (props: any) => <h3 className="text-md text-tx-primary mb-2" {...props} />,
+  h4: (props: any) => <h4 className="text-md text-tx-primary mb-3" {...props} />,
   h5: (props: any) => <h5 className="font-mono text-md text-tx-tertiary" {...props} />,
   h6: (props: any) => <h6 className="text-sm text-tx-tertiary" {...props} />,
   p: (props: any) => <p className="mb-4" {...props} />,
