@@ -90,7 +90,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 <ArrowLeft size={16} />
                 home / work /
             </Link>
-            <span>arboretum</span>
+            <span>{ params.slug }</span>
 
         </nav>
 
