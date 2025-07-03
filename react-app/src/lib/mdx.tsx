@@ -1,6 +1,7 @@
 import { compileMDX } from 'next-mdx-remote/rsc'
 import matter from 'gray-matter'
-import { Highlight, Callout } from '@/components/MDXCustomComponents'
+import { Highlight, Callout, Anchor } from '@/components/MDXCustomComponents'
+// import { Anchor } from '@/components/MDXAnchor'
 
 interface Frontmatter {
   title?: string
@@ -43,12 +44,61 @@ const components = {
   // Custom components available in MDX
   Highlight,
   Callout,
+  Anchor,
 }
+
+
+// Function to check if content should be treated as MDX
+export function isMDXContent(filePath: string): boolean {
+  return filePath.endsWith('.mdx')
+}
+
+// Function to render regular markdown (fallback)
+export async function renderMarkdownContent(source: string) {
+  const { data, content } = matter(source)
+  
+  // For regular markdown, you might want to use a markdown parser
+  // For now, we'll just return the raw content
+  return {
+    frontmatter: data as Frontmatter,
+    content: <div dangerouslySetInnerHTML={{ __html: content }} />
+  }
+}
+
+export interface AnchorData {
+  id: string
+  title: string
+}
+
+// Function to extract anchors from MDX content
+export function extractAnchors(source: string): AnchorData[] {
+  const { content } = matter(source)
+  const anchors: AnchorData[] = []
+  
+  // Look for <Anchor id="..." /> components
+  const anchorRegex = /<Anchor\s+id=["']([^"']+)["']\s*\/>/g
+  let match
+  
+  while ((match = anchorRegex.exec(content)) !== null) {
+    const id = match[1]
+    // Format title: replace dashes with spaces and capitalize first letter
+    let title = id.replace(/-/g, ' ')
+    title = title.charAt(0).toUpperCase() + title.slice(1)
+    
+    anchors.push({ id, title })
+  }
+  
+  return anchors
+}
+
+
+
 
 export async function renderMDXContent(source: string) {
   try {
     // Use gray-matter to extract frontmatter and content
     const { data, content } = matter(source)
+    const anchors = extractAnchors(source)
     
     // Compile MDX content
     const { content: compiledContent } = await compileMDX({
@@ -65,27 +115,11 @@ export async function renderMDXContent(source: string) {
 
     return { 
       frontmatter: data as Frontmatter, 
-      content: compiledContent 
+      content: compiledContent,
+      anchors
     }
   } catch (error) {
     console.error('Error rendering MDX content:', error)
     throw error
-  }
-}
-
-// Function to check if content should be treated as MDX
-export function isMDXContent(filePath: string): boolean {
-  return filePath.endsWith('.mdx')
-}
-
-// Function to render regular markdown (fallback)
-export async function renderMarkdownContent(source: string) {
-  const { data, content } = matter(source)
-  
-  // For regular markdown, you might want to use a markdown parser
-  // For now, we'll just return the raw content
-  return {
-    frontmatter: data as Frontmatter,
-    content: <div dangerouslySetInnerHTML={{ __html: content }} />
   }
 }

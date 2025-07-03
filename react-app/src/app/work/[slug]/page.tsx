@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getAllArticles } from '@/lib/articles'
 import { Markdown } from '@/components/Markdown'
-import { renderMDXContent } from '@/lib/mdx'
+// import { renderMDXContentWithAnchors, AnchorData } from '@/lib/mdx'
+import { renderMDXContent, AnchorData } from '@/lib/mdx'
 import { ArrowLeft } from 'lucide-react'
 
 interface PageProps {
@@ -31,6 +32,7 @@ export default async function ArticlePage({ params }: PageProps) {
     // For MDX files, render with MDX compiler
     const isMDX = article.isMDX
     let renderedContent
+    let anchors: AnchorData[] = []
   
     if (isMDX) {
       try {
@@ -41,8 +43,10 @@ export default async function ArticlePage({ params }: PageProps) {
         
         if (fs.existsSync(filePath)) {
           const fileContent = fs.readFileSync(filePath, 'utf8')
-          const { content } = await renderMDXContent(fileContent)
+          const { content, anchors: extractedAnchors } = await renderMDXContent(fileContent)
+          // const { content, anchors: extractedAnchors } = await renderMDXContentWithAnchors(fileContent)
           renderedContent = content
+          anchors = extractedAnchors
         } else {
           // Fallback to article content from database
           renderedContent = <Markdown markdown={article.content} />
@@ -61,9 +65,21 @@ export default async function ArticlePage({ params }: PageProps) {
   return (
     <>
 
-      <div className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
-        <p>hi</p>
-      </div>
+      <section className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
+        <p>Contents</p>
+        <ol className="text-sm space-y-1">
+          {anchors.map((anchor, index) => (
+            <li key={anchor.id}>
+              <a 
+                href={`#${anchor.id}`}
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                {anchor.title}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
 
       <main className="md:col-span-8 flex flex-col">
         <nav className="flex gap-1 font-mono text-xs items-center sticky top-0 pt-16 bg-bg z-[10000]">

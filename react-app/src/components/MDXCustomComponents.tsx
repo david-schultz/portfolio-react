@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 interface HighlightProps {
   children: React.ReactNode
   color?: 'yellow' | 'blue' | 'green' | 'red'
@@ -38,9 +40,25 @@ export function Callout({ children, type = 'info' }: CalloutProps) {
   )
 }
 
+interface AnchorProps {
+  id: string
+  children?: ReactNode
+  title?: string
+}
+
+export function Anchor({ id, children, title }: AnchorProps) {
+  return (
+    <div id={id} className="scroll-mt-24">
+      {children}
+    </div>
+  )
+}
+
+
 const MDXCustomComponents = {
   Highlight,
   Callout,
+  Anchor
 }
 
 export default MDXCustomComponents
