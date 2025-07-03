@@ -43,6 +43,8 @@
     "embla-carousel-react": "^8.0.0-rc19",
     "firebase": "^10.7.1",
     "gray-matter": "^4.0.3",
+    "iconoir": "^7.11.0",
+    "iconoir-react": "^7.11.0",
     "leva": "^0.9.35",
     "lucide-react": "^0.298.0",
     "next": "14.0.4",

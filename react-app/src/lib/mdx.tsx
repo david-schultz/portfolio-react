@@ -1,5 +1,8 @@
 import { compileMDX } from 'next-mdx-remote/rsc'
 import matter from 'gray-matter'
+
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 import { Highlight, Callout, Anchor } from '@/components/MDXCustomComponents'
 import VideoPlayer from '@/components/VideoPlayer'
 
@@ -15,12 +18,12 @@ interface Frontmatter {
 const components = {
   // Custom components for MDX rendering
   h1: (props: any) => <h1 className="text-xl text-tx-primary" {...props} />,
-  h2: (props: any) => <h2 className="text-lg text-tx-primary mb-3" {...props} />,
+  h2: (props: any) => <h2 className="text-lg text-tx-primary mb-2" {...props} />,
   h3: (props: any) => <h3 className="text-md text-tx-primary mb-2" {...props} />,
   h4: (props: any) => <h4 className="text-md text-tx-primary mb-3" {...props} />,
-  h5: (props: any) => <h5 className="font-mono text-md text-tx-tertiary" {...props} />,
-  h6: (props: any) => <h6 className="text-sm text-tx-tertiary" {...props} />,
-  p:  (props: any) => <p  className="text-md my-4" {...props} />,
+  h5: (props: any) => <h5 className="font-mono text-md text-tx-tertiary pb-2" {...props} />,
+  h6: (props: any) => <h6 className="text-sm text-tx-tertiary pt-1" {...props} />,
+  p:  (props: any) => <p  className="text-md py-4" {...props} />,
   code: (props: any) => (
     <code className="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm" {...props} />
   ),
@@ -28,7 +31,7 @@ const components = {
     <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4" {...props} />
   ),
   blockquote: (props: any) => (
-    <blockquote className="border-l-4 border-gray-300 pl-4 italic mb-4" {...props} />
+    <blockquote className="border-l-2 border-ic-brand bg-bg-disabled px-6 text-md italic text-tx-secondary mb-4" {...props} />
   ),
   ul: (props: any) => <ul className="list-disc pl-6 mb-4" {...props} />,
   ol: (props: any) => <ol className="list-decimal pl-6 mb-4" {...props} />,
@@ -44,11 +47,14 @@ const components = {
   em: (props: any) => <em className="mb-4" {...props} />,
   strong: (props: any) => <strong className="mb-4" {...props} />,
   hr: (props: any) => <hr className="mb-12" {...props} />,
+  img: (props: any) => <img className="border  my-8" {...props} />,
   // Custom components available in MDX
   Highlight,
   Callout,
   Anchor,
   VideoPlayer,
+  Button,
+  Link,
 }
 
 
