@@ -11,7 +11,7 @@ visible: true
 # sureUI Data Visualization
 ##### 2022 ※ Component library
 
-At Sureify, I built a responsive, flexible component library which lets designers drag-and-drop bespoke charts into their screens. Charts are one-to-one with nivo.rocks, vastly improving dev hand-off.
+At <strong>Sureify</strong>, I built a responsive, flexible component library which lets designers drag-and-drop bespoke charts into their screens. Charts are one-to-one with nivo.rocks, vastly improving dev hand-off.
 
 ###### Advised by Arjan van der Vlies, Anders Houston, Patrick Schaenzel.
 
@@ -32,10 +32,10 @@ The problem statement, essentially. Lorem ipsum dolor sit amet consectetur. Amet
 
 ![drag-and-drop](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-drag_drop.png)
 
-<Button variant="primary" size="sm" asChild>
-    <Link href="/about">
-        <span className="pr-2">Try it out</span>
-        <img src="/iconoir/open-in-browser.svg" />
+<Button variant="primary" className="mb-16" asChild>
+    <Link href="https://www.figma.com/community/file/1357811212711130745/sureui-data-visualization" target="_blank">
+        <span className="pr-2 text-tx-button">Try it out</span>
+        <img src="/iconoir/open-in-browser.svg" className="text-tx-button fill-current" />
     </Link>
 </Button>
 
@@ -53,9 +53,9 @@ The first thing to get me on the right path was understanding who my stakeholder
 ### → Designers
 
 As primary users, designers needed to be able to insert a chart in their design, and adjust it to their use-case. This meant the library needed to be:
-- Intuitive (easy to use out-of-the-box)
-- Responsive (flex into different viewports)
-- Modifiable (sense of control over the tool)
+- Intuitive <span className="text-tx-tertiary">(easy to use out-of-the-box)</span>
+- Responsive <span className="text-tx-tertiary">(flex into different viewports)</span>
+- Modifiable <span className="text-tx-tertiary">(sense of control over the tool)</span>
 
 ### → Developers
 
@@ -69,7 +69,7 @@ Discussions led us to nivo.rocks, an open-source React library for charts. This 
 ---
 
 
-<Anchor id="implementation" />
+<Anchor id="implementation">Implementation</Anchor>
 ## Breaking the limits of Figma
 
 Figma, for all its strengths, is not exactly equipped for responsive data visualization.
@@ -125,7 +125,7 @@ For most use-cases, a user doesn’t need full control over the shape of their d
 
 ---
 
-<Anchor id="reflections" />
+<Anchor id="reflections">Reflections</Anchor>
 ## Things I'd do differently
 
 I’m very proud of the system I developed. I was a junior at this time, and this project forced me to progress my technical skillset through a lot of trial and error.

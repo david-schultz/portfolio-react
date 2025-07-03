@@ -67,12 +67,12 @@ export default async function ArticlePage({ params }: PageProps) {
 
       <section className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
         <p>Contents</p>
-        <ol className="text-sm space-y-1">
+        <ol className="font-mono italic text-sm space-y-1">
           {anchors.map((anchor, index) => (
             <li key={anchor.id}>
               <a 
                 href={`#${anchor.id}`}
-                className="text-blue-600 dark:text-blue-400 hover:underline"
+                className="text-tx-primary hover:underline"
               >
                 {anchor.title}
               </a>

@@ -19,7 +19,7 @@ const components = {
   // Custom components for MDX rendering
   h1: (props: any) => <h1 className="text-xl text-tx-primary" {...props} />,
   h2: (props: any) => <h2 className="text-lg text-tx-primary mb-2" {...props} />,
-  h3: (props: any) => <h3 className="text-md text-tx-primary mb-2" {...props} />,
+  h3: (props: any) => <h3 className="font-mono text-md text-tx-primary border-b-2 border-dashed border-ic-disabled pb-2 mt-8" {...props}/>,
   h4: (props: any) => <h4 className="text-md text-tx-primary mb-3" {...props} />,
   h5: (props: any) => <h5 className="font-mono text-md text-tx-tertiary pb-2" {...props} />,
   h6: (props: any) => <h6 className="text-sm text-tx-tertiary pt-1" {...props} />,
@@ -31,10 +31,10 @@ const components = {
     <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4" {...props} />
   ),
   blockquote: (props: any) => (
-    <blockquote className="border-l-2 border-ic-brand bg-bg-disabled px-6 text-md italic text-tx-secondary mb-4" {...props} />
+    <blockquote className="border-l-2 border-ic-brand bg-bg-disabled px-6 text-md italic text-tx-secondary pb-4" {...props} />
   ),
-  ul: (props: any) => <ul className="list-disc pl-6 mb-4" {...props} />,
-  ol: (props: any) => <ol className="list-decimal pl-6 mb-4" {...props} />,
+  ul: (props: any) => <ul className="list-disc text-md pl-8 pb-4" {...props} />,
+  ol: (props: any) => <ol className="list-decimal text-md pl-8 pb-4" {...props} />,
   li: (props: any) => <li className="mb-1" {...props} />,
   a: (props: any) => (
     <a 
@@ -46,8 +46,8 @@ const components = {
   ),
   em: (props: any) => <em className="mb-4" {...props} />,
   strong: (props: any) => <strong className="mb-4" {...props} />,
-  hr: (props: any) => <hr className="mb-12" {...props} />,
-  img: (props: any) => <img className="border  my-8" {...props} />,
+  hr: (props: any) => <hr className="my-16" {...props} />,
+  img: (props: any) => <img className="border my-4" {...props} />,
   // Custom components available in MDX
   Highlight,
   Callout,
