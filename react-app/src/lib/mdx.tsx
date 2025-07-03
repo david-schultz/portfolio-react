@@ -1,6 +1,7 @@
 import { compileMDX } from 'next-mdx-remote/rsc'
 import matter from 'gray-matter'
 import { Highlight, Callout, Anchor } from '@/components/MDXCustomComponents'
+import VideoPlayer from '@/components/VideoPlayer'
 
 interface Frontmatter {
   title?: string
@@ -40,10 +41,13 @@ const components = {
       {...props} 
     />
   ),
+  em: (props: any) => <em className="mb-4" {...props} />,
+  strong: (props: any) => <strong className="mb-4" {...props} />,
   // Custom components available in MDX
   Highlight,
   Callout,
   Anchor,
+  VideoPlayer,
 }
 
 

@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import VideoPlayer from '@/components/VideoPlayer'
 
 interface HighlightProps {
   children: React.ReactNode
@@ -58,7 +59,8 @@ export function Anchor({ id, children, title }: AnchorProps) {
 const MDXCustomComponents = {
   Highlight,
   Callout,
-  Anchor
+  Anchor,
+  VideoPlayer
 }
 
 export default MDXCustomComponents
