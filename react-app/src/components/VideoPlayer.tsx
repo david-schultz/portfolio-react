@@ -19,7 +19,7 @@ const VideoPlayer: React.FunctionComponent<VideoPlayerProps> = (props) => {
 
 
   return (
-    <div className="player-wrapper card">
+    <div className="player-wrapper card my-12">
       {/* <ReactPlayer
         width={props.width}
         height={props.width}

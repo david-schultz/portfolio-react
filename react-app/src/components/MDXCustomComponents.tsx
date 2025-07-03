@@ -49,7 +49,7 @@ interface AnchorProps {
 
 export function Anchor({ id, children, title }: AnchorProps) {
   return (
-    <div id={id} className="scroll-mt-24">
+    <div id={id} className="font-mono text-xs text-tx-disabled scroll-mt-24">
       {children}
     </div>
   )

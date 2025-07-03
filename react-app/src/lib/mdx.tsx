@@ -20,7 +20,7 @@ const components = {
   h4: (props: any) => <h4 className="text-md text-tx-primary mb-3" {...props} />,
   h5: (props: any) => <h5 className="font-mono text-md text-tx-tertiary" {...props} />,
   h6: (props: any) => <h6 className="text-sm text-tx-tertiary" {...props} />,
-  p: (props: any) => <p className="mb-4" {...props} />,
+  p:  (props: any) => <p  className="text-md my-4" {...props} />,
   code: (props: any) => (
     <code className="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm" {...props} />
   ),
@@ -43,6 +43,7 @@ const components = {
   ),
   em: (props: any) => <em className="mb-4" {...props} />,
   strong: (props: any) => <strong className="mb-4" {...props} />,
+  hr: (props: any) => <hr className="mb-12" {...props} />,
   // Custom components available in MDX
   Highlight,
   Callout,
@@ -73,20 +74,34 @@ export interface AnchorData {
   title: string
 }
 
-// Function to extract anchors from MDX content
+// Function to extract anchors from MDX content using proper parsing
 export function extractAnchors(source: string): AnchorData[] {
   const { content } = matter(source)
   const anchors: AnchorData[] = []
   
-  // Look for <Anchor id="..." /> components
-  const anchorRegex = /<Anchor\s+id=["']([^"']+)["']\s*\/>/g
+  // Match both self-closing and regular Anchor components
+  // Self-closing: <Anchor id="..." />
+  // With children: <Anchor id="...">content</Anchor>
+  const anchorRegex = /<Anchor\s+id=["']([^"']+)["']\s*(?:\/>|>(.*?)<\/Anchor>)/g
+  
+  // Reset regex lastIndex to ensure we start from the beginning
+  anchorRegex.lastIndex = 0
   let match
   
   while ((match = anchorRegex.exec(content)) !== null) {
     const id = match[1]
-    // Format title: replace dashes with spaces and capitalize first letter
-    let title = id.replace(/-/g, ' ')
-    title = title.charAt(0).toUpperCase() + title.slice(1)
+    const childContent = match[2] // This will be undefined for self-closing tags
+    
+    let title: string
+    
+    if (childContent) {
+      // Use the child content as the title
+      title = childContent.trim()
+    } else {
+      // Format title from ID: replace dashes with spaces and capitalize first letter
+      title = id.replace(/-/g, ' ')
+      title = title.charAt(0).toUpperCase() + title.slice(1)
+    }
     
     anchors.push({ id, title })
   }
