@@ -1,7 +1,6 @@
 import { compileMDX } from 'next-mdx-remote/rsc'
 import matter from 'gray-matter'
 import { Highlight, Callout, Anchor } from '@/components/MDXCustomComponents'
-// import { Anchor } from '@/components/MDXAnchor'
 
 interface Frontmatter {
   title?: string
