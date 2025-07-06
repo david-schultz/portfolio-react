@@ -1,0 +1,161 @@
+---
+title: Cycles
+subtitle: XR prototyping
+year: 2024
+thumbnail: https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero2.jpg
+order: 8
+visible: true
+---
+
+
+
+<Anchor id="summary">Summary</Anchor>
+## Infinite, circular, interactive scrolling in 3D
+##### 2022 ※ XR prototyping
+
+In DESIGN 483: ADVANCED INTERFACES, students were challenged with creating a “time machine” in AR/VR/XR.
+
+- This course was my first encounter with designing in XR.
+- My team designed a new type of calendar—one that utilizes 3d-space.
+- I was responsible for building a working prototype in Unity for the Quest 3.
+
+![hero](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero2.jpg)
+
+<Image
+    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-quick.gif"
+    alt="unity demo"
+    height={0}
+    width={0}
+    sizes="225vw"
+    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+/>
+###### The prototype I built in Unity
+
+
+---
+
+
+<Anchor id="problem-statement">Problem statement</Anchor>
+## Early iterations in form
+How do you represent time in three dimensions? One option is to lay it out as a timeline in front of you. Cut off the ends, throw on some events, and call it a day.
+
+We gave it a shot, but decided that this iteration didn't work for two main reasons; for one, a calendar doesn't need to occupy a user's full "viewport". It's probably better suited to the peripheral.
+
+Second, and more fundamentally, this linear form factor didn't feel "anchored." It didn't give you a sense of where you were in your day.
+
+![shapesxr iteration](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/linear-shapesxr.png)
+
+### Thinking in cycles
+What if, instead, we modeled it after a clock? This way, the user would always be able to relate the current time to the current cycle.
+
+We ended up really digging this idea, and coming up with a few tricks to work within the new constraints of a form that lacks a defined start/end.
+
+![shapesxr iteration](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/desk-sketch-2-cropped.png)
+###### Desk sketch
+
+![shapesxr iteration](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/shapesxr-cropped.png)
+###### Cyclical form in ShapesXR
+
+
+
+### Integrating AI
+To add a task to your calendar, one idea we explored was using AI for content identification. Here, the user could perform a gesture, or say a voice command to activate it.
+
+![shapesxr iteration](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/ai-content_id.jpg)
+###### Identify a task, based on input from the user's surroundings
+
+
+
+Once a task has been identified, the system would create a physical representation of the task, which the user could then put onto their calendar.
+
+
+![shapesxr iteration](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hand-grab-task.png)
+###### Create a physical representation of the task, denoted by shape/color iconography
+
+---
+
+<Anchor id="prototyping">Prototyping</Anchor>
+## Building in Unity
+
+Midway through the quarter, I decided to take the leap and buy a Quest 3.
+
+From the get-go, my team had been prototyping in ShapesXR on my teammate's Quest 2. The controls took some getting used-to, and it was difficult to collaborate—but the power of working in an immersive environment was immediately apparent.
+
+Thinking long-term, I noticed two major problems:
+
+1. We needed to be able to record passthrough, which isn't possible on Quest 2.
+2. ShapesXR's limited interaction capabilties were becoming a obstacle for ideation.
+
+With a clear need, and a strong desire to explore XR, I pulled the trigger and saddled up to learn Unity.
+
+<Image
+    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/linear-shapesxr.png"
+    alt="video of me, prototyping with ShapesXR"
+    height={0}
+    width={0}
+    sizes="225vw"
+    style={{ width: '100%', height: 'auto' }}
+/>
+###### Video of me, prototyping with ShapesXR
+
+### The challenge: an Infinite Circular Feed
+
+Some brief context: as it turned out, building in Unity isn't too difficult! It's pretty intuitive OOP in C#, and Meta's XR All-in-One SDK (software dev kit) makes it really easy to set up basic apps. The real difficulty was figuring out how to engineer a system that behaves like an infinite feed, in a 3-dimensional environment.
+
+
+![shapesxr iteration](https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/feed-diagram.png)
+
+
+> TLDR; The rotating surface should behave like an infinite feed. As the surface is rotated, objects should (1) disappear as they “move into” the gap. Conversely, objects should (2) appear as they “come out” of the gap.
+
+---
+
+
+<Anchor id="problem-solving">Problem solving</Anchor>
+## Strategy
+
+### The problem
+So what makes this problem so difficult?
+
+1. We're dealing with non-euclidean space here. Let's say the ring spins clockwise, and an object crosses 3° + disappears. What happens when it then crosses 36°? If this was normal geometry, you would expect it to re-appear… but in our case, it shouldn't.
+2. Let's say it spins clockwise, and a green object appears as it crosses 36°. How does the system know to make it appear at that angle?
+3. How are the objects stored on the timeline? What kind of data structure do they live in, is a List good enough?
+
+### Approach
+Overall, abstract the content away from their representations.
+
+1. Find a data structure to represent the timeline. Objects are sorted by DateTime.
+2. Select a range that represents the visible/active time. Update the range as the user spins the timeline.
+3. Convert DateTime values to euler angles.
+4. Show/hide items as they move in and out of the active range.
+
+
+--- 
+
+<Anchor id="demos">Demos</Anchor>
+## Prototype demo
+
+### Organizing by task (not event)
+The big idea here is an emphasis on tasks (as opposed to events). When a user creates a task and places it on the timeline, it acts like a beacon, indicating a general vibe of what's going on, rather than a strict outline of their day.
+
+<Image
+    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-addtask.gif"
+    alt="unity demo"
+    height={0}
+    width={0}
+    sizes="225vw"
+    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+/>
+
+### Breaking away from grids
+In the spirit of trying new things, we deviated as far as we could from your typical, grid-based calendar. This resulted in a circular form, broken by a gap to indicate the starting- and end-points of the currently visible range of time.
+
+
+<Image
+    src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-spin.gif"
+    alt="unity demo"
+    height={0}
+    width={0}
+    sizes="225vw"
+    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+/>

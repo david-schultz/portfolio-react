@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Highlight, Callout, Anchor } from '@/components/MDXCustomComponents'
 import VideoPlayer from '@/components/VideoPlayer'
+import Image from 'next/image'
 
 interface Frontmatter {
   title?: string
@@ -55,6 +56,7 @@ const components = {
   VideoPlayer,
   Button,
   Link,
+  Image,
 }
 
 
