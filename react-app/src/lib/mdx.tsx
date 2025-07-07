@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Highlight, Callout, Anchor } from '@/components/MDXCustomComponents'
 import VideoPlayer from '@/components/VideoPlayer'
+import MarkdownConverter from '@/components/MarkdownConverter'
 import Image from 'next/image'
 
 interface Frontmatter {
@@ -57,6 +58,7 @@ const components = {
   Button,
   Link,
   Image,
+  MarkdownConverter,
 }
 
 
