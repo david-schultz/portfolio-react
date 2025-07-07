@@ -79,7 +79,7 @@ export default function Sandbox() {
       <section className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
         <div className="w-[100px] h-[100px] bg-red-500"></div>
         <Link href="/"><h1 className="font-serif text-tx">david schultz</h1></Link>
-        <p>Hi! I'm a freelance interaction designer & developer. My bread-and-butter is Next.js, but I am currently expanding my skillset to SwiftUI development.</p>
+        <p>Hi! I&apos;m a freelance interaction designer & developer. My bread-and-butter is Next.js, but I am currently expanding my skillset to SwiftUI development.</p>
       </section>
 
       <main className="md:col-span-8 flex flex-col">

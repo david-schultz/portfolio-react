@@ -42,7 +42,7 @@ export default function Cycles() {
         <header>
           <h1 className="text-tx-primary">Exploring spatial representations of time</h1>
           <h3 className="font-mono text-tx-tertiary">2024 ※ XR prototyping</h3>
-          <p className="text-md">Building a “time machine” in mixed reality. This course was my first encounter with designing in XR. My team designed a new type of calendar—one that utilizes 3d-space. I was responsible for building a working prototype in Unity for the Quest 3.</p>
+          <p className="text-md">Building a &quot;time machine&quot; in mixed reality. This course was my first encounter with designing in XR. My team designed a new type of calendar—one that utilizes 3d-space. I was responsible for building a working prototype in Unity for the Quest 3.</p>
           <div className="card mb-4 ">
               <Image
                 src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/demo-quick.gif"
@@ -59,8 +59,8 @@ export default function Cycles() {
           <h3 className="text-tx-primary font-mono w-full pb-1 border-b-[1px] border-bd-primary border-dashed border-spacing-4"># Conceptual sketches</h3>
           <p>How do you represent time in three dimensions? One option is to lay it out as a timeline in front of you.</p>
           <p>Cut off the ends, throw on some events, and call it a day.
-We gave it a shot, but decided that this iteration didn't work for two main reasons; for one, a calendar doesn't need to occupy a user's full "viewport". It's probably better suited to the peripheral.</p>
-          <p>Second, and more fundamentally, this linear form factor didn't feel "anchored." It didn't give you a sense of where you were in your day.</p>
+We gave it a shot, but decided that this iteration didn&apos;t work for two main reasons; for one, a calendar doesn&apos;t need to occupy a user&apos;s full &quot;viewport&quot;. It&apos;s probably better suited to the peripheral.</p>
+          <p>Second, and more fundamentally, this linear form factor didn&apos;t feel &quot;anchored.&quot; It didn&apos;t give you a sense of where you were in your day.</p>
           <div className="card mb-4 ">
               <Image
                 src="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/linear-shapesxr.png"
@@ -105,11 +105,11 @@ We gave it a shot, but decided that this iteration didn't work for two main reas
 
         <section>
           <h3 className="text-tx-primary font-mono w-full pb-1 border-b-[1px] border-bd-primary border-dashed border-spacing-4"># Unity development</h3>
-          <p>From the get-go, my team had been prototyping in ShapesXR on my teammate's Quest 2. The controls took some getting used-to, and it was difficult to collaborate—but the power of working in an immersive environment was immediately apparent.</p>
+          <p>From the get-go, my team had been prototyping in ShapesXR on my teammate&apos;s Quest 2. The controls took some getting used-to, and it was difficult to collaborate—but the power of working in an immersive environment was immediately apparent.</p>
           <p>Thinking long-term, I noticed two major problems:</p>
           <ol className="styled text-md mb-4">
-            <li>We needed to be able to record passthrough, which isn't possible on Quest 2.</li>
-            <li>ShapesXR's limited interaction capabilities were becoming a obstacle for ideation.</li>
+            <li>We needed to be able to record passthrough, which isn&apos;t possible on Quest 2.</li>
+            <li>ShapesXR&apos;s limited interaction capabilities were becoming a obstacle for ideation.</li>
           </ol>
           <p>With a clear need, and a strong desire to explore XR, I pulled the trigger and saddled up to learn Unity.</p>
         </section>
