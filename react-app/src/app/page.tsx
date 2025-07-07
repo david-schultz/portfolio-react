@@ -215,11 +215,11 @@ export default async function Home() {
 // }
 
 
-export type HomeCategoryProps = {
+type HomeCategoryProps = {
   category: Category
 }
 
-export const HomeCategory = ({
+const HomeCategory = ({
   category: { name, articles },
 }: HomeCategoryProps) => (
   <div className="flex flex-col gap-2">
