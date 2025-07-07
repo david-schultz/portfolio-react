@@ -4,6 +4,7 @@
 import '@/app/styles.css'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
+import Link from 'next/link'
 import BackgroundSetter from '@/lib/setbg'
 import SiteBar from '@/components/ui/custom/SiteBar'
 import { Button } from '@/components/ui/button'
@@ -57,7 +58,7 @@ const GlassScene = dynamic(() => import('@/components/3d/glassScene.tsx'), {
 
 
 export default function Sandbox() {
-  const [isRunning, setIsRunning] = useState(true); // Add this line
+  const [isRunning, setIsRunning] = useState(false); // Add this line
 
   const [color, setColor] = useState("white");
   let interact = () => {
@@ -72,53 +73,26 @@ export default function Sandbox() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col gap-4 mb-32">
 
-       <section className="mx-2 bg-neutral-800 rounded-b-lg mb-64 h-[800px] md:h-[928px]">
+    <>
 
-        <div className="absolute w-[calc(100vw-4rem)] top-[500px] md:top-[650px] px-8 sm:px-16 md:px-24 lg:px-32 ">
-          <h1 className="ml-1 text-5xl text-white">Interaction Designer</h1>
-          <h3 className="ml-1 text-hypergold mt-3">Seattle, WA</h3>
-
-          <div className="flex flex-col items-start xs:flex-row gap-2 text-white mt-8">
-            <div className="flex bg-foreground rounded-full py-1 px-4">
-                <Image
-                  src={gogglesSrc}
-                  width={16}
-                  height={16}
-                  alt="vr goggles icon"
-                  className="mr-1"
-                />
-                <p className="font-500">Mixed Reality</p>
-                {/* <p className="font-500" style={{"leading-trim": 'both', 'text-edge': 'cap'}}>Mixed Reality</p> */}
-            </div>
-            <div className="flex bg-foreground rounded-full py-1 px-4">
-                <Image
-                  src={browserSrc}
-                  width={16}
-                  height={16}
-                  alt="browser icon"
-                  className="mr-1"
-                />
-                <p className="font-500">Front-end</p>
-                {/* <p className="font-500 " style={{"leading-trim": 'both', 'text-edge': 'cap'}}>Front-end</p> */}
-            </div>
-          </div>
-        </div>
-
-        <div className="w-full h-[800px] md:h-[928px] top-0">
-          <PortalScene isRunning={isRunning} />
-        </div>
-
-        <div className="absolute top-0 z-1 w-[calc(100vw-2rem)] p-6">
-          <SiteBar variant="inverted" className="" />
-        </div>
-
-        <div className="absolute z-1 p-6 top-[calc(100vh-32rem)] md:top-[calc(100vh-24rem)] right-16">
-          <Button onClick={toggleRunning} className={isRunning ? "bg-red-600 hover:bg-red-700" : "bg-blue-600 hover:bg-blue-700"}>{isRunning ? "Pause Sim" : "Start Sim"}</Button>
-        </div>
+      <section className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
+        <div className="w-[100px] h-[100px] bg-red-500"></div>
+        <Link href="/"><h1 className="font-serif text-tx">david schultz</h1></Link>
+        <p>Hi! I'm a freelance interaction designer & developer. My bread-and-butter is Next.js, but I am currently expanding my skillset to SwiftUI development.</p>
       </section>
-    </main>
+
+      <main className="md:col-span-8 flex flex-col">
+        <section className="mx-2 bg-neutral-800 rounded-b-lg mb-64 h-[800px] md:h-[928px]">
+          <div className="w-full h-[800px] md:h-[928px] top-0">
+            <PortalScene isRunning={isRunning} />
+          </div>
+          <div className="absolute z-1 p-6 top-[calc(100vh-32rem)] md:top-[calc(100vh-24rem)] right-16">
+            <Button onClick={toggleRunning} className={isRunning ? "bg-red-600 hover:bg-red-700" : "bg-blue-600 hover:bg-blue-700"}>{isRunning ? "Pause Sim" : "Start Sim"}</Button>
+          </div>
+        </section>
+      </main>
+    </>
   )
 }
 

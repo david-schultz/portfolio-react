@@ -144,24 +144,7 @@ export default async function Home() {
       <div className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
         <div className="w-[100px] h-[100px] bg-red-500"></div>
         <Link href="/"><h1 className="font-serif text-tx">david schultz</h1></Link>
-        <p>Hi! I'm a freelance interaction designer & developer. My bread-and-butter is Next.js, but I am currently expanding my skillset to SwiftUI development.</p>
-        {/* <ul className="flex flex-col gap-2">
-          <li className="flex gap-2">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/about"><span className="w-4">※</span>Interaction designer</Link>
-            </Button>
-          </li>
-          <li className="flex gap-2">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="https://read.cv/davidschultz"><span className="w-4">※</span>read.cv</Link>
-            </Button>
-          </li>
-          <li className="flex gap-2">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="https://read.cv/davidschultz"><span className="w-4">☞</span>Contact</Link>
-            </Button>
-          </li>
-        </ul> */}
+        <p>Hi! I'm a freelance interaction designer & developer. My bread-and-butter is Next.js. I am currently expanding my skillset to MCP & SwiftUI development.</p>
       </div>
 
       <main className="md:col-span-8">

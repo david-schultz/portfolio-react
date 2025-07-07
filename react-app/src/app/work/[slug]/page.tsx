@@ -94,7 +94,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
         </nav>
 
-        <article className="max-w-4xl mx-auto px-4 py-8">
+        <article className="max-w-4xl mx-auto px-2 py-8">
           {renderedContent}
         </article>
       </main>
