@@ -42,12 +42,12 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
             </div>
 
             {contactView ? 
-              <Button variant="default" onClick={() => setContactView(!contactView)}>
+              <Button variant="primary" onClick={() => setContactView(!contactView)}>
                 About
                 <FontAwesomeIcon icon={faPlus} className="ml-2" />
               </Button>
             :
-              <Button variant="default" onClick={() => setContactView(!contactView)}>
+              <Button variant="primary" onClick={() => setContactView(!contactView)}>
                 About
                 <FontAwesomeIcon icon={faMinus} className="ml-2" />
               </Button>
@@ -59,13 +59,13 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
           {contactView ? 
             <div id="contactView"className="flex flex-col gap-3">
               <div className="flex gap-4">
-                <Button variant="subtle" className="w-full" asChild>
+                <Button variant="secondary" className="w-full" asChild>
                   <Link href="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/files/SchultzDavid-Resume.pdf" target="_blank">
                       <FontAwesomeIcon icon={faFile as IconProp} className="mr-2" />
                       Resume
                   </Link>
                 </Button>
-                <Button variant="subtle" className="w-full" asChild>
+                <Button variant="secondary" className="w-full" asChild>
                   <Link href="https://www.linkedin.com/in/schultzdavidg/" target="_blank">
                       <FontAwesomeIcon icon={faLinkedin as IconProp} className="mr-2" />
                       LinkedIn
@@ -73,13 +73,13 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
                 </Button>
               </div>
               <div className="flex gap-4">
-                <Button variant="subtle" className="w-full" asChild>
+                <Button variant="secondary" className="w-full" asChild>
                   <Link href="mailto:david@davidschultz.co" target="_blank">
                       <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
                       Email
                   </Link>
                 </Button>
-                <Button variant="subtle" className="w-full" asChild>
+                <Button variant="secondary" className="w-full" asChild>
                   <Link href="https://read.cv/davidschultz" target="_blank">
                     <Image
                       src={readcvSrc}

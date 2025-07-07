@@ -84,7 +84,7 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
 
           <li className="hidden sm:block">
             {isInverted ? 
-              (<Button variant="subtle-dark-locked" asChild>
+              (<Button variant="primary" asChild>
                 <Link href="https://medium.com/@schultzdavidg" target="_blank">Blog</Link>
               </Button>)
               :
@@ -98,9 +98,9 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
           <Dialog>
               <DialogTrigger asChild>
                 { isInverted ? 
-                  (<Button variant="primary-locked">Let&apos;s connect!</Button>)
+                  (<Button variant="primary">Let&apos;s connect!</Button>)
                   :
-                  (<Button variant="subtle">Let&apos;s connect!</Button>)
+                  (<Button variant="secondary">Let&apos;s connect!</Button>)
                 }
               </DialogTrigger>
               <DialogContent>

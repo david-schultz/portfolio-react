@@ -6,13 +6,13 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from '@/components/ui/button';
 import { Separator } from "@/components/ui/separator"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+// import {
+//   Carousel,
+//   CarouselContent,
+//   CarouselItem,
+//   CarouselNext,
+//   CarouselPrevious,
+// } from "@/components/ui/carousel"
 
 import {
   Dialog,

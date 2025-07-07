@@ -75,68 +75,7 @@ type ProjectCardProps = {
 
 export default async function Home() {
   // Fetch articles data directly in the component
-  const sliced = true;
   const articles = await getAllSlicedArticles();
-
-
-  // const displayedProjects: Array<ProjectCardProps> = [
-  //   {
-  //     "name": "TerrariumXR",
-  //     "year": "2024",
-  //     "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/terrariumxr/outside-render.jpg",
-  //     "imageType": "bg",
-  //     "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
-  //     "logoName": "University of Washington",
-  //     "link": "/work/terrariumxr",
-  //     "textColor": "white",
-  //     "categories": "XR prototyping",
-  //   },
-  //   {
-  //     "name": "Cycles",
-  //     "year": "2024",
-  //     "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/cycles/hero2.jpg",
-  //     "imageType": "bg",
-  //     "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
-  //     "logoName": "University of Washington",
-  //     "link": "/work/cycles",
-  //     "textColor": "white",
-  //     "categories": "XR prototyping",
-  //   },
-  //   {
-  //     "name": "Diversity in the Arboretum",
-  //     "year": "2023",
-  //     "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/arboretum/arb_cover.jpg",
-  //     "imageType": "bg",
-  //     "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-uw.png",
-  //     "logoName": "University of Washington",
-  //     "link": "/work/arboretum",
-  //     "textColor": "white",
-  //     "categories": "Physical data vis",
-  //   },
-  //   {
-  //     "name": "sureUI Data Visualization",
-  //     "year": "2022",
-  //     "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/dv/dv-cover.png",
-  //     "imageType": "bg",
-  //     "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
-  //     "logoName": "Sureify",
-  //     "link": "/work/datavis",
-  //     "textColor": "black",
-  //     "categories": "Design systems",
-  //   },
-  //   {
-  //     "name": "Acquire Demo",
-  //     "year": "2022",
-  //     "imageSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_overview.png",
-  //     "imageType": "block",
-  //     "logoSource": "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/logos/logo-sureify.png",
-  //     "logoName": "Sureify",
-  //     "link": "/work/acquire",
-  //     "textColor": "black",
-  //     "categories": "UI",
-  //   }
-  // ];
-
 
   return (
     <>
@@ -204,16 +143,6 @@ export default async function Home() {
     </>
   )
 }
-
-// type ProjectCardProps = {
-//   name: string
-//   year: string
-//   imageSource: string
-//   imageType: string
-//   logoSource: string
-//   logoName: string
-// }
-
 
 type HomeCategoryProps = {
   category: Category

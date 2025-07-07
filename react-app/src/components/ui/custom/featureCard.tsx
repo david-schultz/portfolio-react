@@ -12,13 +12,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+// import {
+//   Carousel,
+//   CarouselContent,
+//   CarouselItem,
+//   CarouselNext,
+//   CarouselPrevious,
+// } from "@/components/ui/carousel"
 
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
