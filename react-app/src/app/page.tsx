@@ -80,11 +80,19 @@ export default async function Home() {
   return (
     <>
 
-      <div className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
-        <div className="w-[100px] h-[100px] bg-red-500"></div>
+      <section className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-0 md:py-16 self-start md:h-screen">
+        <Image 
+          src={'/images/star-sketch.png'}
+          alt="logo"
+          height={150}
+          width={150}
+          sizes="100vw"
+          className=""
+        />
         <Link href="/"><h1 className="font-serif text-tx">david schultz</h1></Link>
-        <p>Hi! I&apos;m a freelance interaction designer & developer. My bread-and-butter is Next.js. I am currently expanding my skillset to MCP & SwiftUI development.</p>
-      </div>
+        <p className="leading-7 flex-grow">Hi! I&apos;m a freelance interaction designer & developer. My bread-and-butter is Next.js. I am currently expanding my skillset to MCP & SwiftUI development.</p>
+        <p className="">c 2025</p>
+      </section>
 
       <main className="md:col-span-8">
         <Tabs id="tabs" defaultValue="work" className="flex flex-col">
