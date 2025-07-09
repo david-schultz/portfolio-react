@@ -15,6 +15,14 @@ export const demosConfig = {
     order: null,
     visible: true,
   },
+  'arboretum': {
+    title: 'Arboretum Explorer',
+    subtitle: 'Experimenting with d3.js',
+    year: '2023',
+    thumbnail: "https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/generic.jpg",
+    order: null,
+    visible: true,
+  },
 }
 
 export type DemoMetadata = {
