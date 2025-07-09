@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import BackgroundSetter from '@/lib/setbg'
 import SiteBar from '@/components/ui/custom/SiteBar'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/Button'
 
 import { useRef, useState, useEffect } from 'react'
 import * as THREE from "three"

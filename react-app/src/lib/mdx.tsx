@@ -2,7 +2,7 @@ import { compileMDX } from 'next-mdx-remote/rsc'
 import matter from 'gray-matter'
 
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/Button'
 import { Highlight, Callout, Anchor } from '@/components/MDXCustomComponents'
 import VideoPlayer from '@/components/VideoPlayer'
 import MarkdownConverter from '@/components/MarkdownConverter'

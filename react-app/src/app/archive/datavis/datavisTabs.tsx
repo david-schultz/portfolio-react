@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import FeatureCard from '@/components/ui/custom/featureCard';
 import { NivoDemo } from '@/components/nivo/nivoDemo';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { Separator } from "@/components/ui/separator"
 import { InfoBox, InfoBoxHeader, InfoBoxSection } from '@/components/ui/custom/infoBox'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"

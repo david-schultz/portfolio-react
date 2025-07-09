@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { get } from '@vercel/edge-config';
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { Separator } from "@/components/ui/separator"
 import { InfoBox, InfoBoxHeader, InfoBoxSection } from '@/components/ui/custom/infoBox'
 import FeatureCard from '@/components/ui/custom/featureCard';

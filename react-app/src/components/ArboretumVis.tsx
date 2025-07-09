@@ -319,8 +319,8 @@ const ArboretumVis: React.FC<ArboretumVisProps> = ({
 
   return (
     <div className="flex flex-row mt-8">
-      <svg ref={svgRef} width="500" height="1000"></svg>
-      <div className="space-y-4">
+      <svg id="svg-grid" ref={svgRef} width="500" height="1000"></svg>
+      <div id="info-panel" className="space-y-4">
         <ul className="card space-y-1 w-96">
           <li className="text-h5">Contents</li>
           <li>

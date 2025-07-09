@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import ScrollButton from '@/components/ui/custom/scroll-button'
 import Footer from '@/components/ui/custom/footer'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/Button'
 import Link from 'next/link'
 
 export default function Arboretum() {

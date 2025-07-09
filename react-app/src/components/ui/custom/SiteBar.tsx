@@ -4,7 +4,7 @@ import '@/app/styles.css'
 import Logo from './logo';
 import Image from 'next/image'
 import Link from 'next/link';
-import { Button } from '@/components/ui/button.tsx'
+import { Button } from '@/components/ui/Button'
 import {
   Dialog,
   DialogContent,
