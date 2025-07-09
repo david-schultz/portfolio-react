@@ -25,7 +25,6 @@ import { Orbit } from 'next/font/google'
 import PortalScene from '@/components/3d/PortalScene'
 import { button } from 'leva'
 
-
 let gogglesSrc = "/fa/head-side-goggles-solid.svg";
 let browserSrc = "/fa/browser-solid.svg";
 

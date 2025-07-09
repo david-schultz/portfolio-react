@@ -1,6 +1,3 @@
-
-
-
 'use client'
 
 import { useMDXContent } from '@/hooks/useMDXContent'
