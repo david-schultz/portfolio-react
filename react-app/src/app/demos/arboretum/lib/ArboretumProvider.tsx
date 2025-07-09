@@ -1,5 +1,3 @@
-// This file should handle computation, and bridge the gap between <ArboretumDataControls/> and <ArboretumVisualizer/>
-
 'use client'
 
 import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
@@ -50,6 +48,8 @@ export interface Statistics {
   stdDevF: number;
   stdDevS: number;
   filledCells: number;
+  minValues: Record<ComputeConfig['metric'], number>;
+  maxValues: Record<ComputeConfig['metric'], number>;
 }
 
 interface ArboretumState {
@@ -160,6 +160,24 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
       stdDevF: 0,
       stdDevS: 0,
       filledCells: 0,
+      minValues: {
+        'ALL': 0,
+        'FAMILY': 0,
+        'SPECIES': 0,
+        'Z-SCORE': 0,
+        'Z-SCORE-UNIQUE': 0,
+        'DIVERSITY': 0,
+        'PERCENTAGE': 0,
+      },
+      maxValues: {
+        'ALL': 0,
+        'FAMILY': 0,
+        'SPECIES': 0,
+        'Z-SCORE': 0,
+        'Z-SCORE-UNIQUE': 0,
+        'DIVERSITY': 0,
+        'PERCENTAGE': 0,
+      },
     },
     blockHeights: 'ALL',
     species: [],
@@ -172,7 +190,7 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
   // Initialize data on mount
   useEffect(() => {
     if (!isInitialized.current) {
-      initializeData();
+      initializeAndComputeData();
       isInitialized.current = true;
     }
   }, []);
@@ -182,9 +200,10 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
     if (isInitialized.current) {
       computeData();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.filterConfig]);
 
-  const initializeData = () => {
+  const initializeAndComputeData = () => {
     const newCellData: Cell[] = [];
     const newSpecies: string[] = [];
     const newFamilies: string[] = [];
@@ -195,15 +214,16 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
         newCellData.push(createEmptyCell(accession.cell));
       }
       
-      if (!newFamilies.includes(accession.family)) {
+      if (!newFamilies.includes(accession.family) && accession.family && accession.family.trim() !== '') {
         newFamilies.push(accession.family);
       }
       
-      if (!newSpecies.includes(accession.species)) {
+      if (!newSpecies.includes(accession.species) && accession.species && accession.species.trim() !== '') {
         newSpecies.push(accession.species);
       }
     }
 
+    // Set initial data
     setState(prev => ({
       ...prev,
       cellData: newCellData,
@@ -211,6 +231,9 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
       species: newSpecies.sort(),
       isLoading: false,
     }));
+    
+    // Trigger computation after state is set
+    setTimeout(() => computeData(), 10);
   };
 
   const computeData = () => {
@@ -291,6 +314,29 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
         }
       }
 
+      // Calculate min/max values for each metric
+      const filledCellsOnly = updatedCellData.filter(cell => cell.accessions > 0);
+      
+      const minValues = {
+        'ALL': filledCellsOnly.length > 0 ? Math.min(...filledCellsOnly.map(cell => cell.accessions)) : 0,
+        'FAMILY': filledCellsOnly.length > 0 ? Math.min(...filledCellsOnly.map(cell => cell.families)) : 0,
+        'SPECIES': filledCellsOnly.length > 0 ? Math.min(...filledCellsOnly.map(cell => cell.species)) : 0,
+        'Z-SCORE': filledCellsOnly.length > 0 ? Math.min(...filledCellsOnly.map(cell => (cell.zscoreA + cell.zscoreF + cell.zscoreS) / 3)) : 0,
+        'Z-SCORE-UNIQUE': filledCellsOnly.length > 0 ? Math.min(...filledCellsOnly.map(cell => (cell.zscoreF + cell.zscoreS) / 2)) : 0,
+        'DIVERSITY': filledCellsOnly.length > 0 ? Math.min(...filledCellsOnly.map(cell => cell.diversity)) : 0,
+        'PERCENTAGE': filledCellsOnly.length > 0 ? Math.min(...filledCellsOnly.map(cell => cell.percentage)) : 0,
+      } as const;
+
+      const maxValues = {
+        'ALL': filledCellsOnly.length > 0 ? Math.max(...filledCellsOnly.map(cell => cell.accessions)) : 1,
+        'FAMILY': filledCellsOnly.length > 0 ? Math.max(...filledCellsOnly.map(cell => cell.families)) : 1,
+        'SPECIES': filledCellsOnly.length > 0 ? Math.max(...filledCellsOnly.map(cell => cell.species)) : 1,
+        'Z-SCORE': filledCellsOnly.length > 0 ? Math.max(...filledCellsOnly.map(cell => (cell.zscoreA + cell.zscoreF + cell.zscoreS) / 3)) : 1,
+        'Z-SCORE-UNIQUE': filledCellsOnly.length > 0 ? Math.max(...filledCellsOnly.map(cell => (cell.zscoreF + cell.zscoreS) / 2)) : 1,
+        'DIVERSITY': filledCellsOnly.length > 0 ? Math.max(...filledCellsOnly.map(cell => cell.diversity)) : 1,
+        'PERCENTAGE': filledCellsOnly.length > 0 ? Math.max(...filledCellsOnly.map(cell => cell.percentage)) : 1,
+      } as const;
+
       return {
         ...prev,
         cellData: updatedCellData,
@@ -303,6 +349,8 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
           stdDevF,
           stdDevS,
           filledCells: filledCells.length,
+          minValues,
+          maxValues,
         },
       };
     });

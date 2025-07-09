@@ -1,16 +1,48 @@
 'use client'
 
-import accessions from '@/app/demos/arboretum/data/accessions.json';
+import { useState } from 'react';
 import { Button } from '@/components/ui/Button'
-
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/Select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Input } from '@/components/ui/input';import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, } from "@/components/ui/dialog"
+import { Input } from '@/components/ui/input';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, } from "@/components/ui/dialog"
+import { useArboretum } from '../lib/ArboretumProvider';
+import { getMetricDisplayName } from '../lib/ArboretumUtils';
 
 // These components provide interactivity to its sister component, <ArboretumVisualization/>.
 // If possible, computation should be done in ArboretumExplorer.ts
 
 export function DataControls() {
+  const { 
+    filterConfig, 
+    computeConfig, 
+    families, 
+    species, 
+    setFilter, 
+    setCompute 
+  } = useArboretum();
+  
+  const [speciesInput, setSpeciesInput] = useState('');
+  const [activeTab, setActiveTab] = useState('none');
+  const handleComputeChange = (metric: string) => {
+    setCompute({ 
+      metric: metric as 'ALL' | 'FAMILY' | 'SPECIES' | 'Z-SCORE' | 'Z-SCORE-UNIQUE' | 'DIVERSITY' | 'PERCENTAGE' 
+    });
+  };
+
+  const handleFilterChange = (type: 'ALL' | 'FAMILY' | 'SPECIES', value: string = '') => {
+    setFilter({ type, value });
+    if (type === 'ALL') {
+      setActiveTab('none');
+    }
+  };
+
+  const handleSpeciesSubmit = () => {
+    if (speciesInput.trim()) {
+      handleFilterChange('SPECIES', speciesInput.trim());
+    }
+  };
+
   return (
     <div className="bg-bg-card">
       <div className="flex flex-col p-2 border-b border-bd-secondary">
@@ -23,7 +55,7 @@ export function DataControls() {
 
       <div className="flex flex-col p-2 border-b border-bd-secondary">
         <h3>Compute:</h3>
-        <Select>
+        <Select value={computeConfig.metric} onValueChange={handleComputeChange}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Please Select" />
           </SelectTrigger>
@@ -42,9 +74,9 @@ export function DataControls() {
       <div className="flex flex-col p-2 border-b border-bd-secondary">
         <h3>Filter by:</h3>
 
-        <Tabs defaultValue="none" className="w-[400px]">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-[400px]">
           <TabsList>
-            <TabsTrigger value="none">None</TabsTrigger>
+            <TabsTrigger value="none" onClick={() => handleFilterChange('ALL')}>None</TabsTrigger>
             <TabsTrigger value="family">Family</TabsTrigger>
             <TabsTrigger value="species">Species</TabsTrigger>
           </TabsList>
@@ -52,20 +84,31 @@ export function DataControls() {
           <TabsContent value="none">{/* Don't filter anything */}</TabsContent>
           <TabsContent value="family">
             {/* Filter by family */}
-            <Select>
+            <Select 
+              value={filterConfig.type === 'FAMILY' ? filterConfig.value : ''} 
+              onValueChange={(value) => handleFilterChange('FAMILY', value)}
+            >
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select a family..." />
               </SelectTrigger>
               <SelectContent>
-                {/* Populate with families */}
-                <SelectItem value="EXAMPLE">Example</SelectItem>
+                {families.filter(family => family && family.trim() !== '').map((family) => (
+                  <SelectItem key={family} value={family}>{family}</SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </TabsContent>
           <TabsContent value="species">
             {/* Filter by species */}
-            <Input placeholder="Enter species name..." />
-            <Button>Go</Button>
+            <div className="flex gap-2">
+              <Input 
+                placeholder="Enter species name..." 
+                value={speciesInput}
+                onChange={(e) => setSpeciesInput(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSpeciesSubmit()}
+              />
+              <Button onClick={handleSpeciesSubmit}>Go</Button>
+            </div>
             <Dialog>
               <DialogTrigger>View list of species</DialogTrigger>
               <DialogContent>
@@ -74,14 +117,25 @@ export function DataControls() {
                   <DialogDescription>
                     Copy a species's name, then paste into the input field.
                   </DialogDescription>
-                  <ul>
-                    {/* Populate with list of all species */}
-                    <li className="flex flex-row">
-                      <p className="text-sm basis-1/3">Species name</p>
-                      <p className="text-sm basis-1/3 text-tx-tertiary">Family</p>
-                      <p className="text-sm basis-1/3 text-tx-tertiary">Count</p>
-                    </li>
-                  </ul>
+                  <div className="max-h-64 overflow-y-auto">
+                    <ul>
+                      <li className="flex flex-row font-medium border-b">
+                        <p className="text-sm basis-2/3">Species name</p>
+                        <p className="text-sm basis-1/3 text-tx-tertiary">Family</p>
+                      </li>
+                      {species.filter(speciesName => speciesName && speciesName.trim() !== '').map((speciesName) => {
+                        // Find the family for this species from the data
+                        const family = 'Unknown'; // You could enhance this by creating a species->family lookup
+                        return (
+                          <li key={speciesName} className="flex flex-row py-1 text-xs cursor-pointer hover:bg-gray-100" 
+                              onClick={() => setSpeciesInput(speciesName)}>
+                            <p className="basis-2/3">{speciesName}</p>
+                            <p className="basis-1/3 text-tx-tertiary">{family}</p>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 </DialogHeader>
               </DialogContent>
             </Dialog>
@@ -95,6 +149,9 @@ export function DataControls() {
 }
 
 export function Overview() {
+  const { statistics, computeConfig, filterConfig } = useArboretum();
+  const metricName = getMetricDisplayName(computeConfig.metric);
+  
   return (
     <div className="card">
       <div className="flex flex-col p-2 border-b border-bd-secondary">
@@ -102,34 +159,39 @@ export function Overview() {
           <h2 className="flex-grow">Overview</h2>
           <Button>collapse card</Button>
         </div>
-        <p>Currently, each cell represents {/* INSERT CURRENTLY SELECTED COMPUTATION METHOD */}.</p>
+        <p>
+          Currently, each cell represents {metricName.toLowerCase()}.
+          {filterConfig.type !== 'ALL' && (
+            <span> Filtered by {filterConfig.type.toLowerCase()}: {filterConfig.value}</span>
+          )}
+        </p>
       </div>
 
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 gap-2 p-2">
         <div className="flex flex-col">
-          <p>12,481 {/* REPLACE WITH TOTAL NUMBER OF ACCESSIONS AFTER FILTERING + COMPUTING */}</p>
+          <p className="text-lg font-medium">{statistics.totalAccessions.toLocaleString()}</p>
           <p className="text-xs text-tx-secondary">Accessions</p>
         </div>
         <div className="flex flex-col">
-          <p>586 {/* REPLACE WITH TOTAL NUMBER OF CELLS THAT HAVE >0 ACCESSIONS */}</p>
+          <p className="text-lg font-medium">{statistics.filledCells}</p>
           <p className="text-xs text-tx-secondary">Filled cells</p>
         </div>
         <div className="flex flex-col">
-          <p>21.3 {/* REPLACE WITH MEAN NUMBER OF ACCESSIONS */}</p>
-          <p className="text-xs text-tx-secondary">Mean</p>
+          <p className="text-lg font-medium">{statistics.meanA.toFixed(1)}</p>
+          <p className="text-xs text-tx-secondary">Mean (Accessions)</p>
         </div>
         <div className="flex flex-col">
-          <p>34.87 {/* REPLACE WITH STANDARD DEVIATION */}</p>
-          <p className="text-xs text-tx-secondary">Standard Deviation</p>
+          <p className="text-lg font-medium">{statistics.stdDevA.toFixed(2)}</p>
+          <p className="text-xs text-tx-secondary">Std Dev (Accessions)</p>
         </div>
-        <div className="col-span-2 flex">
-          <div className="flex gap-2">
-            <div className="h-1 w-1 bg-red"></div>
-            <p>Min</p>
+        <div className="col-span-2 flex gap-4 pt-2">
+          <div className="flex gap-2 items-center">
+            <div className="h-3 w-3 bg-blue-200 rounded"></div>
+            <p className="text-xs">Min</p>
           </div>
-          <div className="flex gap-2">
-            <div className="h-1 w-1 bg-blue"></div>
-            <p>Max</p>
+          <div className="flex gap-2 items-center">
+            <div className="h-3 w-3 bg-blue-800 rounded"></div>
+            <p className="text-xs">Max</p>
           </div>
         </div>
       </div>
@@ -139,27 +201,60 @@ export function Overview() {
 }
 
 export function CurrentSelection() {
+  const { selectedCell, selectCell } = useArboretum();
+  
+  if (!selectedCell) {
+    return null; // Don't render if no cell is selected
+  }
+
+  const handleUnselect = () => {
+    selectCell(null);
+  };
+
   return (
     <div className="card">
-        <div className="flex">
+        <div className="flex p-2 border-b border-bd-secondary">
           <h2 className="flex-grow">Current Selection</h2>
           {/* When this button is pressed, it should close the card and unselect the grid cell. */}
-          <Button>unselect</Button>
+          <Button onClick={handleUnselect}>unselect</Button>
         </div>
-        <div className="grid grid-cols-2">
-          <div>
-            Empty for now
+        <div className="grid grid-cols-2 gap-2 p-2">
+          <div className="col-span-2">
+            <p className="text-sm font-medium">Cell: {selectedCell.id}</p>
+            <p className="text-xs text-tx-tertiary">Row {selectedCell.row}, Column {selectedCell.col}</p>
           </div>
           <div className="flex flex-col">
-            <div className="flex flex-col">
-              <p>34 {/* REPLACE WITH NUMBER OF ACCESSIONS IN CURRENTLY SELECTED CELL */}</p>
-              <p className="text-xs text-tx-secondary">Accessions</p>
-            </div>
-            <div className="flex flex-col">
-              <p>4 {/* REPLACE WITH NUMBER OF UNIQUE SPECIES IN CURRENTLY SELECTED CELL */}</p>
-              <p className="text-xs text-tx-secondary">Unique Species</p>
-            </div>
+            <p className="text-lg font-medium">{selectedCell.accessions}</p>
+            <p className="text-xs text-tx-secondary">Accessions</p>
           </div>
+          <div className="flex flex-col">
+            <p className="text-lg font-medium">{selectedCell.families}</p>
+            <p className="text-xs text-tx-secondary">Unique Families</p>
+          </div>
+          <div className="flex flex-col">
+            <p className="text-lg font-medium">{selectedCell.species}</p>
+            <p className="text-xs text-tx-secondary">Unique Species</p>
+          </div>
+          <div className="flex flex-col">
+            <p className="text-lg font-medium">{selectedCell.diversity.toFixed(3)}</p>
+            <p className="text-xs text-tx-secondary">Diversity</p>
+          </div>
+          {selectedCell.uniqueFamilies.length > 0 && (
+            <div className="col-span-2">
+              <p className="text-xs text-tx-secondary mb-1">Families:</p>
+              <div className="text-xs max-h-20 overflow-y-auto">
+                {selectedCell.uniqueFamilies.join(', ')}
+              </div>
+            </div>
+          )}
+          {selectedCell.uniqueSpecies.length > 0 && (
+            <div className="col-span-2">
+              <p className="text-xs text-tx-secondary mb-1">Species:</p>
+              <div className="text-xs max-h-20 overflow-y-auto">
+                {selectedCell.uniqueSpecies.join(', ')}
+              </div>
+            </div>
+          )}
         </div>
     </div>
   )
