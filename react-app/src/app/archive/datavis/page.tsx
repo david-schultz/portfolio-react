@@ -18,10 +18,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare, faBullseye, faMagnifyingGlass, faUsers, faHammer, faFileLines, faPieChart, faLineChart, faBarChart, faChartSimple, faCamera } from '@fortawesome/free-solid-svg-icons'
 import { NivoDemo } from '@/components/nivo/nivoDemo';
 import SiteBar from '@/components/ui/custom/SiteBar'
-import ScrollTo from '@/lib/ScrollTo';
-import ScrollUp from '@/lib/ScrollUp';
+import ScrollTo from '@/lib/archive/ScrollTo';
+import ScrollUp from '@/lib/archive/ScrollUp';
 import { Scroll } from 'lucide-react';
-import DataVisTabs from '@/app/datavis/datavisTabs';
+import DataVisTabs from '@/app/archive/datavis/datavisTabs';
 import ScrollButton from '@/components/ui/custom/scroll-button';
 import Footer from '@/components/ui/custom/footer';
 

@@ -26,8 +26,8 @@ export default function About() {
                     />
                 </div>
                 <div className="w-fit">
-                    <p>Hey, it’s nice to meet you! As a designer, it feels strange to put myself in a bucket; we’re a multi-disciplinary bunch. </p>
-                    <p>What I will say, is, I’m driven by __. Spatial mediums, and gestural interactions, are particular areas of interest for me.</p>
+                    <p>Hey, it&apos;s nice to meet you! As a designer, it feels strange to put myself in a bucket; we&apos;re a multi-disciplinary bunch. </p>
+                    <p>What I will say, is, I&apos;m driven by __. Spatial mediums, and gestural interactions, are particular areas of interest for me.</p>
                     <p>I graduated in 2024 from UW Design in Seattle. </p>
                 </div>
             </div>

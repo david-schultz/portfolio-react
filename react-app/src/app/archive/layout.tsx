@@ -1,6 +1,6 @@
 import Footer from '@/components/ui/custom/footer'
 import SiteBar from '@/components/ui/custom/SiteBar'
-import ScrollUp from '@/lib/ScrollUp'
+import ScrollUp from '@/lib/archive/ScrollUp'
 
 export default function WorkLayout({
   children,

@@ -104,6 +104,10 @@ export default function RootLayout({
         </div>
 
 
+        <footer className="md:col-span-12 flex flex-col w-full h-64 mt-16 bg-[#202020]">    
+        </footer>
+
+
         {/* </ThemeProvider> */}
       </body>
     </html>
