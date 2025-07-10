@@ -10,7 +10,7 @@ import { useGLTF } from '@react-three/drei'
 import { RigidBody, RapierRigidBody, MeshCollider, CuboidCollider } from '@react-three/rapier'
 
 export function Cube(props) {
-  const { nodes, materials } = useGLTF('./models/thinking-with-portals.gltf')
+  const { nodes, materials } = useGLTF('/demos/portals/models/thinking-with-portals.gltf')
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Cube001.geometry} material={materials.Blue} />
@@ -21,7 +21,7 @@ export function Cube(props) {
 }
 
 export function Panel(props) {
-  const { nodes, materials } = useGLTF('./models/thinking-with-portals.gltf')
+  const { nodes, materials } = useGLTF('/demos/portals/models/thinking-with-portals.gltf')
   return (
     <group {...props} dispose={null}>
       <RigidBody
@@ -37,7 +37,7 @@ export function Panel(props) {
 }
 
 export function PanelHole(props) {
-  const { nodes, materials } = useGLTF('./models/thinking-with-portals.gltf')
+  const { nodes, materials } = useGLTF('/demos/portals/models/thinking-with-portals.gltf')
   return (
     <group {...props} dispose={null}>
       <RigidBody
@@ -57,7 +57,7 @@ export function PanelHole(props) {
 }
 
 export function PanelSlope(props) {
-  const { nodes, materials } = useGLTF('./models/thinking-with-portals.gltf')
+  const { nodes, materials } = useGLTF('/demos/portals/models/thinking-with-portals.gltf')
   return (
     <group {...props} dispose={null}>
       <group scale={[1, 0.05, 1]}>
@@ -69,7 +69,7 @@ export function PanelSlope(props) {
 }
 
 export function PistonSurface(props) {
-  const { nodes, materials } = useGLTF('./models/piston_surface.gltf')
+  const { nodes, materials } = useGLTF('/demos/portals/models/piston_surface.gltf')
   return (
     <group {...props} dispose={null}>
       <group rotation={[Math.PI / 2, 0, 0]} scale={0.144}>
@@ -81,7 +81,7 @@ export function PistonSurface(props) {
 }
 
 export function FullScene(props) {
-  const { nodes, materials } = useGLTF('./models/thinking-with-portals.gltf')
+  const { nodes, materials } = useGLTF('/demos/portals/models/thinking-with-portals.gltf')
   return (
     <group {...props} dispose={null}>
       <group position={[0, 3.491, 0]} scale={2.522}>
@@ -117,7 +117,7 @@ export function FullScene(props) {
     </group>
   )
 }
-useGLTF.preload('./models/portals.gltf')
-useGLTF.preload('./models/thinking-with-portals.gltf');
-useGLTF.preload('./models/portal-models.gltf');
-useGLTF.preload('./models/piston_surface.gltf');
+useGLTF.preload('/demos/portals/models/portals.gltf')
+useGLTF.preload('/demos/portals/models/thinking-with-portals.gltf');
+useGLTF.preload('/demos/portals/models/portal-models.gltf');
+useGLTF.preload('/demos/portals/models/piston_surface.gltf');

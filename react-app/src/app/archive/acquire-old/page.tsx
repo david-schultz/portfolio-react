@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { get } from '@vercel/edge-config';
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { Separator } from "@/components/ui/separator"
 // import {
 //   Carousel,

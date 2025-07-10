@@ -5,7 +5,7 @@ import '@/app/styles.css'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import BackgroundSetter from '@/lib/setbg'
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 
 import SiteBar from '@/components/ui/custom/SiteBar'
 import GlassScene from '@/components/3d/glassScene'

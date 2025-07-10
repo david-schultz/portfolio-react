@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import '@/app/styles.css'
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 
 export default function About() {
   return (

@@ -130,7 +130,7 @@ export default function ArboretumVisualizer() {
       .attr("stroke", (d: any) => selectedCell?.id === d.id ? "#333" : "#ccc")
       .attr("stroke-width", (d: any) => selectedCell?.id === d.id ? 2 : 0.5);
 
-  }, [cellData, computeConfig, selectedCell, statistics]);
+  }, [cellData, computeConfig, selectedCell, statistics, h, selectCell, w]);
 
   return (
     <div className="flex flex-col">

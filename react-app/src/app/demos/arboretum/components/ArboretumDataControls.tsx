@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/Select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from '@/components/ui/input';
@@ -115,7 +115,7 @@ export function DataControls() {
                 <DialogHeader>
                   <DialogTitle>Species list</DialogTitle>
                   <DialogDescription>
-                    Copy a species's name, then paste into the input field.
+                    Copy a species&apos;s name, then paste into the input field.
                   </DialogDescription>
                   <div className="max-h-64 overflow-y-auto">
                     <ul>

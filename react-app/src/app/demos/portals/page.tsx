@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import BackgroundSetter from '@/lib/setbg'
 import SiteBar from '@/components/ui/custom/SiteBar'
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 
 import { useRef, useState, useEffect } from 'react'
 import * as THREE from "three"
@@ -22,7 +22,7 @@ import { EffectComposer, N8AO, SMAA } from "@react-three/postprocessing"
 
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader"
 import { Orbit } from 'next/font/google'
-import PortalScene from '@/components/3d/PortalScene'
+import PortalScene from '@/app/demos/portals/components/PortalScene'
 import { button } from 'leva'
 
 let gogglesSrc = "/fa/head-side-goggles-solid.svg";

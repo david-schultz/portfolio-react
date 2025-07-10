@@ -19,7 +19,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import ScrollButton from '@/components/ui/custom/scroll-button'
 import Footer from '@/components/ui/custom/footer'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 export default function Cycles() {

@@ -11,7 +11,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { useGLTF, OrbitControls, Environment, Text, Text3D, MeshTransmissionMaterial, OrthographicCamera, PerspectiveCamera, Box} from '@react-three/drei'
 import { Physics, RigidBody, RapierRigidBody, MeshCollider, CuboidCollider, RigidBodyTypeString, vec3 } from '@react-three/rapier'
 
-import { FullScene, Panel, PanelHole, PanelSlope, PistonSurface } from '@/components/3d/thinking-with-portals.jsx'
+import { FullScene, Panel, PanelHole, PanelSlope, PistonSurface } from '@/app/demos/portals/components/thinking-with-portals.jsx'
 import { update } from '@react-spring/web'
 import { group } from 'console'
 
@@ -148,7 +148,7 @@ function RoomLayout() {
     }
     setIsLoaded(true);
 
-  });
+  }, [isLoaded]);
 
   useEffect(() => {
     if (!isLoaded) return;
@@ -157,7 +157,7 @@ function RoomLayout() {
     } else {
       console.log('toggled on');
     }
-  }, [isClicked]);
+  }, [isClicked, isLoaded]);
 
 
 
@@ -208,7 +208,7 @@ function RoomLayout() {
 
 
     }
-  }, [teleport]);
+  }, [teleport, target, lastTarget, activeCube, inactiveCube, isLoaded, isClicked, portals]);
 
 
 
@@ -413,7 +413,7 @@ function PistonInteractable({piston, activeCubeName}: IPistonObject) {
 
 
 function Cube({name, isActive}: ICubeProps) {
-  const { nodes, materials } = useGLTF('./models/thinking-with-portals.gltf')
+  const { nodes, materials } = useGLTF('/demos/portals/models/thinking-with-portals.gltf')
   return (
 
       <group scale={[0.75, 0.75, 0.75]}>
@@ -460,5 +460,5 @@ function Teleporter({nextId, setTarget, setTeleport, teleport, activeCubeName}: 
   );
 }
 
-useGLTF.preload('./models/thinking-with-portals.gltf');
-useGLTF.preload('./models/portal-models.gltf');
+useGLTF.preload('/demos/portals/models/thinking-with-portals.gltf');
+useGLTF.preload('/demos/portals/models/portal-models.gltf');

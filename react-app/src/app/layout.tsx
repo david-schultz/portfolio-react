@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import './globals.css'
 import Footer from '@/components/ui/custom/footer'
 import Link from 'next/link'
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 
 const louize = localFont({ 
   src: [

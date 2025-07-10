@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef, useCallback, ReactNode } from 'react';
 import accessions from '@/app/demos/arboretum/data/accessions.json';
 
 // Types
@@ -187,56 +187,7 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
 
   const isInitialized = useRef(false);
 
-  // Initialize data on mount
-  useEffect(() => {
-    if (!isInitialized.current) {
-      initializeAndComputeData();
-      isInitialized.current = true;
-    }
-  }, []);
-
-  // Recompute data when filter changes
-  useEffect(() => {
-    if (isInitialized.current) {
-      computeData();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.filterConfig]);
-
-  const initializeAndComputeData = () => {
-    const newCellData: Cell[] = [];
-    const newSpecies: string[] = [];
-    const newFamilies: string[] = [];
-
-    // Extract unique cells, species, and families
-    for (const accession of accessions as Accession[]) {
-      if (!newCellData.find(cell => cell.id === accession.cell)) {
-        newCellData.push(createEmptyCell(accession.cell));
-      }
-      
-      if (!newFamilies.includes(accession.family) && accession.family && accession.family.trim() !== '') {
-        newFamilies.push(accession.family);
-      }
-      
-      if (!newSpecies.includes(accession.species) && accession.species && accession.species.trim() !== '') {
-        newSpecies.push(accession.species);
-      }
-    }
-
-    // Set initial data
-    setState(prev => ({
-      ...prev,
-      cellData: newCellData,
-      families: newFamilies.sort(),
-      species: newSpecies.sort(),
-      isLoading: false,
-    }));
-    
-    // Trigger computation after state is set
-    setTimeout(() => computeData(), 10);
-  };
-
-  const computeData = () => {
+  const computeData = useCallback(() => {
     setState(prev => {
       const updatedCellData = prev.cellData.map(clearCellData);
       
@@ -354,9 +305,9 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
         },
       };
     });
-  };
+  }, []);
 
-  const shouldIncludeAccession = (accession: Accession, filter: FilterConfig): boolean => {
+  const shouldIncludeAccession = useCallback((accession: Accession, filter: FilterConfig): boolean => {
     switch (filter.type) {
       case 'FAMILY':
         return accession.family === filter.value;
@@ -366,7 +317,55 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
       default:
         return true;
     }
-  };
+  }, []);
+
+  const initializeAndComputeData = useCallback(() => {
+    const newCellData: Cell[] = [];
+    const newSpecies: string[] = [];
+    const newFamilies: string[] = [];
+
+    // Extract unique cells, species, and families
+    for (const accession of accessions as Accession[]) {
+      if (!newCellData.find(cell => cell.id === accession.cell)) {
+        newCellData.push(createEmptyCell(accession.cell));
+      }
+      
+      if (!newFamilies.includes(accession.family) && accession.family && accession.family.trim() !== '') {
+        newFamilies.push(accession.family);
+      }
+      
+      if (!newSpecies.includes(accession.species) && accession.species && accession.species.trim() !== '') {
+        newSpecies.push(accession.species);
+      }
+    }
+
+    // Set initial data
+    setState(prev => ({
+      ...prev,
+      cellData: newCellData,
+      families: newFamilies.sort(),
+      species: newSpecies.sort(),
+      isLoading: false,
+    }));
+    
+    // Trigger computation after state is set
+    setTimeout(() => computeData(), 10);
+  }, [computeData]);
+
+  // Initialize data on mount
+  useEffect(() => {
+    if (!isInitialized.current) {
+      initializeAndComputeData();
+      isInitialized.current = true;
+    }
+  }, [initializeAndComputeData]);
+
+  // Recompute data when filter changes
+  useEffect(() => {
+    if (isInitialized.current) {
+      computeData();
+    }
+  }, [state.filterConfig, computeData]);
 
   const setFilter = (config: FilterConfig) => {
     setState(prev => ({ ...prev, filterConfig: config }));
