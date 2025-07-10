@@ -149,6 +149,7 @@ export default function RootLayout({
       </head>
       <body className="bg-bg-base font-serif flex flex-col items-center min-h-screen bg-repeat bg-[url('/patterns/topo-bg.png')]">
         <ThemeProvider>
+          {/* <div className="w-full max-w-[64rem] px-4 sm:px-16 flex flex-col md:flex-row gap-8"> */}
           <div className="w-full max-w-[64rem] px-4 sm:px-16 grid grid-cols-1 md:grid-cols-12 gap-8">
             {children}
           </div>
