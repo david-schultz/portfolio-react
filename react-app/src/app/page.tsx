@@ -33,9 +33,9 @@ export default async function Home() {
         <p className="">© 2025</p>
       </section>
 
-      <main className="md:col-span-8 md:pb-16">
-        <Tabs id="tabs" defaultValue="work" className="flex flex-col">
-          <div className="flex gap-1 font-mono text-xs items-center sticky top-0 pt-16 bg-bg z-[10000] max-w-[900px]">
+      <main className="md:col-span-8 md:pb-16 md:mt-16">
+        <Tabs id="tabs" defaultValue="work" className="flex flex-col top-16 bg-bg-card border border-bd-card rounded-md">
+          <div className="flex gap-1 font-mono text-xs items-center sticky top-0 max-w-[900px]">
             
             <TabsList className="mb-8">
               <TabsTrigger value="work" className="w-full">work</TabsTrigger>
@@ -61,17 +61,7 @@ export default async function Home() {
                 .filter(({ visible }) => visible)
                 .map(({ title, subtitle, year, thumbnail, path }) => (
                   <Link key={path} className={clsx('w-full')} href={path}>
-                    <ArticleThumbnail title={title} subtitle={subtitle}>
-                      <Image
-                        src={thumbnail}
-                        alt="thumbnail"
-                        height={480}
-                        width={225}
-                        sizes="(max-width: 768px) 100vw, 225px" // More specific sizing
-                        quality={10} // Reduce quality for smaller file size
-                        className="h-[225px] w-full object-cover border-[1px] border-border-base"
-                      />
-                    </ArticleThumbnail>
+                    <ArticleThumbnail title={title} subtitle={subtitle} thumbnail={thumbnail}/>
                   </Link>
                 ))}
             </ul>
