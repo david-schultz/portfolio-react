@@ -8,6 +8,7 @@ import { getAllArticles } from '@/lib/articles'
 import { getAllDemos } from '@/lib/demos'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ThemeButtons } from '@/components/ThemeButtons'
+import { ArticleThumbnail } from '@/components/organisms/ArticleThumbnail'
 
 export default async function Home() {
   // Fetch articles data directly in the component (server-side)
@@ -34,79 +35,43 @@ export default async function Home() {
 
       <main className="md:col-span-8 md:pb-16">
         <Tabs id="tabs" defaultValue="work" className="flex flex-col">
-          <div className="flex gap-1 font-mono text-xs items-center sticky top-0 pt-16 bg-bg z-[10000]">
+          <div className="flex gap-1 font-mono text-xs items-center sticky top-0 pt-16 bg-bg z-[10000] max-w-[900px]">
             
-            <TabsList className="">
+            <TabsList className="mb-8">
               <TabsTrigger value="work" className="w-full">work</TabsTrigger>
               <TabsTrigger value="demos" className="w-full">demos</TabsTrigger>
               <TabsTrigger value="about" className="w-full">about</TabsTrigger>
             </TabsList>
           </div>
 
-          <TabsContent value="work" className="px-2 flex flex-col items-center max-w-[900px] mt-16">
-            <ul className="grid grid-cols-1 gap-4">
+          <TabsContent value="work" className="flex flex-col">
+            <ul className="grid grid-cols-1 gap-12 w-full">
               { articles
                 .filter(({ visible, path }) => visible && path.startsWith('/work/'))
                 .map(({ title, subtitle, year, thumbnail, path }) => (
-                  <Link
-                    key={path}
-                    className={clsx(
-                      'flex flex-col gap-4'
-                    )}
-                    href={path}
-                  >
-                    <div className="border-[1px] border-border-base/80">
-                      <Image 
-                        src={thumbnail}
-                        alt="thumbnail"
-                        height={0}
-                        width={0}
-                        sizes="100vw"
-                        className="min-w-full min-h-full w-full object-cover"
-                      />
-                    </div>
-
-                    <div className="flex">
-                      <div className="flex flex-col gap-1 w-full">
-                        <h3>{title}</h3>
-                        <p className="font-mono text-sm">{subtitle}</p>
-                      </div>
-                      <p>{year}</p>
-                    </div>
+                  <Link key={path} className={clsx('w-full')} href={path}>
+                    <ArticleThumbnail title={title} subtitle={subtitle} thumbnail={thumbnail}/>
                   </Link>
                 ))}
             </ul>
           </TabsContent>
-          <TabsContent value="demos" className="px-2 flex flex-col items-center max-w-[900px] mt-16">
-            <ul className="grid grid-cols-1 gap-4">
+          <TabsContent value="demos" className="flex flex-col">
+            <ul className="grid grid-cols-1 gap-12 w-full">
               { demos
                 .filter(({ visible }) => visible)
                 .map(({ title, subtitle, year, thumbnail, path }) => (
-                  <Link
-                    key={path}
-                    className={clsx(
-                      'flex flex-col gap-4'
-                    )}
-                    href={path}
-                  >
-                    <div className="border-[1px] border-border-base/80">
-                      <Image 
+                  <Link key={path} className={clsx('w-full')} href={path}>
+                    <ArticleThumbnail title={title} subtitle={subtitle}>
+                      <Image
                         src={thumbnail}
                         alt="thumbnail"
-                        height={0}
-                        width={0}
-                        sizes="100vw"
-                        className="min-w-full min-h-full w-full object-cover"
+                        height={480}
+                        width={225}
+                        sizes="(max-width: 768px) 100vw, 225px" // More specific sizing
+                        quality={10} // Reduce quality for smaller file size
+                        className="h-[225px] w-full object-cover border-[1px] border-border-base"
                       />
-                    </div>
-
-                    <div className="flex">
-                      <div className="flex flex-col gap-1 w-full">
-                        <h3>{title}</h3>
-                        <p className="font-mono text-sm">{subtitle}</p>
-                      </div>
-                      <p>{year}</p>
-                    </div>
+                    </ArticleThumbnail>
                   </Link>
                 ))}
             </ul>

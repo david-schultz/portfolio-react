@@ -94,12 +94,16 @@ module.exports = {
 
         bg: {
           DEFAULT: "hsl(var(--light-100))",
-          base: "hsl(var(--light-100))",
-          card: "hsl(var(--light-200))",
+          base: "hsl(var(--light-200))",
+          card: {
+            DEFAULT: "hsl(var(--light-100))",
+            hover: "hsl(var(--light-150))",
+            pressed: "hsl(var(--light-300))",
+          },
           primary: "hsl(var(--dark-800) / 0.08)",
           secondary: "hsl(var(--dark-800) / 0.03)",
-          hover: "hsl(var(--dark-800) / 0.1)",
-          pressed: "hsl(var(--dark-800) / 0.13)",
+          hover: "hsl(var(--dark-800) / 0.12)",
+          pressed: "hsl(var(--dark-800) / 0.15)",
           disabled: "hsl(var(--dark-800) / 0.04)",
           brand: {
             DEFAULT: "hsl(var(--brand) / 0.12)",
