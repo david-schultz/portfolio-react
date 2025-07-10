@@ -34,8 +34,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      serif: ['var(--font-louize)'],
-      mono: ['var(--font-fraktion)'],
+      serif: ['var(--font-serif-theme)'],
+      mono: ['var(--font-mono-theme)'],
     },
     fontSize: {
       xs: ['0.813rem', { lineHeight: '1rem', letterSpacing: '0.02rem' }],
@@ -162,5 +162,11 @@ module.exports = {
       // },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function({ addVariant }: { addVariant: (name: string, selector: string) => void }) {
+      addVariant('theme-forest', '[data-theme="forest"] &')
+      addVariant('theme-opalite', '[data-theme="opalite"] &')
+    }
+  ],
 }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { useRouter } from 'next/router'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/theme-context"
 import './globals.css'
 import Footer from '@/components/ui/custom/footer'
 import Link from 'next/link'
@@ -40,6 +40,62 @@ const fraktion = localFont({
   variable: '--font-fraktion'
 });
 
+const exposure = localFont({ 
+  src: [
+    {
+      path: '../fonts/Exposure/ExposureTrial[-30].otf',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Exposure/ExposureItalicTrial[-30].otf',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-exposure'
+});
+
+const pressura = localFont({ 
+  src: [
+    {
+      path: '../fonts/Pressura/GT-Pressura-Light-Trial.otf',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Pressura/GT-Pressura-Regular-Trial.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Pressura/GT-Pressura-Bold-Trial.otf',
+      weight: '800',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-pressura'
+});
+
+const pressuraMono = localFont({ 
+  src: [
+    {
+      path: '../fonts/PressuraMono/GT-Pressura-Mono-Light-Trial.otf',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/PressuraMono/GT-Pressura-Mono-Regular-Trial.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/PressuraMono/GT-Pressura-Mono-Bold-Trial.otf',
+      weight: '800',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-pressura-mono'
+});
+
 const inter = Inter({ subsets: ['latin'] })
 const graphik = localFont({
   src: [
@@ -70,7 +126,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${louize.variable} ${fraktion.variable}`}>
+    <html lang="en" className={`${louize.variable} ${fraktion.variable} ${exposure.variable} ${pressuraMono.variable}`} data-theme="forest">
       <head>
         <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png"/>
         <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png"/>
@@ -92,23 +148,14 @@ export default function RootLayout({
 
       </head>
       <body className="bg-bg-base font-serif flex flex-col items-center min-h-screen bg-repeat bg-[url('/patterns/topo-bg.png')]">
-        {/* <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        > */}
+        <ThemeProvider>
+          <div className="w-full max-w-[64rem] px-4 sm:px-16 grid grid-cols-1 md:grid-cols-12 gap-8">
+            {children}
+          </div>
 
-        <div className="w-full max-w-[64rem] px-4 sm:px-16 grid grid-cols-1 md:grid-cols-12 gap-8">
-          {children}
-        </div>
-
-
-        <footer className="md:col-span-12 flex flex-col w-full h-64 mt-16 bg-[#202020]">    
-        </footer>
-
-
-        {/* </ThemeProvider> */}
+          <footer className="md:col-span-12 flex flex-col w-full h-64 mt-16 bg-[#202020]">    
+          </footer>
+        </ThemeProvider>
       </body>
     </html>
   )

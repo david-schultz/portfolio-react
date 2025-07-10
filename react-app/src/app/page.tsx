@@ -1,14 +1,16 @@
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import '@/app/styles.css'
+import { Button } from '@/components/ui/button'
+// import '@/app/styles.css'
 import '@/lib/transform.css'
 import { getAllArticles } from '@/lib/articles'
 import { getAllDemos } from '@/lib/demos'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { ThemeButtons } from '@/components/ThemeButtons'
 
 export default async function Home() {
-  // Fetch articles data directly in the component
+  // Fetch articles data directly in the component (server-side)
   const articles = await getAllArticles();
   const demos = await getAllDemos();
 
@@ -26,6 +28,7 @@ export default async function Home() {
         />
         <Link href="/"><h1 className="font-serif text-tx">david schultz</h1></Link>
         <p className="flex-grow">designer who codes</p>
+        <ThemeButtons />
         <p className="">© 2025</p>
       </section>
 

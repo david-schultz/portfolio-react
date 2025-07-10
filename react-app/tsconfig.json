@@ -23,6 +23,6 @@
     },
     "allowImportingTsExtensions": true,
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/api/middleware.js", "src/components/3d/thinking-with-portals.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/api/middleware.js", "src/app/demos/portals/components/thinking-with-portals.jsx"],
   "exclude": ["node_modules"]
 }
