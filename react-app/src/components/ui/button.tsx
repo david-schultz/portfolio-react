@@ -9,13 +9,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "text-tx-button bg-bg-button hover:bg-bg-button-hover active:bg-bg-button-pressed",
-        secondary: "text-tx-primary bg-bg-card hover:bg-bg-button-hover active:bg-bg-button-pressed hover:text-tx-button active:text-tx-button",
-        brand: "text-tx-primary bg-bg-button-brand hover:bg-bg-button-hover active:bg-bg-button-pressed hover:text-tx-button active:text-tx-button",
-        tertiary: "text-tx-primary bg-bg-primary hover:bg-bg-hover active:bg-bg-pressed",
-        ghost: "text-tx-primary bg-bg-button/0 hover:bg-bg-hover active:bg-bg-pressed",
-        ghostalt: "text-tx-tertiary bg-bg-button/0 hover:text-tx-primary active:text-tx-primary",
-        tab: "rounded-none text-tx-tertiary border-b-[1px] border-bd/0 hover:bg-bg-disabled active:bg-bg-hover",
+        primary: "!text-tx-button bg-bg-button hover:bg-bg-button-hover active:bg-bg-button-pressed",
+        secondary: "!text-tx-primary bg-bg-card hover:bg-bg-button-hover active:bg-bg-button-pressed hover:!text-tx-button active:!text-tx-button",
+        brand: "!text-tx-primary bg-bg-button-brand hover:bg-bg-button-hover active:bg-bg-button-pressed hover:!text-tx-button active:!text-tx-button",
+        tertiary: "!text-tx-primary bg-bg-primary hover:bg-bg-hover active:bg-bg-pressed",
+        ghost: "!text-tx-primary bg-bg-button/0 hover:bg-bg-hover active:bg-bg-pressed",
+        ghostalt: "!text-tx-tertiary bg-bg-button/0 hover:!text-tx-primary active:!text-tx-primary",
+        tab: "rounded-none !text-tx-tertiary border-b-[1px] border-bd/0 hover:bg-bg-disabled active:bg-bg-hover",
       },
       size: {
         xs: "text-btn-xs h-[1.75rem] rounded-md px-2 py-1.5",
