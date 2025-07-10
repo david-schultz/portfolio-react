@@ -15,7 +15,7 @@ const BackgroundSetter: React.FunctionComponent<BackgroundSetterProps> = ({befor
     return () => {
       document.body.className = before;
     };
-  }, []);
+  }, [after, before]);
 
   return (
     <>

@@ -10,14 +10,12 @@ export default function Logo ({ isInverted = false }: { isInverted?: boolean}) {
 
   return (
     <a href="/">
-      {/* <Image
+      <Image
         src={logoSrc}
         width={128}
         height={128}
-        alt="Partial asterisk"
-      /> */}
-      { isInverted ? <img src="/logo-invert.svg"/> : <img src="/logo.svg"/>}
-      {/* <img src="/logo.svg" className={isInverted ? 'filter-white' : 'filter-black'}/> */}
+        alt="Partial asterisk logo"
+      />
     </a>
   );
 };

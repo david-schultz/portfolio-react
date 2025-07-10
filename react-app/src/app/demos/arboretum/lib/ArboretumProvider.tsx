@@ -187,6 +187,18 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
 
   const isInitialized = useRef(false);
 
+  const shouldIncludeAccession = useCallback((accession: Accession, filter: FilterConfig): boolean => {
+    switch (filter.type) {
+      case 'FAMILY':
+        return accession.family === filter.value;
+      case 'SPECIES':
+        return accession.species === filter.value;
+      case 'ALL':
+      default:
+        return true;
+    }
+  }, []);
+
   const computeData = useCallback(() => {
     setState(prev => {
       const updatedCellData = prev.cellData.map(clearCellData);
@@ -305,19 +317,7 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
         },
       };
     });
-  }, []);
-
-  const shouldIncludeAccession = useCallback((accession: Accession, filter: FilterConfig): boolean => {
-    switch (filter.type) {
-      case 'FAMILY':
-        return accession.family === filter.value;
-      case 'SPECIES':
-        return accession.species === filter.value;
-      case 'ALL':
-      default:
-        return true;
-    }
-  }, []);
+  }, [shouldIncludeAccession]);
 
   const initializeAndComputeData = useCallback(() => {
     const newCellData: Cell[] = [];

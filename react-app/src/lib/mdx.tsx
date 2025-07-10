@@ -49,7 +49,15 @@ const components = {
   em: (props: any) => <em className="mb-4" {...props} />,
   strong: (props: any) => <strong className="mb-4" {...props} />,
   hr: (props: any) => <hr className="my-16" {...props} />,
-  img: (props: any) => <img className="border my-4" {...props} />,
+  img: (props: any) => (
+    <Image 
+      className="border my-4" 
+      width={800} 
+      height={600} 
+      alt={props.alt || "Image"} 
+      {...props} 
+    />
+  ),
   // Custom components available in MDX
   Highlight,
   Callout,

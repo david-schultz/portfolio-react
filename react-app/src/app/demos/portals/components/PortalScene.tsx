@@ -109,16 +109,16 @@ export default function PortalScene({ isRunning }: { isRunning: boolean }) {
 
 
 function RoomLayout() {
-  let portals: IPortalProps[] = [
+  const portals: IPortalProps[] = useMemo(() => [
     { id: 0, type: 'PanelHole', position: { x: -3.5, y: 0, z: 1 }, normal: { x: 0, y: 1, z: 0 } },
     { id: 1, type: 'PanelHole', position: { x: -5.5, y: 0.8, z: 1 }, normal: { x: 1, y: 1, z: 0 } },
     { id: 2, type: 'PanelHole', position: { x: 2.25, y: -4, z: 1 }, normal: { x: -0.25, y: 1, z: 0 } },
     { id: 3, type: 'PanelHole', position: { x: 4, y: 0, z: -3 }, normal: { x: -0.5, y: 1, z: 0 } },
-  ];
+  ], []);
 
-  let pistons = [
+  const pistons = useMemo(() => [
     { id: 0, position: { x: -2.5, y: -1, z: -3 }, normal: { x: 1, y: 1, z: 1 }, force: 1 },
-  ]
+  ], []);
 
   const [isLoaded, setIsLoaded] = useState(false);
 

@@ -2,7 +2,7 @@
 
 'use client'
 
-import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef, useCallback, ReactNode } from 'react';
 import accessions from '@/app/demos/arboretum/data/accessions.json';
 
 // Types
@@ -169,51 +169,19 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
 
   const isInitialized = useRef(false);
 
-  // Initialize data on mount
-  useEffect(() => {
-    if (!isInitialized.current) {
-      initializeData();
-      isInitialized.current = true;
+  const shouldIncludeAccession = useCallback((accession: Accession, filter: FilterConfig): boolean => {
+    switch (filter.type) {
+      case 'FAMILY':
+        return accession.family === filter.value;
+      case 'SPECIES':
+        return accession.species === filter.value;
+      case 'ALL':
+      default:
+        return true;
     }
   }, []);
 
-  // Recompute data when filter changes
-  useEffect(() => {
-    if (isInitialized.current) {
-      computeData();
-    }
-  }, [state.filterConfig]);
-
-  const initializeData = () => {
-    const newCellData: Cell[] = [];
-    const newSpecies: string[] = [];
-    const newFamilies: string[] = [];
-
-    // Extract unique cells, species, and families
-    for (const accession of accessions as Accession[]) {
-      if (!newCellData.find(cell => cell.id === accession.cell)) {
-        newCellData.push(createEmptyCell(accession.cell));
-      }
-      
-      if (!newFamilies.includes(accession.family)) {
-        newFamilies.push(accession.family);
-      }
-      
-      if (!newSpecies.includes(accession.species)) {
-        newSpecies.push(accession.species);
-      }
-    }
-
-    setState(prev => ({
-      ...prev,
-      cellData: newCellData,
-      families: newFamilies.sort(),
-      species: newSpecies.sort(),
-      isLoading: false,
-    }));
-  };
-
-  const computeData = () => {
+  const computeData = useCallback(() => {
     setState(prev => {
       const updatedCellData = prev.cellData.map(clearCellData);
       
@@ -306,19 +274,51 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
         },
       };
     });
-  };
+  }, [shouldIncludeAccession]);
 
-  const shouldIncludeAccession = (accession: Accession, filter: FilterConfig): boolean => {
-    switch (filter.type) {
-      case 'FAMILY':
-        return accession.family === filter.value;
-      case 'SPECIES':
-        return accession.species === filter.value;
-      case 'ALL':
-      default:
-        return true;
+  const initializeData = useCallback(() => {
+    const newCellData: Cell[] = [];
+    const newSpecies: string[] = [];
+    const newFamilies: string[] = [];
+
+    // Extract unique cells, species, and families
+    for (const accession of accessions as Accession[]) {
+      if (!newCellData.find(cell => cell.id === accession.cell)) {
+        newCellData.push(createEmptyCell(accession.cell));
+      }
+      
+      if (!newFamilies.includes(accession.family)) {
+        newFamilies.push(accession.family);
+      }
+      
+      if (!newSpecies.includes(accession.species)) {
+        newSpecies.push(accession.species);
+      }
     }
-  };
+
+    setState(prev => ({
+      ...prev,
+      cellData: newCellData,
+      families: newFamilies.sort(),
+      species: newSpecies.sort(),
+      isLoading: false,
+    }));
+  }, []);
+
+  // Initialize data on mount
+  useEffect(() => {
+    if (!isInitialized.current) {
+      initializeData();
+      isInitialized.current = true;
+    }
+  }, [initializeData]);
+
+  // Recompute data when filter changes
+  useEffect(() => {
+    if (isInitialized.current) {
+      computeData();
+    }
+  }, [state.filterConfig, computeData]);
 
   const setFilter = (config: FilterConfig) => {
     setState(prev => ({ ...prev, filterConfig: config }));
