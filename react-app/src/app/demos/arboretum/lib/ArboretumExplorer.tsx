@@ -180,12 +180,16 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
     }
   }, []);
 
-  const computeData = useCallback(() => {
+  const computeData = useCallback(async () => {
+    // Load accessions data
+    const response = await fetch('/data/accessions.json');
+    const accessions = await response.json() as Accession[];
+    
     setState(prev => {
       const updatedCellData = prev.cellData.map(clearCellData);
       
       // Apply filter and compute cell data
-      // for (const accession of accessions as Accession[]) {
+      for (const accession of accessions) {
         const cell = updatedCellData.find(c => c.id === accession.cell);
         if (!cell) continue;
 
@@ -275,13 +279,16 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
     });
   }, [shouldIncludeAccession]);
 
-  const initializeData = useCallback(() => {
+  const initializeData = useCallback(async () => {
+    const response = await fetch('/data/accessions.json');
+    const accessions = await response.json() as Accession[];
+    
     const newCellData: Cell[] = [];
     const newSpecies: string[] = [];
     const newFamilies: string[] = [];
 
     // Extract unique cells, species, and families
-    for (const accession of accessions as Accession[]) {
+    for (const accession of accessions) {
       if (!newCellData.find(cell => cell.id === accession.cell)) {
         newCellData.push(createEmptyCell(accession.cell));
       }
