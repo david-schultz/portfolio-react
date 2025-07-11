@@ -28,6 +28,10 @@ body {
     --font-mono-theme: var(--font-fraktion);
  
     --radius: 0.5rem;
+
+    /* card upper corner shadow */
+    --box-shadow-04: rgba(0, 0, 0, 0.04);
+    --box-clip: rgb(242, 233, 217);
   }
 
   [data-theme="forest"] {
@@ -120,7 +124,7 @@ body {
     position: absolute;
   }
 
-  .x1pim928 {
-    box-shadow: 0 0 12px 0 var(--light-200),0 0 0 48px var(--light-200);
+  .corner-shadow {
+    box-shadow: 0 0 12px 0 var(--box-shadow-04),0 0 0 48px var(--box-clip);
   }
 }

@@ -38,13 +38,13 @@ export default async function Home() {
         <div>
             <div className="w-full sticky top-0 flex z-10 min-h-12">
               <div id="cornerLeft" className="h-[36px] w-[36px] top-[36px] overflow-hidden left-[-12px] absolute z-10">
-                <div className="border border-bd-primary rounded-md left-3 absolute h-[48px] w-[48px] top-3"></div>
+                <div className="h-[48px] w-[48px]  left-3 top-3 absolute border border-bd-primary border-l-0 rounded-md corner-shadow"></div>
               </div>
-              <div className="absolute top-[36px] z-0 w-full h-[13px] border-b border-bd-primary w-[calc(100%-46px)] left-6">
+              <div className="h-[13px] w-[calc(100%-46px)] absolute top-[36px] border-b border-bd-primary left-6 z-0 ">
                 
               </div>
-              <div id="cornerRight"  className="h-[36px] w-[36px] top-[36px] top-12 overflow-hidden right-[-12px] absolute z-10">
-                <div className="border border-bd-primary rounded-md right-3 absolute h-[48px] w-[48px] top-3"></div>
+              <div id="cornerRight" className="h-[36px] w-[36px] top-[36px] top-12 overflow-hidden right-[-12px] absolute z-10">
+                <div className="h-[48px] w-[48px] right-3  top-3 absolute border border-bd-primary border-r-0 rounded-md corner-shadow"></div>
               </div>
 
               <div className="w-full z-1 absolute top-0 bg-bg-base h-12 py-4">
@@ -52,8 +52,8 @@ export default async function Home() {
               </div>
             </div>
 
-            <Tabs id="tabs" defaultValue="work" className="mt-12 md:mt-0 flex flex-col bg-bg-card border border-t-0 border-bd-card rounded-md">
-              <div className="flex gap-1 font-mono text-xs items-center bg-bg-card border-b border-bd-card sticky top-12 rounded-t-md">
+            <Tabs id="tabs" defaultValue="work" className="mt-12 md:mt-0 flex flex-col bg-bg-card border border-t-0 border-bd-card rounded-md shadow-sm">
+              <div className="flex gap-1 font-mono text-xs items-center bg-bg-card border-b border-bd-card rounded-t-md ">
                 <TabsList className="mb-8">
                   <TabsTrigger value="work" className="w-full">work</TabsTrigger>
                   <TabsTrigger value="demos" className="w-full">demos</TabsTrigger>
