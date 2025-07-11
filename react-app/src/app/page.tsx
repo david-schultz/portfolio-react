@@ -34,44 +34,63 @@ export default async function Home() {
       </section>
 
 
-      <main className="md:col-span-8 md:pb-16 md:mt-16">
-        <Tabs id="tabs" defaultValue="work" className="flex flex-col bg-bg-card border border-bd-card rounded-md">
-          <div className="flex gap-1 font-mono text-xs items-center bg-bg-card z-10 border-b border-bd-card sticky top-16">
-            <TabsList className="mb-8">
-              <TabsTrigger value="work" className="w-full">work</TabsTrigger>
-              <TabsTrigger value="demos" className="w-full">demos</TabsTrigger>
-              <TabsTrigger value="about" className="w-full">about</TabsTrigger>
-            </TabsList>
-          </div>
+      <main className="md:col-span-8">
+        <div>
+            <div className="w-full sticky top-0 flex">
+              {/* <div className="absolute top-16 z-0">
+                
+              </div>
+              <div className="absolute top-12 border border-bd-primary z-0 w-full h-12">
+                
+              </div>
+              <div className="absolute top-16 z-1">
+                
+              </div> */}
 
-          <div className="flex-1">
-            <TabsContent value="work" className="flex flex-col m-0">
-              <ul className="grid grid-cols-1 gap-12 w-full p-4">
-                { articles
-                  .filter(({ visible, path }) => visible && path.startsWith('/work/'))
-                  .map(({ title, subtitle, year, thumbnail, path }) => (
-                    <Link key={path} className={clsx('w-full')} href={path}>
-                      <ArticleThumbnail title={title} subtitle={subtitle} thumbnail={thumbnail}/>
-                    </Link>
-                  ))}
-              </ul>
-            </TabsContent>
-            <TabsContent value="demos" className="flex flex-col m-0">
-              <ul className="grid grid-cols-1 gap-12 w-full p-4">
-                { demos
-                  .filter(({ visible }) => visible)
-                  .map(({ title, subtitle, year, thumbnail, path }) => (
-                    <Link key={path} className={clsx('w-full')} href={path}>
-                      <ArticleThumbnail title={title} subtitle={subtitle} thumbnail={thumbnail}/>
-                    </Link>
-                  ))}
-              </ul>
-            </TabsContent>
-            <TabsContent value="about" className="px-6 py-4 flex flex-col items-center max-w-[900px] m-0">
-              <p className="leading-7">Hi! I&apos;m a freelance interaction designer & developer. My bread-and-butter is Next.js. I am currently expanding my skillset to MCP & SwiftUI development.</p>
-            </TabsContent>
-          </div>
-        </Tabs>
+              <div className="w-full z-1 absolute top-0 bg-bg-base h-12 py-4 border-b border-bd-primary">
+                
+              </div>
+            </div>
+
+            <Tabs id="tabs" defaultValue="work" className="mt-12 md:mt-0 flex flex-col bg-bg-card border border-bd-card rounded-md z-0 overflow-clip">
+              <div className="flex gap-1 font-mono text-xs items-center bg-bg-card z-10 border-b border-bd-card sticky top-12">
+                <TabsList className="mb-8">
+                  <TabsTrigger value="work" className="w-full">work</TabsTrigger>
+                  <TabsTrigger value="demos" className="w-full">demos</TabsTrigger>
+                  <TabsTrigger value="about" className="w-full">about</TabsTrigger>
+                </TabsList>
+              </div>
+
+              <div className="flex-1">
+                <TabsContent value="work" className="flex flex-col m-0">
+                  <ul className="grid grid-cols-1 gap-12 w-full p-4">
+                    { articles
+                      .filter(({ visible, path }) => visible && path.startsWith('/work/'))
+                      .map(({ title, subtitle, year, thumbnail, path }) => (
+                        <Link key={path} className={clsx('w-full')} href={path}>
+                          <ArticleThumbnail title={title} subtitle={subtitle} thumbnail={thumbnail}/>
+                        </Link>
+                      ))}
+                  </ul>
+                </TabsContent>
+                <TabsContent value="demos" className="flex flex-col m-0">
+                  <ul className="grid grid-cols-1 gap-12 w-full p-4">
+                    { demos
+                      .filter(({ visible }) => visible)
+                      .map(({ title, subtitle, year, thumbnail, path }) => (
+                        <Link key={path} className={clsx('w-full')} href={path}>
+                          <ArticleThumbnail title={title} subtitle={subtitle} thumbnail={thumbnail}/>
+                        </Link>
+                      ))}
+                  </ul>
+                </TabsContent>
+                <TabsContent value="about" className="px-6 py-4 flex flex-col items-center max-w-[900px] m-0">
+                  <p className="leading-7">Hi! I&apos;m a freelance interaction designer & developer. My bread-and-butter is Next.js. I am currently expanding my skillset to MCP & SwiftUI development.</p>
+                </TabsContent>
+              </div>
+            </Tabs>
+
+        </div>
       </main>
     </>
   )

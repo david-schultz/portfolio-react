@@ -154,7 +154,7 @@ export default function RootLayout({
             {children}
           </div>
 
-          <footer className="md:col-span-12 flex flex-col w-full h-64 mt-16 bg-[#202020]">    
+          <footer className="md:col-span-12 flex flex-col w-full h-[1000px] mt-32 bg-[#202020]">    
           </footer>
         </ThemeProvider>
       </body>
