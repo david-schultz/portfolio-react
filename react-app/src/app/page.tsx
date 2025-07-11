@@ -53,8 +53,10 @@ export default async function Home() {
             </div>
 
             <Tabs id="tabs" defaultValue="work" className="mt-12 md:mt-0 flex flex-col bg-bg-card border border-t-0 border-bd-card rounded-md shadow-sm">
-              <div className="flex gap-1 font-mono text-xs items-center bg-bg-card border-b border-bd-card rounded-t-md ">
-                <TabsList className="mb-8">
+              <div className="w-full flex flex-col bg-bg-card border-b border-bd-card rounded-t-md sticky top-[-52px] ">
+                <h2 className="text-lg pl-4 pt-4">Stuff</h2>
+                <p className="text-md text-tx-secondary ml-4">yeah check me out</p>
+                <TabsList className="pt-4 flex items-center font-mono text-xs">
                   <TabsTrigger value="work" className="w-full">work</TabsTrigger>
                   <TabsTrigger value="demos" className="w-full">demos</TabsTrigger>
                   <TabsTrigger value="about" className="w-full">about</TabsTrigger>
