@@ -1,7 +1,6 @@
 'use client'
 
 import React, { createContext, useContext, useState, useEffect, useRef, useCallback, ReactNode } from 'react';
-import accessions from '@/app/demos/arboretum/data/accessions.json';
 
 // Types
 export interface Cell {
@@ -62,6 +61,7 @@ interface ArboretumState {
   species: string[];
   families: string[];
   isLoading: boolean;
+  accessions: Accession[]; // Add accessions to state
 }
 
 interface ArboretumContextType extends ArboretumState {
@@ -183,6 +183,7 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
     species: [],
     families: [],
     isLoading: true,
+    accessions: [], // Initialize empty accessions array
   });
 
   const isInitialized = useRef(false);
@@ -204,7 +205,7 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
       const updatedCellData = prev.cellData.map(clearCellData);
       
       // Apply filter and compute cell data
-      for (const accession of accessions as Accession[]) {
+      for (const accession of prev.accessions) {
         const cell = updatedCellData.find(c => c.id === accession.cell);
         if (!cell) continue;
 
@@ -319,13 +320,13 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
     });
   }, [shouldIncludeAccession]);
 
-  const initializeAndComputeData = useCallback(() => {
+  const initializeAndComputeData = useCallback((accessions: Accession[]) => {
     const newCellData: Cell[] = [];
     const newSpecies: string[] = [];
     const newFamilies: string[] = [];
 
     // Extract unique cells, species, and families
-    for (const accession of accessions as Accession[]) {
+    for (const accession of accessions) {
       if (!newCellData.find(cell => cell.id === accession.cell)) {
         newCellData.push(createEmptyCell(accession.cell));
       }
@@ -352,13 +353,40 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
     setTimeout(() => computeData(), 10);
   }, [computeData]);
 
+  // Load accessions data on mount
+  useEffect(() => {
+    const loadAccessions = async () => {
+      try {
+        const response = await fetch('/data/accessions.json');
+        const accessionsData = await response.json();
+        
+        setState(prev => ({
+          ...prev,
+          accessions: accessionsData,
+          isLoading: false
+        }));
+        
+        // Initialize data after loading
+        if (!isInitialized.current) {
+          initializeAndComputeData(accessionsData);
+          isInitialized.current = true;
+        }
+      } catch (error) {
+        console.error('Failed to load accessions data:', error);
+        setState(prev => ({ ...prev, isLoading: false }));
+      }
+    };
+    
+    loadAccessions();
+  }, [initializeAndComputeData]);
+
   // Initialize data on mount
   useEffect(() => {
-    if (!isInitialized.current) {
-      initializeAndComputeData();
+    if (!isInitialized.current && state.accessions.length > 0) {
+      initializeAndComputeData(state.accessions);
       isInitialized.current = true;
     }
-  }, [initializeAndComputeData]);
+  }, [state.accessions, initializeAndComputeData]);
 
   // Recompute data when filter changes
   useEffect(() => {

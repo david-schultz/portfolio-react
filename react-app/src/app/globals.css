@@ -119,4 +119,8 @@ body {
   .react-player > div {
     position: absolute;
   }
+
+  .x1pim928 {
+    box-shadow: 0 0 12px 0 var(--light-200),0 0 0 48px var(--light-200);
+  }
 }
