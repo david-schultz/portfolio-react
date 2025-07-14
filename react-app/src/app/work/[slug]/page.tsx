@@ -7,6 +7,7 @@ import { Markdown } from '@/components/Markdown'
 // import { renderMDXContentWithAnchors, AnchorData } from '@/lib/mdx'
 import { renderMDXContent, AnchorData } from '@/lib/mdx'
 import { ArrowLeft } from 'lucide-react'
+import { StickyCard, StickyCardHeader } from '@/components/StickyCard'
 
 interface PageProps {
   params: {
@@ -81,7 +82,7 @@ export default async function ArticlePage({ params }: PageProps) {
         </ol>
       </section>
 
-      <main className="md:col-span-8 flex flex-col">
+      {/* <main className="md:col-span-8 flex flex-col">
         <nav className="flex gap-1 font-mono text-xs items-center sticky top-0 pt-16 bg-bg z-[10000]">
 
             <Link href="/" className="py-2 px-4 hover:bg-bg
@@ -97,6 +98,25 @@ export default async function ArticlePage({ params }: PageProps) {
         <article className="max-w-4xl mx-auto px-2 py-8">
           {renderedContent}
         </article>
+      </main> */}
+        
+
+
+
+        
+      <main className="md:col-span-8">
+        <StickyCardHeader />
+        <StickyCard>
+          <header className="w-full flex flex-col bg-bg-card border-b border-bd-card rounded-t-md sticky top-[-52px] ">
+            <h2 className="text-lg pl-4 pt-4">Stuff</h2>
+          </header>
+
+          <article className="max-w-4xl mx-auto px-8 py-8">
+            {renderedContent}
+          </article>
+        </StickyCard>
+
+
       </main>
     
     </>

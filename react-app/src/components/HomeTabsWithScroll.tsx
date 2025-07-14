@@ -41,7 +41,7 @@ export default function HomeTabsWithScroll({ articles, demos }: TabsWithScrollPr
       className="mt-12 md:mt-0 flex flex-col bg-bg-card border border-t-0 border-bd-card rounded-md shadow-sm"
       onValueChange={handleTabValueChange}
     >
-      <div className="w-full flex flex-col bg-bg-card border-b border-bd-card rounded-t-md sticky top-[-52px] ">
+      <header className="w-full flex flex-col bg-bg-card border-b border-bd-card rounded-t-md sticky top-[-52px] ">
         <h2 className="text-lg pl-4 pt-4">Stuff</h2>
         <p className="text-md text-tx-secondary ml-4">yeah check me out</p>
         <TabsList className="pt-4 flex items-center font-mono text-xs">
@@ -64,7 +64,7 @@ export default function HomeTabsWithScroll({ articles, demos }: TabsWithScrollPr
             about
           </TabsTrigger>
         </TabsList>
-      </div>
+      </header>
 
       <div className="flex-1">
         <TabsContent value="work" className="flex flex-col m-0">
@@ -89,7 +89,7 @@ export default function HomeTabsWithScroll({ articles, demos }: TabsWithScrollPr
               ))}
           </ul>
         </TabsContent>
-        <TabsContent value="about" className="px-6 py-4 flex flex-col items-center max-w-[900px] m-0">
+        <TabsContent value="about" className="px-6 flex flex-col items-center max-w-[900px] m-0">
           <p className="leading-7">Hi! I&apos;m a freelance interaction designer & developer. My bread-and-butter is Next.js. I am currently expanding my skillset to MCP & SwiftUI development.</p>
         </TabsContent>
       </div>

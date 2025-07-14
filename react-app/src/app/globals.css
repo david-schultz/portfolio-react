@@ -51,6 +51,9 @@ body {
     /* Forest theme fonts */
     --font-serif-theme: var(--font-louize);
     --font-mono-theme: var(--font-fraktion);
+
+    /* card upper corner shadow */
+    --box-clip: rgb(242, 233, 217);
   }
 
   [data-theme="opalite"] {
@@ -67,6 +70,9 @@ body {
     /* Opalite theme fonts */
     --font-serif-theme: var(--font-exposure);
     --font-mono-theme: var(--font-pressura-mono);
+
+    /* card upper corner shadow */
+    --box-clip: rgb(242, 233, 217);
   }
  
   .dark {
