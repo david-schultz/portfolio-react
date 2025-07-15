@@ -7,7 +7,7 @@ import { Markdown } from '@/components/Markdown'
 // import { renderMDXContentWithAnchors, AnchorData } from '@/lib/mdx'
 import { renderMDXContent, AnchorData } from '@/lib/mdx'
 import { ArrowLeft } from 'lucide-react'
-import { StickyCard, StickyCardHeader } from '@/components/StickyCard'
+import { StickyCard, StickyCardHeader, StickyCardMask, StickyCardNav } from '@/components/StickyCard'
 
 interface PageProps {
   params: {
@@ -105,12 +105,11 @@ export default async function ArticlePage({ params }: PageProps) {
 
         
       <main className="md:col-span-8">
-        <StickyCardHeader />
+        <StickyCardMask />
         <StickyCard>
-          <header className="w-full flex flex-col bg-bg-card border-b border-bd-card rounded-t-md sticky top-[-52px] ">
-            <h2 className="text-lg pl-4 pt-4">Stuff</h2>
-          </header>
-
+          {/* <StickyCardNav href="/?tab=demos" destination="demos" page ="page" /> */}
+          <StickyCardNav href="/" destination="work" page ={params.slug} className="sticky top-6" />
+          
           <article className="max-w-4xl mx-auto px-8 py-8">
             {renderedContent}
           </article>

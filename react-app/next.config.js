@@ -37,5 +37,11 @@ module.exports = withMDX({
       }
     ]
   },
-  transpilePackages: ['three']
+  transpilePackages: ['three'],
+
+  // ADDED the below to try and fix deserialization performance;
+  // https://stackoverflow.com/questions/78471919/how-to-debug-webpack-cache-packfilecachestrategy-serializing-big-strings-in
+  experimental: {
+    optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
+  }, 
 })

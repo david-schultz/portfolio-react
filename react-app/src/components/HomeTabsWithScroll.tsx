@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ArticleThumbnail } from '@/components/organisms/ArticleThumbnail'
+import { StickyCardHeader } from '@/components/StickyCard'
 
 interface TabsWithScrollProps {
   articles: any[]
@@ -38,10 +39,10 @@ export default function HomeTabsWithScroll({ articles, demos }: TabsWithScrollPr
     <Tabs 
       id="tabs" 
       defaultValue="work" 
-      className="mt-12 md:mt-0 flex flex-col bg-bg-card border border-t-0 border-bd-card rounded-md shadow-sm"
+      className="mt-12 md:mt-0 flex flex-col"
       onValueChange={handleTabValueChange}
     >
-      <header className="w-full flex flex-col bg-bg-card border-b border-bd-card rounded-t-md sticky top-[-52px] ">
+      <StickyCardHeader className="sticky top-[-72px]">
         <h2 className="text-lg pl-4 pt-4">Stuff</h2>
         <p className="text-md text-tx-secondary ml-4">yeah check me out</p>
         <TabsList className="pt-4 flex items-center font-mono text-xs">
@@ -64,7 +65,8 @@ export default function HomeTabsWithScroll({ articles, demos }: TabsWithScrollPr
             about
           </TabsTrigger>
         </TabsList>
-      </header>
+        
+      </StickyCardHeader>
 
       <div className="flex-1">
         <TabsContent value="work" className="flex flex-col m-0">

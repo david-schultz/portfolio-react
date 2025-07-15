@@ -18,10 +18,10 @@ const buttonVariants = cva(
         tab: "rounded-none !text-tx-tertiary border-b-[1px] border-bd/0 hover:bg-bg-disabled active:bg-bg-hover",
       },
       size: {
-        xs: "text-btn-xs h-[1.75rem] w-[1.75rem] rounded-md px-2 py-1.5",
-        sm: "text-btn-sm h-[2rem]    w-[2rem]    rounded-md px-2.5 py-1.5",
-        md: "text-btn-md h-[2.25rem] w-[2.25rem] rounded-md px-2.5 py-1.5",
-        lg: "text-btn-lg h-[2.75rem] w-[2.75rem] rounded-md px-3 py-2.5",
+        xs: "text-btn-xs h-[1.75rem] w-[1.75rem] rounded-md px-1 py-1",
+        sm: "text-btn-sm  h-[2rem]    w-[2rem]    rounded-md px-1 py-1",
+        md: "text-btn-md h-[2.25rem] w-[2.25rem] rounded-md px-2 py-2",
+        lg: "text-btn-lg h-[2.75rem] w-[2.75rem] rounded-md px-3 py-3",
         tab: "text-xs pt-1.5 pb-[7px] px-1 "
       }
     },
