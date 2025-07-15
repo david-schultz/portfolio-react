@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -8,12 +9,18 @@ import { ArticleThumbnail } from '@/components/organisms/ArticleThumbnail'
 import { StickyCardHeader } from '@/components/StickyCard'
 
 interface TabsWithScrollProps {
-  articles: any[]
-  demos: any[]
+  articles: any[];
+  demos: any[];
+  defaultTab?: string;
 }
 
-export default function HomeTabsWithScroll({ articles, demos }: TabsWithScrollProps) {
+export default function HomeTabsWithScroll({ articles, demos, defaultTab = 'work' }: TabsWithScrollProps) {
+  const router = useRouter()
+
   const handleTabValueChange = (value: string) => {
+    // Update URL - remove all search params for clean URLs
+    router.push('/', { scroll: false })
+    
     // Multiple approaches to ensure scrolling works regardless of content height
     setTimeout(() => {
       // Method 1: Direct element scrollTop (immediate)
@@ -38,11 +45,11 @@ export default function HomeTabsWithScroll({ articles, demos }: TabsWithScrollPr
   return (
     <Tabs 
       id="tabs" 
-      defaultValue="work" 
+      defaultValue={defaultTab} 
       className="mt-12 md:mt-0 flex flex-col"
       onValueChange={handleTabValueChange}
     >
-      <StickyCardHeader className="sticky top-[-72px]">
+      <StickyCardHeader className="sticky top-[-81px]">
         <h2 className="text-lg pl-4 pt-4">Stuff</h2>
         <p className="text-md text-tx-secondary ml-4">yeah check me out</p>
         <TabsList className="pt-4 flex items-center font-mono text-xs">
@@ -57,6 +64,12 @@ export default function HomeTabsWithScroll({ articles, demos }: TabsWithScrollPr
             className="w-full"
           >
             demos
+          </TabsTrigger>
+          <TabsTrigger 
+            value="blog" 
+            className="w-full"
+          >
+            blog
           </TabsTrigger>
           <TabsTrigger 
             value="about" 

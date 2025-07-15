@@ -43,26 +43,7 @@ export default async function Home() {
             
             <HomeTabsWithScroll articles={articles} demos={demos} />
           </StickyCard>
-
-        {/* <div>
-            <div className="w-full sticky top-0 flex z-10 min-h-12">
-              <div id="cornerLeft" className="h-[36px] w-[36px] top-[36px] overflow-hidden left-[-12px] absolute z-10">
-                <div className="h-[48px] w-[48px]  left-3 top-3 absolute border border-bd-primary border-l-0 rounded-md corner-shadow"></div>
-              </div>
-              <div className="h-[13px] w-[calc(100%-46px)] absolute top-[36px] border-b border-bd-primary left-6 z-0 ">
-                
-              </div>
-              <div id="cornerRight" className="h-[36px] w-[36px] top-[36px] top-12 overflow-hidden right-[-12px] absolute z-10">
-                <div className="h-[48px] w-[48px] right-3  top-3 absolute border border-bd-primary border-r-0 rounded-md corner-shadow"></div>
-              </div>
-
-              <div className="w-full z-1 absolute top-0 bg-bg-base h-12 py-4">
-                
-              </div>
-            </div>
-
-
-        </div> */}
+          
       </main>
     </>
   )
