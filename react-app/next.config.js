@@ -43,5 +43,38 @@ module.exports = withMDX({
   // https://stackoverflow.com/questions/78471919/how-to-debug-webpack-cache-packfilecachestrategy-serializing-big-strings-in
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
+  },
+  
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Fix caching issues and improve performance
+    if (!isServer) {
+      // In development, use memory cache to avoid file system issues
+      if (dev) {
+        config.cache = {
+          type: 'memory',
+          maxGenerations: 1,
+        };
+      } else {
+        // In production, use filesystem cache with error handling
+        config.cache = {
+          type: 'filesystem',
+          version: buildId,
+          cacheDirectory: '.next/cache/webpack',
+          store: 'pack',
+          buildDependencies: {
+            config: [__filename],
+          },
+          maxMemoryGenerations: 1,
+          maxAge: 1000 * 60 * 60 * 24, // 1 day
+          compression: 'gzip',
+          managedPaths: [],
+        };
+      }
+    }
+    
+    // Alternative: completely disable cache if issues persist
+    // config.cache = false;
+    
+    return config;
   }, 
 })
