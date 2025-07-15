@@ -8,6 +8,7 @@ import { Markdown } from '@/components/Markdown'
 import { renderMDXContent, AnchorData } from '@/lib/mdx'
 import { ArrowLeft } from 'lucide-react'
 import { StickyCard, StickyCardHeader, StickyCardMask, StickyCardNav } from '@/components/StickyCard'
+import { Sidebar, SidebarNav } from '@/components/Sidebar'
 
 interface PageProps {
   params: {
@@ -65,8 +66,8 @@ export default async function ArticlePage({ params }: PageProps) {
 
   return (
     <>
-
-      <section className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
+      <Sidebar>
+        <SidebarNav href={'/'} breadcrumb={'work'} page={params.slug}/>
         <p>Contents</p>
         <ol className="font-mono italic text-sm space-y-1">
           {anchors.map((anchor, index) => (
@@ -80,20 +81,16 @@ export default async function ArticlePage({ params }: PageProps) {
             </li>
           ))}
         </ol>
-      </section>
-        
+      </Sidebar>
+      
       <main className="md:col-span-8">
         <StickyCardMask />
         <StickyCard>
-          {/* <StickyCardNav href="/?tab=demos" destination="demos" page ="page" /> */}
-          <StickyCardNav href="/" destination="work" page ={params.slug} className="sticky top-6" />
-          
+          {/* <StickyCardNav href="/" destination="work" page ={params.slug} className="sticky top-6" /> */}
           <article className="max-w-4xl mx-auto px-8 py-8">
             {renderedContent}
           </article>
         </StickyCard>
-
-
       </main>
     
     </>
