@@ -49,7 +49,7 @@ export default function HomeTabsWithScroll({ articles, demos, defaultTab = 'work
       className="mt-12 md:mt-0 flex flex-col"
       onValueChange={handleTabValueChange}
     >
-      <StickyCardHeader className="sticky top-[-81px]">
+      <StickyCardHeader className="sticky top-[-81px] z-0">
         <h2 className="text-lg pl-4 pt-4">Stuff</h2>
         <p className="text-md text-tx-secondary ml-4">yeah check me out</p>
         <TabsList className="pt-4 flex items-center font-mono text-xs">

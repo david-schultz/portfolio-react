@@ -17,7 +17,6 @@ export default async function Home() {
 
   return (
     <>
-
       <section className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-0 md:py-16 self-start md:h-screen">
         <Image 
           src={'/images/star-sketch.png'}
@@ -34,16 +33,12 @@ export default async function Home() {
         <p className="">© 2025</p>
       </section>
 
-
       <main className="md:col-span-8">
-
           <StickyCardMask />
           <StickyCard>
             {/* <StickyCardNav href="/?tab=demos" destination="demos" page ="page" /> */}
-            
             <HomeTabsWithScroll articles={articles} demos={demos} />
           </StickyCard>
-          
       </main>
     </>
   )

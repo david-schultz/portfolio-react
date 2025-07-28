@@ -70,6 +70,12 @@ module.exports = withMDX({
           managedPaths: [],
         };
       }
+
+      // config.module.rules.push({
+      //   test: /\.svg$/,
+      //   use: ["@svgr/webpack"]
+      // });
+      // return config;
     }
     
     // Alternative: completely disable cache if issues persist

@@ -23,10 +23,10 @@ export interface Cell {
 }
 
 export interface Accession {
-  accession: string;
-  cell: string;
-  species: string;
-  family: string;
+  accession: string;  // Unique identifier for the plant accession
+  cell: string;       // Grid cell ID where this accession is located
+  species: string;    // Species name
+  family: string;     // Family name
 }
 
 export interface FilterConfig {
