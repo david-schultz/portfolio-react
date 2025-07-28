@@ -1,5 +1,6 @@
 'use client'
 
+import * as React from "react"
 import { useState } from 'react';
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/Select"
@@ -9,10 +10,6 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { useArboretum } from '../lib/ArboretumProvider';
 import { getMetricDisplayName } from '../lib/ArboretumUtils';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-
-import { Plus, Check } from 'iconoir-react';
-
-import * as React from "react"
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -26,6 +23,9 @@ import {
   VisibilityState,
 } from "@tanstack/react-table"
 import { Checkbox } from "@/components/ui/checkbox"
+import FilterChip from '@/components/ui/custom/filterchip';
+
+import { Plus, Check } from 'iconoir-react';
 
 // These components provide interactivity to its sister component, <ArboretumVisualization/>.
 // If possible, computation should be done in ArboretumExplorer.ts
@@ -324,6 +324,32 @@ export function SelectionDialogContent({ setSpeciesInput }: { setSpeciesInput: (
     setCompute 
   } = useArboretum();
 
+  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  )
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({})
+  const [rowSelection, setRowSelection] = React.useState({})
+  const table = useReactTable({
+    data,
+    columns,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: setRowSelection,
+    state: {
+      sorting,
+      columnFilters,
+      columnVisibility,
+      rowSelection,
+    },
+  })
+
   return (
       <DialogContent className="bg-bg-card p-4">
         <DialogHeader>
@@ -332,12 +358,62 @@ export function SelectionDialogContent({ setSpeciesInput }: { setSpeciesInput: (
             <Button variant="tertiary" size="sm">Cancel</Button>
             <Button size="sm">Confirm <Check/></Button>
           </div>
-          <div className="flex gap-1">
-            <p>Filter by:</p>
-            <div className="">Family</div>
-            <div>Species</div>
+          <div className="flex gap-1 items-center">
+            <p className="mr-2">Filter by:</p>
+            <FilterChip>Family</FilterChip>
+            <FilterChip isActive={true} >Species</FilterChip>
           </div>
-          <div className="max-h-64 overflow-y-auto">
+
+          <Table>
+            <TableHeader>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => {
+                    return (
+                      <TableHead key={header.id}>
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                      </TableHead>
+                    )
+                  })}
+                </TableRow>
+              ))}
+            </TableHeader>
+            <TableBody>
+              {table.getRowModel().rows?.length ? (
+                table.getRowModel().rows.map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={columns.length}
+                    className="h-24 text-center"
+                  >
+                    No results.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+
+          {/* <div className="max-h-64 overflow-y-auto">
             <ul>
               <li className="flex flex-row font-medium border-b">
                 <p className="text-sm basis-2/3">Species name</p>
@@ -355,7 +431,9 @@ export function SelectionDialogContent({ setSpeciesInput }: { setSpeciesInput: (
                 );
               })}
             </ul>
-          </div>
+          </div> */}
+
+
         </DialogHeader>
       </DialogContent>
   );
