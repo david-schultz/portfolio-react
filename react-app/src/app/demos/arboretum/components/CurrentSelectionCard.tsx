@@ -19,7 +19,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/tooltip"
+} from "@/components/ui/tooltip"
 
 
 
