@@ -29,7 +29,63 @@ import { Plus, Check } from 'iconoir-react';
 
 
 
-export function FilterCard() {
+
+// Species type for the table
+type Species = {
+  id: string
+  name: string
+  family: string
+}
+
+// Species columns definition
+const speciesColumns: ColumnDef<Species>[] = [
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: "name",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Species Name
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div>{row.getValue("name")}</div>,
+  },
+  {
+    accessorKey: "family",
+    header: "Family",
+    cell: ({ row }) => (
+      <div className="text-tx-tertiary">{row.getValue("family")}</div>
+    ),
+  },
+]
+
+
+export function OverviewFilterCard() {
   const { 
     filterConfig, 
     computeConfig, 
@@ -108,59 +164,6 @@ export function FilterCard() {
 }
 
 
-// Species type for the table
-type Species = {
-  id: string
-  name: string
-  family: string
-}
-
-// Species columns definition
-const speciesColumns: ColumnDef<Species>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: "name",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Species Name
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div>{row.getValue("name")}</div>,
-  },
-  {
-    accessorKey: "family",
-    header: "Family",
-    cell: ({ row }) => (
-      <div className="text-tx-tertiary">{row.getValue("family")}</div>
-    ),
-  },
-]
 
 export function SelectionDialogContent({ setSpeciesInput }: { setSpeciesInput: (value: string) => void }) {
 

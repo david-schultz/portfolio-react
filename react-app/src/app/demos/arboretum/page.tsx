@@ -1,7 +1,9 @@
 'use client'
 import Image from "next/image";
 import Link from "next/link";
-import { DataControls, Overview, CurrentSelection, DataStories, FilterCard } from "./components/ArboretumDataControls";
+// import { CurrentSelection, FilterCard } from "./components/ArboretumDataControls";
+import { OverviewFilterCard } from "./components/OverviewFilterCard";
+import { CurrentSelectionCard } from "./components/CurrentSelectionCard";
 import ArboretumVisualizer from "./components/ArboretumVisualizer";
 import { ArboretumProvider } from "./lib/ArboretumProvider";
 import { Sidebar, SidebarNav } from "@/components/Sidebar";
@@ -14,11 +16,11 @@ export default function Arboretum() {
       <ArboretumProvider>
 
         <Sidebar className="md:col-span-5">
-          <SidebarNav href={'/?tab=demos'} breadcrumb={'demos'} page={'arboretum'} className="sticky top-6 shadow-sm"/>
-            <FilterCard />
+          <SidebarNav href={'/?tab=demos'} breadcrumb={'demos'} page={'arboretum'} className="top-6 shadow-sm"/>
+            <OverviewFilterCard />
             {/* <DataControls /> */}
             {/* <Overview /> */}
-            <CurrentSelection /> {/* This should only be visible if there is a currently selected grid cell. */}
+            <CurrentSelectionCard /> {/* This should only be visible if there is a currently selected grid cell. */}
         </Sidebar>
 
 

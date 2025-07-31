@@ -22,7 +22,7 @@ interface SidebarNavProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ children, className }) => {
   return (
-    <section className={cn("md:col-span-4 flex flex-col gap-4 md:sticky md:top-0 md:pt-16 md:h-screen self-start", className)}>
+    <section className={cn("md:col-span-4 flex flex-col gap-4 md:pt-16 md:h-screen self-start", className)}>
           { children }
     </section>
   );
