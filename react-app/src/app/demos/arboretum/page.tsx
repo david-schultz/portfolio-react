@@ -24,11 +24,8 @@ export default function Arboretum() {
         </Sidebar>
 
 
-        <main className="md:col-span-7">
-          <StickyCardMask />
-          <StickyCard>
+        <main className="md:col-span-7 pt-16">
             <ArboretumVisualizer />
-          </StickyCard>
         </main>
 
       </ArboretumProvider>
