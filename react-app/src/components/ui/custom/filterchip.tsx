@@ -11,22 +11,3 @@ type FilterChipProps = {
   isActive?: boolean;
 };
 
-
-export default function FilterChip({ children, isActive = false }: FilterChipProps) {
-
-  if (isActive) {
-    return (
-      <div className="p-2 bg-bg-brand font-mono text-xs text-tx-brand rounded-md flex">
-        { children }
-        <Xmark fontSize={12}/>
-      </div>
-    );
-  }
-  else {
-    return (
-        <div className="p-2 bg-bg-secondary font-mono text-xs text-tx-secondary rounded flex">
-          { children }
-        </div>
-    );
-  }
-}

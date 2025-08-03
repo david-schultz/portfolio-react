@@ -16,6 +16,8 @@ const buttonVariants = cva(
         ghost: "!text-tx-primary bg-bg-button/0 hover:bg-bg-hover active:bg-bg-pressed",
         ghostalt: "!text-tx-tertiary bg-bg-button/0 hover:!text-tx-primary active:!text-tx-primary",
         tab: "rounded-none !text-tx-tertiary border-b-[1px] border-bd/0 hover:bg-bg-disabled active:bg-bg-hover",
+        chipinactive: "!text-tx-secondary bg-bg-secondary hover:bg-bg-button-hover active:bg-bg-button-pressed",
+        chipactive: "!text-tx-brand bg-bg-brand hover:bg-bg-button-hover active:bg-bg-button-pressed",
       },
       size: {
         xs: "text-btn-xs h-[1.75rem] rounded-md px-2 py-1.5",
