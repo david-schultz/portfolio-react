@@ -237,6 +237,19 @@ export function OverviewFilterCard() {
       if (speciesAccession) {
         filters.push({ family: speciesAccession.family, speciesCount: 1 });
       }
+    } else if (filterConfig.type === 'MULTIPLE_SPECIES' && filterConfig.values) {
+      // Group species by family
+      const familyMap = new Map<string, number>();
+      filterConfig.values.forEach(speciesName => {
+        const speciesAccession = accessions.find(acc => acc.species === speciesName);
+        if (speciesAccession) {
+          const currentCount = familyMap.get(speciesAccession.family) || 0;
+          familyMap.set(speciesAccession.family, currentCount + 1);
+        }
+      });
+      familyMap.forEach((count, familyName) => {
+        filters.push({ family: familyName, speciesCount: count });
+      });
     }
     
     return filters;
@@ -262,7 +275,7 @@ export function OverviewFilterCard() {
               {appliedFilters.reduce((sum, filter) => sum + filter.speciesCount, 0)} applied <Xmark/>
             </Button>
           )}
-          <SelectionDialogContent/>
+          <SelectionDialogContent onClose={() => setIsDialogOpen(false)} />
         </div>
       </Dialog>
       <div className="bg-bg-secondary flex flex-col gap-2 px-4 py-3 font-mono">
@@ -293,7 +306,7 @@ export function OverviewFilterCard() {
 
 
 
-export function SelectionDialogContent() {
+export function SelectionDialogContent({ onClose }: { onClose: () => void }) {
   const { 
     accessions, 
     families, 
@@ -333,6 +346,8 @@ export function SelectionDialogContent() {
       familySpecies.forEach(sp => newState.selectedSpecies.add(sp));
     } else if (filterConfig.type === 'SPECIES' && filterConfig.value) {
       newState.selectedSpecies.add(filterConfig.value);
+    } else if (filterConfig.type === 'MULTIPLE_SPECIES' && filterConfig.values) {
+      filterConfig.values.forEach(sp => newState.selectedSpecies.add(sp));
     }
 
     setLocalFilterState(newState);
@@ -386,6 +401,8 @@ export function SelectionDialogContent() {
       familySpecies.forEach(sp => currentSelected.add(sp));
     } else if (filterConfig.type === 'SPECIES' && filterConfig.value) {
       currentSelected.add(filterConfig.value);
+    } else if (filterConfig.type === 'MULTIPLE_SPECIES' && filterConfig.values) {
+      filterConfig.values.forEach(sp => currentSelected.add(sp));
     }
 
     return currentSelected.size !== localFilterState.selectedSpecies.size ||
@@ -433,8 +450,9 @@ export function SelectionDialogContent() {
       const speciesName = Array.from(localFilterState.selectedSpecies)[0];
       setFilter({ type: 'SPECIES', value: speciesName });
     } else {
-      // If multiple species from same family are selected, filter by family
+      // For multiple species, check if they all belong to a single family
       const selectedFamilies = Array.from(selectedFamiliesFromSpecies);
+      
       if (selectedFamilies.length === 1) {
         const familyName = selectedFamilies[0];
         const allFamilySpecies = accessions
@@ -442,19 +460,34 @@ export function SelectionDialogContent() {
           .map(acc => acc.species);
         const uniqueFamilySpecies = Array.from(new Set(allFamilySpecies));
         
-        if (uniqueFamilySpecies.length === localFilterState.selectedSpecies.size) {
+        // Check if ALL species in the family are selected
+        const selectedSpeciesInFamily = uniqueFamilySpecies.filter(sp => 
+          localFilterState.selectedSpecies.has(sp)
+        );
+        
+        if (selectedSpeciesInFamily.length === uniqueFamilySpecies.length) {
+          // All species in family are selected - apply family filter
           setFilter({ type: 'FAMILY', value: familyName });
         } else {
-          // Mixed selection - for now just pick the first species
-          const speciesName = Array.from(localFilterState.selectedSpecies)[0];
-          setFilter({ type: 'SPECIES', value: speciesName });
+          // Partial selection within family - use multiple species filter
+          setFilter({ 
+            type: 'MULTIPLE_SPECIES', 
+            value: '', 
+            values: Array.from(localFilterState.selectedSpecies) 
+          });
         }
       } else {
-        // Multiple families - just pick first species
-        const speciesName = Array.from(localFilterState.selectedSpecies)[0];
-        setFilter({ type: 'SPECIES', value: speciesName });
+        // Multiple families selected - use multiple species filter
+        setFilter({ 
+          type: 'MULTIPLE_SPECIES', 
+          value: '', 
+          values: Array.from(localFilterState.selectedSpecies) 
+        });
       }
     }
+    
+    // Close the dialog
+    onClose();
   };
 
   const handleCancel = () => {
@@ -472,9 +505,14 @@ export function SelectionDialogContent() {
       familySpecies.forEach(sp => newState.selectedSpecies.add(sp));
     } else if (filterConfig.type === 'SPECIES' && filterConfig.value) {
       newState.selectedSpecies.add(filterConfig.value);
+    } else if (filterConfig.type === 'MULTIPLE_SPECIES' && filterConfig.values) {
+      filterConfig.values.forEach(sp => newState.selectedSpecies.add(sp));
     }
 
     setLocalFilterState(newState);
+    
+    // Close the dialog
+    onClose();
   };
 
   const clearFamilyFilter = (familyName: string) => {

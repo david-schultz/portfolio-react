@@ -30,8 +30,9 @@ export interface Accession {
 }
 
 export interface FilterConfig {
-  type: 'ALL' | 'FAMILY' | 'SPECIES';
+  type: 'ALL' | 'FAMILY' | 'SPECIES' | 'MULTIPLE_SPECIES';
   value: string;
+  values?: string[]; // For multiple species selection
 }
 
 export interface ComputeConfig {
@@ -194,6 +195,8 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
         return accession.family === filter.value;
       case 'SPECIES':
         return accession.species === filter.value;
+      case 'MULTIPLE_SPECIES':
+        return filter.values ? filter.values.includes(accession.species) : false;
       case 'ALL':
       default:
         return true;
