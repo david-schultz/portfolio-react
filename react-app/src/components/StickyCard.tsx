@@ -34,7 +34,7 @@ export function StickyCardMask() {
   );
 }
 
-export const StickyCard: React.FC<StickyCardProps> = ({ children }) => {
+export const StickyCard: React.FC<StickyCardProps> = ({ children, className }) => {
   // Convert children to array and check if we have exactly 2 elements
   const childrenArray = React.Children.toArray(children);
   const hasHeader = childrenArray.length === 2;
@@ -43,7 +43,7 @@ export const StickyCard: React.FC<StickyCardProps> = ({ children }) => {
   const [headerChild, contentChild] = hasHeader ? childrenArray : [null, childrenArray[0]];
 
   return (
-    <div className="bg-bg-card border border-t-0 border-bd-card rounded-md shadow-sm">
+    <div className={cn("bg-bg-card border border-t-0 border-bd-card rounded-md shadow-sm", className)}>
       { hasHeader && headerChild }
       { contentChild }
     </div>

@@ -23,6 +23,28 @@ export const getCellValue = (cell: Cell, computeConfig: ComputeConfig): number =
   }
 };
 
+// Color schemes for different metrics
+const getColorScheme = (metric: ComputeConfig['metric']) => {
+  switch (metric) {
+    case 'ALL':
+      return { hue: 210, saturation: 70, name: 'Blue' }; // Classic blue for total counts
+    case 'FAMILY':
+      return { hue: 160, saturation: 65, name: 'Teal' }; // Teal for family diversity
+    case 'SPECIES':
+      return { hue: 120, saturation: 60, name: 'Green' }; // Green for species diversity
+    case 'Z-SCORE':
+      return { hue: 280, saturation: 70, name: 'Purple' }; // Purple for statistical measures
+    case 'Z-SCORE-UNIQUE':
+      return { hue: 320, saturation: 65, name: 'Magenta' }; // Magenta for uniqueness
+    case 'DIVERSITY':
+      return { hue: 45, saturation: 75, name: 'Orange' }; // Orange for diversity index
+    case 'PERCENTAGE':
+      return { hue: 0, saturation: 70, name: 'Red' }; // Red for percentages
+    default:
+      return { hue: 210, saturation: 70, name: 'Blue' };
+  }
+};
+
 // Get color for a cell based on its value and the current metric
 export const getCellColor = (cell: Cell, computeConfig: ComputeConfig, minValue?: number, maxValue?: number): string => {
   const value = getCellValue(cell, computeConfig);
@@ -42,12 +64,13 @@ export const getCellColor = (cell: Cell, computeConfig: ComputeConfig, minValue?
   // Clamp the value between 0 and 1
   const clampedValue = Math.max(0, Math.min(1, normalizedValue));
   
-  // Blue gradient from light to dark
-  const lightness = 90 - (clampedValue * 60); // 90% to 30%
-  const hue = 210; // Blue
-  const saturation = 70;
+  // Get color scheme for current metric
+  const colorScheme = getColorScheme(computeConfig.metric);
   
-  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+  // Create gradient from light to dark based on the metric's color scheme
+  const lightness = 90 - (clampedValue * 60); // 90% to 30%
+  
+  return `hsl(${colorScheme.hue}, ${colorScheme.saturation}%, ${lightness}%)`;
 };
 
 // Format display value for UI
@@ -86,4 +109,9 @@ export const getMetricDisplayName = (metric: ComputeConfig['metric']): string =>
     default:
       return 'Total Accessions';
   }
+};
+
+// Get color scheme name for a metric
+export const getColorSchemeName = (metric: ComputeConfig['metric']): string => {
+  return getColorScheme(metric).name;
 };

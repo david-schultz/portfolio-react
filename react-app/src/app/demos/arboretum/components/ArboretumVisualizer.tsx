@@ -38,8 +38,10 @@ export default function ArboretumVisualizer() {
   const cellWidth = 15;
   const cellHeight = 15;
   const padding = 15;
-  const w = numCols * cellWidth + 2 * padding;
-  const h = numRows * cellHeight + 2 * padding;
+  const labelWidth = 25; // Extra space for column labels
+  const labelHeight = 20; // Extra space for row labels
+  const w = numCols * cellWidth + 2 * padding + labelWidth;
+  const h = numRows * cellHeight + 2 * padding + labelHeight;
 
   useEffect(() => {
     if (!svgRef.current || cellData.length === 0) return;
@@ -47,21 +49,92 @@ export default function ArboretumVisualizer() {
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove(); // Clear previous content
 
-    // Create scales
+    // Create scales - adjusted for labels
     const xScale = d3
       .scaleLinear()
       .domain([0, numCols])
-      .range([padding, w - padding]);
+      .range([padding + labelWidth, w - padding]);
 
     const yScale = d3
       .scaleLinear()
-      .domain([0, numRows])
-      .range([h - padding, padding]);
+      .domain([0, numRows - 1]) // Adjust domain to match actual data rows
+      .range([h - padding, padding + labelHeight]);
+
+    // Add grid lines
+    const gridGroup = svg.append("g").attr("class", "grid");
+
+    // Add vertical grid lines (columns)
+    for (let col = 0; col <= numCols; col++) {
+      gridGroup
+        .append("line")
+        .attr("x1", xScale(col))
+        .attr("y1", yScale(0))
+        .attr("x2", xScale(col))
+        .attr("y2", yScale(numRows - 1)) // Use the adjusted domain maximum
+        .attr("stroke", "#666")
+        .attr("stroke-width", 1)
+        .attr("stroke-dasharray", "2,4")
+        .attr("opacity", 0.15);
+    }
+
+    // Add horizontal grid lines (rows)
+    for (let row = 0; row <= numRows - 1; row++) { // Adjust to match yScale domain
+      gridGroup
+        .append("line")
+        .attr("x1", xScale(0))
+        .attr("y1", yScale(row))
+        .attr("x2", xScale(numCols))
+        .attr("y2", yScale(row))
+        .attr("stroke", "#666")
+        .attr("stroke-width", 1)
+        .attr("stroke-dasharray", "2,4")
+        .attr("opacity", 0.15);
+    }
+
+    // Add column labels (top row)
+    const colLabelsGroup = svg.append("g").attr("class", "col-labels");
+    for (let col = 0; col < numCols; col++) {
+      const colLabel = (validCols as unknown as string[])[col]; // Use actual column labels from validCols
+      if (colLabel) {
+        colLabelsGroup
+          .append("text")
+          .attr("x", xScale(col) + cellWidth / 2)
+          .attr("y", padding + labelHeight / 2)
+          .attr("text-anchor", "middle")
+          .attr("dominant-baseline", "middle")
+          .attr("font-family", "monospace")
+          .attr("font-size", "10px")
+          .attr("fill", "#666")
+          .attr("opacity", 0.25)
+          .text(colLabel);
+      }
+    }
+
+    // Add row labels (left column)
+    const rowLabelsGroup = svg.append("g").attr("class", "row-labels");
+    for (let row = 0; row < numRows; row++) {
+      const rowLabel = (validRows as unknown as string[])[row]; // Use actual row labels from validRows
+      if (rowLabel) {
+        rowLabelsGroup
+          .append("text")
+          .attr("x", padding + labelWidth / 2)
+          .attr("y", yScale(numRows - 1 - row) + cellHeight / 2) // Use the adjusted scale
+          .attr("text-anchor", "middle")
+          .attr("dominant-baseline", "middle")
+          .attr("font-family", "monospace")
+          .attr("font-size", "10px")
+          .attr("fill", "#666")
+          .attr("opacity", 0.25)
+          .text(rowLabel);
+      }
+    }
 
     // Filter valid cells based on validRows and validCols
     const validCellData = cellData.filter(cell => {
-      const rowValid = (validRows as unknown as number[]).includes(cell.row);
-      const colValid = (validCols as unknown as number[]).includes(cell.col);
+      // Get the string identifiers from the cell ID
+      const [rowStr, colStr] = cell.id.split('-');
+      const rowValid = (validRows as unknown as string[]).includes(rowStr);
+      const colValid = (validCols as unknown as string[]).includes(colStr);
       return rowValid && colValid;
     });
 
@@ -84,8 +157,18 @@ export default function ArboretumVisualizer() {
     // Add rectangles
     cellGroups
       .append("rect")
-      .attr("x", (d) => xScale(d.col))
-      .attr("y", (d) => yScale(d.row))
+      .attr("x", (d) => {
+        // Map cell col to the correct position in the validCols array
+        const [, colStr] = d.id.split('-');
+        const colIndex = (validCols as unknown as string[]).indexOf(colStr);
+        return colIndex >= 0 ? xScale(colIndex) : xScale(d.col);
+      })
+      .attr("y", (d) => {
+        // Map cell row to the correct position in the validRows array
+        const [rowStr] = d.id.split('-');
+        const rowIndex = (validRows as unknown as string[]).indexOf(rowStr);
+        return rowIndex >= 0 ? yScale(numRows - 1 - rowIndex) : yScale(d.row); // Use the adjusted scale
+      })
       .attr("width", cellWidth)
       .attr("height", cellHeight)
       .attr("fill", (d) => getCellColor(d, computeConfig, minValue, maxValue))
@@ -151,7 +234,7 @@ export default function ArboretumVisualizer() {
   }, [cellData, computeConfig, selectedCell, statistics, h, selectCell, w]);
 
   return (
-    <div className="flex flex-col bg-bg-secondary border border-bd-primary rounded p-6 gap-6">
+    <div className="flex flex-col p-6 gap-6">
       <div>
         <h2 className="text-xl">Arboretum Explorer</h2>
         <p className="text-md text-tx-secondary">2023 ※ D3.js, Three.js</p>
@@ -165,12 +248,12 @@ export default function ArboretumVisualizer() {
       <Separator/>
 
       <div>
-        <p className="font-mono text-sm">Display:</p>
+        <p className="font-mono text-xs mb-2">Display:</p>
         <Select
           value={computeConfig.metric}
           onValueChange={(value) => setCompute({ metric: value as any })}
         >
-          <SelectTrigger className="w-48 mb-3">
+          <SelectTrigger className="w-48 mb-2">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -185,7 +268,7 @@ export default function ArboretumVisualizer() {
         </Select>
 
         <div className="flex gap-4">
-          <div className="flex gap-2 px-1 items-center">
+          <div className="flex gap-2 items-center">
             <Squircle color={getCellColor({
               id: 'min',
               row: 0,
@@ -230,17 +313,20 @@ export default function ArboretumVisualizer() {
         </div>
       </div>
 
-      <p className="mb-4 text-sm text-tx-secondary">
-        Click on a cell to view details. Colors represent {computeConfig.metric.toLowerCase().replace('-', ' ')}.
-      </p>
-
-      <div className="overflow-auto">
+      <div className="w-full ">
         <svg
           ref={svgRef}
-          width={w}
-          height={h}
-          style={{ background: '#f9f9f9', border: '1px solid #ddd' }}
+          width="100%"
+          height="auto"
+          viewBox={`0 0 ${w} ${h}`}
+          preserveAspectRatio="xMidYMid meet"
+          className="bg-bg-primary border border-bd-card rounded-md max-w-full pr-2 pb-2"
+          style={{ aspectRatio: `${w}/${h}` }}
         />
+
+        <p className="mt-4 text-xs text-tx-tertiary">
+          Click on a cell to view details. Colors represent {computeConfig.metric.toLowerCase().replace('-', ' ')}.
+        </p>
       </div>
     </div>
   );

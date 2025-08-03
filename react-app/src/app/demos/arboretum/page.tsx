@@ -18,14 +18,16 @@ export default function Arboretum() {
         <Sidebar className="md:col-span-5">
           <SidebarNav href={'/?tab=demos'} breadcrumb={'demos'} page={'arboretum'} className="top-6 shadow-sm"/>
             <OverviewFilterCard />
-            {/* <DataControls /> */}
-            {/* <Overview /> */}
             <CurrentSelectionCard /> {/* This should only be visible if there is a currently selected grid cell. */}
         </Sidebar>
 
 
-        <main className="md:col-span-7 pt-16">
+        <main className="md:col-span-7">
+
+          <StickyCardMask />
+          <StickyCard className="bg-bg-secondary border border-bd-primary rounded">
             <ArboretumVisualizer />
+          </StickyCard>
         </main>
 
       </ArboretumProvider>
