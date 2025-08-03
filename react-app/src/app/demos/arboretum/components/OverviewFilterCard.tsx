@@ -155,57 +155,79 @@ const AccordionRow: React.FC<AccordionRowProps> = ({
   return (
     <>
       <TableRow 
-        className="cursor-pointer hover:bg-bg-hover"
+        className={`cursor-pointer hover:bg-bg-hover ${isExpanded ? 'bg-bg-base' : ''}`}
         onClick={(e) => {
-          if (e.target === e.currentTarget || (e.target as HTMLElement).closest('.family-content')) {
-            handleFamilyToggle();
+          // Check if click was on checkbox or its label
+          const target = e.target as HTMLElement;
+          const isCheckboxClick = target.closest('button[role="checkbox"]') || 
+                                 target.closest('label') ||
+                                 target.getAttribute('role') === 'checkbox';
+          
+          if (!isCheckboxClick) {
+            onToggleExpanded();
           }
         }}
       >
-        <TableCell className="flex items-center gap-2">
-          <Button 
-            variant="ghost" 
-            size="xs" 
-            className="px-1"
-            onClick={(e) => {
-              e.stopPropagation();
-              onToggleExpanded();
-            }}
-            aria-label={isExpanded ? "Collapse family" : "Expand family"}
-          >
-            {isExpanded ? <NavArrowDown /> : <NavArrowRight />}
-          </Button>
-          <Checkbox
-            checked={checkboxState === 'checked' ? true : checkboxState === 'indeterminate' ? 'indeterminate' : false}
-            onCheckedChange={(checked) => {
-              handleFamilyToggle();
-            }}
-            onClick={(e) => e.stopPropagation()}
-          />
-          <div className="family-content">
-            <TruncatedCell text={family.name} maxLength={25} />
-          </div>
-        </TableCell>
-        <TableCell>{family.accessionCount.toLocaleString()}</TableCell>
-      </TableRow>
-      
-      {isExpanded && filteredSpecies.map((species) => (
-        <TableRow 
-          key={species.name}
-          className="cursor-pointer hover:bg-bg-hover"
-          onClick={() => handleSpeciesToggle(species.name)}
-        >
-          <TableCell className="pl-12 flex items-center gap-2">
+        <TableCell className="w-full">
+          <div className="flex items-center gap-2">
+            <Button 
+              variant="ghost" 
+              size="xs" 
+              className="px-1"
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleExpanded();
+              }}
+              aria-label={isExpanded ? "Collapse family" : "Expand family"}
+            >
+              {isExpanded ? <NavArrowDown /> : <NavArrowRight />}
+            </Button>
             <Checkbox
-              checked={filterState.selectedSpecies.has(species.name)}
-              onCheckedChange={() => handleSpeciesToggle(species.name)}
+              checked={checkboxState === 'checked' ? true : checkboxState === 'indeterminate' ? 'indeterminate' : false}
+              onCheckedChange={(checked) => {
+                handleFamilyToggle();
+              }}
               onClick={(e) => e.stopPropagation()}
             />
-            <TruncatedCell text={species.name} maxLength={30} />
-          </TableCell>
-          <TableCell>{species.accessionCount.toLocaleString()}</TableCell>
-        </TableRow>
-      ))}
+            <div className="family-content">
+              <TruncatedCell text={family.name} maxLength={25} />
+            </div>
+          </div>
+        </TableCell>
+        <TableCell className="w-48">
+          {family.accessionCount.toLocaleString()} <span className="text-tx-tertiary">({family.species.length} species)</span> 
+        </TableCell>
+      </TableRow>
+      
+      {isExpanded && (
+        <>
+          <TableRow className="bg-bg-base border-b-0">
+            <TableCell className="w-full pl-16 text-sm font-medium text-tx-primary font-mono pt-3 pb-2">
+              Species
+            </TableCell>
+            <TableCell className="w-48 pt-3 pb-2"></TableCell>
+          </TableRow>
+          {filteredSpecies.map((species, index) => (
+            <TableRow 
+              key={species.name}
+              className={`cursor-pointer hover:bg-bg-hover bg-bg-base ${index === filteredSpecies.length - 1 ? '' : 'border-b-0'}`}
+              onClick={() => handleSpeciesToggle(species.name)}
+            >
+              <TableCell className="w-full pl-16 py-2 text-tx-secondary">
+                <div className="flex items-center gap-2">
+                  <Checkbox
+                    checked={filterState.selectedSpecies.has(species.name)}
+                    onCheckedChange={() => handleSpeciesToggle(species.name)}
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                  <TruncatedCell text={species.name} maxLength={30} />
+                </div>
+              </TableCell>
+              <TableCell className="w-48 py-2 text-tx-secondary">{species.accessionCount.toLocaleString()}</TableCell>
+            </TableRow>
+          ))}
+        </>
+      )}
     </>
   );
 };
@@ -262,23 +284,23 @@ export function OverviewFilterCard() {
 
   return (
     <div className="bg-bg-card p-2 flex flex-col border rounded">
-      <div className="flex px-2">
+      <div className="flex px-2 mb-1">
         <h3 className="text-lg">Data</h3>
       </div>
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <div className="flex px-2 gap-2">
+        <div className="flex px-2 gap-2 mb-3">
           <DialogTrigger asChild>
             <Button variant="tertiary"><FilterAlt/> Filters</Button>
           </DialogTrigger>
           {appliedFilters.length > 0 && (
             <Button onClick={clearAllFilters}>
-              {appliedFilters.reduce((sum, filter) => sum + filter.speciesCount, 0)} applied <Xmark/>
+              {appliedFilters.reduce((sum, filter) => sum + filter.speciesCount, 0)} species <Xmark/>
             </Button>
           )}
           <SelectionDialogContent onClose={() => setIsDialogOpen(false)} />
         </div>
       </Dialog>
-      <div className="bg-bg-secondary flex flex-col gap-2 px-4 py-3 font-mono">
+      <div className="bg-bg-secondary rounded flex flex-col gap-2 px-4 py-3 font-mono">
         <div className="flex">
           <div className="flex flex-col grow">
             <p className="text-lg text-tx-body">{statistics.totalAccessions.toLocaleString()}</p>
@@ -357,7 +379,10 @@ export function SelectionDialogContent({ onClose }: { onClose: () => void }) {
   const familyData = useMemo(() => {
     const familyMap = new Map<string, { species: Map<string, number>; totalAccessions: number }>();
 
-    accessions.forEach(acc => {
+    // Filter out the problematic species without family name
+    const filteredAccessions = accessions.filter(acc => acc.species !== 'Daphniphyllum longeracemosum');
+
+    filteredAccessions.forEach(acc => {
       if (!familyMap.has(acc.family)) {
         familyMap.set(acc.family, { species: new Map(), totalAccessions: 0 });
       }
@@ -421,14 +446,13 @@ export function SelectionDialogContent({ onClose }: { onClose: () => void }) {
     return familySet;
   }, [localFilterState.selectedSpecies, accessions]);
 
-  const handleToggleSort = () => {
-    if (sortBy === 'accessions') {
-      setSortBy('family');
-      setSortOrder('asc');
-    } else if (sortBy === 'family' && sortOrder === 'asc') {
-      setSortOrder('desc');
+  const handleToggleSort = (column: 'family' | 'accessions') => {
+    if (sortBy === column) {
+      // If clicking the active column, toggle between asc/desc
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
     } else {
-      setSortBy('accessions');
+      // If clicking an inactive column, switch to that column and start with desc
+      setSortBy(column);
       setSortOrder('desc');
     }
   };
@@ -530,16 +554,18 @@ export function SelectionDialogContent({ onClose }: { onClose: () => void }) {
   return (
     <DialogContent className="bg-bg-card p-4 max-w-2xl">
       <DialogHeader className="flex flex-col gap-3">
-        <div className="flex gap-2">
-          <DialogTitle className="text-lg grow">Select filter</DialogTitle>
-          <Button variant="tertiary" size="md" onClick={handleCancel}>Cancel</Button>
-          <Button 
-            size="md" 
-            disabled={!hasChanges && localFilterState.selectedSpecies.size === 0}
-            onClick={handleApply}
-          >
-            Apply <Check/>
-          </Button>
+        <div className="flex gap-2 items-start">
+          <DialogTitle className="text-lg flex flex-1 text-left">Select filter</DialogTitle>
+          <div className="flex gap-2">
+            <Button variant="tertiary" size="md" onClick={handleCancel}>Cancel</Button>
+            <Button 
+              size="md" 
+              disabled={!hasChanges && localFilterState.selectedSpecies.size === 0}
+              onClick={handleApply}
+            >
+              Apply <Check/>
+            </Button>
+          </div>
         </div>
         
         <div className="flex gap-1 items-center flex-wrap">
@@ -578,27 +604,27 @@ export function SelectionDialogContent({ onClose }: { onClose: () => void }) {
           />
         </div>
 
-        <div className="max-h-96 overflow-y-auto">
-          <div className="border border-bd-primary rounded overflow-hidden">
-            <Table>
-              <TableHeader className="sticky top-0 bg-bg-card z-10">
+        <div className="max-h-96 overflow-y-auto overflow-x-auto">
+          <div className="border border-bd-primary rounded overflow-hidden min-w-full">
+            <Table className="min-w-full">
+              <TableHeader className="bg-bg-primary">
                 <TableRow>
                   <TableHead 
-                    className="flex gap-1 text-sm items-center grow cursor-pointer hover:bg-bg-hover"
-                    onClick={handleToggleSort}
+                    className="flex gap-1 text-sm items-center grow cursor-pointer hover:bg-bg-hover min-w-0"
+                    onClick={() => handleToggleSort('family')}
                   >
                     Family 
-                    <Button variant="ghost" size="xs" className="px-1">
+                    <Button variant="ghost" size="xs" className="px-1 flex-shrink-0">
                       {sortBy === 'family' ? (
-                        sortOrder === 'asc' ? <NavArrowUpSolid/> : <NavArrowDownSolid/>
+                        sortOrder === 'asc' ? <NavArrowDownSolid/> : <NavArrowUpSolid/>
                       ) : (
                         <NavArrowDownSolid className="opacity-30"/>
                       )}
                     </Button>
                   </TableHead>
                   <TableHead 
-                    className="cursor-pointer hover:bg-bg-hover"
-                    onClick={handleToggleSort}
+                    className="cursor-pointer hover:bg-bg-hover min-w-32"
+                    onClick={() => handleToggleSort('accessions')}
                   >
                     <div className="flex items-center gap-1">
                       Accessions

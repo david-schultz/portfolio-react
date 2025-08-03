@@ -24,11 +24,42 @@ import {
 
 
 export function CurrentSelectionCard() {
-  const { selectedCell, selectCell } = useArboretum();
+  const { selectedCell, selectCell, accessions, filterConfig } = useArboretum();
   
   if (!selectedCell) {
     return null; // Don't render if no cell is selected
   }
+
+  // Helper function to check if an accession should be included based on current filter
+  const shouldIncludeAccession = React.useCallback((accession: Accession): boolean => {
+    switch (filterConfig.type) {
+      case 'FAMILY':
+        return accession.family === filterConfig.value;
+      case 'SPECIES':
+        return accession.species === filterConfig.value;
+      case 'MULTIPLE_SPECIES':
+        return filterConfig.values ? filterConfig.values.includes(accession.species) : false;
+      case 'ALL':
+      default:
+        return true;
+    }
+  }, [filterConfig]);
+
+  // Calculate filtered stats for the selected cell
+  const filteredStats = React.useMemo(() => {
+    if (!accessions) return { accessions: 0, species: 0 };
+    
+    const cellAccessions = accessions.filter(acc => 
+      acc.cell === selectedCell.id && shouldIncludeAccession(acc)
+    );
+    
+    const uniqueSpecies = new Set(cellAccessions.map(acc => acc.species));
+    
+    return {
+      accessions: cellAccessions.length,
+      species: uniqueSpecies.size
+    };
+  }, [selectedCell.id, accessions, shouldIncludeAccession]);
 
   const handleUnselect = () => {
     selectCell(null);
@@ -36,26 +67,26 @@ export function CurrentSelectionCard() {
 
   return (
     <div className="bg-bg-card p-2 flex flex-col border rounded">
-      <div className="flex px-2">
+      <div className="flex px-2 mb-3">
         <h3 className="text-lg grow">Current Selection</h3>
         <Button onClick={handleUnselect}>unselect</Button>
       </div>
 
-      <div className="flex gap-4">
-        <div className="w-full flex flex-col gap-2 items-center">
-          <div className="w-full h-16 bg-bg-primary"></div>
+      <div className="flex gap-4 mb-4">
+        <div className="flex-1 flex flex-col gap-2 items-center grow">
+          <div className="w-full h-16 bg-bg-secondary rounded flex flex-col gap-2 px-4 py-3 font-mono"></div>
           <div className="col-span-2">
             <Badge>{selectedCell.id}</Badge>
           </div>
         </div>
-        <div className="w-full flex flex-col">
+        <div className="flex flex-col pr-2">
           <div className="flex flex-col grow">
-            <p className="text-lg text-tx-body">{selectedCell.accessions}</p>
-            <p className="text-sm text-tx-tertiary">Accessions</p>
+            <p className="text-lg text-tx-body">{filteredStats.accessions}</p>
+            <p className="text-sm text-tx-tertiary font-mono">Accessions</p>
           </div>
           <div className="flex flex-col grow">
-            <p className="text-lg text-tx-body">{selectedCell.species}</p>
-            <p className="text-sm text-tx-tertiary">Unique species</p>
+            <p className="text-lg text-tx-body">{filteredStats.species}</p>
+            <p className="text-sm text-tx-tertiary font-mono">Unique species</p>
           </div>
         </div>
       </div>
@@ -101,14 +132,31 @@ const TruncatedCell: React.FC<{ text: string; maxLength?: number }> = ({ text, m
 };
 
 function DataTable() {
-  const { selectedCell, accessions } = useArboretum();
+  const { selectedCell, accessions, filterConfig } = useArboretum();
+
+  // Helper function to check if an accession should be included based on current filter
+  const shouldIncludeAccession = React.useCallback((accession: Accession): boolean => {
+    switch (filterConfig.type) {
+      case 'FAMILY':
+        return accession.family === filterConfig.value;
+      case 'SPECIES':
+        return accession.species === filterConfig.value;
+      case 'MULTIPLE_SPECIES':
+        return filterConfig.values ? filterConfig.values.includes(accession.species) : false;
+      case 'ALL':
+      default:
+        return true;
+    }
+  }, [filterConfig]);
 
   // Get accessions for the selected cell and aggregate by species
   const tableData = React.useMemo(() => {
     if (!selectedCell || !accessions) return [];
     
-    // Filter accessions for the selected cell
-    const cellAccessions = accessions.filter(acc => acc.cell === selectedCell.id);
+    // Filter accessions for the selected cell AND apply current filter
+    const cellAccessions = accessions.filter(acc => 
+      acc.cell === selectedCell.id && shouldIncludeAccession(acc)
+    );
     
     // Aggregate by species and family, counting occurrences
     const speciesMap = new Map<string, SpeciesTableRow>();
@@ -129,7 +177,7 @@ function DataTable() {
     
     // Convert to array and sort by family
     return Array.from(speciesMap.values()).sort((a, b) => a.family.localeCompare(b.family));
-  }, [selectedCell, accessions]);
+  }, [selectedCell, accessions, shouldIncludeAccession]);
 
   // Define columns
   const columns: ColumnDef<SpeciesTableRow>[] = [
