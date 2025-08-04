@@ -221,7 +221,7 @@ function RoomLayout() {
 
       <FullScene position={[0, -3, 0]}/>
 
-      {/* <group position={[portals[0].position.x, portals[0].position.y + 2, portals[0].position.z]}>
+      <group position={[portals[0].position.x, portals[0].position.y + 2, portals[0].position.z]}>
         <RigidBody ref={cubeARef} name="CubeA" type={"dynamic"}>
           <Cube name="coobA" isActive={activeCube === cubeARef.current} />
         </RigidBody>
@@ -259,7 +259,7 @@ function RoomLayout() {
               activeCubeName={activeCubeName}
             />
           );
-      })} */}
+      })}
 
 
 
@@ -414,29 +414,39 @@ function PistonInteractable({piston, activeCubeName}: IPistonObject) {
 
 function Cube({name, isActive}: ICubeProps) {
   const { nodes, materials } = useGLTF('/demos/portals/models/thinking-with-portals.gltf')
+
+    // Add safety checks for nodes and materials
+  if (!nodes || !materials) {
+    return null;
+  }
+
   return (
-
-      <group scale={[0.75, 0.75, 0.75]}>
-      <mesh geometry={(nodes.Cube001 as THREE.Mesh).geometry} >
-        <meshStandardMaterial
-          color={"blue"}
-          visible={isActive}
-        />
-      </mesh>
-      <mesh geometry={(nodes.Cube001_1 as THREE.Mesh).geometry} >
-        <meshStandardMaterial
-          color={"white"}
-          visible={isActive}
-        />
-      </mesh>
-      <mesh geometry={(nodes.Cube001_2 as THREE.Mesh).geometry} >
-        <meshStandardMaterial
-          color={"grey"}
-          visible={isActive}
-        />
-      </mesh>
+    <group scale={[0.75, 0.75, 0.75]}>
+      {nodes.Cube001 && (
+        <mesh geometry={(nodes.Cube001 as THREE.Mesh).geometry} >
+          <meshStandardMaterial
+            color={"blue"}
+            visible={isActive}
+          />
+        </mesh>
+      )}
+      {nodes.Cube001_1 && (
+        <mesh geometry={(nodes.Cube001_1 as THREE.Mesh).geometry} >
+          <meshStandardMaterial
+            color={"white"}
+            visible={isActive}
+          />
+        </mesh>
+      )}
+      {nodes.Cube001_2 && (
+        <mesh geometry={(nodes.Cube001_2 as THREE.Mesh).geometry} >
+          <meshStandardMaterial
+            color={"grey"}
+            visible={isActive}
+          />
+        </mesh>
+      )}
     </group>
-
   );
 }
 

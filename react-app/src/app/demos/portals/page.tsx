@@ -9,6 +9,8 @@ import BackgroundSetter from '@/lib/setbg'
 import SiteBar from '@/components/ui/custom/SiteBar'
 import { Button } from '@/components/ui/button'
 
+import { Sidebar, SidebarNav } from '@/components/Sidebar'
+
 import { useRef, useState, useEffect } from 'react'
 import * as THREE from "three"
 import { DirectionalLightHelper, } from "three"
@@ -74,12 +76,9 @@ export default function Sandbox() {
   return (
 
     <>
+    <div className="md:col-span-12 flex flex-col gap-2 mt-8">
+      <SidebarNav href={'/?tab=demos'} breadcrumb={'demos'} page={'portals'} className="top-6 shadow-sm"/>
 
-      <section className="md:col-span-4 flex flex-col gap-4 md:sticky md:top-16 self-start">
-        <div className="w-[100px] h-[100px] bg-red-500"></div>
-        <Link href="/"><h1 className="font-serif text-tx">david schultz</h1></Link>
-        <p>Hi! I&apos;m a freelance interaction designer & developer. My bread-and-butter is Next.js, but I am currently expanding my skillset to SwiftUI development.</p>
-      </section>
 
       <main className="md:col-span-8 flex flex-col">
         <section className="mx-2 bg-neutral-800 rounded-b-lg mb-64 h-[800px] md:h-[928px]">
@@ -91,6 +90,7 @@ export default function Sandbox() {
           </div>
         </section>
       </main>
+    </div>
     </>
   )
 }

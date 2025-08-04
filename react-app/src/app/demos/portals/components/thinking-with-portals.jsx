@@ -11,17 +11,27 @@ import { RigidBody, RapierRigidBody, MeshCollider, CuboidCollider } from '@react
 
 export function Cube(props) {
   const { nodes, materials } = useGLTF('/demos/portals/models/thinking-with-portals.gltf')
+  
+  if (!nodes || !materials) {
+    return null;
+  }
+
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.Cube001.geometry} material={materials.Blue} />
-      <mesh geometry={nodes.Cube001_1.geometry} material={materials.White} />
-      <mesh geometry={nodes.Cube001_2.geometry} material={materials.Grey} />
+      {nodes.Cube001 && <mesh geometry={nodes.Cube001.geometry} material={materials.Blue} />}
+      {nodes.Cube001_1 && <mesh geometry={nodes.Cube001_1.geometry} material={materials.White} />}
+      {nodes.Cube001_2 && <mesh geometry={nodes.Cube001_2.geometry} material={materials.Grey} />}
     </group>
   );
 }
 
 export function Panel(props) {
   const { nodes, materials } = useGLTF('/demos/portals/models/thinking-with-portals.gltf')
+  
+  if (!nodes || !materials) {
+    return null;
+  }
+
   return (
     <group {...props} dispose={null}>
       <RigidBody
@@ -29,8 +39,8 @@ export function Panel(props) {
         type="fixed"
         scale={[1, 0.05, 1]}
       >
-        <mesh geometry={nodes.Cube005.geometry} material={materials.Top} />
-        <mesh geometry={nodes.Cube005_1.geometry} material={materials.Sides} />
+        {nodes.Cube005 && <mesh geometry={nodes.Cube005.geometry} material={materials.Top} />}
+        {nodes.Cube005_1 && <mesh geometry={nodes.Cube005_1.geometry} material={materials.Sides} />}
       </RigidBody>
     </group>
   );
@@ -38,6 +48,12 @@ export function Panel(props) {
 
 export function PanelHole(props) {
   const { nodes, materials } = useGLTF('/demos/portals/models/thinking-with-portals.gltf')
+  
+  // Add safety checks for nodes
+  if (!nodes || !materials) {
+    return null;
+  }
+
   return (
     <group {...props} dispose={null}>
       <RigidBody
@@ -51,7 +67,15 @@ export function PanelHole(props) {
         </MeshCollider>
 
       </RigidBody>
-      <mesh geometry={nodes.Portal.geometry} material={materials['Material.002']} scale={[0.611, 0.72, 0.871]}  position={[0, 0.05, 0]}/>
+      
+      {nodes.Portal && (
+        <mesh 
+          geometry={nodes.Portal.geometry} 
+          material={materials['Material.002']} 
+          scale={[0.611, 0.72, 0.871]}  
+          position={[0, 0.05, 0]}
+        />
+      )}
     </group>
   );
 }

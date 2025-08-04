@@ -27,7 +27,7 @@ export const getCellValue = (cell: Cell, computeConfig: ComputeConfig): number =
 const getColorScheme = (metric: ComputeConfig['metric']) => {
   switch (metric) {
     case 'ALL':
-      return { hue: 210, saturation: 70, name: 'Blue' }; // Classic blue for total counts
+      return { hue: 42, saturation: 85, name: 'Gold' }; // Gold for total counts
     case 'FAMILY':
       return { hue: 160, saturation: 65, name: 'Teal' }; // Teal for family diversity
     case 'SPECIES':

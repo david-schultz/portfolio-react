@@ -1,8 +1,11 @@
-import React from "react";
+'use client'
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { IconButton } from "./ui/IconButton";
-import { Xmark } from 'iconoir-react';
+import { Globe, RefreshDouble, Xmark } from 'iconoir-react';
 import { cn } from "@/lib/utils";
 // import StarIcon from './public/images/star-sm.svg'
 
@@ -28,7 +31,77 @@ export const Sidebar: React.FC<SidebarProps> = ({ children, className }) => {
   );
 }
 
-export const SidebarNav: React.FC<SidebarNavProps> = ({ className }) => {
+export const SidebarNav: React.FC<SidebarNavProps> = ({ href, breadcrumb, page, className }) => {
+  const pathname = usePathname();
+  const [currentTime, setCurrentTime] = useState('');
+  const [showTime, setShowTime] = useState(false); // State to toggle between breadcrumbs and time
+
+  // Update time every second
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      // Convert to Seattle time (Pacific Time)
+      const seattleTime = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Los_Angeles',
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }).format(now);
+      
+      // Get timezone abbreviation (PST/PDT)
+      const timeZone = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Los_Angeles',
+        timeZoneName: 'short'
+      }).formatToParts(now).find(part => part.type === 'timeZoneName')?.value || 'PT';
+      
+      setCurrentTime(`${seattleTime} ${timeZone}`);
+    };
+
+    // Update immediately
+    updateTime();
+    
+    // Then update every second
+    const interval = setInterval(updateTime, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
+  // Build the display text based on toggle state
+  const getDisplayText = () => {
+    if (showTime) {
+      return currentTime;
+    }
+    
+    // Show breadcrumbs based on current route
+    if (!pathname || pathname === '/') {
+      return currentTime; // On home page, default to time when showTime is false
+    }
+    
+    // For other pages, build breadcrumb from the pathname
+    const pathSegments = pathname.split('/').filter(Boolean);
+    if (pathSegments.length === 0) {
+      return currentTime; // fallback for home
+    }
+    
+    // Format: "/ parent / current"
+    if (pathSegments.length === 1) {
+      return `/ ${pathSegments[0]}`;
+    } else if (pathSegments.length === 2) {
+      return `/ ${pathSegments[0]} / ${pathSegments[1]}`;
+    } else {
+      // For deeper paths, show the last two segments
+      const parent = pathSegments[pathSegments.length - 2];
+      const current = pathSegments[pathSegments.length - 1];
+      return `/ ${parent} / ${current}`;
+    }
+  };
+
+  // Toggle function
+  const handleToggle = () => {
+    setShowTime(!showTime);
+  };
+
   return (
       <nav className={cn("font-mono text-xs text-tx-button w-full flex gap-2 items-center bg-bg-button rounded-md p-2", className)}>
         <Link href={"/"} className="flex items-center gap-2 rounded-sm pr hover:bg-bg-hover hover:text-tx-primary">
@@ -44,11 +117,10 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ className }) => {
             {/* <StarIcon color="text-ic-button" /> */}
           </IconButton>
         </Link>
-        <span className="text-ic-button">/</span>
-        <span className="flex-grow">{"00:16:48 UT"}</span>
+        <span className="flex-grow">{getDisplayText()}</span>
 
-        <IconButton variant="primary" size="sm">
-          <Xmark/>
+        <IconButton variant="primary" size="sm" onClick={handleToggle}>
+          <Globe width={16} height={16}/>
         </IconButton>
 
       </nav>

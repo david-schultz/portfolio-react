@@ -253,7 +253,7 @@ export default function ArboretumVisualizer() {
           value={computeConfig.metric}
           onValueChange={(value) => setCompute({ metric: value as any })}
         >
-          <SelectTrigger className="w-48 mb-2">
+          <SelectTrigger className="w-48 mb-2 w-full">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
