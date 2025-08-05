@@ -1,5 +1,8 @@
-import { compileMDX } from 'next-mdx-remote/rsc'
+import { evaluate } from '@mdx-js/mdx'
+import * as runtime from 'react/jsx-runtime'
+import React from 'react'
 import matter from 'gray-matter'
+import { Markdown } from '@/components/Markdown'
 
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -136,26 +139,26 @@ export async function renderMDXContent(source: string) {
     const { data, content } = matter(source)
     const anchors = extractAnchors(source)
     
-    // Compile MDX content
-    const { content: compiledContent } = await compileMDX({
-      source: content,
-      options: {
-        parseFrontmatter: false, // Already parsed by gray-matter
-        mdxOptions: {
-          remarkPlugins: [],
-          rehypePlugins: [],
-        }
-      },
-      components
-    })
+    // Compile MDX content using @mdx-js/mdx
+    const { default: MDXContent } = await evaluate(content, {
+      ...runtime,
+      useMDXComponents: () => components
+    } as any)
 
     return { 
       frontmatter: data as Frontmatter, 
-      content: compiledContent,
+      content: React.createElement(MDXContent),
       anchors
     }
   } catch (error) {
     console.error('Error rendering MDX content:', error)
-    throw error
+    // Fall back to regular markdown rendering on error
+    const { data, content } = matter(source)
+    const anchors = extractAnchors(source)
+    return { 
+      frontmatter: data as Frontmatter, 
+      content: <Markdown markdown={content} />,
+      anchors
+    }
   }
 }

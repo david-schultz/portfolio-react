@@ -18,9 +18,11 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const articles = await getAllArticles()
-  return articles.map((article) => ({
-    slug: article.path.slice(1), // Remove leading slash
-  }))
+  return articles
+    .filter(article => article.path.startsWith('/work/'))
+    .map((article) => ({
+      slug: article.path.replace('/work/', ''), // Extract just the slug part
+    }))
 }
 
 export default async function ArticlePage({ params }: PageProps) {
