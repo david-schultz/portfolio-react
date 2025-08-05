@@ -3,9 +3,7 @@ import React, { useState, useEffect } from 'react';
 import '@/app/styles.css'
 import useWindowResize from '@/lib/useWindowResize';
 
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPieChart, faLineChart, faChartSimple } from '@fortawesome/free-solid-svg-icons'
+import { StatsReport, GraphDown, Circle } from 'iconoir-react'
 
 import BarChart from './exampleBarChart';
 import LineChart from './exampleLineChart';
@@ -21,19 +19,19 @@ export function NivoDemo() {
         <button
           onClick={() => setSelectedChart('bar')}
           className={`p-3 rounded-md hover:bg-[#2864CC]/[0.1] ${selectedChart === 'bar' ? 'bg-[#2864CC]/[0.1]' : ''}`}>
-            <FontAwesomeIcon icon={faChartSimple} className="fa-2xl text-[#2864CC]" />
+            <StatsReport className="w-8 h-8 text-[#2864CC]" />
         </button>
 
         <button 
           onClick={() => setSelectedChart('line')}
           className={`p-3 rounded-md hover:bg-[#DC5858]/[0.1] ${selectedChart === 'line' ? 'bg-[#DC5858]/[0.1]' : ''}`}>
-            <FontAwesomeIcon icon={faLineChart} className="fa-2xl text-[#DC5858]" />
+            <GraphDown className="w-8 h-8 text-[#DC5858]" />
         </button>
 
         <button 
           onClick={() => setSelectedChart('pie')}
           className={`p-3 rounded-md hover:bg-[#FBC756]/[0.1] ${selectedChart === 'pie' ? 'bg-[#FBC756]/[0.1]' : ''}`}>
-            <FontAwesomeIcon icon={faPieChart} className="fa-2xl text-[#FBC756]" />
+            <Circle className="w-8 h-8 text-[#FBC756]" />
         </button>
       </div>
 

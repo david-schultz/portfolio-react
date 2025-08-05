@@ -17,9 +17,7 @@ import {
 
 import AboutSection from '@/components/ui/custom/about-section'
 
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { Menu } from 'iconoir-react'
 
 export default function SiteBar({ variant = 'default' }: { variant?: string}) {
   const isInverted = variant === "inverted";
@@ -76,9 +74,9 @@ export default function SiteBar({ variant = 'default' }: { variant?: string}) {
           </li>
           {/* <li className="block sm:hidden mr-4">
             { isInverted ? 
-                  (<FontAwesomeIcon icon={faBars} className="text-white fa-xl" />)
+                  (<Menu className="text-white w-6 h-6" />)
                   :
-                  (<FontAwesomeIcon icon={faBars} className="fa-xl"/>)
+                  (<Menu className="w-6 h-6"/>)
                 }
           </li> */}
 

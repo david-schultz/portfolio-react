@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/dialog"
 import { InfoBox, InfoBoxHeader, InfoBoxSection } from '@/components/ui/custom/infoBox'
 
-import '@fortawesome/fontawesome-svg-core/styles.css'
 import ScrollButton from '@/components/ui/custom/scroll-button'
 import Footer from '@/components/ui/custom/footer'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'

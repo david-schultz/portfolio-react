@@ -20,9 +20,7 @@ import {
 //   CarouselPrevious,
 // } from "@/components/ui/carousel"
 
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPieChart, faLineChart, faChartSimple } from '@fortawesome/free-solid-svg-icons'
+// Chart icons imported but not used in this file
 
 
 

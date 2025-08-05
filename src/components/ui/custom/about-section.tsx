@@ -6,12 +6,7 @@ import { Button } from '@/components/ui/button'
 
 import { Separator } from '@/components/ui/separator'
 
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faArrowDown, faArrowUpRightFromSquare, faEnvelope, faFile, faGraduationCap, faLink, faMapPin, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
-import { faFaceSmile, faNewspaper } from '@fortawesome/free-regular-svg-icons'
-import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { ArrowDown, OpenInBrowser, Mail, Page, GraduationCap, Link as LinkIcon, MapPin, Minus, Plus, Emoji, Book, Linkedin } from 'iconoir-react'
 
 let readcvSrc = "/fa/readcv.svg";
 
@@ -44,12 +39,12 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
             {contactView ? 
               <Button variant="primary" onClick={() => setContactView(!contactView)}>
                 About
-                <FontAwesomeIcon icon={faPlus} className="ml-2" />
+                <Plus className="ml-2 w-4 h-4" />
               </Button>
             :
               <Button variant="primary" onClick={() => setContactView(!contactView)}>
                 About
-                <FontAwesomeIcon icon={faMinus} className="ml-2" />
+                <Minus className="ml-2 w-4 h-4" />
               </Button>
             }
           </div>
@@ -61,13 +56,13 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
               <div className="flex gap-4">
                 <Button variant="secondary" className="w-full" asChild>
                   <Link href="https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/files/SchultzDavid-Resume.pdf" target="_blank">
-                      <FontAwesomeIcon icon={faFile as IconProp} className="mr-2" />
+                      <Page className="mr-2 w-4 h-4" />
                       Resume
                   </Link>
                 </Button>
                 <Button variant="secondary" className="w-full" asChild>
                   <Link href="https://www.linkedin.com/in/schultzdavidg/" target="_blank">
-                      <FontAwesomeIcon icon={faLinkedin as IconProp} className="mr-2" />
+                      <Linkedin className="mr-2 w-4 h-4" />
                       LinkedIn
                   </Link>
                 </Button>
@@ -75,7 +70,7 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
               <div className="flex gap-4">
                 <Button variant="secondary" className="w-full" asChild>
                   <Link href="mailto:david@davidschultz.co" target="_blank">
-                      <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
+                      <Mail className="mr-2 w-4 h-4" />
                       Email
                   </Link>
                 </Button>

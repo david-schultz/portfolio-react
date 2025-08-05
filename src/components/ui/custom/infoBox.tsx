@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import '@/app/styles.css'
 import Image from 'next/image'
 
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   Accordion,
   AccordionContent,

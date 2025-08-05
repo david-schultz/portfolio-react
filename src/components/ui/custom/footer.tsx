@@ -10,10 +10,7 @@ import { Separator } from "@/components/ui/separator"
 import { InfoBox, InfoBoxHeader, InfoBoxSection } from '@/components/ui/custom/infoBox'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faInstagram, faSquareInstagram, faSquareThreads, faThreads, faUnsplash } from '@fortawesome/free-brands-svg-icons';
+import { Instagram, Threads, Camera } from 'iconoir-react'
 
 
 interface FooterProps {
@@ -34,9 +31,9 @@ const Footer: React.FC<FooterProps> = (props) => {
         <div className="flex flex-col md:items-end">
           <h4>david@davidschultz.co</h4>
           <div className="flex gap-4 mt-2">
-            <Link href="https://www.instagram.com/schultzdavidg/" target="_blank"><FontAwesomeIcon icon={faInstagram as IconProp} size="2x" className="hover:text-[#FC8E37]" /></Link>
-            <Link href="https://www.threads.net/@schultzdavidg" target="_blank"><FontAwesomeIcon icon={faThreads as IconProp} size="2x" className="hover:text-[#FC8E37]" /></Link>
-            <Link href="https://unsplash.com/@davidschultz" target="_blank"><FontAwesomeIcon icon={faUnsplash as IconProp} size="2x" className="hover:text-[#FC8E37]" /></Link>
+            <Link href="https://www.instagram.com/schultzdavidg/" target="_blank"><Instagram className="w-8 h-8 hover:text-[#FC8E37]" /></Link>
+            <Link href="https://www.threads.net/@schultzdavidg" target="_blank"><Threads className="w-8 h-8 hover:text-[#FC8E37]" /></Link>
+            <Link href="https://unsplash.com/@davidschultz" target="_blank"><Camera className="w-8 h-8 hover:text-[#FC8E37]" /></Link>
           </div>
         </div>
       </div>

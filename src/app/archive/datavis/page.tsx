@@ -13,9 +13,7 @@ import FeatureCard from '@/components/ui/custom/featureCard';
 
 import VideoPlayer from "@/components/VideoPlayer.tsx"
 import BackgroundSetter from "@/lib/setbg.tsx";
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare, faBullseye, faMagnifyingGlass, faUsers, faHammer, faFileLines, faPieChart, faLineChart, faBarChart, faChartSimple, faCamera } from '@fortawesome/free-solid-svg-icons'
+import { OpenInBrowser, ViewStructureUp, Search, Group, Hammer, Page, StatsReport, GraphDown, Circle, Camera } from 'iconoir-react'
 import { NivoDemo } from '@/components/nivo/nivoDemo';
 import SiteBar from '@/components/ui/custom/SiteBar'
 import ScrollTo from '@/lib/archive/ScrollTo';
