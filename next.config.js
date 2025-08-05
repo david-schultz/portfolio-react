@@ -4,11 +4,11 @@ const withMDX = require('@next/mdx')({
     remarkPlugins: [],
     rehypePlugins: [],
   },
-})
-const path = require('path')
+});
+const path = require('path');
 
 /** @type {import('next').NextConfig} */
-module.exports = withMDX({
+const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   async redirects() {
     return [
@@ -84,4 +84,6 @@ module.exports = withMDX({
     
     return config;
   }, 
-})
+};
+
+module.exports = withMDX(nextConfig);

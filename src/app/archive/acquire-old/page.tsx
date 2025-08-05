@@ -27,12 +27,9 @@ import SiteBar from '@/components/ui/custom/SiteBar'
 import { InfoBox, InfoBoxHeader, InfoBoxSection } from '@/components/ui/custom/infoBox'
 import FeatureCard from '@/components/ui/custom/featureCard';
 
-import VideoPlayer from "@/components/VideoPlayer.tsx"
+// import VideoPlayer from "@/components/VideoPlayer.tsx"
 import AcquireWindow from '@/components/AcquireWindow';
-import BackgroundSetter from "@/lib/setbg.tsx";
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUsers, faBullseye, faHammer, faClipboardList, faTableColumns, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+// import BackgroundSetter from "@/lib/setbg.tsx";
 
 import "@/lib/bigtext.css"
 import ScrollButton from '@/components/ui/custom/scroll-button';
@@ -42,7 +39,7 @@ export default function Acquire() {
   return (
     <main className="flex flex-col items-center bg-repeat bg-[url('/patterns/topo-bg.png')]">
       
-      <BackgroundSetter after="bg-white" />
+      {/* <BackgroundSetter after="bg-white" /> */}
       <header className="w-full flex flex-col items-center">
         <div className="mx-2 p-4 sticky top-1 w-full">
           <SiteBar />
@@ -102,7 +99,7 @@ export default function Acquire() {
 
         <section className="flex flex-col items-center text-center mt-12">
             <div className="mt-4 p-2 md:p-3 rounded-md bg-[#EC3C3C]/[0.1]">
-              <FontAwesomeIcon icon={faBullseye} className="fa-2xl text-[#EC3C3C]" />
+              {/* <FontAwesomeIcon icon={faBullseye} className="fa-2xl text-[#EC3C3C]" /> */}
             </div>
             <div className="my-6 mb-12 max-w-[700px]">
               <h2 className="text-2xl md:text-3xl">Project Goals</h2>
@@ -133,7 +130,7 @@ export default function Acquire() {
 
         <section className="flex flex-col items-center text-center mt-24">
             <div className="mt-4 p-2 md:p-3 rounded-md bg-[#3C8DEC]/[0.1]">
-              <FontAwesomeIcon icon={faUsers} className="fa-2xl text-[#3C8DEC]" />
+              {/* <FontAwesomeIcon icon={faUsers} className="fa-2xl text-[#3C8DEC]" /> */}
             </div>
             <div className="my-6 mb-6 max-w-[700px]">
               <h2 className="text-2xl md:text-3xl">Navigating a new design paradigm</h2>
@@ -191,7 +188,7 @@ export default function Acquire() {
 
         <section className="flex flex-col items-center text-center mt-24">
             <div className="mt-4 p-2 md:p-3 rounded-md bg-[#3C8DEC]/[0.1]">
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-2xl text-[#3C8DEC]" />
+              {/* <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-2xl text-[#3C8DEC]" /> */}
             </div>
             <div className="my-6 mb-6 max-w-[700px]">
               <h2 className="text-2xl md:text-3xl">Scope (4 main workflows)</h2>
@@ -264,7 +261,7 @@ export default function Acquire() {
         
         <section className="flex flex-col items-center text-center mt-24">
             <div className="mt-4 p-2 md:p-3 rounded-md bg-[#FE813A]/[0.1]">
-              <FontAwesomeIcon icon={faHammer} className="fa-2xl text-[#FE813A]" />
+              {/* <FontAwesomeIcon icon={faHammer} className="fa-2xl text-[#FE813A]" /> */}
             </div>
             <div className="my-6 mb-6 max-w-[700px]">
               <h2 className="text-2xl md:text-3xl">Upgrading to sureUI</h2>
@@ -308,7 +305,7 @@ export default function Acquire() {
 
         <section className="flex flex-col items-center text-center mt-24">
             <div className="mt-4 p-2 md:p-3 rounded-md bg-[#43C797]/[0.1]">
-              <FontAwesomeIcon icon={faClipboardList} className="fa-2xl text-[#43C797]" />
+              {/* <FontAwesomeIcon icon={faClipboardList} className="fa-2xl text-[#43C797]" /> */}
             </div>
             <div className="my-6 mb-6 max-w-[700px]">
               <h2 className="text-2xl md:text-3xl">Managing complex form fields</h2>
@@ -375,7 +372,7 @@ export default function Acquire() {
 
         <section className="flex flex-col items-center text-center mt-24">
             <div className="mt-4 p-2 md:p-3 rounded-md bg-[#43C797]/[0.1]">
-              <FontAwesomeIcon icon={faTableColumns} className="fa-2xl text-[#43C797]" />
+              {/* <FontAwesomeIcon icon={faTableColumns} className="fa-2xl text-[#43C797]" /> */}
             </div>
             <div className="my-6 mb-6 max-w-[700px]">
               <h2 className="text-2xl md:text-3xl">OnTrack™: A multi-user dashboard</h2>

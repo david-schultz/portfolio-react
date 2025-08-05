@@ -1,10 +1,9 @@
 import Image from 'next/image'
 import '@/app/styles.css'
-import BackgroundSetter from '@/lib/setbg'
 import SiteBar from '@/components/ui/custom/SiteBar'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import VideoPlayer from "@/components/VideoPlayer.tsx"
+// import VideoPlayer from "@/components/VideoPlayer.tsx"
 import {
   Dialog,
   DialogContent,
@@ -13,10 +12,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import ScrollButton from '@/components/ui/custom/scroll-button'
 import Footer from '@/components/ui/custom/footer'
 
@@ -24,7 +19,7 @@ export default function TerrariumXR() {
   return (
     <main className="flex flex-col items-center bg-repeat bg-[url('/patterns/topo-bg.png')]">
         
-      <BackgroundSetter after="bg-white" />
+      {/* <BackgroundSetter after="bg-white" /> */}
       <header className="w-full flex flex-col items-center">
         <div className="mx-2 p-4 sticky top-1 w-full">
           <SiteBar />

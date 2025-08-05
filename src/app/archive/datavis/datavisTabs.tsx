@@ -10,9 +10,6 @@ import { Separator } from "@/components/ui/separator"
 import { InfoBox, InfoBoxHeader, InfoBoxSection } from '@/components/ui/custom/infoBox'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare, faBullseye, faMagnifyingGlass, faUsers, faHammer, faFileLines, faPieChart, faLineChart, faBarChart, faChartSimple, faCamera } from '@fortawesome/free-solid-svg-icons'
 
 
 interface DataVisTabsProps {
@@ -50,7 +47,7 @@ const DataVisTabs: React.FC<DataVisTabsProps> = (props) => {
                   <p className="text-large">At <code className="mx-1 relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-md font-600">SUREIFY DESIGN</code>, the team needed a way to present data consistently throughout its product lineup. I was responsible for building a component library in Figma—this would enable designers to drag-and-drop charts into their design files, and modify them for their use-cases.</p>
                   <Button asChild>
                     <Link href="https://www.figma.com/community/file/1357811212711130745/sureui-data-visualization" target="_blank">
-                      Try it out <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" />
+                      {/* Try it out <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" /> */}
                     </Link>
                   </Button>
                 </div>
@@ -84,7 +81,7 @@ const DataVisTabs: React.FC<DataVisTabsProps> = (props) => {
 
               <section className="flex flex-col items-center text-center mt-24">
                 <div className="mt-4 p-2 md:p-3 rounded-md bg-[#EC3C3C]/[0.1]">
-                  <FontAwesomeIcon icon={faBullseye} className="fa-2xl text-[#EC3C3C]" />
+                  {/* <FontAwesomeIcon icon={faBullseye} className="fa-2xl text-[#EC3C3C]" /> */}
                 </div>
                 <div className="my-6 mb-6 max-w-[400px]">
                   <h2 className="text-2xl md:text-3xl">Project Goal</h2>
@@ -108,7 +105,7 @@ const DataVisTabs: React.FC<DataVisTabsProps> = (props) => {
 
               <section className="flex flex-col items-center text-center mt-24">
                 <div className="mt-4 p-3 rounded-md bg-[#3C8DEC]/[0.1]">
-                  <FontAwesomeIcon icon={faUsers} className="fa-2xl text-[#3C8DEC]" />
+                  {/* <FontAwesomeIcon icon={faUsers} className="fa-2xl text-[#3C8DEC]" /> */}
                 </div>
                 <div className="my-6 mb-6 max-w-[400px]">
                   <h2 className="text-2xl md:text-3xl">Understanding Stakeholders</h2>
@@ -152,7 +149,7 @@ const DataVisTabs: React.FC<DataVisTabsProps> = (props) => {
 
               <section className="flex flex-col items-center text-center mt-24">
                 <div className="mt-4 p-3 rounded-md bg-[#BF3AFE]/[0.1]">
-                  <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-2xl text-[#BF3AFE]" />
+                  {/* <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-2xl text-[#BF3AFE]" /> */}
                 </div>
                 <div className="my-6 mb-6 max-w-[400px]">
                   <h2 className="text-2xl md:text-3xl">Navigating Figma’s Limits</h2>
@@ -275,7 +272,7 @@ const DataVisTabs: React.FC<DataVisTabsProps> = (props) => {
 
               <section className="flex flex-col items-center text-center mt-24">
                 <div className="mt-4 p-3 rounded-md bg-[#FE813A]/[0.1]">
-                  <FontAwesomeIcon icon={faHammer} className="fa-2xl text-[#FE813A]" />
+                  {/* <FontAwesomeIcon icon={faHammer} className="fa-2xl text-[#FE813A]" /> */}
                 </div>
                 <div className="my-6 mb-6 max-w-[400px]">
                   <h2 className="text-2xl md:text-3xl">Strategies & Solutions</h2>
@@ -341,7 +338,7 @@ const DataVisTabs: React.FC<DataVisTabsProps> = (props) => {
 
               <section className="flex flex-col items-center text-center mt-24">
                 <div className="mt-4 p-3 rounded-md bg-[#72C67B]/[0.1]">
-                  <FontAwesomeIcon icon={faFileLines} className="fa-2xl text-[#72C67B]" />
+                  {/* <FontAwesomeIcon icon={faFileLines} className="fa-2xl text-[#72C67B]" /> */}
                 </div>
                 <div className="my-6 mb-6 max-w-[400px]">
                   <h2 className="text-2xl md:text-3xl">Documentation</h2>
@@ -441,7 +438,7 @@ const DataVisTabs: React.FC<DataVisTabsProps> = (props) => {
                   <p className="md:text-lg mt-2 md:mt-4 mb-4 md:mb-12">Each component is built to support actual workflows, with usability, learnability, and flexibility in mind.</p>
                   <Button asChild>
                     <Link href="https://www.figma.com/community/file/1357811212711130745/sureui-data-visualization" target="_blank">
-                      Try it out <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" />
+                      {/* Try it out <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" /> */}
                     </Link>
                   </Button>
                 </div>
@@ -507,7 +504,7 @@ const DataVisTabs: React.FC<DataVisTabsProps> = (props) => {
                   <p className="md:text-lg mt-2 md:mt-4 mb-4 md:mb-12">Unlike existing libraries or plugins (which require heavy intervention), this library was built to be used.</p>
                   <Button asChild>
                     <Link href="https://www.figma.com/community/file/1357811212711130745/sureui-data-visualization" target="_blank">
-                      Try it out <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" />
+                      {/* Try it out <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="ml-2" /> */}
                     </Link>
                   </Button>
                 </div>

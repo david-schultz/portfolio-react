@@ -4,7 +4,7 @@ import BackgroundSetter from '@/lib/setbg'
 import SiteBar from '@/components/ui/custom/SiteBar'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import VideoPlayer from "@/components/VideoPlayer.tsx"
+import VideoPlayer from "@/components/VideoPlayer"
 import {
   Dialog,
   DialogContent,

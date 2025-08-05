@@ -3,25 +3,13 @@
 // import { useState } from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
-import { get } from '@vercel/edge-config';
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from '@/components/ui/button';
-import { Separator } from "@/components/ui/separator"
-import { InfoBox, InfoBoxHeader, InfoBoxSection } from '@/components/ui/custom/infoBox'
-import FeatureCard from '@/components/ui/custom/featureCard';
 
-import VideoPlayer from "@/components/VideoPlayer.tsx"
-import BackgroundSetter from "@/lib/setbg.tsx";
+import VideoPlayer from "@/components/VideoPlayer"
 import { OpenInBrowser, ViewStructureUp, Search, Group, Hammer, Page, StatsReport, GraphDown, Circle, Camera } from 'iconoir-react'
-import { NivoDemo } from '@/components/nivo/nivoDemo';
-import SiteBar from '@/components/ui/custom/SiteBar'
-import ScrollTo from '@/lib/archive/ScrollTo';
-import ScrollUp from '@/lib/archive/ScrollUp';
-import { Scroll } from 'lucide-react';
 import DataVisTabs from '@/app/archive/datavis/datavisTabs';
 import ScrollButton from '@/components/ui/custom/scroll-button';
-import Footer from '@/components/ui/custom/footer';
+
 
 // import useWindowResize from '@/lib/useWindowResize';
 

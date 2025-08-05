@@ -11,9 +11,9 @@ import { StickyCard, StickyCardHeader, StickyCardMask, StickyCardNav } from '@/c
 import { Sidebar, SidebarNav } from '@/components/Sidebar'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -24,8 +24,9 @@ export async function generateStaticParams() {
 }
 
 export default async function ArticlePage({ params }: PageProps) {
+  const { slug } = await params
   const articles = await getAllArticles()
-  const article = articles.find(a => a.path === `/work/${params.slug}`)
+  const article = articles.find(a => a.path === `/work/${slug}`)
   
   if (!article) {
     notFound()
@@ -40,7 +41,7 @@ export default async function ArticlePage({ params }: PageProps) {
       try {
         // Find the actual file to get the full content
         const articlesFolder = path.join(process.cwd(), 'public/articles/work/')
-        const fileName = `${params.slug}.mdx`
+        const fileName = `${slug}.mdx`
         const filePath = path.join(articlesFolder, fileName)
         
         if (fs.existsSync(filePath)) {
@@ -67,7 +68,7 @@ export default async function ArticlePage({ params }: PageProps) {
   return (
     <>
       <Sidebar>
-        <SidebarNav href={'/'} breadcrumb={'work'} page={params.slug}/>
+        <SidebarNav href={'/'} breadcrumb={'work'} page={slug}/>
         <p>Contents</p>
         <ol className="font-mono italic text-sm space-y-1">
           {anchors.map((anchor, index) => (
