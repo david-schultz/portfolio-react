@@ -26,10 +26,6 @@ import {
 export function CurrentSelectionCard() {
   const { selectedCell, selectCell, accessions, filterConfig } = useArboretum();
   
-  if (!selectedCell) {
-    return null; // Don't render if no cell is selected
-  }
-
   // Helper function to check if an accession should be included based on current filter
   const shouldIncludeAccession = React.useCallback((accession: Accession): boolean => {
     switch (filterConfig.type) {
@@ -47,7 +43,7 @@ export function CurrentSelectionCard() {
 
   // Calculate filtered stats for the selected cell
   const filteredStats = React.useMemo(() => {
-    if (!accessions) return { accessions: 0, species: 0 };
+    if (!accessions || !selectedCell) return { accessions: 0, species: 0 };
     
     const cellAccessions = accessions.filter(acc => 
       acc.cell === selectedCell.id && shouldIncludeAccession(acc)
@@ -59,7 +55,11 @@ export function CurrentSelectionCard() {
       accessions: cellAccessions.length,
       species: uniqueSpecies.size
     };
-  }, [selectedCell.id, accessions, shouldIncludeAccession]);
+  }, [accessions, selectedCell, shouldIncludeAccession]);
+
+  if (!selectedCell) {
+    return null; // Don't render if no cell is selected
+  }
 
   const handleUnselect = () => {
     selectCell(null);

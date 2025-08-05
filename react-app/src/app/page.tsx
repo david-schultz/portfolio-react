@@ -27,7 +27,7 @@ export default async function Home() {
           priority
           className=""
         />
-        <Link href="/"><h1 className="font-serif text-tx">david schultz</h1></Link>
+        <Link href="/"><h1 className="font-serif text-tx text-lg">david schultz</h1></Link>
         <p className="flex-grow">designer who codes</p>
         <ThemeButtons />
         <p className="">© 2025</p>

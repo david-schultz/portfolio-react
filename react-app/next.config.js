@@ -5,6 +5,7 @@ const withMDX = require('@next/mdx')({
     rehypePlugins: [],
   },
 })
+const path = require('path')
 
 /** @type {import('next').NextConfig} */
 module.exports = withMDX({
@@ -59,7 +60,7 @@ module.exports = withMDX({
         config.cache = {
           type: 'filesystem',
           version: buildId,
-          cacheDirectory: '.next/cache/webpack',
+          cacheDirectory: path.resolve('.next/cache/webpack'),
           store: 'pack',
           buildDependencies: {
             config: [__filename],

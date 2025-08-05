@@ -104,8 +104,15 @@ export default function HomeTabsWithScroll({ articles, demos, defaultTab = 'work
               ))}
           </ul>
         </TabsContent>
+        <TabsContent value="blog" className="px-6 flex flex-col items-center max-w-[900px] m-0">
+          <div className="my-4 bg-bg-secondary rounded w-full p-4 flex flex-col items-center">
+            <p className="italic text-tx-secondary">Coming soon (to theaters near you)</p>
+          </div>
+        </TabsContent>
         <TabsContent value="about" className="px-6 flex flex-col items-center max-w-[900px] m-0">
-          <p className="leading-7">Hi! I&apos;m a freelance interaction designer & developer. My bread-and-butter is Next.js. I am currently expanding my skillset to MCP & SwiftUI development.</p>
+          <div className="my-4 bg-bg-secondary rounded w-full p-4 flex flex-col items-center">
+            <p className="text-tx-body">lorem ipsummmmm (sorry this is in progress) I&apos;m a freelance interaction designer & developer. My bread-and-butter is Next.js. I am currently expanding my skillset to MCP & SwiftUI development.</p>
+          </div>
         </TabsContent>
       </div>
     </Tabs>
