@@ -360,7 +360,7 @@ export const ArboretumProvider: React.FC<{ children: ReactNode }> = ({ children 
   useEffect(() => {
     const loadAccessions = async () => {
       try {
-        const response = await fetch('/data/accessions.json');
+        const response = await fetch('/api/arboretum/accessions');
         const accessionsData = await response.json();
         
         setState(prev => ({
