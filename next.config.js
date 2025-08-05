@@ -47,40 +47,12 @@ const nextConfig = {
   },
   
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Fix caching issues and improve performance
-    if (!isServer) {
-      // In development, use memory cache to avoid file system issues
-      if (dev) {
-        config.cache = {
-          type: 'memory',
-          maxGenerations: 1,
-        };
-      } else {
-        // In production, use filesystem cache with error handling
-        config.cache = {
-          type: 'filesystem',
-          version: buildId,
-          cacheDirectory: path.resolve('.next/cache/webpack'),
-          store: 'pack',
-          buildDependencies: {
-            config: [__filename],
-          },
-          maxMemoryGenerations: 1,
-          maxAge: 1000 * 60 * 60 * 24, // 1 day
-          compression: 'gzip',
-          managedPaths: [],
-        };
-      }
-
-      // config.module.rules.push({
-      //   test: /\.svg$/,
-      //   use: ["@svgr/webpack"]
-      // });
-      // return config;
-    }
-    
-    // Alternative: completely disable cache if issues persist
-    // config.cache = false;
+    // Use memory cache to avoid "Serializing big strings" warnings
+    // Memory cache handles large strings more efficiently than filesystem cache
+    config.cache = {
+      type: 'memory',
+      maxGenerations: dev ? 1 : 3, // More generations in production for better caching
+    };
     
     return config;
   }, 
