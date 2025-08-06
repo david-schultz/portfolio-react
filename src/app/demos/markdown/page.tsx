@@ -37,54 +37,19 @@ export default function MarkdownDemo() {
   }
 
   return (
-    <>
-
-            <Sidebar>
-              <SidebarNav href={'/?tab=demos'} breadcrumb={'demos'} page={'markdown'}/>
-              <p>Contents</p>
-              <h2 className="font-mono text-sm text-tx-tertiary mb-2">
-                {renderedContent.frontmatter.title || 'Untitled'}
-              </h2>
-              {renderedContent.frontmatter.subtitle && (
-                <p className="text-tx-secondary text-sm mb-2">
-                  {renderedContent.frontmatter.subtitle}
-                </p>
-              )}
-              {renderedContent.frontmatter.year && (
-                <p className="text-tx-tertiary text-xs">
-                  {renderedContent.frontmatter.year}
-                </p>
-              )}
-              
-              {renderedContent.anchors.length > 0 && (
-                <div className="mt-4">
-                  <h3 className="font-mono text-xs text-tx-tertiary mb-2">Table of Contents</h3>
-                  <ul className="space-y-1">
-                    {renderedContent.anchors.map((anchor) => (
-                      <li key={anchor.id}>
-                        <a
-                          href={`#${anchor.id}`}
-                          className="text-xs text-tx-secondary hover:text-tx-primary transition-colors"
-                        >
-                          {anchor.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </Sidebar>
+    <div className="md:col-start-3 md:col-span-8 flex flex-col mt-4">
+      <SidebarNav href={'/?tab=demos'} breadcrumb={'demos'} page={'markdown'}/>
             
-            <main className="md:col-span-8">
-              <StickyCardMask />
-              <StickyCard>
-                {/* <StickyCardNav href="/" destination="work" page ={params.slug} className="sticky top-6" /> */}
-                <article className="max-w-4xl mx-auto px-8 py-8">
-                  {renderedContent.content}
-                </article>
-              </StickyCard>
-            </main>
+      <main className="md:col-span-8">
+        <StickyCardMask />
+        <StickyCard>
+          {/* <StickyCardNav href="/" destination="work" page ={params.slug} className="sticky top-6" /> */}
+          <article className="max-w-4xl mx-auto px-8 py-8">
+            {renderedContent.content}
+          </article>
+        </StickyCard>
+      </main>
 
-    </>
+    </div>
   )
 }
