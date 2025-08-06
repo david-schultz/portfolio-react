@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+}
+
+@layer base {
+  :root {
+    /* Forest theme (default) */
+    --dark-800: 96 4% 24%;
+    --dark-900: 96 4% 16%;
+    --dark-950: 96 4% 10%;
+    --light-100: 38 58% 94%;
+    --light-150: 38 56% 92%;
+    --light-200: 38 50% 90%;
+    --light-300: 38 48% 87%;
+    --light-400: 38 50% 80%;
+    --light-600: 36 14% 50%;
+    --light-900: 36 14% 15%;
+    --brand: 101 21% 45%;
+ 
+    /* Theme fonts */
+    --font-serif-theme: var(--font-louize);
+    --font-mono-theme: var(--font-fraktion);
+ 
+    --radius: 0.5rem;
+
+    /* card upper corner shadow */
+    --box-shadow-04: rgba(0, 0, 0, 0.04);
+    --box-clip: rgb(242, 233, 217);
+  }
+
+  [data-theme="forest"] {
+    /* Forest theme colors */
+    --dark-800: 96 4% 24%;
+    --dark-900: 96 4% 16%;
+    --dark-950: 96 4% 10%;
+    --light-100: 38 58% 94%;
+    --light-150: 38 56% 92%;
+    --light-200: 38 50% 90%;
+    --light-300: 38 48% 87%;
+    --light-400: 38 50% 80%;
+    --light-600: 36 14% 50%;
+    --light-900: 36 14% 15%;
+    --brand: 101 21% 45%;
+    
+    /* Forest theme fonts */
+    --font-serif-theme: var(--font-louize);
+    --font-mono-theme: var(--font-fraktion);
+
+    /* card upper corner shadow */
+    --box-clip: rgb(242, 233, 217);
+  }
+
+  [data-theme="opalite"] {
+    /* Opalite theme colors */
+    --dark-800: 210 20% 25%;
+    --dark-900: 210 20% 18%;
+    --dark-950: 210 20% 12%;
+    --light-100: 210 40% 96%;
+    --light-200: 210 25% 88%;
+    --light-600: 210 25% 55%;
+    --light-900: 210 25% 20%;
+    --brand: 214 88% 55%;
+    
+    /* Opalite theme fonts */
+    --font-serif-theme: var(--font-exposure);
+    --font-mono-theme: var(--font-pressura-mono);
+
+    /* card upper corner shadow */
+    --box-clip: rgb(242, 233, 217);
+  }
+ 
+  .dark {
+    --dark-800: 96 4% 24%;
+    --dark-900: 96 4% 16%;
+    --dark-950: 96 4% 10%;
+    --brown-200: 36 14% 85%;
+    --brown-600: 36 14% 50%;
+    --brown-800: 36 14% 15%;
+    --light: 38 58% 94%;
+    --green: 101 21% 45%;
+  }
+}
+
+@layer components {
+  .elevation-1 {
+    box-shadow: 0px 0px 4px -2px rgba(24, 39, 75, 0.08), 0px 0px 4px -2px rgba(24, 39, 75, 0.12);
+  }
+
+  .elevation-big {
+    box-shadow: 27px 34px 55px 0px rgba(0, 0, 0, 0.15);
+  }
+
+  .card {
+    /* className="rounded-lg border-[#E4E4E7] bg-card elevation-1" */
+    background: hsl(var(--card));
+    border-radius: 0.5rem;
+    border: 1px solid hsl(var(--border));
+    /* box-shadow: 0px 0px 4px -2px rgba(24, 39, 75, 0.08), 0px 0px 4px -2px rgba(24, 39, 75, 0.12); */
+    overflow: clip;
+  }
+
+  ol.styled {
+    list-style: number;
+    /* margin-left: 1.625rem; */
+    padding-left: 1.625rem;
+  }
+
+  ol.styled > li {
+    margin-top: 0.5rem;
+  }
+
+  /* --- Video Player --- */
+  /* src=https://stackoverflow.com/questions/49393838/how-to-make-reactplayer-scale-with-height-and-width */
+  .player-wrapper {
+    width: auto;
+    height: auto;
+  }
+  .react-player {
+    padding-top: 56.25%; 
+    position: relative;
+  }
+
+  .react-player > div {
+    position: absolute;
+  }
+
+  .corner-shadow {
+    box-shadow: 0 0 12px 0 var(--box-shadow-04),0 0 0 48px var(--box-clip);
+  }
+}

@@ -1,0 +1,54 @@
+---
+title: Using AI to refactor + debug
+subtitle: Vibe coding
+year: 2025
+date: 2025-07-09
+thumbnail: https://schultzdavidg-portfolio.s3.us-west-1.amazonaws.com/images/aq/aq_overview.png
+order: null
+visible: true
+---
+
+# Thoughts on co-pilot's re-implementation & refactoring of the Arboretum Explorer.
+
+In summary: holy shit
+
+### A bit of background
+A few years ago, when I was a student at UW/Design, I took a course on Information Visualization. Our final project had us assess a large dataset and create a physical visualization of a data story, pulled from the Seattle Arboretum's records. I created [this](davidschultz.co/work/arboretum), which maps out the number of plants + unique plant species by grid cell. I'm admittedly quite proud of it! But how did I get here?
+
+> insert image here
+
+The initial dataset was chaos. A single excel file with 12,408 rows. I spent much time trying to wrap my head around the data with pivot tables, charts, etc. — but nothing scratched the itch — so I turned to D3.js. I wanted to be able to visualize the data spatially, I wanted to see it laid out on an interactive grid. So I did!
+
+At the time, I was building my portfolio in Vue.js. (I wanted to be cool, and different, and felt like the framework was more intuitive). But at some point, I decided to start from scratch in React. I eventually found my way to Next.js, which I love, but left in the dust was my precious D3.js project.
+
+### Who could ask for a better co-pilot?
+So cut to today. I'm refactoring my portfolio (again, but I promise it's good this time), I'm collecting my demos together, and I think back to the D3.js project. It'd be pretty cool to showcase it, give it a little facelift right?
+
+So here's what I did:
+- I went to my old github repo and copied my .vue files.
+- I asked the co-pilot agent to review these files, propose a solution, then refactor it into typescript Next.js.
+
+Easy, right? There were a few bugs, but it went smoother than I could've imagined.
+
+From here, I realized I needed a refactor. My original implementation had some horrible abstraction, locking away child components I needed more control over. This was a pretty fucking major refactor. It required an entirely new approach to the data pipeline. Computation needed to be abstracted, which meant ripping apart states and putting them somewhere else.
+
+These are all details I have some intuition for, but trying to wrap my head around the whole thing would have been a *lot*. For me, at least two days of max-bandwidth. And that's the kind of trouble I don't have time for.
+
+But I didn't have to spend nearly any bandwidth on it! All I really had to do was:
+- Look at the current architecture, and jot down the main components I wanted to abstract from each other.
+- Define the inputs/outputs/expected touchpoints between other components.
+- Tell it not to touch the existing files; no—instead, use it as a reference, but otherwise, only do the work in the files I've laid out.
+- Compile all this information in a .md spec.
+- Ask it to review my strategy, fill in the gaps, and offer a few different routes for implementation.
+- Then, run it! There'll be bugs, but just give it the errors (prompt inputs) and expected behaviour (prompt outputs) and the debugging process will be a breeze. (At least, in this case it was haha)
+
+
+### The workflow
+1. **Set the context.** Nudge the contents of your files in the direction of your ideal implementation. For example, I set up the base structure of the `<DataControls/>` components, and wrote placeholders for the eventual data.
+2. **Ask it to propose implementation strategies.** Usually, co-pilot has a good sense of the best approach—considering your current architecture, needs, etc. But it helps to review options; partly to find the best strategy, but moreso to retain your mental bandwidth. When you get to review your options, you get to cut some of the anxiety out of your prompt. You retain a sense of *control* over the changes the agent makes, so that it feels collaborative and keeps your head "in the space." Remember, this is a tool that works best when you're fully engaged with it. Don't mentally check yourself out.
+3. **Write a spec.** With the knowledge you've learned—and, with an understanding of how your base code works—write out what you need to accomplish, and some markers on how to accomplish it. Think about edge-cases, think about future-proofing.
+4. **Run it, then re-run it.** Undo is a very powerful function, because when you watch the agent implement its changes in real-time, you'll notice it goes in directions you didn't expect, or didn't want. It might have missed a crucial note in your spec. The fact that you can go back, and update your prompt, is very, very powerful.
+5. **Debug with intention.** It's so important to have a basic understanding of the changes the agent has made. Go back and really try to understand what it did. Ask questions about its implementation—and when you run into bugs, be very clear about the expected behaviour and what you think might be causing the bug.
+
+### In summary:
+holy shit. this thing is good.
