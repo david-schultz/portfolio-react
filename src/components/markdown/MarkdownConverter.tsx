@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
+import { MediaImage } from 'iconoir-react'
 
 export default function MarkdownConverter() {
   const [input, setInput] = useState('')
@@ -20,8 +21,16 @@ export default function MarkdownConverter() {
   }
 
   return (
-    <div className="border rounded-lg p-6 my-8 bg-bg-secondary">
-      <h4 className="text-lg font-semibold mb-4">Markdown Converter</h4>
+    <div className="border border-bd-primary rounded-lg p-6 my-8 bg-bg-primary flex flex-col items-center">
+      <MediaImage width={64} height={64} className="text-ic-primary stroke-[0.75]"/>
+      <p className="font-mono text-md text-tx-body">Upload an image</p>
+      <p className="font-mono text-xs text-tx-tertiary">Supports .jpg / .png / .webm under 5mb</p>
+
+      <Button onClick={handleConvert} className="mt-4">
+        Browse files
+      </Button>
+
+      {/* <h4 className="text-lg font-semibold mb-4">Markdown Converter</h4>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
@@ -55,7 +64,7 @@ export default function MarkdownConverter() {
         className="mt-4"
       >
         {isConverting ? 'Converting...' : 'Convert to Markdown'}
-      </Button>
+      </Button> */}
     </div>
   )
 }
