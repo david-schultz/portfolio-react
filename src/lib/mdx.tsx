@@ -2,25 +2,29 @@ import { evaluate } from '@mdx-js/mdx'
 import * as runtime from 'react/jsx-runtime'
 import React from 'react'
 import matter from 'gray-matter'
-import { Markdown } from '@/components/Markdown'
+import { Markdown } from '@/components/markdown/Markdown'
 
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Highlight, Callout, Anchor } from '@/components/MDXCustomComponents'
+import { Highlight, Callout, Anchor, TitleSection } from '@/components/markdown/MDXCustomComponents'
 import VideoPlayer from '@/components/VideoPlayer'
-import MarkdownConverter from '@/components/MarkdownConverter'
+import MarkdownConverter from '@/components/markdown/MarkdownConverter'
 import Image from 'next/image'
 
 interface Frontmatter {
   title?: string
   subtitle?: string
   date?: string
+  year?: string
+  published?: string
+  location?: string
   thumbnail?: string
   order?: number | string
   visible?: boolean
 }
 
-const components = {
+// Create components function that can accept frontmatter
+const createComponents = (frontmatter?: Frontmatter) => ({
   // Custom components for MDX rendering
   h1: (props: any) => <h1 className="text-xl text-tx-primary" {...props} />,
   h2: (props: any) => <h2 className="text-lg text-tx-primary mb-2" {...props} />,
@@ -65,12 +69,16 @@ const components = {
   Highlight,
   Callout,
   Anchor,
+  TitleSection: (props: any) => <TitleSection {...frontmatter} {...props} />,
   VideoPlayer,
   Button,
   Link,
   Image,
   MarkdownConverter,
-}
+})
+
+// Default components for backward compatibility
+const components = createComponents()
 
 
 // Function to check if content should be treated as MDX
@@ -99,6 +107,15 @@ export interface AnchorData {
 export function extractAnchors(source: string): AnchorData[] {
   const { content } = matter(source)
   const anchors: AnchorData[] = []
+  
+  // Check if TitleSection component exists in the content
+  const titleSectionRegex = /<TitleSection\s*[^>]*\/?>/
+  const hasTitleSection = titleSectionRegex.test(content)
+  
+  // If TitleSection exists, add Overview anchor to the top
+  if (hasTitleSection) {
+    anchors.push({ id: 'overview', title: 'Overview' })
+  }
   
   // Match both self-closing and regular Anchor components
   // Self-closing: <Anchor id="..." />
@@ -139,10 +156,13 @@ export async function renderMDXContent(source: string) {
     const { data, content } = matter(source)
     const anchors = extractAnchors(source)
     
+    // Create components with frontmatter injected
+    const componentsWithFrontmatter = createComponents(data as Frontmatter)
+    
     // Compile MDX content using @mdx-js/mdx
     const { default: MDXContent } = await evaluate(content, {
       ...runtime,
-      useMDXComponents: () => components
+      useMDXComponents: () => componentsWithFrontmatter
     } as any)
 
     return { 

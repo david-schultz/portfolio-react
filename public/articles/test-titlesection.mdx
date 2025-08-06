@@ -1,0 +1,40 @@
+---
+title: "Test Article with TitleSection"
+subtitle: "Demonstrating the new TitleSection component"
+date: "2025-08-06"
+location: "Seattle, WA"
+published: "August 2025"
+thumbnail: ""
+order: 1
+visible: true
+---
+
+<TitleSection />
+
+# Welcome to the TitleSection Demo!
+
+This article demonstrates how the `<TitleSection>` component automatically reads the frontmatter and displays the title, subtitle, date, and location without requiring any props.
+
+The component above should have automatically populated with:
+- **Title**: Test Article with TitleSection
+- **Subtitle**: Demonstrating the new TitleSection component
+- **Date**: August 2025 (using the `published` field)
+- **Location**: Seattle, WA
+
+## How it works
+
+The `<TitleSection>` component uses React Context to access the frontmatter data that was parsed by gray-matter during the MDX rendering process. This allows authors to simply insert `<TitleSection />` anywhere in their MDX files without passing any props.
+
+<Callout type="success">
+🎉 **Success!** The TitleSection component is now working with your existing gray-matter setup!
+</Callout>
+
+## Frontmatter Support
+
+The component supports the following frontmatter fields:
+- `title` - Main title of the article
+- `subtitle` - Subtitle or description
+- `published` / `date` / `year` - Publication date (uses whichever is available)
+- `location` - Geographic location or context
+
+The component gracefully handles missing fields - if a field isn't present in the frontmatter, it simply won't display that part of the component.
