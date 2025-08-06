@@ -7,6 +7,12 @@ import Link from 'next/link'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ArticleThumbnail } from '@/components/organisms/ArticleThumbnail'
 import { StickyCardHeader } from '@/components/StickyCard'
+import { CurrentTime } from '@/components/CurrentTime'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 interface TabsWithScrollProps {
   articles: any[];
@@ -46,12 +52,22 @@ export default function HomeTabsWithScroll({ articles, demos, defaultTab = 'work
     <Tabs 
       id="tabs" 
       defaultValue={defaultTab} 
-      className="mt-12 md:mt-0 flex flex-col"
+      className="mt-0 flex flex-col"
       onValueChange={handleTabValueChange}
     >
       <StickyCardHeader className="sticky top-[-81px] z-0">
-        <h2 className="text-lg pl-4 pt-4">Stuff</h2>
-        <p className="text-md text-tx-secondary ml-4">yeah check me out</p>
+        {/* <h2 className="text-lg pl-4 pt-4">Stuff</h2> */}
+        <div className="p-4 pb-0 ml-4 mt-4">
+          <p className="text-lg text-tx-body italic">We all fall, and we all land somewhere.</p>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <CurrentTime className="text-sm font-mono text-tx-secondary" />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>this site is v in-progress lol</p>
+            </TooltipContent>
+          </Tooltip>
+        </div>
         <TabsList className="pt-4 flex items-center font-mono text-xs">
           <TabsTrigger 
             value="work" 

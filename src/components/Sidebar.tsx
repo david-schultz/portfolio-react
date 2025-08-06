@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { IconButton } from "./ui/IconButton";
 import { Globe, RefreshDouble, Xmark } from 'iconoir-react';
 import { cn } from "@/lib/utils";
+import { CurrentTime } from "./CurrentTime";
 // import StarIcon from './public/images/star-sm.svg'
 
 
@@ -33,55 +34,23 @@ export const Sidebar: React.FC<SidebarProps> = ({ children, className }) => {
 
 export const SidebarNav: React.FC<SidebarNavProps> = ({ href, breadcrumb, page, className }) => {
   const pathname = usePathname();
-  const [currentTime, setCurrentTime] = useState('');
   const [showTime, setShowTime] = useState(false); // State to toggle between breadcrumbs and time
-
-  // Update time every second
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      // Convert to Seattle time (Pacific Time)
-      const seattleTime = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'America/Los_Angeles',
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      }).format(now);
-      
-      // Get timezone abbreviation (PST/PDT)
-      const timeZone = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'America/Los_Angeles',
-        timeZoneName: 'short'
-      }).formatToParts(now).find(part => part.type === 'timeZoneName')?.value || 'PT';
-      
-      setCurrentTime(`${seattleTime} ${timeZone}`);
-    };
-
-    // Update immediately
-    updateTime();
-    
-    // Then update every second
-    const interval = setInterval(updateTime, 1000);
-    
-    return () => clearInterval(interval);
-  }, []);
 
   // Build the display text based on toggle state
   const getDisplayText = () => {
     if (showTime) {
-      return currentTime;
+      return <CurrentTime />;
     }
     
     // Show breadcrumbs based on current route
     if (!pathname || pathname === '/') {
-      return currentTime; // On home page, default to time when showTime is false
+      return <CurrentTime />; // On home page, default to time when showTime is false
     }
     
     // For other pages, build breadcrumb from the pathname
     const pathSegments = pathname.split('/').filter(Boolean);
     if (pathSegments.length === 0) {
-      return currentTime; // fallback for home
+      return <CurrentTime />; // fallback for home
     }
     
     // Format: "/ parent / current"

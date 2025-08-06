@@ -29,7 +29,8 @@ export default async function Home() {
         />
         <Link href="/"><h1 className="font-serif text-tx text-lg">david schultz</h1></Link>
         <p className="flex-grow">designer who codes</p>
-        <ThemeButtons />
+        {/* <ThemeButtons /> */}
+        {/* I'm feeling lucky button */}
         <p className="">© 2025</p>
       </section>
 

@@ -71,17 +71,13 @@ export default async function ArticlePage({ params }: PageProps) {
     <>
       <Sidebar>
         <SidebarNav href={'/'} breadcrumb={'work'} page={slug}/>
-        <p>Contents</p>
-        <ol className="font-mono italic text-sm space-y-1">
+        <ol className="bg-bg-card flex flex-col p-3 border rounded-md border-bd-secondary font-mono text-sm text-tx-primary space-y-1">
           {anchors.map((anchor, index) => (
-            <li key={anchor.id}>
-              <a 
-                href={`#${anchor.id}`}
-                className="text-tx-primary hover:underline"
-              >
-                {anchor.title}
-              </a>
-            </li>
+            <a key={anchor.id} href={`#${anchor.id}`} className="bg-bg-secondary px-4 py-3 rounded hover:underline hover:bg-bg-hover active:bg-bg-pressed">
+              <li className="">
+                  {anchor.title}
+              </li>
+            </a>
           ))}
         </ol>
       </Sidebar>
